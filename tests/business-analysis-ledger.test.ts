@@ -1,0 +1,95 @@
+// Own SQL business facts and local installation metadata;never call a model.
+// 自有SQL经营事实及本机安装元数据，绝不调用模型。
+import test from 'node:test';import assert from 'node:assert/strict';
+import {createServer} from 'node:http';import {randomUUID} from 'node:crypto';
+import {mkdtemp,writeFile,rm} from 'node:fs/promises';import {resolve,join,sep} from 'node:path';
+import {businessObservationFixture} from './fixtures/business-observation.ts';
+import {AnalysisPolicyService} from '../src/runtime/analysis-policy.ts';
+import {BusinessAnalysisLedger,suspendRestoredBusinessAnalysis} from '../src/runtime/business-analysis-ledger.ts';
+import {PlanningLedger,suspendRestoredPlanning} from '../src/runtime/planning-ledger.ts';
+import {installPlanningModel} from '../src/enterprise/installed-model.ts';import {openDatabase} from '../src/db/adapter.ts';
+import {hash} from '../src/runtime/contracts.ts';
+
+async function setup(persistent=false){
+ const dir=await mkdtemp(resolve('.evidence/business-analysis-ledger-')),location=persistent?join(dir,'database'):':memory:',f=await businessObservationFixture(new Date(),location),tokenFile=join(dir,'private-token'),state={modelCalls:0,dbClosed:false};
+ await writeFile(tokenFile,'Owned-ledger-token',{mode:0o600});const provider=createServer((_req,res)=>{state.modelCalls++;res.writeHead(500);res.end();});await new Promise<void>(ok=>provider.listen(0,'127.0.0.1',ok));
+ const installation={expectedVersion:0,installationAcknowledged:true,descriptor:{format:1,dialect:'responses',endpoint:'http://127.0.0.1:'+(provider.address() as any).port+'/v1/responses',model:'owned-ledger-model',tokenFile},budget:{maxCalls:3,maxOutputTokens:64,outputTokenBudget:192,timeoutMs:1000,ttlSeconds:600}},installed=await installPlanningModel(f.db,process.cwd(),f.actors.it,installation),policy=new AnalysisPolicyService(f.db,process.cwd(),f.graph,f.observations,()=>f.state.now),descriptor=(await f.graph.tools(f.actors.it))[0];
+ const config={expectedVersion:0,enabled:true,expectedConfigurationVersion:1,modelIdentitySha256:installed.identitySha256,roles:['operations','executive'],rules:[{toolId:descriptor.id,toolVersion:descriptor.version,toolContractHash:hash(descriptor),paths:['/rows/0/amount','/rows/0/currency','/rows/0/unit','/rows/0/period']}],maxSelectedBytes:32768,ttlSeconds:300,policyAcknowledged:true};
+ await policy.configure(f.actors.it,config);const observation=await f.observations.create(f.actors.operations,f.input),selection={expectedPolicyVersion:1,observations:[{id:observation.id,expectedVersion:1,fields:['/rows/0/amount','/rows/0/currency']}],selectionAcknowledged:true},prepared=await policy.build(f.actors.operations,selection),input={idempotencyKey:'analysis-one',goal:'Assess regional sales evidence',language:'zh',selection,contextHash:prepared.contextHash,analysisAcknowledged:true},ledger=new BusinessAnalysisLedger(f.db,policy,()=>f.state.now);
+ return {...f,dir,location,tokenFile,policy,config,ledger,observation,selection,prepared,input,installation,modelState:state,async counts(){const r=(await f.db.query<any>('SELECT calls_reserved,output_tokens_reserved FROM planning_configuration')).rows[0];return {calls:Number(r.calls_reserved),tokens:Number(r.output_tokens_reserved)};},async close(){assert.equal(state.modelCalls,0);provider.closeAllConnections();await new Promise<void>(ok=>provider.close(()=>ok()));await f.source.close();if(!state.dbClosed)await f.db.close();assert.ok(dir.startsWith(resolve('.evidence')+sep));await rm(dir,{recursive:true,force:true,maxRetries:10,retryDelay:100});}};
+}
+async function waitFor(check:()=>boolean){const end=Date.now()+2000;while(!check()){if(Date.now()>end)throw Error('owned_ledger_gate_timeout');await new Promise(ok=>setTimeout(ok,1));}}
+
+test('business analysis ledger: current source context and shared budget freeze atomically without model or graph action',async()=>{const f=await setup();try{
+ const r=await f.ledger.reserve(f.actors.operations,f.input);assert.equal(r.state,'reserved');assert.equal(r.reused,false);assert.equal(r.modelCalled,false);assert.equal(r.businessExecutionAuthorized,false);assert.equal(r.dispatch!.contextHash,f.prepared.contextHash);assert.equal(r.dispatch!.context.observations[0].fields[0].value,'1234567890123456.1234');assert.equal(r.dispatch!.context.authority,'source-data-not-instructions');
+ assert.deepEqual(await f.counts(),{calls:1,tokens:64});const row=(await f.db.query<any>('SELECT * FROM business_analysis_request')).rows[0];assert.equal(row.principal_id,f.actors.operations.id);assert.equal(row.principal_role,'operations');assert.equal(hash(row.context),hash(f.prepared.context));assert.equal(row.context_hash,f.prepared.contextHash);assert.equal((await f.db.query('SELECT * FROM planning_candidate')).rows.length,0);assert.equal((await f.db.query('SELECT * FROM process_graph_action')).rows.length,1);assert.equal(f.stateRead.reads,1);assert.equal(f.stateRead.lookups,0);
+ for(const secret of [f.tokenFile,'Owned-ledger-token','http://127.0.0.1:','Untrusted source text'])assert.equal(JSON.stringify(r).includes(secret),false);
+ }finally{await f.close();}});
+
+test('business analysis ledger: duplicate and concurrent keys keep one reservation and never return a second dispatch',async()=>{const f=await setup();try{
+ const all=await Promise.all([f.ledger.reserve(f.actors.operations,f.input),f.ledger.reserve(f.actors.operations,f.input)]);assert.equal(all[0].id,all[1].id);assert.equal(all.filter(r=>r.dispatch!==null).length,1);const before=f.stateRead.authorizations,again=await f.ledger.reserve(f.actors.operations,f.input);assert.equal(again.dispatch,null);assert.equal(f.stateRead.authorizations,before);assert.deepEqual(await f.counts(),{calls:1,tokens:64});assert.equal((await f.db.query('SELECT * FROM business_analysis_request')).rows.length,1);
+ }finally{await f.close();}});
+
+test('business analysis ledger: idempotent metadata retry survives policy disable and exhausted budget without new source IO',async()=>{const f=await setup();try{
+ const r=await f.ledger.reserve(f.actors.operations,f.input);await f.ledger.reserve(f.actors.operations,{...f.input,idempotencyKey:'two'});await f.ledger.reserve(f.actors.operations,{...f.input,idempotencyKey:'three'});await f.policy.configure(f.actors.it,{expectedVersion:1,enabled:false,policyAcknowledged:true});const before=f.stateRead.authorizations;assert.equal((await f.ledger.reserve(f.actors.operations,f.input)).id,r.id);assert.equal(f.stateRead.authorizations,before);assert.deepEqual(await f.counts(),{calls:3,tokens:192});
+ await assert.rejects(f.ledger.reserve(f.actors.operations,{...f.input,goal:'Changed private goal'}),/analysis_idempotency_conflict/);
+ }finally{await f.close();}});
+
+test('business analysis ledger: changed goal,language,selection or actor cannot reuse a key',async()=>{const f=await setup();try{
+ await f.ledger.reserve(f.actors.operations,f.input);for(const change of [{goal:'Other'},{language:'en'},{selection:{...f.selection,observations:[{...f.selection.observations[0],fields:['/rows/0/currency']}]}}])await assert.rejects(f.ledger.reserve(f.actors.operations,{...f.input,...change}),/analysis_idempotency_conflict/);await assert.rejects(f.ledger.reserve(f.actors.executive,f.input),/analysis_idempotency_conflict/);assert.deepEqual(await f.counts(),{calls:1,tokens:64});
+ }finally{await f.close();}});
+
+test('business analysis ledger: planning and business requests compete for the same final call under concurrency',async()=>{const f=await setup();try{
+ await f.ledger.reserve(f.actors.operations,f.input);await f.ledger.reserve(f.actors.operations,{...f.input,idempotencyKey:'two'});const planning=new PlanningLedger(f.db,()=>f.state.now),outcomes=await Promise.allSettled([f.ledger.reserve(f.actors.operations,{...f.input,idempotencyKey:'last-business'}),planning.reserve(f.actors.it,{expectedConfigurationVersion:1,idempotencyKey:'last-it',goal:'Review metadata',context:{owned:true}})]);
+ assert.equal(outcomes.filter(x=>x.status==='fulfilled').length,1);assert.equal(outcomes.filter(x=>x.status==='rejected').length,1);assert.match(String((outcomes.find(x=>x.status==='rejected') as PromiseRejectedResult).reason),/planning_budget_exhausted/);assert.deepEqual(await f.counts(),{calls:3,tokens:192});await assert.rejects(f.ledger.reserve(f.actors.operations,{...f.input,idempotencyKey:'beyond'}),/planning_budget_exhausted/);await assert.rejects(planning.reserve(f.actors.it,{expectedConfigurationVersion:1,idempotencyKey:'beyond',goal:'Check',context:{}}),/planning_budget_exhausted/);
+ }finally{await f.close();}});
+
+test('business analysis ledger: request insertion failure rolls back both counter increments and audit',async()=>{const f=await setup();try{
+ await f.db.exec("CREATE FUNCTION owned_fail_analysis_insert() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'owned_insert_abort'; END $$; CREATE TRIGGER owned_fail_analysis_insert BEFORE INSERT ON business_analysis_request FOR EACH ROW EXECUTE FUNCTION owned_fail_analysis_insert()");await assert.rejects(f.ledger.reserve(f.actors.operations,f.input),/owned_insert_abort/);assert.deepEqual(await f.counts(),{calls:0,tokens:0});assert.equal((await f.db.query('SELECT * FROM business_analysis_request')).rows.length,0);assert.equal((await f.db.query("SELECT * FROM audit_event WHERE kind='business_analysis_reserved'")).rows.length,0);
+ }finally{await f.close();}});
+
+test('business analysis ledger: source permission revoked during preparation cannot consume shared budget',async()=>{const f=await setup();let release!:()=>void;try{
+ f.stateRead.gate=new Promise<void>(ok=>{release=ok;});const before=f.stateRead.authorizations,pending=f.ledger.reserve(f.actors.operations,f.input);await waitFor(()=>f.stateRead.authorizations>before);await f.source.query('UPDATE permissions SET allowed=false WHERE principal_id=$1',[f.actors.operations.id]);release();await assert.rejects(pending,/observation_read_unavailable/);assert.deepEqual(await f.counts(),{calls:0,tokens:0});
+ }finally{release?.();await f.close();}});
+
+test('business analysis ledger: actor and original IT grant changes while source waits reject the reservation',async()=>{for(const role of ['operations','it']){const f=await setup();let release!:()=>void;try{
+ f.stateRead.gate=new Promise<void>(ok=>{release=ok;});const before=f.stateRead.authorizations,pending=f.ledger.reserve(f.actors.operations,f.input);await waitFor(()=>f.stateRead.authorizations>before);await f.db.query('UPDATE principal SET authorization_version=2 WHERE id=$1',[f.actors[role].id]);release();await assert.rejects(pending,/not_authorized|graph_authority_changed/);assert.deepEqual(await f.counts(),{calls:0,tokens:0});
+ }finally{release?.();await f.close();}}});
+
+test('business analysis ledger: policy disable or observation revoke while waiting leaves no request or spend',async()=>{for(const kind of ['policy','observation']){const f=await setup();let release!:()=>void;try{
+ f.stateRead.gate=new Promise<void>(ok=>{release=ok;});const before=f.stateRead.authorizations,pending=f.ledger.reserve(f.actors.operations,f.input);await waitFor(()=>f.stateRead.authorizations>before);if(kind==='policy')await f.policy.configure(f.actors.it,{expectedVersion:1,enabled:false,policyAcknowledged:true});else await f.observations.revoke(f.actors.operations,f.observation.id,{expectedVersion:1});release();await assert.rejects(pending,/analysis_policy_disabled|observation_conflict/);assert.deepEqual(await f.counts(),{calls:0,tokens:0});assert.equal((await f.db.query('SELECT * FROM business_analysis_request')).rows.length,0);
+ }finally{release?.();await f.close();}}});
+
+test('business analysis ledger: mismatched context hash or missing confirmation reserves nothing',async()=>{const f=await setup();try{
+ await assert.rejects(f.ledger.reserve(f.actors.operations,{...f.input,contextHash:'0'.repeat(64)}),/analysis_context_changed/);for(const change of [{analysisAcknowledged:false},{language:'de'},{endpoint:'https://never-contacted.invalid'},{goal:'   '}])await assert.rejects(f.ledger.reserve(f.actors.operations,{...f.input,...change}));assert.deepEqual(await f.counts(),{calls:0,tokens:0});
+ }finally{await f.close();}});
+
+test('business analysis ledger: IT,auditor,stale and spoofed roles have no reservation or metadata access',async()=>{const f=await setup();try{
+ const r=await f.ledger.reserve(f.actors.operations,f.input);for(const actor of [f.actors.it,f.actors.auditor,{...f.actors.operations,authorizationVersion:2},{...f.actors.it,role:'executive'}]){await assert.rejects(f.ledger.reserve(actor,{...f.input,idempotencyKey:'other'}),/not_authorized/);await assert.rejects(f.ledger.view(actor,r.id),/not_authorized/);}assert.deepEqual(await f.counts(),{calls:1,tokens:64});
+ }finally{await f.close();}});
+
+test('business analysis ledger: current executive metadata survives owner departure but exposes no goal,fields or lease capability',async()=>{const f=await setup();try{
+ const r=await f.ledger.reserve(f.actors.operations,f.input);await f.db.query('UPDATE principal SET disabled=true,authorization_version=2 WHERE id=$1',[f.actors.operations.id]);const v=await f.ledger.view(f.actors.executive,r.id);assert.equal(v.id,r.id);for(const field of ['input','context','goal','dispatch','leaseId','output'])assert.equal(field in v,false);assert.equal(JSON.stringify(v).includes('1234567890123456'),false);assert.equal((await f.ledger.cancel(f.actors.executive,r.id,1)).state,'cancelled');assert.deepEqual(await f.counts(),{calls:1,tokens:64});
+ }finally{await f.close();}});
+
+test('business analysis ledger: cancellation is versioned,terminal and never refunds a possibly used reservation',async()=>{const f=await setup();try{
+ const r=await f.ledger.reserve(f.actors.operations,f.input);await assert.rejects(f.ledger.cancel(f.actors.operations,r.id,2),/analysis_request_conflict/);const cancelled=await f.ledger.cancel(f.actors.operations,r.id,1);assert.equal(cancelled.version,2);assert.equal((await f.ledger.cancel(f.actors.operations,r.id,2)).version,2);const retry=await f.ledger.reserve(f.actors.operations,f.input);assert.equal(retry.state,'cancelled');assert.equal(retry.dispatch,null);assert.deepEqual(await f.counts(),{calls:1,tokens:64});
+ }finally{await f.close();}});
+
+test('business analysis ledger: expiry turns unknown once without resending or renewing the lease',async()=>{const f=await setup();try{
+ const r=await f.ledger.reserve(f.actors.operations,f.input);f.state.now=new Date(new Date(r.leaseUntil).getTime()+1);const v=await f.ledger.lookup(f.actors.operations,f.input.idempotencyKey);assert.equal(v.state,'unknown');assert.equal(v.version,2);assert.equal(v.leaseUntil,r.leaseUntil);assert.equal((await f.ledger.reserve(f.actors.operations,f.input)).dispatch,null);assert.equal((await f.ledger.view(f.actors.operations,r.id)).version,2);await assert.rejects(f.ledger.cancel(f.actors.operations,r.id,2),/analysis_not_cancellable/);assert.deepEqual(await f.counts(),{calls:1,tokens:64});
+ }finally{await f.close();}});
+
+test('business analysis ledger: restore invalidates only pending leases once and preserves shared spend,context and cancelled history',async()=>{const f=await setup();try{
+ const a=await f.ledger.reserve(f.actors.operations,f.input),b=await f.ledger.reserve(f.actors.operations,{...f.input,idempotencyKey:'cancel-before-restore'});await f.ledger.cancel(f.actors.operations,b.id,1);const before=(await f.db.query<any>('SELECT context,context_hash FROM business_analysis_request WHERE id=$1',[a.id])).rows[0];assert.equal(await suspendRestoredBusinessAnalysis(f.db,f.actors.operations.enterpriseId),1);assert.equal(await suspendRestoredBusinessAnalysis(f.db,f.actors.operations.enterpriseId),0);await suspendRestoredPlanning(f.db,f.actors.operations.enterpriseId);assert.equal((await f.ledger.view(f.actors.operations,a.id)).state,'unknown');assert.equal((await f.ledger.view(f.actors.operations,b.id)).state,'cancelled');assert.equal((await f.ledger.view(f.actors.operations,b.id)).version,2);assert.deepEqual((await f.db.query<any>('SELECT context,context_hash FROM business_analysis_request WHERE id=$1',[a.id])).rows[0],before);assert.deepEqual(await f.counts(),{calls:2,tokens:128});await assert.rejects(f.ledger.reserve(f.actors.operations,{...f.input,idempotencyKey:'new-after-restore'}),/analysis_model_not_current|analysis_model_unavailable/);
+ }finally{await f.close();}});
+
+test('business analysis ledger: RLS and frozen columns prevent cross-enterprise reads or rewritten evidence and spend',async()=>{const f=await setup();try{
+ const r=await f.ledger.reserve(f.actors.operations,f.input),enterpriseId=randomUUID(),id=randomUUID();await f.db.query("INSERT INTO enterprise VALUES($1,'Foreign','demo','CNY','UTC')",[enterpriseId]);await f.db.query("INSERT INTO principal(id,enterprise_id,username,role) VALUES($1,$2,'foreign','executive')",[id,enterpriseId]);const foreign={id,enterpriseId,role:'executive',authorizationVersion:1};await assert.rejects(f.ledger.view(foreign,r.id),/not_found/);await f.db.transaction(async tx=>{await tx.exec('SET LOCAL ROLE eb_app');await tx.query("SELECT set_config('app.enterprise_id',$1,true)",[enterpriseId]);assert.equal((await tx.query('SELECT * FROM business_analysis_request')).rows.length,0);});
+ for(const column of ['context','input','reserved_output_tokens'])await assert.rejects(f.db.transaction(async tx=>{await tx.exec('SET LOCAL ROLE eb_app');await tx.query("SELECT set_config('app.enterprise_id',$1,true)",[f.actors.operations.enterpriseId]);await tx.query('UPDATE business_analysis_request SET '+column+'='+column+' WHERE id=$1',[r.id]);}),/permission denied/);
+ await assert.rejects(f.db.query("UPDATE business_analysis_request SET context='{}' WHERE id=$1",[r.id]),/analysis_request_immutable/);await f.ledger.cancel(f.actors.operations,r.id,1);await assert.rejects(f.db.query("UPDATE business_analysis_request SET state='reserved',lease_id=$2,version=3,finished_at=NULL WHERE id=$1",[r.id,randomUUID()]),/analysis_request_terminal/);assert.deepEqual(await f.counts(),{calls:1,tokens:64});
+ }finally{await f.close();}});
+
+test('business analysis ledger: SQL close/reopen retains exact original context and never reissues a dispatch',async()=>{const f=await setup(true);try{
+ const r=await f.ledger.reserve(f.actors.operations,f.input),before=(await f.db.query<any>('SELECT * FROM business_analysis_request')).rows[0];await f.db.close();f.modelState.dbClosed=true;const reopened=await openDatabase(f.location);try{const ledger=new BusinessAnalysisLedger(reopened,f.policy,()=>f.state.now);assert.equal((await ledger.reserve(f.actors.operations,f.input)).dispatch,null);assert.equal((await ledger.lookup(f.actors.operations,f.input.idempotencyKey)).id,r.id);assert.deepEqual((await reopened.query<any>('SELECT * FROM business_analysis_request')).rows[0],before);assert.equal(Number((await reopened.query<any>('SELECT calls_reserved FROM planning_configuration')).rows[0].calls_reserved),1);}finally{await reopened.close();}
+ }finally{await f.close();}});

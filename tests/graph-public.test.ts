@@ -1,0 +1,34 @@
+// Source payload must not bypass current-authority readers through legacy run status.
+// 来源载荷不能经旧运行状态接口绕过当前授权读取。
+import test from 'node:test';import assert from 'node:assert/strict';
+import {publicGraphFixture} from './fixtures/public-graph.ts';
+import {publicGraphRun} from '../src/runtime/graph-public.ts';import {hash} from '../src/runtime/contracts.ts';
+test('graph public: revoked source permission cannot retrieve cached raw source data from run status',async()=>{const f=await publicGraphFixture();try{await f.source.query('UPDATE permissions SET allowed=false WHERE principal_id=$1',[f.actors.operations.id]);const response=await f.call('/v1/graph/runs/'+f.run.runId);assert.equal(response.status,200);const body=await response.json();assert.equal(JSON.stringify(body).includes('1234567890123456.1234'),false);assert.equal(body.sourcePayloadRedacted,true);assert.equal(body.actions[0].result,null);assert.equal(f.modelState.modelCalls,0);}finally{await f.close();}});
+
+test('graph public: IT,auditor and executive status readers get no raw action args,results or source references',async()=>{const f=await publicGraphFixture();try{
+ for(const role of ['it','auditor','executive']){const session=await f.app.identity.createSession(f.actors[role].id),response=await f.call('/v1/graph/runs/'+f.run.runId,undefined,session);assert.equal(response.status,200);const r=await response.json();assert.equal(r.actions[0].args,null);assert.equal(r.actions[0].result,null);assert.equal(r.actions[0].receipt_ref,null);assert.equal(r.actions[0].source_revision,null);assert.equal(JSON.stringify(r).includes('1234567890123456.1234'),false);assert.equal(r.actions[0].resultHash,hash(f.action.result));assert.equal('principal_id' in r,false);assert.equal('idempotency_key' in r,false);}assert.equal(f.modelState.modelCalls,0);
+ }finally{await f.close();}});
+
+test('graph public: completed step acknowledgement and subsequent status stay payload-free without changing original receipts',async()=>{const f=await publicGraphFixture();try{
+ assert.equal((await f.graph.view(f.actors.operations,f.run.runId)).state,'succeeded');const before=(await f.db.query<any>('SELECT * FROM process_graph_action')).rows;const response=await f.call('/v1/graph/runs/'+f.run.runId+'/step',{});assert.equal(response.status,200);const acknowledgement=await response.json();assert.deepEqual(acknowledgement,{claimed:false});assert.equal(JSON.stringify(acknowledgement).includes('1234567890123456.1234'),false);const body=await f.call('/v1/graph/runs/'+f.run.runId).then(r=>r.json());assert.equal(body.state,'succeeded');assert.equal(body.sourcePayloadRedacted,true);assert.equal(body.actions[0].result,null);assert.equal(body.actions[0].resultHash,hash(f.action.result));assert.equal(JSON.stringify(body).includes('1234567890123456.1234'),false);assert.deepEqual((await f.db.query('SELECT * FROM process_graph_action')).rows,before);assert.equal(f.stateRead.reads,1);assert.equal(f.stateRead.lookups,0);assert.equal(f.modelState.modelCalls,0);
+ }finally{await f.close();}});
+
+test('graph public: resultHash still permits an explicit authorized observation,while source revocation blocks that data path',async()=>{const f=await publicGraphFixture();try{
+ const publicRun=await f.call('/v1/graph/runs/'+f.run.runId).then(r=>r.json());const actual={runId:f.run.runId,actionId:f.action.id,resultHash:publicRun.actions[0].resultHash,idempotencyKey:'public-hash-review',observationAcknowledged:true};const read=await f.call('/v1/graph/observations',actual);assert.equal(read.status,200);const evidence=await read.json();assert.equal(evidence.evidence.data.rows[0].amount,'1234567890123456.1234');await f.source.query('UPDATE permissions SET allowed=false WHERE principal_id=$1',[f.actors.operations.id]);assert.equal((await f.call('/v1/graph/observations/'+evidence.id).then(r=>r.json())).evidence,null);assert.equal((await f.call('/v1/graph/observations',{...actual,idempotencyKey:'revoked-public-hash'})).status,503);assert.equal(f.modelState.modelCalls,0);
+ }finally{await f.close();}});
+
+test('graph public: metadata reads neither reauthorize sources nor reserve model budget',async()=>{const f=await publicGraphFixture();try{
+ const authorizations=f.stateRead.authorizations,before=await f.counts();for(let i=0;i<3;i++)assert.equal((await f.call('/v1/graph/runs/'+f.run.runId)).status,200);assert.equal(f.stateRead.authorizations,authorizations);assert.deepEqual(await f.counts(),before);assert.equal(f.modelState.modelCalls,0);
+ }finally{await f.close();}});
+
+test('graph public: unknown future row fields and event payloads cannot escape the explicit public projection',async()=>{const f=await publicGraphFixture();try{
+ const raw=await f.graph.view(f.actors.operations,f.run.runId),secret='Owned-private-payload-never-public';raw.future_source=secret;raw.actions[0].future_source=secret;raw.events.push({sequence:999,kind:'completed',created_at:new Date(),details:{secret,actionId:f.action.id,state:'completed'}});const output=publicGraphRun(raw);assert.equal(JSON.stringify(output).includes(secret),false);assert.equal(output.events.at(-1)!.details.actionId,f.action.id);assert.equal(output.events.at(-1)!.details.state,'completed');assert.equal(output.actions[0].argsHash,hash(f.action.args));assert.equal(output.actions[0].resultHash,hash(f.action.result));assert.equal(output.actions[0].receiptRefHash,hash(f.action.receipt_ref));assert.equal(output.actions[0].sourceRevisionHash,hash(f.action.source_revision));
+ }finally{await f.close();}});
+
+test('graph public: long event histories are explicitly bounded without pretending the whole history was returned',async()=>{const f=await publicGraphFixture();try{
+ const raw=await f.graph.view(f.actors.operations,f.run.runId);raw.events=Array.from({length:250},(_,i)=>({sequence:i+1,kind:'completed',details:{},created_at:new Date()}));const output=publicGraphRun(raw);assert.equal(output.eventCount,250);assert.equal(output.events.length,200);assert.equal(output.eventsTruncated,true);assert.equal(output.events[0].sequence,51);assert.equal(output.events.at(-1)!.sequence,250);
+ }finally{await f.close();}});
+
+test('graph public: malformed internal views fail closed with a safe code and leave the server able to answer health',async()=>{const f=await publicGraphFixture();try{
+ const original=f.app.graph.view.bind(f.app.graph);f.app.graph.view=async()=>({actions:[{result:{private:'Owned-unsafe'}}]}) as any;const response=await f.call('/v1/graph/runs/'+f.run.runId);assert.equal(response.status,503);assert.deepEqual(await response.json(),{code:'graph_public_view_unavailable'});assert.equal((await f.call('/health')).status,200);f.app.graph.view=original;assert.equal((await f.call('/v1/graph/runs/'+f.run.runId)).status,200);
+ }finally{await f.close();}});

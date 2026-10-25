@@ -1,0 +1,19 @@
+name: Business discussion / 业务讨论
+description: Discuss organizational coordination using a public example / 用可公开案例讨论组织协同
+title: "[Discussion] "
+body:
+  - type: markdown
+    attributes:
+      value: "This is a public discussion. Do not include confidential details. / 此为公开讨论，不含保密细节。"
+  - type: textarea
+    id: case
+    attributes:
+      label: Scenario and organizations involved / 场景与相关组织
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question or insight / 问题或洞察
+    validations:
+      required: true

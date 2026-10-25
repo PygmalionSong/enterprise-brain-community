@@ -1,0 +1,140 @@
+# Exact SDK coverage, bounded owned workers. / 准确SDK覆盖与有界自有子进程。
+name: Source reproduction
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: source-ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  windows-source:
+    name: windows-source-${{ matrix.shard }}
+    runs-on: windows-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+        with:
+          node-version: 24.19.0
+          package-manager-cache: false
+      - name: Verify inventory / 校验库存
+        run: node scripts/verify-repository.mjs
+      - name: Install locked dependencies / 安装锁定依赖
+        run: |
+          npm.cmd install --global pnpm@11.25.0 --ignore-scripts --no-audit --no-fund
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          pnpm.cmd install --frozen-lockfile --ignore-scripts --store-dir .evidence/pnpm-store
+          exit $LASTEXITCODE
+      - name: Verify report and worker logic / 核对报告和进程逻辑
+        run: node --test tests/installation-report.test.mjs tests/ci-sdk-tests.test.mjs
+      - name: Types and build / 类型与构建
+        run: |
+          pnpm.cmd typecheck
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          pnpm.cmd build
+          exit $LASTEXITCODE
+      - name: SDK shard / SDK分组
+        env:
+          SDK_SHARD: ${{ matrix.shard }}
+        run: |
+          New-Item -ItemType Directory -Path .evidence -Force | Out-Null
+          node scripts/ci-sdk-tests.mjs --shard $env:SDK_SHARD --out "$((Get-Location).Path)/.evidence/shard-report.json" --log-dir "$((Get-Location).Path)/.evidence/private-test-logs"
+          exit $LASTEXITCODE
+  first-task:
+    name: first-task
+    runs-on: windows-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+        with:
+          node-version: 24.19.0
+          package-manager-cache: false
+      - name: Verify inventory / 校验库存
+        run: node scripts/verify-repository.mjs
+      - name: Install locked dependencies / 安装锁定依赖
+        run: |
+          npm.cmd install --global pnpm@11.25.0 --ignore-scripts --no-audit --no-fund
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          pnpm.cmd install --frozen-lockfile --ignore-scripts --store-dir .evidence/pnpm-store
+          exit $LASTEXITCODE
+      - name: Types and build / 类型与构建
+        run: |
+          pnpm.cmd typecheck
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          pnpm.cmd build
+          exit $LASTEXITCODE
+      - name: Controlled task checks / 受控首任务检查
+        run: |
+          node --test --test-reporter=tap tests/first-task.test.mjs
+          exit $LASTEXITCODE
+  operating-case:
+    name: operating-case
+    runs-on: windows-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+        with:
+          node-version: 24.19.0
+          package-manager-cache: false
+      - name: Verify inventory / 校验库存
+        run: node scripts/verify-repository.mjs
+      - name: Install locked dependencies / 安装锁定依赖
+        run: |
+          npm.cmd install --global pnpm@11.25.0 --ignore-scripts --no-audit --no-fund
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          pnpm.cmd install --frozen-lockfile --ignore-scripts --store-dir .evidence/pnpm-store
+          exit $LASTEXITCODE
+      - name: Types and build / 类型与构建
+        run: |
+          pnpm.cmd typecheck
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          pnpm.cmd build
+          exit $LASTEXITCODE
+      - name: Backend case and state checks / 后端案例与状态检查
+        run: |
+          node --test --test-concurrency=1 --test-name-pattern="source-backed fulfillment|timeout becomes unknown|budget and missing|requires CSRF|receipt" tests/runtime.test.ts
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node --test tests/supply-state.test.ts
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node --test tests/minimal-adapter.test.mjs
+          exit $LASTEXITCODE
+  source-gate:
+    needs: [windows-source, first-task, operating-case]
+    if: always()
+    runs-on: windows-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: All source and task checks must pass / 源码及首任务必须通过
+        shell: pwsh
+        env:
+          SDK_RESULT: ${{ needs['windows-source'].result }}
+          TASK_RESULT: ${{ needs['first-task'].result }}
+          CASE_RESULT: ${{ needs['operating-case'].result }}
+        run: |
+          if ($env:SDK_RESULT -ne 'success' -or $env:TASK_RESULT -ne 'success' -or $env:CASE_RESULT -ne 'success') { exit 1 }

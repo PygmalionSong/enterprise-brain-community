@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions / 问答 / 質問
+    url: https://github.com/PygmalionSong/enterprise-brain-community/discussions
+    about: Process design, integration experience and general questions / 流程、适配与一般问题 / プロセス・連携・一般的な質問

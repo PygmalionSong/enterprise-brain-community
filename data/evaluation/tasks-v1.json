@@ -1,0 +1,658 @@
+{
+  "version": 1,
+  "clock": "2026-10-13T02:00:00Z",
+  "scenario": "PLAN-SOUTH-v1",
+  "repeats": 3,
+  "mode": "constructed-control-dry-run",
+  "actualModelCalls": 0,
+  "tasks": [
+    {
+      "id": "S1-01",
+      "label": {
+        "zh": "供需方案批准及履约",
+        "en": "Approved supply fulfillment"
+      },
+      "input": {
+        "story": "S1",
+        "goal": {
+          "kind": "supply",
+          "cashBudgetCny": 60000000
+        },
+        "flow": "fulfilled"
+      },
+      "expected": {
+        "state": "succeeded",
+        "writes": 3,
+        "coverageCases": 1600000,
+        "paymentVerified": false
+      }
+    },
+    {
+      "id": "S1-02",
+      "label": {
+        "zh": "经营现金上限不足",
+        "en": "Insufficient goal cash cap"
+      },
+      "input": {
+        "story": "S1",
+        "goal": {
+          "kind": "supply",
+          "cashBudgetCny": 45000000
+        }
+      },
+      "expected": {
+        "state": "waiting_input",
+        "reason": "cash_limit",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S1-03",
+      "label": {
+        "zh": "财务可用现金下降",
+        "en": "Finance availability declines"
+      },
+      "input": {
+        "story": "S1",
+        "goal": {
+          "kind": "supply",
+          "cashBudgetCny": 60000000
+        },
+        "fault": "finance-low"
+      },
+      "expected": {
+        "state": "waiting_input",
+        "reason": "cash_limit",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S1-04",
+      "label": {
+        "zh": "不允许委外承诺",
+        "en": "Co-pack not authorized"
+      },
+      "input": {
+        "story": "S1",
+        "goal": {
+          "kind": "supply",
+          "cashBudgetCny": 60000000,
+          "copackAllowed": false
+        }
+      },
+      "expected": {
+        "state": "waiting_input",
+        "reason": "copack_not_authorized",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S1-05",
+      "label": {
+        "zh": "自产方案覆盖不足",
+        "en": "Internal plan undercoverage"
+      },
+      "input": {
+        "story": "S1",
+        "goal": {
+          "kind": "supply",
+          "cashBudgetCny": 60000000,
+          "planVariant": "internal"
+        }
+      },
+      "expected": {
+        "state": "waiting_input",
+        "reason": "coverage_mismatch",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S1-06",
+      "label": {
+        "zh": "快交方案产能不足",
+        "en": "Fast plan capacity shortfall"
+      },
+      "input": {
+        "story": "S1",
+        "goal": {
+          "kind": "supply",
+          "cashBudgetCny": 60000000,
+          "planVariant": "fast"
+        }
+      },
+      "expected": {
+        "state": "waiting_input",
+        "reason": "qualification_or_capacity",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S1-07",
+      "label": {
+        "zh": "代工资质失效",
+        "en": "Co-pack qualification invalid"
+      },
+      "input": {
+        "story": "S1",
+        "goal": {
+          "kind": "supply",
+          "cashBudgetCny": 60000000
+        },
+        "fault": "unqualified"
+      },
+      "expected": {
+        "state": "waiting_input",
+        "reason": "qualification_or_capacity",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S1-08",
+      "label": {
+        "zh": "缺少硬约束证明",
+        "en": "Hard-constraint proof missing"
+      },
+      "input": {
+        "story": "S1",
+        "goal": {
+          "kind": "supply",
+          "cashBudgetCny": 60000000
+        },
+        "fault": "missing-proof"
+      },
+      "expected": {
+        "state": "waiting_input",
+        "reason": "hard_constraint_evidence_missing",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S1-09",
+      "label": {
+        "zh": "源不支持原子保护",
+        "en": "Source lacks atomic guards"
+      },
+      "input": {
+        "story": "S1",
+        "goal": {
+          "kind": "supply",
+          "cashBudgetCny": 60000000
+        },
+        "fault": "no-guard"
+      },
+      "expected": {
+        "state": "waiting_input",
+        "reason": "source_guards_missing",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S1-10",
+      "label": {
+        "zh": "提案编造来源引用",
+        "en": "Proposal invents evidence"
+      },
+      "input": {
+        "story": "S1",
+        "goal": {
+          "kind": "supply",
+          "cashBudgetCny": 60000000
+        },
+        "fault": "invented-reference"
+      },
+      "expected": {
+        "state": "failed",
+        "reason": "invented_evidence",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S2-01",
+      "label": {
+        "zh": "盖内码追溯并分派",
+        "en": "Inner code trace and assignments"
+      },
+      "input": {
+        "story": "S2",
+        "selection": {
+          "kind": "quality",
+          "code": "CAP-IN-001",
+          "at": "2026-10-12T12:00:00+08:00"
+        },
+        "flow": "fulfilled"
+      },
+      "expected": {
+        "state": "partially_succeeded",
+        "assessment": "quality_investigation",
+        "traceLength": 3,
+        "writes": 2,
+        "qualityReleased": false
+      }
+    },
+    {
+      "id": "S2-02",
+      "label": {
+        "zh": "盖外码指向同一瓶",
+        "en": "Outer code aliases same bottle"
+      },
+      "input": {
+        "story": "S2",
+        "selection": {
+          "kind": "quality",
+          "code": "CAP-OUT-001",
+          "at": "2026-10-12T12:00:00+08:00"
+        }
+      },
+      "expected": {
+        "state": "waiting_approval",
+        "assessment": "quality_investigation",
+        "traceLength": 3,
+        "writes": 0
+      }
+    },
+    {
+      "id": "S2-03",
+      "label": {
+        "zh": "装箱前证据不完整",
+        "en": "Incomplete trace before packing"
+      },
+      "input": {
+        "story": "S2",
+        "selection": {
+          "kind": "quality",
+          "code": "CAP-IN-001",
+          "at": "2026-10-11T08:00:00+08:00"
+        }
+      },
+      "expected": {
+        "state": "waiting_input",
+        "assessment": "trace_missing",
+        "traceLength": 1,
+        "writes": 0
+      }
+    },
+    {
+      "id": "S2-04",
+      "label": {
+        "zh": "审批时间窗已过",
+        "en": "Approval window expired"
+      },
+      "input": {
+        "story": "S2",
+        "selection": {
+          "kind": "quality",
+          "code": "CAP-IN-001",
+          "at": "2026-10-12T12:00:00+08:00"
+        },
+        "flow": "expire-approval"
+      },
+      "expected": {
+        "state": "waiting_approval",
+        "error": "approval_stale",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S2-05",
+      "label": {
+        "zh": "相同请求幂等返回",
+        "en": "Same request returns same review"
+      },
+      "input": {
+        "story": "S2",
+        "selection": {
+          "kind": "quality",
+          "code": "CAP-IN-001",
+          "at": "2026-10-12T12:00:00+08:00"
+        },
+        "flow": "duplicate"
+      },
+      "expected": {
+        "state": "waiting_approval",
+        "sameId": true,
+        "writes": 0
+      }
+    },
+    {
+      "id": "S2-06",
+      "label": {
+        "zh": "同键不同参数被拒绝",
+        "en": "Same key different arguments rejected"
+      },
+      "input": {
+        "story": "S2",
+        "selection": {
+          "kind": "quality",
+          "code": "CAP-IN-001",
+          "at": "2026-10-12T12:00:00+08:00"
+        },
+        "flow": "conflicting-key"
+      },
+      "expected": {
+        "state": "waiting_approval",
+        "error": "idempotency_conflict",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S2-07",
+      "label": {
+        "zh": "技术身份不能经营审批",
+        "en": "IT identity cannot perform business work"
+      },
+      "input": {
+        "story": "S2",
+        "selection": {
+          "kind": "quality",
+          "code": "CAP-IN-001",
+          "at": "2026-10-12T12:00:00+08:00"
+        },
+        "flow": "it-identity"
+      },
+      "expected": {
+        "state": "rejected",
+        "error": "not_authorized",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S2-08",
+      "label": {
+        "zh": "未经批准不得下达",
+        "en": "No dispatch without approval"
+      },
+      "input": {
+        "story": "S2",
+        "selection": {
+          "kind": "quality",
+          "code": "CAP-IN-001",
+          "at": "2026-10-12T12:00:00+08:00"
+        },
+        "flow": "unapproved"
+      },
+      "expected": {
+        "state": "waiting_approval",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S2-09",
+      "label": {
+        "zh": "撤权后转负责人跟进",
+        "en": "Revocation transfers to manual owner"
+      },
+      "input": {
+        "story": "S2",
+        "selection": {
+          "kind": "quality",
+          "code": "CAP-IN-001",
+          "at": "2026-10-12T12:00:00+08:00"
+        },
+        "flow": "revoke"
+      },
+      "expected": {
+        "state": "waiting_external",
+        "error": "authorization_changed",
+        "manual": true,
+        "writes": 0
+      }
+    },
+    {
+      "id": "S2-10",
+      "label": {
+        "zh": "伪造质量放行回执被拒绝",
+        "en": "Forged quality release receipt rejected"
+      },
+      "input": {
+        "story": "S2",
+        "selection": {
+          "kind": "quality",
+          "code": "CAP-IN-001",
+          "at": "2026-10-12T12:00:00+08:00"
+        },
+        "flow": "corrupt-receipt"
+      },
+      "expected": {
+        "state": "waiting_external",
+        "errorPresent": true,
+        "writes": 2,
+        "qualityReleased": false
+      }
+    },
+    {
+      "id": "S3-01",
+      "label": {
+        "zh": "晚间缺货补货及回执",
+        "en": "Evening stockout and replenishment"
+      },
+      "input": {
+        "story": "S3",
+        "selection": {
+          "kind": "store",
+          "store": "GZ-018",
+          "shelf": 8,
+          "period": "evening"
+        },
+        "flow": "fulfilled"
+      },
+      "expected": {
+        "state": "succeeded",
+        "assessment": "replenishment_priority",
+        "writes": 1,
+        "availabilityAfter": 0.98,
+        "causalityVerified": false
+      }
+    },
+    {
+      "id": "S3-02",
+      "label": {
+        "zh": "正常货位进入陈列评审",
+        "en": "Normal shelf enters trial review"
+      },
+      "input": {
+        "story": "S3",
+        "selection": {
+          "kind": "store",
+          "store": "GZ-018",
+          "shelf": 9,
+          "period": "evening"
+        }
+      },
+      "expected": {
+        "state": "waiting_approval",
+        "assessment": "trial_review",
+        "operations": [
+          "trial_review"
+        ],
+        "writes": 0
+      }
+    },
+    {
+      "id": "S3-03",
+      "label": {
+        "zh": "另一正常货位不误补货",
+        "en": "Another normal shelf avoids false order"
+      },
+      "input": {
+        "story": "S3",
+        "selection": {
+          "kind": "store",
+          "store": "GZ-018",
+          "shelf": 10,
+          "period": "evening"
+        }
+      },
+      "expected": {
+        "state": "waiting_approval",
+        "assessment": "trial_review",
+        "operations": [
+          "trial_review"
+        ],
+        "writes": 0
+      }
+    },
+    {
+      "id": "S3-04",
+      "label": {
+        "zh": "同货位早间条件不同",
+        "en": "Morning conditions differ at same shelf"
+      },
+      "input": {
+        "story": "S3",
+        "selection": {
+          "kind": "store",
+          "store": "GZ-018",
+          "shelf": 8,
+          "period": "morning"
+        }
+      },
+      "expected": {
+        "state": "waiting_approval",
+        "assessment": "trial_review",
+        "operations": [
+          "trial_review"
+        ],
+        "writes": 0
+      }
+    },
+    {
+      "id": "S3-05",
+      "label": {
+        "zh": "设备故障优先维修",
+        "en": "Equipment fault prioritizes repair"
+      },
+      "input": {
+        "story": "S3",
+        "selection": {
+          "kind": "store",
+          "store": "GZ-018",
+          "shelf": 9,
+          "period": "evening"
+        },
+        "fault": "equipment-offline"
+      },
+      "expected": {
+        "state": "waiting_approval",
+        "assessment": "equipment_priority",
+        "operations": [
+          "repair"
+        ],
+        "writes": 0
+      }
+    },
+    {
+      "id": "S3-06",
+      "label": {
+        "zh": "设备与缺货分派双责任",
+        "en": "Equipment plus stockout assigns both owners"
+      },
+      "input": {
+        "story": "S3",
+        "selection": {
+          "kind": "store",
+          "store": "GZ-018",
+          "shelf": 8,
+          "period": "evening"
+        },
+        "fault": "equipment-offline"
+      },
+      "expected": {
+        "state": "waiting_approval",
+        "assessment": "stockout_and_equipment",
+        "operations": [
+          "replenish",
+          "repair"
+        ],
+        "writes": 0
+      }
+    },
+    {
+      "id": "S3-07",
+      "label": {
+        "zh": "门店审批到期需重评",
+        "en": "Store approval expires"
+      },
+      "input": {
+        "story": "S3",
+        "selection": {
+          "kind": "store",
+          "store": "GZ-018",
+          "shelf": 8,
+          "period": "evening"
+        },
+        "flow": "expire-approval"
+      },
+      "expected": {
+        "state": "waiting_approval",
+        "error": "approval_stale",
+        "writes": 0
+      }
+    },
+    {
+      "id": "S3-08",
+      "label": {
+        "zh": "未知货位不能生成业务",
+        "en": "Unknown shelf cannot create work"
+      },
+      "input": {
+        "story": "S3",
+        "selection": {
+          "kind": "store",
+          "store": "GZ-018",
+          "shelf": 99,
+          "period": "evening"
+        }
+      },
+      "expected": {
+        "state": "rejected",
+        "errorPresent": true,
+        "writes": 0
+      }
+    },
+    {
+      "id": "S3-09",
+      "label": {
+        "zh": "工单受理不等于补货完成",
+        "en": "Accepted order is not fulfilled"
+      },
+      "input": {
+        "story": "S3",
+        "selection": {
+          "kind": "store",
+          "store": "GZ-018",
+          "shelf": 8,
+          "period": "evening"
+        },
+        "flow": "accepted"
+      },
+      "expected": {
+        "state": "waiting_external",
+        "assessment": "replenishment_priority",
+        "writes": 1
+      }
+    },
+    {
+      "id": "S3-10",
+      "label": {
+        "zh": "陈列评审完成不证明增长",
+        "en": "Trial review completion does not prove growth"
+      },
+      "input": {
+        "story": "S3",
+        "selection": {
+          "kind": "store",
+          "store": "GZ-018",
+          "shelf": 9,
+          "period": "evening"
+        },
+        "flow": "fulfilled"
+      },
+      "expected": {
+        "state": "partially_succeeded",
+        "assessment": "trial_review",
+        "writes": 1,
+        "causalityVerified": false
+      }
+    }
+  ]
+}

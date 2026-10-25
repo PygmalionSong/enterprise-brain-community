@@ -1,0 +1,29 @@
+{
+  "recordedOn": "2026-10-25",
+  "kind": "maintainer-owned backend case acceptance",
+  "sourceScope": "Execution core is byte-identical to the tested kit. Subsequent view refinements clarify pre-approval estimates, retain revised unapproved goals, show constraint reasons, isolate unrelated store receipts, and fence obsolete UI completions.",
+  "actualBrowserApproval": true,
+  "independentConstructedHttpAndSql": true,
+  "realHttpCommitThenClientTimeouts": 3,
+  "sourceSubmitCalls": 3,
+  "sourceLookupCalls": 39,
+  "duplicateSubmissions": 0,
+  "backendAndSourceRestartRetainedOriginalActions": true,
+  "freshArchiveStandardEntryAndRestartPassed": true,
+  "acceptedCases": 1600000,
+  "receivedCases": 1600000,
+  "cashRequiredCny": 52200000,
+  "financialPaymentVerified": false,
+  "salesOutcomeVerified": false,
+  "liveModel": false,
+  "realEnterprise": false,
+  "cleanRegistryInstall": false,
+  "linuxQualified": false,
+  "all60StagesExecuted": false,
+  "additionalBrowserChecks": {
+    "infeasibleExpeditedPlanCannotApprove": true,
+    "userCanReviseToBalancedAndExplicitlyApprove": true,
+    "threeBoundSupplyReceiptsClose": true,
+    "paymentAndSalesEntryDoNotClaimVerification": true
+  }
+}

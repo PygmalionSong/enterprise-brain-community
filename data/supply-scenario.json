@@ -1,0 +1,243 @@
+{
+  "id": "PLAN-SOUTH-v1",
+  "period": {
+    "start": "2026-10-12",
+    "endExclusive": "2026-10-19",
+    "timezone": "Asia/Shanghai"
+  },
+  "skus": [
+    {
+      "id": "HC-524C",
+      "pack": "carton",
+      "volumeMl": 500,
+      "unitsPerCase": 24,
+      "south": {
+        "demand": 180,
+        "supply": 120
+      },
+      "hc": {
+        "demand": 45,
+        "supply": 42
+      },
+      "rest": {
+        "demand": 135,
+        "supply": 78
+      },
+      "allocation": {
+        "own": 30,
+        "transfer": 25,
+        "copack": 5
+      },
+      "hcAllocation": {
+        "own": 3,
+        "transfer": 0,
+        "copack": 0
+      }
+    },
+    {
+      "id": "HC-512F",
+      "pack": "film",
+      "volumeMl": 500,
+      "unitsPerCase": 12,
+      "south": {
+        "demand": 140,
+        "supply": 100
+      },
+      "hc": {
+        "demand": 30,
+        "supply": 28
+      },
+      "rest": {
+        "demand": 110,
+        "supply": 72
+      },
+      "allocation": {
+        "own": 25,
+        "transfer": 10,
+        "copack": 5
+      },
+      "hcAllocation": {
+        "own": 2,
+        "transfer": 0,
+        "copack": 0
+      }
+    },
+    {
+      "id": "HC-12512C",
+      "pack": "carton",
+      "volumeMl": 1250,
+      "unitsPerCase": 12,
+      "south": {
+        "demand": 100,
+        "supply": 60
+      },
+      "hc": {
+        "demand": 25,
+        "supply": 23
+      },
+      "rest": {
+        "demand": 75,
+        "supply": 37
+      },
+      "allocation": {
+        "own": 15,
+        "transfer": 20,
+        "copack": 5
+      },
+      "hcAllocation": {
+        "own": 2,
+        "transfer": 0,
+        "copack": 0
+      }
+    },
+    {
+      "id": "HC-1256F",
+      "pack": "film",
+      "volumeMl": 1250,
+      "unitsPerCase": 6,
+      "south": {
+        "demand": 60,
+        "supply": 40
+      },
+      "hc": {
+        "demand": 20,
+        "supply": 19
+      },
+      "rest": {
+        "demand": 40,
+        "supply": 21
+      },
+      "allocation": {
+        "own": 10,
+        "transfer": 5,
+        "copack": 5
+      },
+      "hcAllocation": {
+        "own": 1,
+        "transfer": 0,
+        "copack": 0
+      }
+    }
+  ],
+  "sources": {
+    "own": {
+      "quantity": 80,
+      "cashCnyPerCase": 48,
+      "incrementalCnyPerCase": 7
+    },
+    "transfer": {
+      "quantity": 60,
+      "cashCnyPerCase": 4,
+      "incrementalCnyPerCase": 4
+    },
+    "copack": {
+      "quantity": 20,
+      "cashCnyPerCase": 57,
+      "incrementalCnyPerCase": 12
+    }
+  },
+  "expected": {
+    "demand": 480,
+    "supply": 320,
+    "hcDemand": 120,
+    "hcSupply": 112,
+    "restDemand": 360,
+    "restSupply": 208,
+    "gap": 160,
+    "hcGap": 8,
+    "restGap": 152,
+    "cashWanCny": 5220,
+    "incrementalCostWanCny": 1040,
+    "litresPerCase": [
+      12,
+      6,
+      15,
+      7.5
+    ]
+  },
+  "budgetCases": [
+    {
+      "limitWanCny": 6000,
+      "financiallyFeasible": true
+    },
+    {
+      "limitWanCny": 4500,
+      "financiallyFeasible": false
+    }
+  ],
+  "transferConservation": {
+    "unit": "ten_thousand_sales_cases",
+    "sameLegalEntity": true,
+    "quantity": 60,
+    "stages": [
+      {
+        "name": "before",
+        "origin": 60,
+        "transit": 0,
+        "destination": 0
+      },
+      {
+        "name": "shipped",
+        "origin": 0,
+        "transit": 60,
+        "destination": 0
+      },
+      {
+        "name": "received",
+        "origin": 0,
+        "transit": 0,
+        "destination": 60
+      }
+    ],
+    "southIncrement": 160,
+    "groupIncrement": 100
+  },
+  "historical": {
+    "factKind": "constructed_actual",
+    "period": "2026-09",
+    "unitMoney": "ten_thousand_CNY",
+    "unitStock": "ten_thousand_sales_cases",
+    "stock": {
+      "opening": 40,
+      "receipts": 90,
+      "issues": 81,
+      "closing": 49
+    },
+    "income": {
+      "gross": 5200,
+      "rebates": 260,
+      "returns": 80,
+      "net": 4860,
+      "cogs": 3260,
+      "margin": 1600
+    },
+    "ar": {
+      "opening": 940,
+      "creditSales": 4860,
+      "receipts": 4200,
+      "closing": 1600
+    },
+    "cash": {
+      "opening": 1800,
+      "receipts": 4200,
+      "payments": 3680,
+      "otherOutflow": 120,
+      "closing": 2200
+    },
+    "otif": {
+      "groups": [
+        [
+          90,
+          100
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "expectedNumerator": 91,
+      "expectedDenominator": 102
+    },
+    "periodIsNewDesignAssignment": true
+  }
+}

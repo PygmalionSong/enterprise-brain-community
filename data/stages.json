@@ -1,0 +1,1902 @@
+[
+  {
+    "domainId": "market",
+    "stageId": "market-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "市场分层",
+      "en": "Segment market",
+      "ja": "市場階層化"
+    },
+    "domainTitle": {
+      "zh": "市场与渠道策略",
+      "en": "Market & channel strategy",
+      "ja": "市場・チャネル戦略"
+    },
+    "ownerTitle": {
+      "zh": "市场总监",
+      "en": "Market director",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "store_asset_observation",
+    "metricIds": [
+      "distribution",
+      "availability"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "market",
+    "stageId": "market-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "渠道选择",
+      "en": "Choose channels",
+      "ja": "チャネル選定"
+    },
+    "domainTitle": {
+      "zh": "市场与渠道策略",
+      "en": "Market & channel strategy",
+      "ja": "市場・チャネル戦略"
+    },
+    "ownerTitle": {
+      "zh": "市场总监",
+      "en": "Market director",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "store_asset_observation",
+    "metricIds": [
+      "distribution",
+      "availability"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "market",
+    "stageId": "market-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "目标分解",
+      "en": "Allocate targets",
+      "ja": "目標配分"
+    },
+    "domainTitle": {
+      "zh": "市场与渠道策略",
+      "en": "Market & channel strategy",
+      "ja": "市場・チャネル戦略"
+    },
+    "ownerTitle": {
+      "zh": "市场总监",
+      "en": "Market director",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "store_asset_observation",
+    "metricIds": [
+      "distribution",
+      "availability"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "market",
+    "stageId": "market-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "复盘调整",
+      "en": "Review outcomes",
+      "ja": "成果検証"
+    },
+    "domainTitle": {
+      "zh": "市场与渠道策略",
+      "en": "Market & channel strategy",
+      "ja": "市場・チャネル戦略"
+    },
+    "ownerTitle": {
+      "zh": "市场总监",
+      "en": "Market director",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "store_asset_observation",
+    "metricIds": [
+      "distribution",
+      "availability"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "product",
+    "stageId": "product-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "需求与立项",
+      "en": "Brief & business case",
+      "ja": "企画・事業性"
+    },
+    "domainTitle": {
+      "zh": "产品与包装生命周期",
+      "en": "Product & packaging lifecycle",
+      "ja": "製品・包装ライフサイクル"
+    },
+    "ownerTitle": {
+      "zh": "产品总监",
+      "en": "Product director",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "product_revision",
+    "metricIds": [
+      "pack_litres"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "product",
+    "stageId": "product-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "配方与包材",
+      "en": "Formula & packaging",
+      "ja": "処方・包装"
+    },
+    "domainTitle": {
+      "zh": "产品与包装生命周期",
+      "en": "Product & packaging lifecycle",
+      "ja": "製品・包装ライフサイクル"
+    },
+    "ownerTitle": {
+      "zh": "产品总监",
+      "en": "Product director",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "product_revision",
+    "metricIds": [
+      "pack_litres"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "product",
+    "stageId": "product-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "试制与评审",
+      "en": "Pilot & review",
+      "ja": "試作・審査"
+    },
+    "domainTitle": {
+      "zh": "产品与包装生命周期",
+      "en": "Product & packaging lifecycle",
+      "ja": "製品・包装ライフサイクル"
+    },
+    "ownerTitle": {
+      "zh": "产品总监",
+      "en": "Product director",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "product_revision",
+    "metricIds": [
+      "pack_litres"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "product",
+    "stageId": "product-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "上市与变更",
+      "en": "Launch & change",
+      "ja": "発売・変更"
+    },
+    "domainTitle": {
+      "zh": "产品与包装生命周期",
+      "en": "Product & packaging lifecycle",
+      "ja": "製品・包装ライフサイクル"
+    },
+    "ownerTitle": {
+      "zh": "产品总监",
+      "en": "Product director",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "product_revision",
+    "metricIds": [
+      "pack_litres"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "plan",
+    "stageId": "plan-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "需求评审",
+      "en": "Demand review",
+      "ja": "需要レビュー"
+    },
+    "domainTitle": {
+      "zh": "产销协同与需求计划",
+      "en": "Integrated demand & supply",
+      "ja": "需要・供給協調"
+    },
+    "ownerTitle": {
+      "zh": "经营计划负责人",
+      "en": "Planning lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "demand_supply_bucket",
+    "metricIds": [
+      "demand",
+      "supply",
+      "gap"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "plan",
+    "stageId": "plan-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "有限供给",
+      "en": "Constrained supply",
+      "ja": "供給制約"
+    },
+    "domainTitle": {
+      "zh": "产销协同与需求计划",
+      "en": "Integrated demand & supply",
+      "ja": "需要・供給協調"
+    },
+    "ownerTitle": {
+      "zh": "经营计划负责人",
+      "en": "Planning lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "demand_supply_bucket",
+    "metricIds": [
+      "demand",
+      "supply",
+      "gap"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "plan",
+    "stageId": "plan-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "财务平衡",
+      "en": "Financial reconciliation",
+      "ja": "財務調整"
+    },
+    "domainTitle": {
+      "zh": "产销协同与需求计划",
+      "en": "Integrated demand & supply",
+      "ja": "需要・供給協調"
+    },
+    "ownerTitle": {
+      "zh": "经营计划负责人",
+      "en": "Planning lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "demand_supply_bucket",
+    "metricIds": [
+      "demand",
+      "supply",
+      "gap"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "plan",
+    "stageId": "plan-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "经营决策",
+      "en": "Executive decision",
+      "ja": "経営判断"
+    },
+    "domainTitle": {
+      "zh": "产销协同与需求计划",
+      "en": "Integrated demand & supply",
+      "ja": "需要・供給協調"
+    },
+    "ownerTitle": {
+      "zh": "经营计划负责人",
+      "en": "Planning lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "demand_supply_bucket",
+    "metricIds": [
+      "demand",
+      "supply",
+      "gap"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "supplier",
+    "stageId": "supplier-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "准入评审",
+      "en": "Qualification",
+      "ja": "取引先審査"
+    },
+    "domainTitle": {
+      "zh": "供应商生命周期",
+      "en": "Supplier lifecycle",
+      "ja": "仕入先ライフサイクル"
+    },
+    "ownerTitle": {
+      "zh": "供应链采购负责人",
+      "en": "Procurement lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "supplier_delivery",
+    "metricIds": [
+      "otif"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "supplier",
+    "stageId": "supplier-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "合同与份额",
+      "en": "Contracts & allocation",
+      "ja": "契約・配分"
+    },
+    "domainTitle": {
+      "zh": "供应商生命周期",
+      "en": "Supplier lifecycle",
+      "ja": "仕入先ライフサイクル"
+    },
+    "ownerTitle": {
+      "zh": "供应链采购负责人",
+      "en": "Procurement lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "supplier_delivery",
+    "metricIds": [
+      "otif"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "supplier",
+    "stageId": "supplier-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "绩效复核",
+      "en": "Performance review",
+      "ja": "業績評価"
+    },
+    "domainTitle": {
+      "zh": "供应商生命周期",
+      "en": "Supplier lifecycle",
+      "ja": "仕入先ライフサイクル"
+    },
+    "ownerTitle": {
+      "zh": "供应链采购负责人",
+      "en": "Procurement lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "supplier_delivery",
+    "metricIds": [
+      "otif"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "supplier",
+    "stageId": "supplier-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "改进或退出",
+      "en": "Improve or exit",
+      "ja": "改善・退出"
+    },
+    "domainTitle": {
+      "zh": "供应商生命周期",
+      "en": "Supplier lifecycle",
+      "ja": "仕入先ライフサイクル"
+    },
+    "ownerTitle": {
+      "zh": "供应链采购负责人",
+      "en": "Procurement lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "supplier_delivery",
+    "metricIds": [
+      "otif"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "procure",
+    "stageId": "procure-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "需求与下单",
+      "en": "Requisition & order",
+      "ja": "購買依頼・発注"
+    },
+    "domainTitle": {
+      "zh": "采购到付款",
+      "en": "Procure to pay",
+      "ja": "購買から支払"
+    },
+    "ownerTitle": {
+      "zh": "采购经理",
+      "en": "Purchasing manager",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "supplier_delivery",
+    "metricIds": [
+      "pending_material"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "procure",
+    "stageId": "procure-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "交期协同",
+      "en": "Confirm delivery",
+      "ja": "納期調整"
+    },
+    "domainTitle": {
+      "zh": "采购到付款",
+      "en": "Procure to pay",
+      "ja": "購買から支払"
+    },
+    "ownerTitle": {
+      "zh": "采购经理",
+      "en": "Purchasing manager",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "supplier_delivery",
+    "metricIds": [
+      "pending_material"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "procure",
+    "stageId": "procure-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "收货与检验",
+      "en": "Receive & inspect",
+      "ja": "入荷・検査"
+    },
+    "domainTitle": {
+      "zh": "采购到付款",
+      "en": "Procure to pay",
+      "ja": "購買から支払"
+    },
+    "ownerTitle": {
+      "zh": "采购经理",
+      "en": "Purchasing manager",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "supplier_delivery",
+    "metricIds": [
+      "pending_material"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "procure",
+    "stageId": "procure-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "对账与付款",
+      "en": "Match & pay",
+      "ja": "照合・支払"
+    },
+    "domainTitle": {
+      "zh": "采购到付款",
+      "en": "Procure to pay",
+      "ja": "購買から支払"
+    },
+    "ownerTitle": {
+      "zh": "采购经理",
+      "en": "Purchasing manager",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "supplier_delivery",
+    "metricIds": [
+      "pending_material"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "materials",
+    "stageId": "materials-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "收货上架",
+      "en": "Receive & put away",
+      "ja": "入荷・格納"
+    },
+    "domainTitle": {
+      "zh": "原辅包材与库存",
+      "en": "Ingredients & packaging",
+      "ja": "原材料・包装在庫"
+    },
+    "ownerTitle": {
+      "zh": "物料经理",
+      "en": "Materials manager",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "stock_position_movement",
+    "metricIds": [
+      "released_material"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "materials",
+    "stageId": "materials-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "状态与效期",
+      "en": "Status & shelf life",
+      "ja": "状態・期限"
+    },
+    "domainTitle": {
+      "zh": "原辅包材与库存",
+      "en": "Ingredients & packaging",
+      "ja": "原材料・包装在庫"
+    },
+    "ownerTitle": {
+      "zh": "物料经理",
+      "en": "Materials manager",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "stock_position_movement",
+    "metricIds": [
+      "released_material"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "materials",
+    "stageId": "materials-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "备料领用",
+      "en": "Stage & issue",
+      "ja": "資材準備・払出"
+    },
+    "domainTitle": {
+      "zh": "原辅包材与库存",
+      "en": "Ingredients & packaging",
+      "ja": "原材料・包装在庫"
+    },
+    "ownerTitle": {
+      "zh": "物料经理",
+      "en": "Materials manager",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "stock_position_movement",
+    "metricIds": [
+      "released_material"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "materials",
+    "stageId": "materials-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "盘点与损耗",
+      "en": "Count & reconcile",
+      "ja": "棚卸・ロス"
+    },
+    "domainTitle": {
+      "zh": "原辅包材与库存",
+      "en": "Ingredients & packaging",
+      "ja": "原材料・包装在庫"
+    },
+    "ownerTitle": {
+      "zh": "物料经理",
+      "en": "Materials manager",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "stock_position_movement",
+    "metricIds": [
+      "released_material"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "make",
+    "stageId": "make-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "排程与齐套",
+      "en": "Schedule & readiness",
+      "ja": "計画・資材充足"
+    },
+    "domainTitle": {
+      "zh": "制造与委外协同",
+      "en": "Manufacturing & co-packing",
+      "ja": "製造・外注"
+    },
+    "ownerTitle": {
+      "zh": "制造负责人",
+      "en": "Manufacturing lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "production_order",
+    "metricIds": [
+      "own_increment"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "make",
+    "stageId": "make-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "配料与灌装",
+      "en": "Blend & fill",
+      "ja": "調合・充填"
+    },
+    "domainTitle": {
+      "zh": "制造与委外协同",
+      "en": "Manufacturing & co-packing",
+      "ja": "製造・外注"
+    },
+    "ownerTitle": {
+      "zh": "制造负责人",
+      "en": "Manufacturing lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "production_order",
+    "metricIds": [
+      "own_increment"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "make",
+    "stageId": "make-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "包装与追溯",
+      "en": "Pack & identify",
+      "ja": "包装・追跡"
+    },
+    "domainTitle": {
+      "zh": "制造与委外协同",
+      "en": "Manufacturing & co-packing",
+      "ja": "製造・外注"
+    },
+    "ownerTitle": {
+      "zh": "制造负责人",
+      "en": "Manufacturing lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "production_order",
+    "metricIds": [
+      "own_increment"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "make",
+    "stageId": "make-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "产出与损失",
+      "en": "Output & losses",
+      "ja": "生産・ロス"
+    },
+    "domainTitle": {
+      "zh": "制造与委外协同",
+      "en": "Manufacturing & co-packing",
+      "ja": "製造・外注"
+    },
+    "ownerTitle": {
+      "zh": "制造负责人",
+      "en": "Manufacturing lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "production_order",
+    "metricIds": [
+      "own_increment"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "quality",
+    "stageId": "quality-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "检验与留样",
+      "en": "Test & retain",
+      "ja": "検査・保管試料"
+    },
+    "domainTitle": {
+      "zh": "质量、放行与召回",
+      "en": "Quality, release & recall",
+      "ja": "品質・追跡"
+    },
+    "ownerTitle": {
+      "zh": "质量负责人",
+      "en": "Quality lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "stock_position_movement",
+    "metricIds": [
+      "quality_hold"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "quality",
+    "stageId": "quality-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "偏差调查",
+      "en": "Investigate deviation",
+      "ja": "逸脱調査"
+    },
+    "domainTitle": {
+      "zh": "质量、放行与召回",
+      "en": "Quality, release & recall",
+      "ja": "品質・追跡"
+    },
+    "ownerTitle": {
+      "zh": "质量负责人",
+      "en": "Quality lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "stock_position_movement",
+    "metricIds": [
+      "quality_hold"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "quality",
+    "stageId": "quality-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "质量决定",
+      "en": "Quality decision",
+      "ja": "品質判定"
+    },
+    "domainTitle": {
+      "zh": "质量、放行与召回",
+      "en": "Quality, release & recall",
+      "ja": "品質・追跡"
+    },
+    "ownerTitle": {
+      "zh": "质量负责人",
+      "en": "Quality lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "stock_position_movement",
+    "metricIds": [
+      "quality_hold"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "quality",
+    "stageId": "quality-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "定向追溯",
+      "en": "Targeted trace",
+      "ja": "対象追跡"
+    },
+    "domainTitle": {
+      "zh": "质量、放行与召回",
+      "en": "Quality, release & recall",
+      "ja": "品質・追跡"
+    },
+    "ownerTitle": {
+      "zh": "质量负责人",
+      "en": "Quality lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "stock_position_movement",
+    "metricIds": [
+      "quality_hold"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "warehouse",
+    "stageId": "warehouse-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "库存与货权",
+      "en": "Stock & ownership",
+      "ja": "在庫・所有権"
+    },
+    "domainTitle": {
+      "zh": "仓网、效期与调拨",
+      "en": "Warehouse network & allocation",
+      "ja": "倉庫・在庫・移送"
+    },
+    "ownerTitle": {
+      "zh": "仓储物流负责人",
+      "en": "Warehouse lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "stock_position_movement",
+    "metricIds": [
+      "closing_stock"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "warehouse",
+    "stageId": "warehouse-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "效期匹配",
+      "en": "Match shelf life",
+      "ja": "使用期限調整"
+    },
+    "domainTitle": {
+      "zh": "仓网、效期与调拨",
+      "en": "Warehouse network & allocation",
+      "ja": "倉庫・在庫・移送"
+    },
+    "ownerTitle": {
+      "zh": "仓储物流负责人",
+      "en": "Warehouse lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "stock_position_movement",
+    "metricIds": [
+      "closing_stock"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "warehouse",
+    "stageId": "warehouse-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "分配与调拨",
+      "en": "Allocate & transfer",
+      "ja": "引当・移送"
+    },
+    "domainTitle": {
+      "zh": "仓网、效期与调拨",
+      "en": "Warehouse network & allocation",
+      "ja": "倉庫・在庫・移送"
+    },
+    "ownerTitle": {
+      "zh": "仓储物流负责人",
+      "en": "Warehouse lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "stock_position_movement",
+    "metricIds": [
+      "closing_stock"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "warehouse",
+    "stageId": "warehouse-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "盘点与退回",
+      "en": "Count & returns",
+      "ja": "棚卸・返品"
+    },
+    "domainTitle": {
+      "zh": "仓网、效期与调拨",
+      "en": "Warehouse network & allocation",
+      "ja": "倉庫・在庫・移送"
+    },
+    "ownerTitle": {
+      "zh": "仓储物流负责人",
+      "en": "Warehouse lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "stock_position_movement",
+    "metricIds": [
+      "closing_stock"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "transport",
+    "stageId": "transport-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "运力与装载",
+      "en": "Capacity & loading",
+      "ja": "輸送能力・積載"
+    },
+    "domainTitle": {
+      "zh": "运输、签收与逆向",
+      "en": "Transport, delivery & returns",
+      "ja": "輸送・納品"
+    },
+    "ownerTitle": {
+      "zh": "运输负责人",
+      "en": "Transport lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "logistics_line",
+    "metricIds": [
+      "transfer_increment"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "transport",
+    "stageId": "transport-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "发运与在途",
+      "en": "Dispatch & transit",
+      "ja": "出荷・輸送中"
+    },
+    "domainTitle": {
+      "zh": "运输、签收与逆向",
+      "en": "Transport, delivery & returns",
+      "ja": "輸送・納品"
+    },
+    "ownerTitle": {
+      "zh": "运输负责人",
+      "en": "Transport lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "logistics_line",
+    "metricIds": [
+      "transfer_increment"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "transport",
+    "stageId": "transport-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "签收与差异",
+      "en": "Delivery & variance",
+      "ja": "受領・差異"
+    },
+    "domainTitle": {
+      "zh": "运输、签收与逆向",
+      "en": "Transport, delivery & returns",
+      "ja": "輸送・納品"
+    },
+    "ownerTitle": {
+      "zh": "运输负责人",
+      "en": "Transport lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "logistics_line",
+    "metricIds": [
+      "transfer_increment"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "transport",
+    "stageId": "transport-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "退货与包装",
+      "en": "Returns & packaging",
+      "ja": "返品・包装"
+    },
+    "domainTitle": {
+      "zh": "运输、签收与逆向",
+      "en": "Transport, delivery & returns",
+      "ja": "輸送・納品"
+    },
+    "ownerTitle": {
+      "zh": "运输负责人",
+      "en": "Transport lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "logistics_line",
+    "metricIds": [
+      "transfer_increment"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered",
+      "quality-before-availability"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "channel",
+    "stageId": "channel-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "合同与信用",
+      "en": "Terms & credit",
+      "ja": "契約・与信"
+    },
+    "domainTitle": {
+      "zh": "渠道订单到回款",
+      "en": "Channel order to cash",
+      "ja": "受注から回収"
+    },
+    "ownerTitle": {
+      "zh": "销售负责人",
+      "en": "Sales lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "trade_line",
+    "metricIds": [
+      "net_revenue"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "channel",
+    "stageId": "channel-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "订单与配额",
+      "en": "Order & allocation",
+      "ja": "受注・引当"
+    },
+    "domainTitle": {
+      "zh": "渠道订单到回款",
+      "en": "Channel order to cash",
+      "ja": "受注から回収"
+    },
+    "ownerTitle": {
+      "zh": "销售负责人",
+      "en": "Sales lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "trade_line",
+    "metricIds": [
+      "net_revenue"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "channel",
+    "stageId": "channel-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "履约与开票",
+      "en": "Fulfill & invoice",
+      "ja": "納品・請求"
+    },
+    "domainTitle": {
+      "zh": "渠道订单到回款",
+      "en": "Channel order to cash",
+      "ja": "受注から回収"
+    },
+    "ownerTitle": {
+      "zh": "销售负责人",
+      "en": "Sales lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "trade_line",
+    "metricIds": [
+      "net_revenue"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "channel",
+    "stageId": "channel-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "回款与扣款",
+      "en": "Collect & reconcile",
+      "ja": "回収・控除"
+    },
+    "domainTitle": {
+      "zh": "渠道订单到回款",
+      "en": "Channel order to cash",
+      "ja": "受注から回収"
+    },
+    "ownerTitle": {
+      "zh": "销售负责人",
+      "en": "Sales lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "trade_line",
+    "metricIds": [
+      "net_revenue"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "marketing",
+    "stageId": "marketing-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "受众与增量目标",
+      "en": "Audience & incremental goal",
+      "ja": "対象・増分目標"
+    },
+    "domainTitle": {
+      "zh": "营销、促销与结算",
+      "en": "Marketing, promotions & settlement",
+      "ja": "マーケティング・精算"
+    },
+    "ownerTitle": {
+      "zh": "营销负责人",
+      "en": "Marketing lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "customer_lifecycle_snapshot",
+    "metricIds": [
+      "repeat_rate"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "marketing",
+    "stageId": "marketing-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "预算与排期",
+      "en": "Budget & timing",
+      "ja": "予算・日程"
+    },
+    "domainTitle": {
+      "zh": "营销、促销与结算",
+      "en": "Marketing, promotions & settlement",
+      "ja": "マーケティング・精算"
+    },
+    "ownerTitle": {
+      "zh": "营销负责人",
+      "en": "Marketing lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "customer_lifecycle_snapshot",
+    "metricIds": [
+      "repeat_rate"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "marketing",
+    "stageId": "marketing-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "执行与核销",
+      "en": "Execute & settle",
+      "ja": "実行・精算"
+    },
+    "domainTitle": {
+      "zh": "营销、促销与结算",
+      "en": "Marketing, promotions & settlement",
+      "ja": "マーケティング・精算"
+    },
+    "ownerTitle": {
+      "zh": "营销负责人",
+      "en": "Marketing lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "customer_lifecycle_snapshot",
+    "metricIds": [
+      "repeat_rate"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "marketing",
+    "stageId": "marketing-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "增量与复购",
+      "en": "Incrementality & repeat",
+      "ja": "増分・再購入"
+    },
+    "domainTitle": {
+      "zh": "营销、促销与结算",
+      "en": "Marketing, promotions & settlement",
+      "ja": "マーケティング・精算"
+    },
+    "ownerTitle": {
+      "zh": "营销负责人",
+      "en": "Marketing lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "customer_lifecycle_snapshot",
+    "metricIds": [
+      "repeat_rate"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "crm",
+    "stageId": "crm-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "受理与授权",
+      "en": "Intake & consent",
+      "ja": "受付・同意"
+    },
+    "domainTitle": {
+      "zh": "客户、会员与售后",
+      "en": "Customer, loyalty & service",
+      "ja": "顧客・会員・サービス"
+    },
+    "ownerTitle": {
+      "zh": "客户运营负责人",
+      "en": "Customer operations",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "customer_lifecycle_snapshot",
+    "metricIds": [
+      "repeat_rate"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "crm",
+    "stageId": "crm-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "画像与分群",
+      "en": "Profile & segment",
+      "ja": "顧客像・分類"
+    },
+    "domainTitle": {
+      "zh": "客户、会员与售后",
+      "en": "Customer, loyalty & service",
+      "ja": "顧客・会員・サービス"
+    },
+    "ownerTitle": {
+      "zh": "客户运营负责人",
+      "en": "Customer operations",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "customer_lifecycle_snapshot",
+    "metricIds": [
+      "repeat_rate"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "crm",
+    "stageId": "crm-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "调查与服务",
+      "en": "Investigate & resolve",
+      "ja": "調査・サービス"
+    },
+    "domainTitle": {
+      "zh": "客户、会员与售后",
+      "en": "Customer, loyalty & service",
+      "ja": "顧客・会員・サービス"
+    },
+    "ownerTitle": {
+      "zh": "客户运营负责人",
+      "en": "Customer operations",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "customer_lifecycle_snapshot",
+    "metricIds": [
+      "repeat_rate"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "crm",
+    "stageId": "crm-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "反馈与复购",
+      "en": "Feedback & retention",
+      "ja": "改善・再購入"
+    },
+    "domainTitle": {
+      "zh": "客户、会员与售后",
+      "en": "Customer, loyalty & service",
+      "ja": "顧客・会員・サービス"
+    },
+    "ownerTitle": {
+      "zh": "客户运营负责人",
+      "en": "Customer operations",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "customer_lifecycle_snapshot",
+    "metricIds": [
+      "repeat_rate"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "finance",
+    "stageId": "finance-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "收入与扣减",
+      "en": "Revenue & deductions",
+      "ja": "収益・控除"
+    },
+    "domainTitle": {
+      "zh": "财务、现金与经营绩效",
+      "en": "Finance, cash & performance",
+      "ja": "財務・資金・業績"
+    },
+    "ownerTitle": {
+      "zh": "财务负责人",
+      "en": "Finance lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "finance_entry_projection",
+    "metricIds": [
+      "net_revenue",
+      "margin",
+      "closing_ar",
+      "closing_cash"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "finance",
+    "stageId": "finance-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "应收与应付",
+      "en": "Receivables & payables",
+      "ja": "債権・債務"
+    },
+    "domainTitle": {
+      "zh": "财务、现金与经营绩效",
+      "en": "Finance, cash & performance",
+      "ja": "財務・資金・業績"
+    },
+    "ownerTitle": {
+      "zh": "财务负责人",
+      "en": "Finance lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "finance_entry_projection",
+    "metricIds": [
+      "net_revenue",
+      "margin",
+      "closing_ar",
+      "closing_cash"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "finance",
+    "stageId": "finance-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "资金与预算",
+      "en": "Cash & budget",
+      "ja": "資金・予算"
+    },
+    "domainTitle": {
+      "zh": "财务、现金与经营绩效",
+      "en": "Finance, cash & performance",
+      "ja": "財務・資金・業績"
+    },
+    "ownerTitle": {
+      "zh": "财务负责人",
+      "en": "Finance lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "finance_entry_projection",
+    "metricIds": [
+      "net_revenue",
+      "margin",
+      "closing_ar",
+      "closing_cash"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "finance",
+    "stageId": "finance-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "利润与差异",
+      "en": "Profit & variance",
+      "ja": "利益・差異"
+    },
+    "domainTitle": {
+      "zh": "财务、现金与经营绩效",
+      "en": "Finance, cash & performance",
+      "ja": "財務・資金・業績"
+    },
+    "ownerTitle": {
+      "zh": "财务负责人",
+      "en": "Finance lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "finance_entry_projection",
+    "metricIds": [
+      "net_revenue",
+      "margin",
+      "closing_ar",
+      "closing_cash"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "people",
+    "stageId": "people-1",
+    "ordinal": 0,
+    "title": {
+      "zh": "产能与班次",
+      "en": "Capacity & staffing",
+      "ja": "能力・シフト"
+    },
+    "domainTitle": {
+      "zh": "组织、人力与资产",
+      "en": "People, capacity & assets",
+      "ja": "組織・能力・資産"
+    },
+    "ownerTitle": {
+      "zh": "运营负责人",
+      "en": "Operations lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "responsibility_capacity",
+    "metricIds": [
+      "available_hours"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "people",
+    "stageId": "people-2",
+    "ordinal": 1,
+    "title": {
+      "zh": "维护与备件",
+      "en": "Maintenance & spares",
+      "ja": "保全・部品"
+    },
+    "domainTitle": {
+      "zh": "组织、人力与资产",
+      "en": "People, capacity & assets",
+      "ja": "組織・能力・資産"
+    },
+    "ownerTitle": {
+      "zh": "运营负责人",
+      "en": "Operations lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "responsibility_capacity",
+    "metricIds": [
+      "available_hours"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "people",
+    "stageId": "people-3",
+    "ordinal": 2,
+    "title": {
+      "zh": "人工与资产成本",
+      "en": "Labor & asset cost",
+      "ja": "人件費・資産"
+    },
+    "domainTitle": {
+      "zh": "组织、人力与资产",
+      "en": "People, capacity & assets",
+      "ja": "組織・能力・資産"
+    },
+    "ownerTitle": {
+      "zh": "运营负责人",
+      "en": "Operations lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "responsibility_capacity",
+    "metricIds": [
+      "available_hours"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  },
+  {
+    "domainId": "people",
+    "stageId": "people-4",
+    "ordinal": 3,
+    "title": {
+      "zh": "责任与改善",
+      "en": "Accountability & improvement",
+      "ja": "責任・改善"
+    },
+    "domainTitle": {
+      "zh": "组织、人力与资产",
+      "en": "People, capacity & assets",
+      "ja": "組織・能力・資産"
+    },
+    "ownerTitle": {
+      "zh": "运营负责人",
+      "en": "Operations lead",
+      "ja": "業務責任者"
+    },
+    "projectionKind": "responsibility_capacity",
+    "metricIds": [
+      "available_hours"
+    ],
+    "ruleIds": [
+      "context-bound",
+      "source-versioned",
+      "role-filtered"
+    ],
+    "readTool": "business.stage.read",
+    "actionCapability": "proposal_only"
+  }
+]

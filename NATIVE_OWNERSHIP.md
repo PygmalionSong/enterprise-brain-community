@@ -1,0 +1,17 @@
+# 原生单库实例归属
+
+[English](NATIVE_OWNERSHIP.en.md) · [程序宿主](NATIVE_HOST.md) · [连接核心](NATIVE_RUNTIME.md)
+
+原生程序工厂要求明确ownershipAcknowledged=true，并为该数据库取得独占会话归属。尚无原生私有CLI/安装/备份恢复或HA。旧PGlite入口和文件恢复保持原合同，不能用这些原生程序能力声明完整生产部署已完成。
+
+connectNativeRuntime为池分配内部随机标识，使用eb-runtime:前缀的application_name。acquireNativeRuntimeOwnership使用同一受验证账号/CA/主机名策略派生的独立稳定pg.Client，在本数据库持有pg_try_advisory_lock(71245120,1)。它不是普通池的随机连接，也不是长事务；普通池仍最多5，归属另需1个连接。只登记成功verify-full来源，拒绝环境冲突/无确认/伪包装/明文。同一连接一旦成为宿主，即使正常释放也须关闭并重新连接才能再次取得归属。
+
+拿到锁后检查同库其他运行标识的连接池；仍有旧池即拒绝。不同角色也检查，防止旧持锁连接被终止、旧工作池仍运行时另起宿主。数据库范围内最多一个官方活动宿主；这不是对任意DBA/第三方SQL的隔离保证。数据库锁机制可跨库独立，不表示本产品旧全局eb_app迁移已支持共享集群部署。
+
+原生工厂复用同一归属，每个普通请求和健康检查都验证其存活；失锁后停止新受理并返回503，schema仍可报告current以区分原因。归属失效会清除连接的宿主资格，不静默重抢。已接受动作继续遵守原动作ID/租约/回执和当前业务权限，不能把失锁当作已撤销外部工作。
+
+无外置TrafficAdmission时，程序工厂使用仅内存的处理计数；客户端断开仍计在途。await app.close()先关闭受理、最多等待5秒排空、再关HTTP和释放归属；未listen的工厂也能关闭。server.close有排空兜底，database.close有连接释放兜底，但正常顺序始终先await app.close()，再await database.close()。close和release幂等；排空超时保留归属并返回enterprise_traffic_drain_timeout，核对处理中任务后可重试关闭，不伪报已停止。仅内存计数不等于持久park/activate运维策略。
+
+固定拒绝码包括native_runtime_database_in_use、native_runtime_previous_connections_present、native_runtime_ownership_connection_used、native_runtime_ownership_unavailable、native_runtime_verified_connection_required和native_runtime_ownership_input_invalid。输出不含他人账号、地址或SQL。当前程序接口仍是受信能力，不交给浏览器、模型或任意SQL脚本。
+
+本机验证包含真实终止持锁PG后端、跨角色旧池阻止接管、五普通池并发、未监听关闭、断开HTTP后处理未结束时仍持锁。此项不是跨主机网络分区/自动故障转移验收。原生前台私有配置、DBA初始化、pg_dump/pg_restore、备份期间持续归属和升级仍需独立工程；停止再抢锁不构成原子交接。

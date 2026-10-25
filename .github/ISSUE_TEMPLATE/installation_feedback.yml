@@ -1,0 +1,64 @@
+name: Installation feedback / 安装反馈
+description: Voluntary reproduction results, including failures / 自愿提交复现结果，包括失败
+title: "[Installation] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This Issue is public. Share only a reviewed minimal report, never raw logs, credentials or enterprise data. Submission is optional. See INSTALLATION_VALIDATION.md / .en.md.
+        此Issue公开。只提交自行审阅的最小报告，不提交原始日志、凭证或企业数据。反馈完全自愿。
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Public submission / 公开提交
+      options:
+        - label: I reviewed this content and choose to publish it; it contains no sensitive information. / 我已审阅并自愿公开，无敏感信息。
+          required: true
+  - type: dropdown
+    id: context
+    attributes:
+      label: Attempt context (self-reported) / 本次环境（自述）
+      options:
+        - Fresh source directory on an existing machine / 现有机器的新源码目录
+        - Fresh supported host / 新建支持范围内宿主
+        - Existing checkout retest / 既有目录复测
+        - Maintainer or CI / 维护者或CI
+        - Not run / 未运行
+    validations:
+      required: true
+  - type: dropdown
+    id: dependency_install
+    attributes:
+      label: Locked dependency installation / 锁定依赖安装
+      options:
+        - Succeeded without copied dependencies / 成功且未复制依赖
+        - Failed / 失败
+        - Copied dependencies used / 使用复制依赖
+        - Not run / 未运行
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: Outcome / 结果
+      options:
+        - All source checks passed / 源码检查全过
+        - Dependency installation failed / 依赖安装失败
+        - Inventory check failed / 库存检查失败
+        - Typecheck failed / 类型失败
+        - Build failed / 构建失败
+        - SDK tests failed or incomplete / SDK测试失败或不完整
+        - Not run / 未运行
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Reviewed minimal JSON, or unavailable / 已审阅的最小JSON或无法生成
+      description: A report is not required when installation failed before checks. Never paste raw logs. / 安装前失败可无报告，不粘贴原始日志。
+      render: json
+  - type: textarea
+    id: followup
+    attributes:
+      label: Previous public feedback and follow-up / 既有公开反馈与后续使用
+      description: Optional prior Issue link, blocker category, or repeat use after seven days. No company name or contact details. / 可选既有Issue链接、阻碍类别或七天后再次使用，不填企业名或联系方式。

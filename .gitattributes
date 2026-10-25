@@ -1,0 +1,2 @@
+# Keep inventory bytes identical on Windows and Unix. / 保持跨平台库存字节一致。
+* -text

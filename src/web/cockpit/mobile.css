@@ -1,0 +1,51 @@
+/* Mobile cockpit refinements; desktop structure and business semantics stay shared.
+   手机驾驶舱优化，桌面结构与业务口径保持共用。 */
+@supports not (color:light-dark(white,black)) {
+ #beverage-enterprise-cockpit{--bg:#f4f5f7;--paper:#fff;--ink:#192f43;--muted:#617484;--line:#dce3e9;--blue:#265e91;--soft:#eaf1f8;--green:#217965;--orange:#ad562f;--heat:#e4a261;--nav:#163047}
+}
+.mobile-filter-toggle{display:none}
+@media(max-width:800px){
+ #beverage-enterprise-cockpit .bc-top{display:grid;grid-template-columns:40px minmax(0,1fr);padding:16px;gap:8px 12px}
+ #beverage-enterprise-cockpit .bc-logo{grid-row:1;align-self:center}
+ #beverage-enterprise-cockpit .bc-lang{grid-column:1/-1;display:flex;margin:4px 0 0;gap:6px;justify-content:flex-end}
+ #beverage-enterprise-cockpit .bc-lang button{min-height:44px;padding:8px 14px}
+ #beverage-enterprise-cockpit .bc-top{padding:10px 14px;gap:4px 10px}
+ #beverage-enterprise-cockpit .bc-lang{margin:0}
+ #beverage-enterprise-cockpit .bc-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:8px;gap:4px}
+ #beverage-enterprise-cockpit #bc-nav>button{justify-content:center;min-height:48px;font-size:13px;line-height:1.35;padding:8px 4px;white-space:normal}
+ #beverage-enterprise-cockpit .v7-nav-more{grid-column:1/-1;margin:0;border-top:1px solid #31545f;padding:7px 4px 0}
+ #beverage-enterprise-cockpit .v7-nav-more summary{min-height:36px;padding:8px 4px}
+ #beverage-enterprise-cockpit .v7-nav-more summary{min-height:32px;padding:5px 4px}
+ #beverage-enterprise-cockpit .v7-nav-more>div{display:flex;flex-wrap:wrap;gap:4px}
+ #beverage-enterprise-cockpit .bc-nav button svg{width:16px;height:16px;flex:none}
+ #beverage-enterprise-cockpit .mobile-filter-toggle{display:block;width:100%;border-radius:0;border:0;border-bottom:1px solid var(--line);text-align:left;padding:10px 14px;min-height:48px;font-size:12px;line-height:1.5;background:var(--paper)}
+ #beverage-enterprise-cockpit .mobile-filter-toggle::after{content:'⌄';float:right;font-size:18px;margin-left:8px}
+ #beverage-enterprise-cockpit[data-mobile-filters-open=true] .mobile-filter-toggle::after{content:'⌃'}
+ #beverage-enterprise-cockpit:not([data-mobile-filters-open=true]) #mobile-time-controls,#beverage-enterprise-cockpit:not([data-mobile-filters-open=true]) #mobile-scope-controls{display:none}
+ #beverage-enterprise-cockpit button,#beverage-enterprise-cockpit select{touch-action:manipulation}
+ #beverage-enterprise-cockpit .bc-row{gap:8px}
+ #beverage-enterprise-cockpit .bc-tabs{flex-wrap:wrap;gap:5px}
+ #beverage-enterprise-cockpit .bc-tabs button{min-height:44px;padding:8px 12px}
+ #beverage-enterprise-cockpit .bc-breadcrumb{gap:6px;flex-wrap:wrap;font-size:13px}
+ #beverage-enterprise-cockpit .bc-breadcrumb button{min-height:44px}
+ #beverage-enterprise-cockpit .bc-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:6px;scrollbar-width:thin}
+ #beverage-enterprise-cockpit table{font-size:13px}
+ #beverage-enterprise-cockpit td,#beverage-enterprise-cockpit th{padding:10px 12px;min-width:82px}
+ #beverage-enterprise-cockpit .v7-flow-lane>button{position:relative;display:flex;min-height:100px;margin:12px 0 22px;width:100%;gap:10px}
+ #beverage-enterprise-cockpit .v7-flow-lane>button:not(:last-child)::after{content:'↓';position:absolute;bottom:-22px;left:50%;color:var(--blue);font-size:16px}
+ #beverage-enterprise-cockpit .v10-mobile-stages{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ #beverage-enterprise-cockpit .v10-mobile-stages button{min-height:48px;font-size:13px;line-height:1.4}
+ #beverage-enterprise-cockpit .v10-selection{gap:8px;padding:12px}
+ #beverage-enterprise-cockpit .v10-selection button{min-height:44px}
+ #beverage-enterprise-cockpit .bc-map-stage,#beverage-enterprise-cockpit .bc-store-plan{max-width:100%;overflow:hidden}
+ #beverage-enterprise-cockpit .bc-zone{min-width:44px;min-height:44px}
+ #beverage-enterprise-cockpit .bc-store-fixture span{font-size:10px;line-height:1.2}
+ #beverage-enterprise-cockpit .bc-store-fixture{box-shadow:none}
+ #beverage-enterprise-cockpit .bc-timebar select,#beverage-enterprise-cockpit .v8-geobar select{font-size:16px;min-height:44px}
+ #beverage-enterprise-cockpit .v9-document{padding:14px;overflow:hidden}
+ #beverage-enterprise-cockpit .bc-foot{padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+ .workflow-dialog,.ledger-dialog{max-width:calc(100vw - 20px);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px)}
+ .workflow-dialog .ledger-top,.ledger-dialog .ledger-top{padding:14px}
+ .workflow-dialog button,.ledger-dialog button{min-height:44px}
+}
+@media(max-width:359px){#beverage-enterprise-cockpit #bc-nav>button{font-size:12px}#beverage-enterprise-cockpit .bc-lang button{padding:8px 10px}#beverage-enterprise-cockpit main{padding:10px}}

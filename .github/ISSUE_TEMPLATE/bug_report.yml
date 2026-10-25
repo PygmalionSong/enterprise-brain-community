@@ -1,0 +1,31 @@
+name: Bug report / 问题反馈
+description: Reproduce a problem with constructed data / 用构造数据复现问题
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "Use constructed data only. Do not post secrets, enterprise records or security exploits. / 仅使用构造数据；不要公开秘密、企业资料或漏洞利用细节。"
+  - type: input
+    id: environment
+    attributes:
+      label: Version and environment / 版本与环境
+      description: Package/version, OS, browser, language, viewport / 包版本、系统、浏览器、语言、屏幕
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce / 复现步骤
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior / 预期与实际行为
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Optional redacted screenshots / 可选脱敏截图
+      description: No raw logs, backups or customer data / 不上传原始日志、备份或客户资料

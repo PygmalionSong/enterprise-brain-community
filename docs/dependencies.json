@@ -1,0 +1,323 @@
+{
+  "date": "2026-10-15",
+  "items": [
+    {
+      "name": "@electric-sql/pglite",
+      "version": "0.5.9",
+      "license": "Apache-2.0",
+      "licenseFiles": [
+        "licenses/@electric-sql-pglite-0.5.9-LICENSE"
+      ],
+      "repository": "https://github.com/electric-sql/pglite"
+    },
+    {
+      "name": "@esbuild/win32-x64",
+      "version": "0.28.2",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/esbuild-win32-x64-0.28.2-LICENSE"
+      ],
+      "repository": "git+https://github.com/evanw/esbuild.git",
+      "licenseSource": "esbuild package at identical version"
+    },
+    {
+      "name": "@types/node",
+      "version": "24.10.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/@types-node-24.10.0-LICENSE"
+      ],
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git"
+    },
+    {
+      "name": "@types/pg",
+      "version": "8.15.6",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/@types-pg-8.15.6-LICENSE"
+      ],
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git"
+    },
+    {
+      "name": "@types/react",
+      "version": "19.2.2",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/@types-react-19.2.2-LICENSE"
+      ],
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git"
+    },
+    {
+      "name": "@types/react-dom",
+      "version": "19.2.2",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/@types-react-dom-19.2.2-LICENSE"
+      ],
+      "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped.git"
+    },
+    {
+      "name": "@typescript/typescript-win32-x64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "licenseFiles": [
+        "licenses/@typescript-typescript-win32-x64-7.0.2-LICENSE",
+        "licenses/@typescript-typescript-win32-x64-7.0.2-NOTICE.txt"
+      ],
+      "repository": "https://github.com/microsoft/TypeScript.git"
+    },
+    {
+      "name": "bcryptjs",
+      "version": "3.0.3",
+      "license": "BSD-3-Clause",
+      "licenseFiles": [
+        "licenses/bcryptjs-3.0.3-LICENSE"
+      ],
+      "repository": "https://github.com/dcodeIO/bcrypt.js.git"
+    },
+    {
+      "name": "bpmn-moddle",
+      "version": "10.3.1",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/bpmn-moddle-10.3.1-LICENSE"
+      ],
+      "repository": "https://github.com/bpmn-io/bpmn-moddle"
+    },
+    {
+      "name": "csstype",
+      "version": "3.2.3",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/csstype-3.2.3-LICENSE"
+      ],
+      "repository": "https://github.com/frenic/csstype"
+    },
+    {
+      "name": "esbuild",
+      "version": "0.28.2",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/esbuild-0.28.2-LICENSE.md"
+      ],
+      "repository": "git+https://github.com/evanw/esbuild.git"
+    },
+    {
+      "name": "min-dash",
+      "version": "5.1.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/min-dash-5.1.0-LICENSE"
+      ],
+      "repository": "git+https://github.com/bpmn-io/min-dash.git"
+    },
+    {
+      "name": "moddle",
+      "version": "8.2.1",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/moddle-8.2.1-LICENSE"
+      ],
+      "repository": "https://github.com/bpmn-io/moddle"
+    },
+    {
+      "name": "moddle-xml",
+      "version": "12.3.1",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/moddle-xml-12.3.1-LICENSE"
+      ],
+      "repository": "https://github.com/bpmn-io/moddle-xml"
+    },
+    {
+      "name": "pg",
+      "version": "8.23.1",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/pg-8.23.1-LICENSE"
+      ],
+      "repository": "git://github.com/brianc/node-postgres.git"
+    },
+    {
+      "name": "pg-cloudflare",
+      "version": "1.4.1",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/pg-cloudflare-1.4.1-LICENSE"
+      ],
+      "repository": "git://github.com/brianc/node-postgres.git"
+    },
+    {
+      "name": "pg-connection-string",
+      "version": "2.14.1",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/pg-connection-string-2.14.1-LICENSE"
+      ],
+      "repository": "git://github.com/brianc/node-postgres.git"
+    },
+    {
+      "name": "pg-int8",
+      "version": "1.0.1",
+      "license": "ISC",
+      "licenseFiles": [
+        "licenses/pg-int8-1.0.1-LICENSE"
+      ],
+      "repository": "https://github.com/charmander/pg-int8"
+    },
+    {
+      "name": "pg-pool",
+      "version": "3.14.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/pg-pool-3.14.0-LICENSE"
+      ],
+      "repository": "git://github.com/brianc/node-postgres.git"
+    },
+    {
+      "name": "pg-protocol",
+      "version": "1.16.1",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/pg-protocol-1.16.1-LICENSE"
+      ],
+      "repository": "git://github.com/brianc/node-postgres.git"
+    },
+    {
+      "name": "pg-types",
+      "version": "2.2.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/pg-types-2.2.0-README-LICENSE"
+      ],
+      "repository": "git://github.com/brianc/node-pg-types.git"
+    },
+    {
+      "name": "pgpass",
+      "version": "1.0.5",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/pgpass-1.0.5-README-LICENSE"
+      ],
+      "repository": "https://github.com/hoegaarden/pgpass.git"
+    },
+    {
+      "name": "postgres-array",
+      "version": "2.0.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/postgres-array-2.0.0-license"
+      ],
+      "repository": "bendrucker/postgres-array"
+    },
+    {
+      "name": "postgres-bytea",
+      "version": "1.0.1",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/postgres-bytea-1.0.1-license"
+      ],
+      "repository": "bendrucker/postgres-bytea"
+    },
+    {
+      "name": "postgres-date",
+      "version": "1.0.7",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/postgres-date-1.0.7-license"
+      ],
+      "repository": "bendrucker/postgres-date"
+    },
+    {
+      "name": "postgres-interval",
+      "version": "1.2.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/postgres-interval-1.2.0-license"
+      ],
+      "repository": "bendrucker/postgres-interval"
+    },
+    {
+      "name": "react",
+      "version": "19.3.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/react-19.3.0-LICENSE"
+      ],
+      "repository": "https://github.com/react/react.git"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.3.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/react-dom-19.3.0-LICENSE"
+      ],
+      "repository": "https://github.com/react/react.git"
+    },
+    {
+      "name": "saxen",
+      "version": "11.2.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/saxen-11.2.0-LICENSE"
+      ],
+      "repository": "https://github.com/nikku/saxen"
+    },
+    {
+      "name": "scheduler",
+      "version": "0.28.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/scheduler-0.28.0-LICENSE"
+      ],
+      "repository": "https://github.com/react/react.git"
+    },
+    {
+      "name": "split2",
+      "version": "4.2.0",
+      "license": "ISC",
+      "licenseFiles": [
+        "licenses/split2-4.2.0-LICENSE"
+      ],
+      "repository": "https://github.com/mcollina/split2.git"
+    },
+    {
+      "name": "typescript",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "licenseFiles": [
+        "licenses/typescript-7.0.2-LICENSE",
+        "licenses/typescript-7.0.2-NOTICE.txt"
+      ],
+      "repository": "https://github.com/microsoft/TypeScript.git"
+    },
+    {
+      "name": "undici-types",
+      "version": "7.16.0",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/undici-types-7.16.0-LICENSE"
+      ],
+      "repository": "git+https://github.com/nodejs/undici.git"
+    },
+    {
+      "name": "xtend",
+      "version": "4.0.2",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/xtend-4.0.2-LICENSE"
+      ],
+      "repository": "git://github.com/Raynos/xtend.git"
+    },
+    {
+      "name": "zod",
+      "version": "4.6.7",
+      "license": "MIT",
+      "licenseFiles": [
+        "licenses/zod-4.6.7-LICENSE"
+      ],
+      "repository": "git+https://github.com/colinhacks/zod.git"
+    }
+  ]
+}

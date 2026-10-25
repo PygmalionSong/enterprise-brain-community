@@ -1,0 +1,24 @@
+name: Feature proposal / 功能建议
+description: Explain the business problem and acceptance criteria / 说明业务问题与验收条件
+title: "[Feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Business problem / 业务问题
+      description: Who needs what outcome, under which constraints? / 谁在什么约束下需要什么结果？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior / 建议行为
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance and evidence / 验收与证据
+      description: Separate a constructed example from actual deployment / 区分构造案例与实际部署
+    validations:
+      required: true

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1060" viewBox="0 0 1600 1060" role="img">
+<title>动作已提交，响应丢失之后</title>
+<rect width="1600" height="1060" fill="#f6f7f3"/>
+<g font-family="Segoe UI, Microsoft YaHei UI, Yu Gothic UI, sans-serif" fill="#172f32">
+<text x="80" y="70" font-size="22" letter-spacing="3">ENTERPRISE BRAIN / DEVELOPER PREVIEW</text>
+<text x="80" y="150" font-size="48" font-weight="650">动作已提交，响应丢失之后</text>
+<text x="80" y="194" font-size="23" fill="#587071">实际运行证据 · 自有构造流程与工具</text>
+<path d="M80 224H1520" stroke="#b9cac4"/>
+<rect x="80" y="251" width="1440" height="114" rx="12" fill="#ffffff" stroke="#dce4df"/>
+<text x="112" y="313" font-size="30" fill="#347866">01</text>
+<text x="190" y="294" font-size="26" font-weight="600">读取与确认</text>
+<text x="190" y="333" font-size="22" fill="#587071">读取两个流程定义，确认一条跨流程关系。</text>
+<rect x="80" y="383" width="1440" height="114" rx="12" fill="#ffffff" stroke="#dce4df"/>
+<text x="112" y="445" font-size="30" fill="#347866">02</text>
+<text x="190" y="426" font-size="26" font-weight="600">冻结计划与业务批准</text>
+<text x="190" y="465" font-size="22" fill="#587071">IT自行批准、缺少业务批准的执行均被拒绝。</text>
+<rect x="80" y="515" width="1440" height="114" rx="12" fill="#ffffff" stroke="#dce4df"/>
+<text x="112" y="577" font-size="30" fill="#347866">03</text>
+<text x="190" y="558" font-size="26" font-weight="600">源端提交后丢失响应</text>
+<text x="190" y="597" font-size="22" fill="#587071">源端已提交，工作进程将动作保留为未知状态。</text>
+<rect x="80" y="647" width="1440" height="114" rx="12" fill="#ffffff" stroke="#dce4df"/>
+<text x="112" y="709" font-size="30" fill="#347866">04</text>
+<text x="190" y="690" font-size="26" font-weight="600">新进程重开并核对</text>
+<text x="190" y="729" font-size="22" fill="#587071">查询原动作，保留动作身份、计划和回执。</text>
+<rect x="80" y="804" width="460" height="125" rx="12" fill="#e4eee7"/>
+<text x="108" y="854" font-size="24">源记录</text>
+<text x="108" y="906" font-size="43" font-weight="650">2</text>
+<rect x="570" y="804" width="460" height="125" rx="12" fill="#e4eee7"/>
+<text x="598" y="854" font-size="24">回执</text>
+<text x="598" y="906" font-size="43" font-weight="650">2</text>
+<rect x="1060" y="804" width="460" height="125" rx="12" fill="#e4eee7"/>
+<text x="1088" y="854" font-size="24">重复提交</text>
+<text x="1088" y="906" font-size="43" font-weight="650">0</text>
+<text x="80" y="977" font-size="20" fill="#587071">不是客户部署、真实模型结果或生产认证。</text>
+<text x="80" y="1015" font-size="18" fill="#587071">2026-10-25 · Windows x64 / Node 24.19.0 · inventory 57f98fdc01460e09…</text>
+</g></svg>

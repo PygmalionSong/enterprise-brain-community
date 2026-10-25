@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Definitions_order" targetNamespace="urn:enterprise-brain:owned-reference">
+  <bpmn:process id="order" name="Order review" isExecutable="false">
+    <bpmn:laneSet id="roles"><bpmn:lane id="sales" name="Sales owner"><bpmn:flowNodeRef>review</bpmn:flowNodeRef></bpmn:lane></bpmn:laneSet>
+    <bpmn:startEvent id="start" name="Order submitted"/>
+    <bpmn:userTask id="review" name="Review order"/>
+    <bpmn:endEvent id="end" name="Review closed"/>
+    <bpmn:sequenceFlow id="a" sourceRef="start" targetRef="review"/>
+    <bpmn:sequenceFlow id="b" sourceRef="review" targetRef="end"/>
+  </bpmn:process>
+</bpmn:definitions>

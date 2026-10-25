@@ -1,0 +1,21 @@
+// One build for all interface languages. / 三语共用一次构建。
+import { build } from 'esbuild';
+import { mkdir, copyFile, readFile, writeFile } from 'node:fs/promises';
+import {mobileStyles} from './mobile-styles.mjs';
+await mkdir('dist/web',{recursive:true});
+await build({entryPoints:['src/web/app.tsx'],bundle:true,format:'esm',outfile:'dist/web/app.js',minify:true,define:{'process.env.NODE_ENV':'"production"'},target:'es2022',jsx:'automatic',loader:{'.html':'text'}});
+await build({entryPoints:['src/web/it/app.ts'],bundle:true,format:'esm',outfile:'dist/web/it.js',minify:true,target:'es2022'});
+await copyFile('src/web/it/index.html','dist/web/it.html');
+await copyFile('src/web/it/style.css','dist/web/it.css');
+await build({entryPoints:['src/server.ts'],bundle:true,platform:'node',format:'esm',packages:'external',outfile:'dist/server.js',target:'node24'});
+await build({entryPoints:['src/enterprise/operations.ts'],bundle:true,platform:'node',format:'esm',packages:'external',outfile:'dist/enterprise-operations.mjs',target:'node24'});
+await mkdir('dist/enterprise',{recursive:true});
+await build({entryPoints:['src/enterprise/web/app.ts'],bundle:true,format:'esm',outfile:'dist/enterprise/app.js',minify:true,target:'es2022'});
+await copyFile('src/enterprise/web/index.html','dist/enterprise/index.html');
+await copyFile('src/enterprise/web/style.css','dist/enterprise/style.css');
+await build({entryPoints:['src/demo/source-server.ts'],bundle:true,platform:'node',format:'esm',packages:'external',outfile:'dist/demo-source.js',target:'node24'});
+await build({entryPoints:['scripts/release.mjs'],bundle:true,platform:'node',format:'esm',packages:'external',outfile:'dist/release-verifier.mjs',target:'node24'});
+await copyFile('src/web/index.html','dist/web/index.html');
+const designCss=await readFile('src/web/cockpit/design-view.css','utf8');
+await writeFile('dist/web/style.css',designCss+'\n'+await readFile('src/web/style.css','utf8')+mobileStyles(designCss,await readFile('src/web/cockpit/mobile.css','utf8')));
+console.log('构建完成 / Build complete');

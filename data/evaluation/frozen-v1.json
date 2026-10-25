@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "sha256": "50e610e0098ad774e014969bbd52f8baf2d7e6b60b675776f301c8b20af0ef2c",
+  "tasks": 30,
+  "repeats": 3,
+  "stories": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "meaning": "Control fixture freeze, not actual-model evaluation / 控制案例冻结，非真实模型评测"
+}

@@ -1,0 +1,39 @@
+{
+  "format": "enterprise-brain.first-task-report/1",
+  "runId": "05806190-76c7-4b7f-91fe-51ddbf51d88b",
+  "sourceManifestSha256": "57f98fdc01460e09c3bb43b2dffb43e0a77d41460bd178a4522d3372e2fb70e1",
+  "environment": {
+    "platform": "win32",
+    "architecture": "x64",
+    "node": "24.19.0"
+  },
+  "status": "passed",
+  "ownedFixturesOnly": true,
+  "trustedProgramInterface": true,
+  "httpLoginVerified": false,
+  "realEnterpriseVerified": false,
+  "liveModelVerified": false,
+  "cleanHostVerified": false,
+  "telemetryEnabled": false,
+  "checks": {
+    "processesRead": 2,
+    "processesConfirmed": 2,
+    "crossLinks": 1,
+    "itApprovalRefused": true,
+    "missingApprovalRefused": true,
+    "responseLossObserved": true,
+    "freshWorkerProcess": true,
+    "planHashRetained": true,
+    "originalActionRetained": true,
+    "idempotentRunReused": true,
+    "actions": 2,
+    "sourceRows": 2,
+    "submitCalls": 2,
+    "lookupCalls": 2,
+    "duplicateSubmissions": 0,
+    "receipts": 2
+  },
+  "recordedOn": "2026-10-25",
+  "evidenceKind": "maintainer-owned constructed first-task run",
+  "inventoryMeaning": "Recorded against the original source inventory; this release adds documentation and evidence media without changing executable source."
+}

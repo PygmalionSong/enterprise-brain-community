@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "sha256": "be3f0b5ba0836828d9bb0836be7aa42fef691c4f6deeb8282c503ca450b2e1c6",
+  "tasks": 30,
+  "repeats": 3,
+  "stories": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "supersedes": 1,
+  "change": "S2-03 timestamp before inclusive packing boundary; expected outcome unchanged. No actual model trials have run."
+}
