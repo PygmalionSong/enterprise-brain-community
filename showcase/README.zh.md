@@ -2,7 +2,7 @@
 
 [English](README.en.md) · [中文](README.zh.md) · [日本語](README.ja.md)
 
-在当前桌面浏览器打开[交互工作台](index.html)，或使用获准的静态服务器访问本目录。界面支持中、英、日三语。本浏览器体验不需要账号、依赖安装、模型密钥或企业端点。维护者的浏览器测试环境拒绝file协议，实际验收采用本机HTTP；不把文件直开列为已验。微信附件不等于HTTPS网站，未来托管地址需另行发布。
+在浏览器打开[交互工作台](index.html?lang=zh)，浏览业务全景、比较供货方案或查看门店经营。此浏览器案例无需账号、依赖安装、模型密钥或企业连接。
 
 从业务全景进入15个业务域。经营总览支持五大区、省市范围、六个国际市场、期间和不同指标。体验导览串联案例，同时保留完整蓝图。
 
@@ -14,7 +14,7 @@
 
 操作只改变浏览器本地参考案例，不发生真实批准、付款、库存动作、客户触达或模型推理。案例与语言保存在enterprise-brain.public-showcase.v1；通过参考经营环境→重置本地案例清理。没有自动遥测、上传或跨设备同步；本页不连接SDK数据库。
 
-要复现真实持久执行，回到[源码主页](../README.zh.md)，按声明环境安装构建，再执行[受控首任务](../FIRST_TASK.md)。它验证独立进程、批准检查、失响应恢复和原动作查询，与本地业务页面是不同证据。不能据此声称万能自动发现、真实SAP/Dynamics适配、模型质量、生产资格或组织级智能涌现。
+要复现真实持久执行，回到[源码主页](https://github.com/PygmalionSong/enterprise-brain-community/blob/main/README.zh.md)，按声明环境安装构建，再执行[受控首任务](https://github.com/PygmalionSong/enterprise-brain-community/blob/main/FIRST_TASK.md)。它验证独立进程、批准检查、失响应恢复和原动作查询，与本地业务页面是不同证据。不能据此声称万能自动发现、真实SAP/Dynamics适配、模型质量、生产资格或组织级智能涌现。
 
 [Actual page walkthrough / 实际页面回放 / 実画面の説明](walkthrough.html) · [MP4](media/operating-case.en.mp4)
 
