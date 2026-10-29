@@ -1,9 +1,9 @@
-# 提问与贡献
+# 联系与交流
 
-使用或接入问题请在 [Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) 交流。可复现错误请提交 [Issue](https://github.com/PygmalionSong/enterprise-brain-community/issues)，附上版本、环境和脱敏复现步骤。代码和文档改进可以通过 Pull Request 提交。
+- **使用问题、接入想法：** 在 [GitHub Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) 交流。
+- **可复现错误：** 提交 [Issue](https://github.com/PygmalionSong/enterprise-brain-community/issues)，说明版本、环境和复现步骤。
+- **专业交流、项目合作：** 访问维护者的 [LinkedIn 主页](https://www.linkedin.com/in/sonny-song-524a4a80/)，使用主页提供的联系选项。
 
-专业交流与项目合作，可查看维护者的 [LinkedIn 主页](https://www.linkedin.com/in/sonny-song-524a4a80/)，使用主页开放的联系选项。
-
-安全漏洞请先阅读[安全策略](SECURITY.md)，使用仓库 Security 页实际提供的私密报告入口；不要公开漏洞利用细节或凭证。分享安装报告前请自行检查内容，不提交数据库、客户记录或未脱敏日志。
+安全漏洞请按[安全政策](SECURITY.md)报告。公开反馈请使用示例数据，并隐去账号、密钥等敏感信息。
 
 维护者：[PygmalionSong](https://github.com/PygmalionSong)。

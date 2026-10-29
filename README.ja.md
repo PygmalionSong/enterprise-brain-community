@@ -1,31 +1,36 @@
 # Enterprise Brain
 
-**企業向け Agent のセルフホスト基盤**
+**企業向け AI Agent のセルフホスト基盤**
 
 [English](README.md) · [中文](README.zh.md) · [日本語](README.ja.md)
 
-企業の Agent チームに、プロセスの文脈、権限管理、タスク実行、結果確認の基盤を提供します。ERP、CRM、SRM、WMS などの既存システムが業務記録の正本を保持します。
+複数の業務システムから情報を読み取り、責任者が計画を確認・承認した後に実行結果を照合する Agent の基盤です。ERP や CRM など、既存システムの業務記録はそのまま利用します。
 
-## 一つのシステム横断タスクから始める
+## 業務事例を体験
 
-二つのサンプルプロセスを確認し、計画を承認して実行します。ツールの書き込み後に応答が失われた場合は、元のアクションを照会して結果を確認します。サンプルデータを使うため、企業アカウントやモデル API キーは不要です。
+飲料企業の供給不足に対し、納期・資金・品質の条件を踏まえて自社生産・倉庫間移送・委託生産を比較します。業務全体から各領域や店舗へ掘り下げて確認できます。
 
-[最初のタスクを実行（英語）](FIRST_TASK.en.md)
+[飲料企業の事例を開く](https://pygmalionsong.github.io/enterprise-brain-community/?lang=ja)
 
-![Beverage business processes](showcase/media/01-processes.png)
+![飲料企業の事例を開く](showcase/media/01-processes.png)
 
-## 目的に合わせて選ぶ
+## ローカルでタスクを実行
 
-- [飲料事例を体験](https://pygmalionsong.github.io/enterprise-brain-community/?lang=ja)
+二つのサンプルプロセスを読み取り、承認後に計画を実行します。接続先で処理が完了しても応答が届かない場合の復旧も試せます。サンプルデータを同梱しており、企業アカウントやモデル API キーは不要です。
+
+[最初のタスクを実行](FIRST_TASK.ja.md)
+
+## 開発者ガイド
+
 - [供給事例をローカル実行](RUN_OPERATING_CASE.ja.md)
-- [アーキテクチャー（英語）](ARCHITECTURE_OVERVIEW.en.md)
-- [接続先を拡張](EXTEND_A_SOURCE.ja.md)
+- [構成（英語）](ARCHITECTURE_OVERVIEW.en.md)
+- [データソースの拡張](EXTEND_A_SOURCE.ja.md)
 - [業務システムへの接続](FIRST_CONNECTION.ja.md)
 - [よくある質問](FAQ.ja.md)
 
 ## インストールと実行
 
-Node24.19.0 · pnpm11.25.0
+Node 24.19.0 · pnpm 11.25.0
 
 ```sh
 node scripts/verify-repository.mjs
@@ -35,24 +40,24 @@ pnpm build
 node scripts/start-reference.mjs --acknowledge-owned-fixture
 ```
 
-## 現在の対象範囲
+## バージョンの状況
 
-開発者向けソースプレビューです。Windows x64 と Ubuntu24.04 x64 でソース検証を実施しています。独立した顧客環境、本番の処理能力、実モデルの品質、顧客の業務成果は未検証です。飲料事例は構成したシステムと決定的なポリシーを使い、ブラウザー体験とローカルバックエンドは別々に動作します。
+現在は開発者向けソースプレビューです。Windows x64 と Ubuntu 24.04 x64 でソース検証を実施しています。企業システムへの接続にはアダプターと権限設定が必要です。ネットワーク全体の自動探索と本番向けワンクリックインストーラーは未提供です。
 
-ツールには明示的な導入と権限設定が必要です。ネットワーク全体の探索や、テーブルからの完全な業務フロー推定には対応していません。業務データの読み取りツールは既定の HTTP ツール一覧に登録されていません。本番向けワンクリックインストーラーは提供していません。
+ブラウザー事例はサンプルデータを使い、ローカルバックエンドとは独立して動きます。本番導入、実モデルの品質、顧客の業務成果は未検証です。
 
-[Scope / English](PREVIEW_SCOPE.en.md) · [CI / validation](PREVIEW_NOTES.en.md)
+[対応範囲（英語）](PREVIEW_SCOPE.en.md) · [検証記録（英語）](PREVIEW_NOTES.en.md)
 
-## 議論と貢献
+## 質問・貢献
 
-再現可能な不具合は、バージョン、環境、機密情報を除いた再現例とともに Issues へ報告してください。接続方法や業務シナリオは Discussions、コードや文書の改善は Pull Request を利用してください。認証情報、データベース、顧客記録は投稿しないでください。
+接続の相談は Discussions、不具合の報告は Issues、コードや文書の改善は Pull Request を利用してください。報告にはサンプルデータを使い、アカウント情報や API キーを含めないでください。
 
-[Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) · [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues) · [Contact](CONTACT.ja.md) · [Security](SECURITY.en.md)
+[Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) · [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues) · [お問い合わせ](CONTACT.ja.md) · [セキュリティー（英語）](SECURITY.en.md)
 
 ## ライセンス
 
 ソースとサンプルは Apache-2.0 です。再配布時には適用される著作権、ライセンス、NOTICE の表記を保持してください。
 
-[LICENSE](LICENSE) · [NOTICE](NOTICE) · [Third-party notices](THIRD_PARTY_NOTICES.en.md) · [Attribution](ATTRIBUTION.ja.md)
+[LICENSE](LICENSE) · [NOTICE](NOTICE) · [第三者表記（英語）](THIRD_PARTY_NOTICES.en.md) · [出典表記](ATTRIBUTION.ja.md)
 
-PygmalionSong · [Project background](STORY.ja.md)
+PygmalionSong · [プロジェクトの背景](STORY.ja.md)

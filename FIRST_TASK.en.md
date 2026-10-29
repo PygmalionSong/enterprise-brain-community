@@ -1,8 +1,8 @@
-# First controlled task: cross-process execution and restart reconciliation
+# First task: execution and recovery across two processes
 
 [中文](FIRST_TASK.md) · [Quick start](QUICKSTART.en.md)
 
-Reuse the existing ProcessRegistry, GraphService and trusted MCP tool contracts for two owned constructed check processes. This demonstrates real database persistence, separate business approval, source-committed response loss, original-action lookup and separate-process restart. No model or real enterprise is accessed and no ERP ledger is replaced.
+This example reads two processes, obtains business approval, executes a plan and checks the result. It deliberately stops a tool after saving a change but before responding, so you can see how a restarted task finds the result without submitting it again. It creates local test data and needs no company account or model API key.
 
 ## Run
 

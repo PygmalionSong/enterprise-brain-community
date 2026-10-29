@@ -1,31 +1,36 @@
 # Enterprise Brain
 
-**企业级 Agent 的私有化技术基座**
+**企业级 AI Agent 的私有化技术基座**
 
 [English](README.md) · [中文](README.zh.md) · [日本語](README.ja.md)
 
-为企业自建 Agent 团队提供流程上下文、授权、任务执行和结果核对。ERP、CRM、SRM、WMS 等既有系统继续保存业务正本。
+让 Agent 处理跨系统业务：读取相关信息，与负责人核对方案，批准后执行，再检查结果。ERP、CRM 等原有系统继续管理各自的业务记录。
 
-## 先运行一个跨流程任务
+## 先看一个业务案例
 
-读取两个示例流程，批准方案并执行；当工具已写入源记录但响应丢失时，查询原动作，核对实际结果。示例使用构造数据，不需要企业账号或模型 API 密钥。
+饮料企业出现供货缺口，如何在交期、现金和质量约束下选择自产、仓库调拨或代工？从业务全景进入，查看各业务环节和门店经营。
 
-[运行首任务](FIRST_TASK.md)
+[体验饮料企业案例](https://pygmalionsong.github.io/enterprise-brain-community/?lang=zh)
 
-![Beverage business processes](showcase/media/01-processes.png)
+![体验饮料企业案例](showcase/media/01-processes.png)
 
-## 选择你的入口
+## 在本地跑通一个任务
 
-- [浏览饮料业务案例](https://pygmalionsong.github.io/enterprise-brain-community/?lang=zh)
+第一个任务会读取两个示例流程，取得批准后执行方案。它还演示系统已保存操作、但没有返回结果时如何恢复。自带示例数据，无需企业账号或模型密钥。
+
+[运行第一个任务](FIRST_TASK.md)
+
+## 开发者指南
+
 - [本地运行保供案例](RUN_OPERATING_CASE.zh.md)
-- [查看技术架构](ARCHITECTURE_OVERVIEW.md)
-- [适配一个数据源](EXTEND_A_SOURCE.md)
+- [技术架构](ARCHITECTURE_OVERVIEW.md)
+- [适配数据源](EXTEND_A_SOURCE.md)
 - [接入业务系统](FIRST_CONNECTION.md)
 - [常见问题](FAQ.zh.md)
 
 ## 安装与运行
 
-Node24.19.0 · pnpm11.25.0
+Node 24.19.0 · pnpm 11.25.0
 
 ```sh
 node scripts/verify-repository.mjs
@@ -35,24 +40,24 @@ pnpm build
 node scripts/start-reference.mjs --acknowledge-owned-fixture
 ```
 
-## 当前范围
+## 版本状态
 
-这是开发者源码预览。Windows x64 和 Ubuntu24.04 x64 的源码检查已执行；独立企业宿主、生产容量、真实模型质量及客户业务收益尚未验证。饮料案例采用构造系统与确定性策略，浏览器体验和本地后端分别运行。
+当前提供开发者源码预览，已执行 Windows x64 和 Ubuntu 24.04 x64 源码检查。接入企业系统需要适配器和权限配置；全网自动发现和生产级一键安装器尚未提供。
 
-接入工具需要显式安装并授权。当前不支持全网扫描，也不会从数据表自动推导完整业务流程；业务读取工具尚未注册到默认 HTTP 工具目录。完整一键生产部署仍未提供。
+浏览器案例使用示例数据，与本地后端独立运行。生产部署、真实模型质量和客户业务收益尚未验证。
 
-[范围与限制](PREVIEW_SCOPE.md) · [CI / validation](PREVIEW_NOTES.md)
+[支持范围](PREVIEW_SCOPE.md) · [验证记录](PREVIEW_NOTES.md)
 
-## 讨论与贡献
+## 交流与贡献
 
-遇到可复现错误，请在 Issues 提供版本、环境和脱敏复现步骤。接入方式与业务场景在 Discussions 交流；代码和文档改进通过 Pull Request 提交。请勿上传凭证、数据库或客户记录。
+接入问题在 Discussions 交流，可复现错误提交 Issue，代码和文档改进通过 Pull Request 提交。反馈问题时，请使用示例数据，并隐去账号、密钥等敏感信息。
 
-[Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) · [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues) · [Contact](CONTACT.md) · [Security](SECURITY.md)
+[Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) · [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues) · [联系维护者](CONTACT.md) · [安全政策](SECURITY.md)
 
 ## 许可
 
-源码与案例采用 Apache-2.0。再分发请保留适用的版权、许可及 NOTICE 声明。
+源码与案例采用 Apache-2.0。再分发时，请保留适用的版权、许可和 NOTICE 声明。
 
-[LICENSE](LICENSE) · [NOTICE](NOTICE) · [Third-party notices](THIRD_PARTY_NOTICES.en.md) · [Attribution](ATTRIBUTION.zh.md)
+[LICENSE](LICENSE) · [NOTICE](NOTICE) · [第三方声明](THIRD_PARTY_NOTICES.en.md) · [来源说明](ATTRIBUTION.zh.md)
 
-PygmalionSong · [Project background](STORY.md)
+PygmalionSong · [项目背景](STORY.md)

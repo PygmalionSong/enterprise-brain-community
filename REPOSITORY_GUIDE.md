@@ -1,11 +1,9 @@
-# 仓库交流与贡献
+# 参与项目
 
-[English](REPOSITORY_GUIDE.en.md) · [主页](README.md) · [贡献说明](CONTRIBUTING.md)
+[English](REPOSITORY_GUIDE.en.md) · [贡献说明](CONTRIBUTING.md)
 
-通过Issues提交可复现错误、安装结果与脱敏最小报告；通过Discussions交流业务流程、接入经验和想法。读者无需获得write权限即可提问或从自己的fork提交PR。维护者审阅并控制官方合并和发布；开源许可授予的复用权与官方写权限分别管理。
+使用或接入问题可以在 [Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) 提问。遇到可复现错误，请提交 [Issue](https://github.com/PygmalionSong/enterprise-brain-community/issues)，说明版本、环境、操作步骤和实际结果。反馈请使用示例数据，并隐去账号、密钥等敏感信息。
 
-本仓库文档描述当前发行范围与实际能力，不包含内部商业计划、个人资料或未公开迭代承诺。功能建议不自动成为交付排期。源码修改、测试及文档更新通过PR审阅；CI应以准确提交的source-gate结果核对，规则实际是否生效以仓库设置为准。
+想改代码或文档，可以从自己的 fork 提交 Pull Request。说明解决了什么问题、改动后的行为，以及如何验证。维护者负责审阅与合并；开源许可不授予官方仓库的写入权限。
 
-公开反馈只提供版本、复现步骤与经检查的最小报告；不要提交密码、模型密钥、客户信息、真实日志或数据库。敏感漏洞先读[安全策略](SECURITY.md)，不要发公开Issue。
-
-使用前阅读[支持矩阵](PREVIEW_SCOPE.md)。本仓库为开发者源码预览，不包含完整经营驾驶舱或签名一键安装器，不承诺任意厂商自动适配。
+本仓库提供开发者源码预览。开始前请查看[支持范围](PREVIEW_SCOPE.md)；需要找人交流，见[联系页](CONTACT.md)。

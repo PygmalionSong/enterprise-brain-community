@@ -1,9 +1,9 @@
-# 質問と貢献
+# お問い合わせ
 
-利用や接続に関する質問は [Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions)、再現可能な不具合は [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues) を利用してください。バージョン、環境、機密情報を除いた再現手順を添えてください。コードや文書の改善は Pull Request で提案できます。
+- **使い方や接続の相談：** [GitHub Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) をご利用ください。
+- **再現可能な不具合：** バージョン、環境、再現手順を添えて [Issue](https://github.com/PygmalionSong/enterprise-brain-community/issues) を作成してください。
+- **専門分野の交流や協力の相談：** メンテナーの [LinkedIn プロフィール](https://www.linkedin.com/in/sonny-song-524a4a80/)で利用可能な連絡方法をご確認ください。
 
-専門分野の交流やプロジェクトでの協力については、メンテナーの [LinkedIn プロフィール](https://www.linkedin.com/in/sonny-song-524a4a80/)で利用可能な連絡方法を確認してください。
-
-脆弱性は[セキュリティーポリシー（英語）](SECURITY.en.md)を確認し、リポジトリの Security ページで実際に利用できる非公開報告機能を使ってください。攻撃手順や認証情報を公開しないでください。インストール報告を共有する前に、データベース、顧客記録、機密情報を含むログが入っていないか確認してください。
+セキュリティー上の問題は[報告方針（英語）](SECURITY.en.md)に従ってください。公開の報告にはサンプルデータを使い、アカウント情報や API キーを含めないでください。
 
 メンテナー：[PygmalionSong](https://github.com/PygmalionSong)。

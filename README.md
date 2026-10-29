@@ -1,31 +1,36 @@
 # Enterprise Brain
 
-**A self-hosted foundation for enterprise agents**
+**A self-hosted foundation for enterprise AI agents**
 
 [English](README.md) · [中文](README.zh.md) · [日本語](README.ja.md)
 
-Give enterprise agent teams process context, authority, task execution and result verification. Existing ERP, CRM, SRM and WMS systems retain authoritative business records.
+Build agents that work across business systems: read the relevant information, review a plan with its owner, then execute it and check the result. ERP, CRM and other systems continue to hold their business records.
 
-## Start with one cross-process task
+## Try the business case
 
-Read two example processes, approve a plan and execute it. When a tool writes a source record but loses its response, look up the original action and verify the result. The example uses constructed data and needs no enterprise account or model API key.
+A beverage business faces a supply shortage. Compare production, warehouse transfers and contract manufacturing against delivery, cash and quality constraints. Explore the process overview, then drill into a business area or store.
+
+[Explore the beverage case](https://pygmalionsong.github.io/enterprise-brain-community/?lang=en)
+
+![Explore the beverage case](showcase/media/01-processes.png)
+
+## Run a task locally
+
+The first task reads two sample processes, requests approval and executes a plan. It also tests recovery when a system saves a change but its response is lost. Sample data is included; no company account or model API key is needed.
 
 [Run the first task](FIRST_TASK.en.md)
 
-![Beverage business processes](showcase/media/01-processes.png)
+## Developer guides
 
-## Choose a starting point
-
-- [Explore the beverage case](https://pygmalionsong.github.io/enterprise-brain-community/?lang=en)
 - [Run the local supply case](RUN_OPERATING_CASE.en.md)
-- [Read the architecture](ARCHITECTURE_OVERVIEW.en.md)
-- [Adapt one source](EXTEND_A_SOURCE.en.md)
-- [Connect a business source](FIRST_CONNECTION.en.md)
-- [Frequently asked questions](FAQ.en.md)
+- [Architecture](ARCHITECTURE_OVERVIEW.en.md)
+- [Adapt a data source](EXTEND_A_SOURCE.en.md)
+- [Connect a system](FIRST_CONNECTION.en.md)
+- [FAQ](FAQ.en.md)
 
 ## Install and run
 
-Node24.19.0 · pnpm11.25.0
+Node 24.19.0 · pnpm 11.25.0
 
 ```sh
 node scripts/verify-repository.mjs
@@ -35,23 +40,23 @@ pnpm build
 node scripts/start-reference.mjs --acknowledge-owned-fixture
 ```
 
-## Current scope
+## Release status
 
-This is a developer source preview. Source checks have run on Windows x64 and Ubuntu24.04 x64. Independent customer hosts, production capacity, live-model quality and customer business outcomes remain unverified. The beverage case uses constructed systems and deterministic policies; the browser experience and local backend run separately.
+This is a developer source preview. Windows x64 and Ubuntu 24.04 x64 source checks have run. Connecting a company system requires an adapter and access configuration; automatic network-wide discovery and a production one-click installer are not available.
 
-Tools require explicit installation and authority. Network-wide discovery and automatic process inference from database tables are not supported. The business-read tool is not registered in the default HTTP tool catalog. A complete production one-click installer is not provided.
+The browser case uses sample data and runs separately from the local backend. Production deployment, live-model quality and customer outcomes have not been validated.
 
-[Scope / English](PREVIEW_SCOPE.en.md) · [CI / validation](PREVIEW_NOTES.en.md)
+[Scope](PREVIEW_SCOPE.en.md) · [Validation](PREVIEW_NOTES.en.md)
 
 ## Discuss and contribute
 
-Report reproducible bugs in Issues with the version, environment and a redacted example. Discuss integrations and business scenarios in Discussions. Propose code or documentation changes through Pull Requests. Do not upload credentials, databases or customer records.
+Ask integration questions in Discussions, report reproducible bugs in Issues, or propose a change through a Pull Request. For bug reports, use sample data and remove account details and API keys.
 
 [Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) · [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues) · [Contact](CONTACT.en.md) · [Security](SECURITY.en.md)
 
 ## License
 
-Source and examples use Apache-2.0. Retain applicable copyright, license and NOTICE statements when redistributing.
+Source and examples use Apache-2.0. When redistributing, retain the applicable copyright, license and NOTICE statements.
 
 [LICENSE](LICENSE) · [NOTICE](NOTICE) · [Third-party notices](THIRD_PARTY_NOTICES.en.md) · [Attribution](ATTRIBUTION.en.md)
 
