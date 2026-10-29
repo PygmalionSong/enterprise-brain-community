@@ -1,13 +1,7 @@
-# 实际任务证据，不是产品截图
+# 首任务运行记录
 
-[English](DEMO.en.md) · [中文](DEMO.md) · [日本語](DEMO.ja.md)
+![首任务运行结果](assets/first-task.en.png)
 
-![Observed task evidence](assets/first-task.zh.png)
+这张图展示维护者在2026-10-25完成的一次本机参考运行：两个流程、两条动作、两条源记录、两条回执，重复提交为零。它是历史运行摘要，不是连续录像、客户部署或真实模型评测。具体环境和源码标识见[原始结果](examples/observed-result/first-task.json)。
 
-证据图根据2026-10-25一次维护者自有任务运行生成。它不是终端录屏、客户部署或真实模型评测。
-
-[JSON](examples/observed-result/first-task.json) · [Run / 运行 / 実行](FIRST_TASK.md) · [Home](README.zh.md)
-
-运行所用原始源码清单见JSON。本提案增加文档与媒体，可执行源、测试及工作流字节保持；不能把历史641项检查说成本提案新清单另跑的成绩。
-
-Windows x64 · Node24.19.0 · processes2 · actions2 · sourceRows2 · receipts2 · duplicateSubmissions0.
+在当前环境复现请运行[首任务](FIRST_TASK.md)。当前版本的验证范围见[验证说明](PREVIEW_NOTES.md)。

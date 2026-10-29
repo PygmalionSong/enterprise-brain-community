@@ -1,19 +1,21 @@
-# 验证记录与复现范围
+# 验证环境与已知限制
 
-[English](PREVIEW_NOTES.en.md) · [首任务](FIRST_TASK.md) · [CI](CI_REPRODUCTION.md) · [Linux运维](LINUX_RUNTIME.md)
+[English](PREVIEW_NOTES.en.md) · [CI工作流](CI_REPRODUCTION.md)
 
-本版为无地图企业Agent开发者源码预览，包含基础设施、持久化参考应用、跨系统供货案例和库存适配示例。模型可替换，执行授权和原动作回执由基座管理。浏览器体验与本机应用分别运行；源码不含完整签名行业运行包、地图或预装依赖。
+## Preview.2 发布验证
 
-本机声明环境为Windows x64及Ubuntu24.04.5 x64、Node24.19.0、锁定依赖；Ubuntu原生路线另要求systemd255用户管理器、cgroupv2、非root账户和PostgreSQL17.11。不是所有Linux发行版或Windows宿主的兼容声明。依赖缓存复用，不能称为新机器独立安装。
+源码提交8345c0d74965ddd831fdcfc554772a1d53ce05c5的八个CI作业通过：Linux源码、四组Windows源码、首任务、经营案例及源码门槛。[查看运行](https://github.com/PygmalionSong/enterprise-brain-community/actions/runs/40836879257)。该次运行不证明后续提交或其他部署环境已通过同样检查。
 
-本版相同代码与测试清单在Windows运行649项：646通过、三个精确命名的Linux专属检查跳过；Ubuntu649项全部通过，零跳过。不是把跳过计为执行通过。首任务3项、业务后端7项、投影10项、小适配6项和报告/CI工具23项另列，组间存在交集，不相加。三种语言的入门与原公开素材保留。
+本地准确源码清单的Windows检查为762项，其中759通过、3项仅适用于Linux而跳过；Ubuntu检查762项通过。组间有重叠的专项检查不合计成新的测试总数。本地验证复用锁定依赖缓存，不是独立用户在干净宿主上的安装结果。
 
-实际本机原生PostgreSQL17.11/TLS检查：Windows11项、Ubuntu13项。覆盖非所有者运行角色、28次迁移、构造源提交后响应丢失并查询原回执、加密备份、取消/异常退出、恢复失败隔离、新库恢复、旧会话与业务批准失效及停泊启动。两侧均为一个原动作/一个原回执，重复提交为零，没有真实模型调用。Ubuntu另验证主进程骤停后的受控工作器回收。测试数据库由维护者建立，不是甲方数据。
+## 环境
 
-这些源码检查不等于签名整包升级成绩；升级需由操作人提供两个完整可信签名安装。既有PGlite签名迁移/演练仍限Windows。独立甲方宿主、生产证书、真实模型质量、全厂商版本、生产容量/高可用及业务ROI未验证；本版本不作这些承诺。
+Windows x64 / Ubuntu24.04 x64，Node24.19.0及锁定依赖。Ubuntu原生运维另要求systemd255用户管理器、cgroupv2、非root账户及PostgreSQL17.11，见[Linux运维](LINUX_RUNTIME.md)。这些条件不等于支持所有Linux发行版或Windows配置。
 
-本版CI新增Ubuntu任务并要求Windows四组、首任务、案例和Linux任务全部成功；准确远程提交仍须查看其实际Actions结果，本机成绩不能代替尚未运行的新提交CI。旧preview.1托管Windows SDK641项属于历史版本，不能套给本版。旧业务分析首次15/18失败、同组后续18/18通过的记录保留，原因未确定；本版安全诊断不宣称修复该历史原因。
+## 尚未验证
 
-REPOSITORY_MANIFEST.json校验整个分发，SOURCE_MANIFEST.json校验其中SDK子集。最终文档整理与已测试代码逐字节绑定；哈希证明一致性，不是发布者签名或生产认证。保留LICENSE、NOTICE和第三方条款，见[资产范围](ASSET_SCOPE.md)。
+独立企业宿主的生产运行、生产证书与身份集成、任意厂商兼容性、生产容量和高可用、真实模型质量及客户ROI。源码预览不包含完整签名行业运行包或地图。浏览器经营案例与本地后端是两套独立状态；构造的付款或销售画面不能作为后端业务事实。
 
-安装报告由使用者主动生成并审阅，无自动上传或遥测。format2保留完整通过/失败/跳过数及已知平台跳过说明；旧format1仍是历史有效格式。维护者CI、本机验收和附件下载不等于外部采用，全部安装人数未知。自愿反馈通过Issues提交，敏感问题走[安全政策](SECURITY.md)，不要上传私人日志或企业凭证。
+## 复现与报告
+
+使用[首任务](FIRST_TASK.md)和[本地经营案例](RUN_OPERATING_CASE.zh.md)。REPOSITORY_MANIFEST.json校验分发文件，SOURCE_MANIFEST.json记录SDK子集；内容哈希不是发布者签名或生产认证。安装报告由使用者检查后自愿提交，没有自动上传或遥测。

@@ -2,7 +2,7 @@
 
 [English](BUSINESS_OBSERVATIONS.en.md)
 
-独立企业宿主允许当前业务责任人或同企业 executive，将已完成的只读工具回执保存为观察快照。它保留证据，不刷新数据，不调用模型，不创建新的计划/批准/业务动作。默认 `process.definition.read` 只提供流程元数据；经营数据由甲方授权安装的只读工具提供，不能把默认结果称作经营事实。
+独立企业宿主允许当前业务责任人或同企业 executive，将已完成的只读工具回执保存为观察快照。它保留证据，不刷新数据，不调用模型，不创建新的计划/批准/业务动作。默认 `process.definition.read` 只提供流程元数据；经营数据由部署方授权安装的只读工具提供，不能把默认结果称作经营事实。
 
 当前业务会话带原有 Origin/CSRF，向 `POST /v1/graph/observations` 提交：
 

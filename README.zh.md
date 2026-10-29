@@ -1,45 +1,33 @@
-# Enterprise Brain｜企业级智能体私有化基座
+# Enterprise Brain
 
-**企业自建业务Agent团队的私有化技术基座。**
+**企业级 Agent 的私有化技术基座**
 
 [English](README.md) · [中文](README.zh.md) · [日本語](README.ja.md)
 
-## 看清业务取舍，核对执行结果。
+为企业自建 Agent 团队提供流程上下文、授权、任务执行和结果核对。ERP、CRM、SRM、WMS 等既有系统继续保存业务正本。
 
-区域需求增加，自产、调拨和代工都能补货，但现金、交期和质量约束必须一起满足。Enterprise Brain把流程上下文、负责人批准与源端回执连起来，让跨部门工作可以检查。
+## 先运行一个跨流程任务
 
-## 首次接入
+读取两个示例流程，批准方案并执行；当工具已写入源记录但响应丢失时，查询原动作，核对实际结果。示例使用构造数据，不需要企业账号或模型 API 密钥。
 
-授权准确端点，核对协议与元数据证据，再将IT核对和业务读取批准分开。当前是有界接入，不扫描任意网络，也不从数据表自动推导业务流程。业务任务通过显式SDK工厂接入，默认HTTP工具目录尚未注册该工厂。
+[运行首任务](FIRST_TASK.md)
 
-[运行自有样例并了解接入步骤](FIRST_CONNECTION.md)。
+![Beverage business processes](showcase/media/01-processes.png)
 
-## 从这里开始
+## 选择你的入口
 
-- [源码发行版与校验和](https://github.com/PygmalionSong/enterprise-brain-community/releases)
-- [体验三语经营案例](https://pygmalionsong.github.io/enterprise-brain-community/?lang=zh)
-- [本地运行持久后端](RUN_OPERATING_CASE.zh.md)
-- [了解技术架构](ARCHITECTURE_OVERVIEW.md)
-- [适配一个小型数据源](EXTEND_A_SOURCE.md)
-- [查看范围与限制](PREVIEW_SCOPE.md)
+- [浏览饮料业务案例](https://pygmalionsong.github.io/enterprise-brain-community/?lang=zh)
+- [本地运行保供案例](RUN_OPERATING_CASE.zh.md)
+- [查看技术架构](ARCHITECTURE_OVERVIEW.md)
+- [适配一个数据源](EXTEND_A_SOURCE.md)
+- [接入业务系统](FIRST_CONNECTION.md)
+- [常见问题](FAQ.zh.md)
 
-浏览器案例保存构造的本地状态；本地后端是独立可执行参考，采用构造源和确定性策略。两者都不代表真实企业或真实模型结果。
+## 安装与运行
 
-![Enterprise operating blueprint](showcase/media/01-processes.png)
+Node24.19.0 · pnpm11.25.0
 
-## 查看源回执
-
-15域全景保持。当前验证的保供路径为自产80万箱、调拨60万箱、代工20万箱。批准、受理、到货、付款和销售分别核对；付款和销售尚未验证。
-
-在自有HTTP恢复测试中，三个动作源端提交后响应超时。后端查询原动作，重启后保留身份，以零重复提交核验160万箱到货。
-
-[查看源回执](BACKEND_EVIDENCE.zh.md)
-
-## 安装并运行
-
-Windows x64 / Ubuntu24.04 x64 · Node24.19.0 · pnpm11.25.0。锁定依赖安装需要访问包仓库，命令失败即停。
-
-```powershell
+```sh
 node scripts/verify-repository.mjs
 pnpm install --frozen-lockfile --ignore-scripts
 pnpm typecheck
@@ -47,29 +35,24 @@ pnpm build
 node scripts/start-reference.mjs --acknowledge-owned-fixture
 ```
 
-独立工作进程的恢复链路见 [受控首任务](FIRST_TASK.md)。 复用真实GraphTool合同的扩展示例见 [库存适配实验](EXTEND_A_SOURCE.md)。
+## 当前范围
 
-## 本次预览包含什么
+这是开发者源码预览。Windows x64 和 Ubuntu24.04 x64 的源码检查已执行；独立企业宿主、生产容量、真实模型质量及客户业务收益尚未验证。饮料案例采用构造系统与确定性策略，浏览器体验和本地后端分别运行。
 
-底座模块、持久化本地工作台、独立浏览器案例。流程读取采用明确MCP/BPMN/OData子集，工具由操作人安装。模型可替换，模型方案不授予操作权限。这是开发者源码预览，不是完整签名一键安装器或生产资格。Ubuntu源码与本机原生运维按独立范围验证；独立甲方宿主和真实模型质量仍未验证，见[验证记录](PREVIEW_NOTES.md)。
+接入工具需要显式安装并授权。当前不支持全网扫描，也不会从数据表自动推导完整业务流程；业务读取工具尚未注册到默认 HTTP 工具目录。完整一键生产部署仍未提供。
 
-## 讨论和贡献
+[范围与限制](PREVIEW_SCOPE.md) · [CI / validation](PREVIEW_NOTES.md)
 
-流程与集成问题进Discussions，可复现缺陷和自愿安装反馈进Issues。可从Fork提出审阅PR；公开访问不授予官方写权限。不要附密钥、数据库或客户原始日志。
+## 讨论与贡献
 
-[Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) · [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues) · [Contact / 联系 / 連絡](CONTACT.md) · [Security](SECURITY.en.md) · [Contribute](CONTRIBUTING.en.md)
+遇到可复现错误，请在 Issues 提供版本、环境和脱敏复现步骤。接入方式与业务场景在 Discussions 交流；代码和文档改进通过 Pull Request 提交。请勿上传凭证、数据库或客户记录。
 
-## 许可与自主部署
+[Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) · [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues) · [Contact](CONTACT.md) · [Security](SECURITY.md)
 
-Apache-2.0，保留LICENSE、NOTICE及第三方声明。企业可自行部署、修改和运维，不要求购买服务。本次没有收费方案或生产SLA。
+## 许可
 
-[LICENSE](LICENSE) · [NOTICE](NOTICE) · [Third-party notices](THIRD_PARTY_NOTICES.en.md)
+源码与案例采用 Apache-2.0。再分发请保留适用的版权、许可及 NOTICE 声明。
 
-[我们在尝试什么](STORY.md) · 维护者：PygmalionSong。
+[LICENSE](LICENSE) · [NOTICE](NOTICE) · [Third-party notices](THIRD_PARTY_NOTICES.en.md) · [Attribution](ATTRIBUTION.zh.md)
 
-
-## 本候选的平台范围
-
-Windows x64 与 Ubuntu24.04 x64 源码路线使用 Node24.19.0 和相同依赖锁，见[Linux运维](LINUX_RUNTIME.md)。Ubuntu原生PostgreSQL17.11使用systemd255用户管理器/cgroupv2；Windows保留独立Job工作器。此源码预览不包含完整签名行业运行包、地图、私人运行数据或凭证。源码与构造案例验证不等于企业生产部署。
-
-[来源与再分发](ATTRIBUTION.zh.md)
+PygmalionSong · [Project background](STORY.md)

@@ -1,11 +1,7 @@
-# 質問、協業、機密性のある報告
+# 質問と貢献
 
-[English](CONTACT.en.md) · [中文](CONTACT.md) · [ホーム](README.ja.md)
+利用や接続に関する質問は [Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions)、再現可能な不具合は [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues) を利用してください。バージョン、環境、機密情報を除いた再現手順を添えてください。コードや文書の改善は Pull Request で提案できます。
 
-質問や業務プロセス・連携の議論は公式リポジトリの[Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions)、再現可能な不具合や最小限の導入結果は[Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues)をご利用ください。メンテナーは[PygmalionSong](https://github.com/PygmalionSong)です。
+脆弱性は[セキュリティーポリシー（英語）](SECURITY.en.md)を確認し、リポジトリの Security ページで実際に利用できる非公開報告機能を使ってください。攻撃手順や認証情報を公開しないでください。インストール報告を共有する前に、データベース、顧客記録、機密情報を含むログが入っていないか確認してください。
 
-現在、プロジェクト用メールアドレスは公開していません。ソース取得にメール登録は不要です。協業については機密情報を含まない概要から相談してください。非公開の商用資料、個人の連絡先、顧客情報を投稿しないでください。GitHubには一般的な個人向けのプライベートメッセージ機能はありません。
-
-機密性のある脆弱性は公開Issue、Discussion、PRに投稿しないでください。実際のリポジトリのSecurity画面に「Report a vulnerability」の非公開窓口があるか確認し、[セキュリティ方針・英語](SECURITY.en.md)を読んでください。利用できない場合も、機密情報を公開しないでください。未設定の窓口が有効であるとは表明していません。
-
-ローカルのレポートは確認してから任意で共有してください。データベース、鍵、チェックポイント、ログ全体は非公開で保持します。24時間対応や本番SLAを約束するものではありません。
+メンテナー：[PygmalionSong](https://github.com/PygmalionSong)。

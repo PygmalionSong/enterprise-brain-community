@@ -1,45 +1,33 @@
-# Enterprise Brain — Self-hosted Enterprise AI Agents
+# Enterprise Brain
 
-**A self-hosted foundation for enterprise business-agent teams.**
+**A self-hosted foundation for enterprise agents**
 
 [English](README.md) · [中文](README.zh.md) · [日本語](README.ja.md)
 
-## A supply decision across departments
+Give enterprise agent teams process context, authority, task execution and result verification. Existing ERP, CRM, SRM and WMS systems retain authoritative business records.
 
-A region needs more stock. Production, transfers and co-packing can help, but cash, delivery and quality constraints must hold together. Enterprise Brain connects process context, explicit approval and source receipts so the work can be inspected across departments.
+## Start with one cross-process task
 
-## First connection
+Read two example processes, approve a plan and execute it. When a tool writes a source record but loses its response, look up the original action and verify the result. The example uses constructed data and needs no enterprise account or model API key.
 
-Authorize exact endpoints, inspect protocol/metadata evidence, then keep IT review separate from business read approval. The current path is bounded; it does not scan arbitrary networks or infer workflows from tables. Business-task integration uses an explicit SDK factory, which is not registered in the default HTTP tool catalog.
+[Run the first task](FIRST_TASK.en.md)
 
-[Run the owned example and follow the connection path](FIRST_CONNECTION.en.md).
+![Beverage business processes](showcase/media/01-processes.png)
 
-## Start here
+## Choose a starting point
 
-- [Versioned source releases and checksums](https://github.com/PygmalionSong/enterprise-brain-community/releases)
-- [Explore the three-language business case](https://pygmalionsong.github.io/enterprise-brain-community/?lang=en)
-- [Run the persistent backend locally](RUN_OPERATING_CASE.en.md)
-- [Understand the architecture](ARCHITECTURE_OVERVIEW.en.md)
-- [Adapt one small source](EXTEND_A_SOURCE.en.md)
-- [Read scope and limitations](PREVIEW_SCOPE.en.md)
-
-The browser case keeps constructed local state. The local backend is a separate executable reference using constructed sources and deterministic policies. Neither is a live enterprise or live-model result.
-
-![Enterprise operating blueprint](showcase/media/01-processes.png)
-
-## Inspect the source receipts
-
-The 15-domain blueprint stays visible. The supply path qualified here covers 800k cases from production, 600k from transfer and 200k from co-pack. Approval, accepted quantities, physical receipts, payment and sales are distinct. Payment/sales are not verified.
-
-In an owned HTTP recovery test, three actions committed before response timeout. The backend queried their original identities, retained them across restart and verified 1.6m received cases with zero duplicate submissions.
-
-[Inspect the source receipts](BACKEND_EVIDENCE.en.md)
+- [Explore the beverage case](https://pygmalionsong.github.io/enterprise-brain-community/?lang=en)
+- [Run the local supply case](RUN_OPERATING_CASE.en.md)
+- [Read the architecture](ARCHITECTURE_OVERVIEW.en.md)
+- [Adapt one source](EXTEND_A_SOURCE.en.md)
+- [Connect a business source](FIRST_CONNECTION.en.md)
+- [Frequently asked questions](FAQ.en.md)
 
 ## Install and run
 
-Windows x64 / Ubuntu24.04 x64 · Node24.19.0 · pnpm11.25.0. Registry access is needed for locked dependencies. Stop at the first failed command.
+Node24.19.0 · pnpm11.25.0
 
-```powershell
+```sh
 node scripts/verify-repository.mjs
 pnpm install --frozen-lockfile --ignore-scripts
 pnpm typecheck
@@ -47,29 +35,24 @@ pnpm build
 node scripts/start-reference.mjs --acknowledge-owned-fixture
 ```
 
-For recovery from a separate worker process, run the [controlled first task](FIRST_TASK.en.md). For an extension using the actual GraphTool contract, run the [inventory adapter lab](EXTEND_A_SOURCE.en.md).
+## Current scope
 
-## What this preview includes
+This is a developer source preview. Source checks have run on Windows x64 and Ubuntu24.04 x64. Independent customer hosts, production capacity, live-model quality and customer business outcomes remain unverified. The beverage case uses constructed systems and deterministic policies; the browser experience and local backend run separately.
 
-Foundation modules, a persistent local reference workspace and a separate browser-only showcase. Process readers use explicit MCP/BPMN/OData subsets; tools are installed by operators. Models are replaceable, but their proposals do not grant authority. This is a developer source preview, not a complete signed one-step installer or production qualification. Ubuntu source and local native operations have a separately bounded validation route; independent customer-host operations and live-model quality remain unverified. See [validation notes](PREVIEW_NOTES.en.md).
+Tools require explicit installation and authority. Network-wide discovery and automatic process inference from database tables are not supported. The business-read tool is not registered in the default HTTP tool catalog. A complete production one-click installer is not provided.
+
+[Scope / English](PREVIEW_SCOPE.en.md) · [CI / validation](PREVIEW_NOTES.en.md)
 
 ## Discuss and contribute
 
-Questions/process models belong in Discussions; reproducible defects and voluntary installation reports belong in Issues. Fork and propose a reviewed PR; public access does not grant official write permission. Never attach credentials, databases or private customer logs.
+Report reproducible bugs in Issues with the version, environment and a redacted example. Discuss integrations and business scenarios in Discussions. Propose code or documentation changes through Pull Requests. Do not upload credentials, databases or customer records.
 
-[Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) · [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues) · [Contact / 联系 / 連絡](CONTACT.en.md) · [Security](SECURITY.en.md) · [Contribute](CONTRIBUTING.en.md)
+[Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) · [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues) · [Contact](CONTACT.en.md) · [Security](SECURITY.en.md)
 
-## License and deployment ownership
+## License
 
-Apache-2.0. Retain LICENSE, NOTICE and third-party attribution. Enterprises may deploy, modify and operate their own foundation. No paid offer or production SLA is introduced.
+Source and examples use Apache-2.0. Retain applicable copyright, license and NOTICE statements when redistributing.
 
-[LICENSE](LICENSE) · [NOTICE](NOTICE) · [Third-party notices](THIRD_PARTY_NOTICES.en.md)
+[LICENSE](LICENSE) · [NOTICE](NOTICE) · [Third-party notices](THIRD_PARTY_NOTICES.en.md) · [Attribution](ATTRIBUTION.en.md)
 
-[Why we are building this](STORY.en.md) · Maintained by PygmalionSong.
-
-
-## Platform scope in this candidate
-
-Windows x64 and Ubuntu24.04 x64 source routes use Node24.19.0 and the same locked dependencies. See [Linux operations](LINUX_RUNTIME.en.md). Native PostgreSQL17.11 on Ubuntu uses systemd255 user units/cgroupv2; Windows retains its separate Job-based worker contract. This source preview does not include complete signed industry runtime bundles, map assets, private operating data or credentials. Source/case checks and production deployment are separate evidence.
-
-[Source attribution](ATTRIBUTION.en.md)
+PygmalionSong · [Project background](STORY.en.md)
