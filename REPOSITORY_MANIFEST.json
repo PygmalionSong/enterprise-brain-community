@@ -1,7 +1,7 @@
 {
   "format": 1,
   "scope": "map-free-enterprise-agent-foundation",
-  "sdkSourceManifestSha256": "4f28d3565da2467cb24663529b25bc62dd7a9f3c935b162a15785d4567706372",
+  "sdkSourceManifestSha256": "f62d68e26794d3a592d875461971038b89c2b172759f7b694c89ae72d1160f7d",
   "files": [
     {
       "path": ".gitattributes",
@@ -200,18 +200,18 @@
     },
     {
       "path": "CONTACT.en.md",
-      "bytes": 763,
-      "sha256": "782c4fd5a7b08bc13471b85a1950168521c54f98199402f7bb0e2ae43c880477"
+      "bytes": 949,
+      "sha256": "ad9c9db2ae832cd7126a2b11e7e55f2f2cead98d55bab054bb5918b5552e3f51"
     },
     {
       "path": "CONTACT.ja.md",
-      "bytes": 947,
-      "sha256": "8d93d2808270771c6322cb87741a15328ded820146762326970b841f5773942c"
+      "bytes": 1181,
+      "sha256": "70b5916419e0dcee267b78b59a152a3c2cc888ea23c6a9e2cc34702cc958bfb7"
     },
     {
       "path": "CONTACT.md",
-      "bytes": 679,
-      "sha256": "fb9657e004b9c6e59566d77d0b2e109fdd78742a2f5e598239eb7b704c669711"
+      "bytes": 841,
+      "sha256": "481d87f81ede6448fa46b78d891422b4025a90d10d7a16619e34f46bb61427ed"
     },
     {
       "path": "CONTRIBUTING.en.md",
@@ -625,8 +625,8 @@
     },
     {
       "path": "SOURCE_MANIFEST.json",
-      "bytes": 108041,
-      "sha256": "4f28d3565da2467cb24663529b25bc62dd7a9f3c935b162a15785d4567706372"
+      "bytes": 108042,
+      "sha256": "f62d68e26794d3a592d875461971038b89c2b172759f7b694c89ae72d1160f7d"
     },
     {
       "path": "STORY.en.md",
