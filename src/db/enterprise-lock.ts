@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // A successful SELECT can return zero rows under RLS: require the exact parent row lock.
 // RLS下SELECT成功可能返回零行；必须确认实际锁到本企业父行。
 import type {Sql} from './adapter.ts';

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Commit projection and checkpoint together after a fresh, locked permission check.
 // 权限复核后，投影与断点同事务提交；不是业务源账本。
 import {randomUUID} from 'node:crypto';

@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual,canonicalPathKey}from'../platform/canonical-path.ts';
 // Private DBA preparation controller; publishing remains parked and never starts the host.
 // 私人DBA准备控制器；发布始终停放，不启动宿主。
 import {readFile,lstat,realpath,mkdir,open,unlink} from 'node:fs/promises';import {join,dirname,isAbsolute,resolve,sep} from 'node:path';import {hostname} from 'node:os';import {createHash,randomUUID} from 'node:crypto';import {z} from 'zod';
@@ -11,9 +16,9 @@ const inspect=z.object({action:z.literal('inspect'),workDirectory:absolute}).str
 const request=z.discriminatedUnion('action',[initialize,inspect,finish]),hash=(bytes:Uint8Array|string)=>createHash('sha256').update(bytes).digest('hex');
 async function requestBytes(file:string){await readPrivateJson(file);const bytes=await readFile(file);if(bytes.length<1||bytes.length>16384)throw Error('native_prepare_input_invalid');return {bytes,value:JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes))};}
 async function absent(file:string){try{await lstat(file);}catch(e){if((e as NodeJS.ErrnoException).code==='ENOENT')return;throw e;}throw Error('native_prepare_target_exists');}
-async function realDirectory(file:string){const s=await lstat(file);if(!s.isDirectory()||s.isSymbolicLink()||(await realpath(file)).toLowerCase()!==file.toLowerCase())throw Error('native_prepare_path_indirect');}
+async function realDirectory(file:string){const s=await lstat(file);if(!s.isDirectory()||s.isSymbolicLink()||!canonicalPathEqual((await realpath(file)),file))throw Error('native_prepare_path_indirect');}
 async function fresh(file:string,text:string){const f=await open(file,'wx',0o600);try{await f.writeFile(text);await f.sync();}finally{await f.close();}}
-function related(a:string,b:string){a=a.toLowerCase();b=b.toLowerCase();return a===b||a.startsWith(b+sep)||b.startsWith(a+sep);}
+function related(a:string,b:string){a=canonicalPathKey(a);b=canonicalPathKey(b);return a===b||a.startsWith(b+sep)||b.startsWith(a+sep);}
 function binding(q:NativePreparationJournal,input:z.infer<typeof initialize>){return {operationId:q.id,codeSha256:q.codeSha256,dbaDescriptorFile:input.dbaDescriptorFile,dbaDescriptorSha256:input.dbaDescriptorSha256,runtimeDescriptorFile:input.runtimeDescriptorFile,runtimeDescriptorSha256:input.runtimeDescriptorSha256,initializationAcknowledged:true,dedicatedDatabaseAcknowledged:true,runtimeConnectGrantAcknowledged:true};}
 async function assertInputs(root:string,q:NativePreparationJournal){const source=await requestBytes(q.inputFile),input=initialize.parse(source.value);if(hash(source.bytes)!==q.inputSha256||input.workDirectory!==q.workDirectory||await codeFingerprint(root)!==q.codeSha256)throw Error('native_prepare_original_input_changed');if(await nativePreparationCredentialsSha256(root,binding(q,input),input.initialization)!==q.credentialsSha256)throw Error('native_prepare_original_credentials_changed');return input;}
 function adoptionInput(input:z.infer<typeof initialize>){return JSON.stringify({enterpriseId:input.initialization.enterpriseId,runtimeRole:undefined,origin:input.initialization.origin,port:input.initialization.port,runtimeDescriptorFile:input.runtimeDescriptorFile,runtimeDescriptorSha256:input.runtimeDescriptorSha256,adoptionAcknowledged:true,dedicatedDatabaseAcknowledged:true});}

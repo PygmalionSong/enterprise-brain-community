@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Same SQL boundary for embedded development and native PostgreSQL. / 开发与原生PG共用SQL边界。
 import { PGlite } from '@electric-sql/pglite';
 import pg from 'pg';

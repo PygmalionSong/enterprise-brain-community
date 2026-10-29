@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Explicit private stopped-instance quota-period operations;never a browser endpoint.
 // 明确的私人停服额度周期运维，不提供浏览器入口。
 import {join} from 'node:path';import {z} from 'zod';import {openDatabase} from '../db/adapter.ts';import {readSchemaInventory,inspectSchemaHealth} from '../db/schema-health.ts';import {digest} from '../identity/service.ts';import {readDeployment,readPrivateJson} from './configuration.ts';import {readInstanceLock,withDeploymentOperation} from './operation-guard.ts';import {ModelBudgetPeriods} from '../runtime/model-budget-periods.ts';

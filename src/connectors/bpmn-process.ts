@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Read a declared structural BPMN subset without evaluating scripts or conditions.
 // 读取明确的BPMN结构子集，不执行脚本或条件表达式。
 import {createHash} from 'node:crypto';

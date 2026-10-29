@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Bounded field projection only; source access and model authority are separate checks.
 // 仅做有界字段投影；源访问和模型权限必须另行核对。
 import {z} from 'zod';

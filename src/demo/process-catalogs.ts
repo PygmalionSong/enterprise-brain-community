@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Owned source metadata fixtures; not inferred enterprise workflows or execution permissions.
 // 自有源元数据夹具，不是自动推断的企业流程，也不是执行授权。
 import {processCatalogSchema} from '../connectors/process-metadata.ts';

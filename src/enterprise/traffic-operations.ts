@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Local operations serialize against start/stop/backup and never expose authority to browsers.
 // 本机操作与启动/停服/备份互斥，不向浏览器暴露控制权限。
 import {readDeployment,readPrivateJson,readSecret} from './configuration.ts';

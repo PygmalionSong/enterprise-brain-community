@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Reference architecture generated from the approved stage inventory, not customer workflows.
 // 由已批准环节清单生成的参考架构，不是客户实际工作流。
 import {z} from 'zod';

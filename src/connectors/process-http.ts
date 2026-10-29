@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Authenticated local IT API; process imports never start a server or grant runtime tools.
 // 认证的本机IT接口；导入流程不会启动服务或授权运行工具。
 import type {IncomingMessage,ServerResponse} from 'node:http';

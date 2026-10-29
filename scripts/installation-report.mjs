@@ -1,3 +1,4 @@
+import{qualifyPlatformSummary,windowsSkipContracts}from'./platform-test-results.mjs';
 // Local checks and a minimal voluntary report; no network submission. / 本地检查及最小自愿报告，不联网提交。
 import fs from 'node:fs';
 import path from 'node:path';
@@ -16,8 +17,9 @@ export function summarizeTap(output){
  }
  return fields;
 }
-export function minimalReport({manifestSha256,checks,tests,runId=randomUUID()}){
- return {format:'enterprise-brain.installation-report/1',runId,
+export function minimalReport({manifestSha256,checks,tests,platformContractSkips,runId=randomUUID()}){
+ if(platformContractSkips!==undefined&&(!Array.isArray(platformContractSkips)||platformContractSkips.length>3||new Set(platformContractSkips).size!==platformContractSkips.length||platformContractSkips.some(n=>!Object.values(windowsSkipContracts).flat().includes(n))))throw Error('Invalid declared platform skips');
+ return {format:platformContractSkips===undefined?'enterprise-brain.installation-report/1':'enterprise-brain.installation-report/2',runId,...(platformContractSkips===undefined?{}:{platformContractSkips:[...platformContractSkips]}),
   sourceManifestSha256:manifestSha256,
   environment:{platform:process.platform,architecture:process.arch,node:process.versions.node},
   checks:checks.map(c=>({name:c.name,status:c.status})),tests:tests??null,
@@ -40,7 +42,7 @@ function main(){
  fs.mkdirSync(logs);
  const checks=[],manifest=fs.readFileSync(path.join(root,'REPOSITORY_MANIFEST.json'));
  const tasks=[['inventory','scripts/verify-repository.mjs'],['typecheck','node_modules/typescript/bin/tsc','--noEmit'],['build','scripts/build.mjs'],['sdk-tests','scripts/test-sdk.mjs']];
- let stopped=false,tests=null;
+ let stopped=false,tests=null,platformContractSkips=[];
  for(const [name,...command] of tasks){
   if(stopped){checks.push({name,status:'not-run'});continue;}
   const result=spawnSync(process.execPath,command,{cwd:root,encoding:'utf8',windowsHide:true,timeout:1_500_000,maxBuffer:16*1024*1024});
@@ -49,12 +51,12 @@ function main(){
   let pass=result.status===0&&!result.error&&!result.signal;
   if(name==='sdk-tests'){
    tests=summarizeTap(output);
-   pass=pass&&tests!==null&&tests.tests>0&&tests.pass===tests.tests&&tests.fail===0&&tests.cancelled===0&&tests.skipped===0&&tests.todo===0;
+   const scope=qualifyPlatformSummary(tests,output,'__sdk_suite__');platformContractSkips=scope.platformSkips;pass=pass&&scope.qualified;
   }
   checks.push({name,status:pass?'passed':'failed'});stopped=!pass;
   console.log(`${name}: ${pass?'passed':'failed'}`);
  }
- const report=minimalReport({manifestSha256:createHash('sha256').update(manifest).digest('hex'),checks,tests});
+ const report=minimalReport({manifestSha256:createHash('sha256').update(manifest).digest('hex'),checks,tests,platformContractSkips});
  fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n',{flag:'wx'});
  console.log('Local report created. Review it before voluntary sharing. Nothing uploaded. / 本地报告已生成，请先审阅；没有上传。');
  process.exitCode=stopped?1:0;

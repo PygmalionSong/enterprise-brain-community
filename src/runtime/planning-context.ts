@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Model-visible data never grants tool authority; review creates no persistent graph.
 // 模型可见数据绝不授予工具权限；核对不创建持久图。
 import {z} from 'zod';

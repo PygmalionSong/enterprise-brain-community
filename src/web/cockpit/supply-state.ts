@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Project verified server state; storage and local clicks never establish business facts.
 // 只投影服务端已核对状态；本地存储和点击不建立业务事实。
 type Goal={cashBudgetCny:number;planVariant?:string;copackAllowed?:boolean};

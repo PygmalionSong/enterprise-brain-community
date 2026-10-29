@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Trusted identity control; ordinary IT membership cannot grant business roles.
 // 受信身份控制；普通IT身份不能授予业务角色。
 import {randomUUID} from 'node:crypto';

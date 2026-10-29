@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Installed model calls produce durable reviewed data, never business execution authority.
 // 已安装模型调用只生成持久核对数据，不授予业务执行权限。
 import {z} from 'zod';

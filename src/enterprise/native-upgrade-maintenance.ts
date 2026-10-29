@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual}from'../platform/canonical-path.ts';
 // Keep a source admission barrier across controller exits; it is never a generic stale service lock.
 // 源启动阻挡跨控制器退出保留，不作为普通失效服务锁清除。
 import {readFile,lstat,realpath,mkdir,open,unlink} from 'node:fs/promises';import {join,dirname} from 'node:path';import {hostname} from 'node:os';import {createHash,randomUUID} from 'node:crypto';import {z} from 'zod';
@@ -5,7 +10,7 @@ import {readNativeUpgradeAbandonment} from './native-upgrade-abandonment-record.
 import {readNativeDeployment,type NativeDeployment} from './native-configuration.ts';import {readNativeUpgradeJournal} from './native-upgrade-journal.ts';import {readInstanceLock,operationPath,processExists} from './operation-guard.ts';
 const sha=z.string().regex(/^[a-f0-9]{64}$/),hash=(b:Uint8Array|string)=>createHash('sha256').update(b).digest('hex');
 const claimSchema=z.object({format:z.literal(1),id:z.uuid(),journalId:z.uuid(),predecessor:sha,predecessorDisposition:z.enum(['root','released','observed_dead']),host:z.string().min(1).max(255),pid:z.number().int().positive(),createdAt:z.iso.datetime()}).strict();
-async function directory(file:string){const s=await lstat(file);if(!s.isDirectory()||s.isSymbolicLink()||(await realpath(file)).toLowerCase()!==file.toLowerCase())throw Error('native_upgrade_maintenance_indirect_path');}
+async function directory(file:string){const s=await lstat(file);if(!s.isDirectory()||s.isSymbolicLink()||!canonicalPathEqual((await realpath(file)),file))throw Error('native_upgrade_maintenance_indirect_path');}
 async function bytes(file:string,max=16384){await directory(dirname(file));const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max)throw Error('native_upgrade_maintenance_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_maintenance_file_invalid');return b;}
 async function optional(file:string){try{return await bytes(file);}catch(e){if((e as NodeJS.ErrnoException).code==='ENOENT')return null;throw e;}}
 async function fresh(file:string,value:string){const h=await open(file,'wx',0o600);try{await h.writeFile(value);await h.sync();}finally{await h.close();}}

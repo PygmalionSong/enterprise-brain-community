@@ -1,4 +1,4 @@
-# Enterprise Brain
+# Enterprise Brain｜企业级智能体私有化基座
 
 **企业自建业务Agent团队的私有化技术基座。**
 
@@ -8,8 +8,15 @@
 
 区域需求增加，自产、调拨和代工都能补货，但现金、交期和质量约束必须一起满足。Enterprise Brain把流程上下文、负责人批准与源端回执连起来，让跨部门工作可以检查。
 
+## 首次接入
+
+授权准确端点，核对协议与元数据证据，再将IT核对和业务读取批准分开。当前是有界接入，不扫描任意网络，也不从数据表自动推导业务流程。业务任务通过显式SDK工厂接入，默认HTTP工具目录尚未注册该工厂。
+
+[运行自有样例并了解接入步骤](FIRST_CONNECTION.md)。
+
 ## 从这里开始
 
+- [源码发行版与校验和](https://github.com/PygmalionSong/enterprise-brain-community/releases)
 - [体验三语经营案例](https://pygmalionsong.github.io/enterprise-brain-community/?lang=zh)
 - [本地运行持久后端](RUN_OPERATING_CASE.zh.md)
 - [了解技术架构](ARCHITECTURE_OVERVIEW.md)
@@ -30,7 +37,7 @@
 
 ## 安装并运行
 
-Windows x64 · Node24.19.0 · pnpm11.25.0。锁定依赖安装需要访问包仓库，命令失败即停。
+Windows x64 / Ubuntu24.04 x64 · Node24.19.0 · pnpm11.25.0。锁定依赖安装需要访问包仓库，命令失败即停。
 
 ```powershell
 node scripts/verify-repository.mjs
@@ -44,7 +51,7 @@ node scripts/start-reference.mjs --acknowledge-owned-fixture
 
 ## 本次预览包含什么
 
-底座模块、持久化本地工作台、独立浏览器案例。流程读取采用明确MCP/BPMN/OData子集，工具由操作人安装。模型可替换，模型方案不授予操作权限。这是开发者源码预览，不是完整签名一键安装器或生产资格。Linux、独立甲方宿主和真实模型质量仍未验证。
+底座模块、持久化本地工作台、独立浏览器案例。流程读取采用明确MCP/BPMN/OData子集，工具由操作人安装。模型可替换，模型方案不授予操作权限。这是开发者源码预览，不是完整签名一键安装器或生产资格。Ubuntu源码与本机原生运维按独立范围验证；独立甲方宿主和真实模型质量仍未验证，见[验证记录](PREVIEW_NOTES.md)。
 
 ## 讨论和贡献
 
@@ -58,4 +65,11 @@ Apache-2.0，保留LICENSE、NOTICE及第三方声明。企业可自行部署、
 
 [LICENSE](LICENSE) · [NOTICE](NOTICE) · [Third-party notices](THIRD_PARTY_NOTICES.en.md)
 
-[PygmalionSong维护。项目源于十多年管理咨询与数字化转型经验，详见项目故事。](STORY.md)
+[我们在尝试什么](STORY.md) · 维护者：PygmalionSong。
+
+
+## 本候选的平台范围
+
+Windows x64 与 Ubuntu24.04 x64 源码路线使用 Node24.19.0 和相同依赖锁，见[Linux运维](LINUX_RUNTIME.md)。Ubuntu原生PostgreSQL17.11使用systemd255用户管理器/cgroupv2；Windows保留独立Job工作器。此源码预览不包含完整签名行业运行包、地图、私人运行数据或凭证。源码与构造案例验证不等于企业生产部署。
+
+[来源与再分发](ATTRIBUTION.zh.md)

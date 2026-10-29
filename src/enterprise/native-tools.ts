@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Deployment-bound, versioned private policy; configuring a catalogue starts no process.
 // 部署绑定的版本化私人策略；配置工具目录不会启动进程。
 import {readFile,lstat,open,rename,unlink} from 'node:fs/promises';

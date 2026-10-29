@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Persistent owned fixture key is included in encrypted application-volume recovery only.
 // 构造源密钥仅保留在应用数据卷，并随加密备份恢复，不进入发行文件。
 import {readFile,writeFile,mkdir} from 'node:fs/promises';

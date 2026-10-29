@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Deterministic HTTP fixture ONLY; no inference, provider credentials or cloud calls.
 // 仅为确定性HTTP协议替身，无模型推理、供应商凭证或云调用。
 import {createServer} from 'node:http';

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Explicit local protocol configuration only. No model discovery, download or cloud fallback.
 // 仅显式本机协议配置，不发现/下载模型，不回退云端。
 import {readFile,lstat} from 'node:fs/promises';

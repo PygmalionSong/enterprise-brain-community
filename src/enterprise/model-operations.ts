@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Private stopped-instance model configuration; the endpoint is never contacted here.
 // 私人停服模型配置；此处不联系模型端点。
 import {join} from 'node:path';

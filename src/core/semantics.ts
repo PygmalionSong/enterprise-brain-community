@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Deterministic units, partitions and reconciliations. / 确定性单位、范围和勾稽。
 export type QueryContext = {enterpriseId:string;scopeId:string;scopeVersion:number;periodStart:string;periodEnd:string;factKind:string;factVersion:string;scenarioId:string;definitionVersion:number;unit:string;currency:string|null};
 export function assertCompatible(a:QueryContext,b:QueryContext) {

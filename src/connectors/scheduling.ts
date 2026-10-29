@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Durable schedules delegate confirmed reads, not credentials or broader authority.
 // 持久调度委托已确认读取，不保存凭证，也不扩大权限。
 import {randomUUID} from 'node:crypto';

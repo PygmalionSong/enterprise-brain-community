@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Independent fixture workflow ledger; scheduled receipts represent constructed events.
 // 独立案例流程台账；定时回执为构造事件。
 import type {Database} from '../db/adapter.ts';

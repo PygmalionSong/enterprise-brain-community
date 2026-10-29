@@ -4,7 +4,7 @@
 
 本页描述底座SDK入口。当前仓库还包含独立构造本地经营应用与浏览器案例，见[当前分发范围](PREVIEW_SCOPE.md)。仅SDK入口不会启动这些应用，也不提供模型回退。
 
-需要Node24和pnpm，已验Windows x64/Node24.19.0/PGlite本机合同；Linux、干净宿主与生产TLS证书另列未验；原生模型/工具日常配置见[NATIVE_AGENT_CONFIGURATION](NATIVE_AGENT_CONFIGURATION.md)；原生备份/新库恢复见[NATIVE_BACKUP_RESTORE](NATIVE_BACKUP_RESTORE.md)，其他原生PG17.11分项合同见[NATIVE_SERVICE](NATIVE_SERVICE.md)。执行 `pnpm install --frozen-lockfile --ignore-scripts`、`pnpm build`、`pnpm typecheck`、`pnpm test`。依赖锁保留完整产品的35包集合和全部许可，其中有本子集不使用的库；复制依赖的成绩不代表干净安装。
+需要Node24和pnpm，已验Windows x64/Node24.19.0/PGlite本机合同；Ubuntu源码/原生范围见LINUX_RUNTIME.md；干净宿主与生产TLS证书另列未验；原生模型/工具日常配置见[NATIVE_AGENT_CONFIGURATION](NATIVE_AGENT_CONFIGURATION.md)；原生备份/新库恢复见[NATIVE_BACKUP_RESTORE](NATIVE_BACKUP_RESTORE.md)，其他原生PG17.11分项合同见[NATIVE_SERVICE](NATIVE_SERVICE.md)。执行 `pnpm install --frozen-lockfile --ignore-scripts`、`pnpm build`、`pnpm typecheck`、`pnpm test`。依赖锁保留完整产品的35包集合和全部许可，其中有本子集不使用的库；复制依赖的成绩不代表干净安装。
 
 用 `node scripts/enterprise.mjs init --config ABSOLUTE_NEW_PRIVATE_CONFIG --input ABSOLUTE_PRIVATE_INPUT` 初始化，然后用start/status/stop/backup/restore子命令运维。输入是私人JSON：name、timezone、规范HTTPS origin、后端port、username/password；没有默认密码。凭证不放参数或公开材料。后端只监听127.0.0.1，需运维受信TLS代理；代理密钥不发浏览器。详见[宿主/HTTP/恢复合同](HOST.md)。源码中的start-portable.ps1仅为指纹一致性保留的完整产品启动模板，不是本源码SDK可直接运行的便携启动器。
 

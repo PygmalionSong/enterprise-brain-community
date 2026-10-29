@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual,canonicalPathKey}from'../platform/canonical-path.ts';
 // Adopt an explicitly prepared dedicated database;never initialize or migrate it.
 // 接入明确准备的专用企业库；不初始化、迁移或修改其业务内容。
 import {readFile,lstat,realpath,mkdir,open,rename,unlink} from 'node:fs/promises';
@@ -17,7 +22,7 @@ export const nativeDeploymentSchema=z.object({format:z.literal(2),storage:z.lite
 export type NativeDeployment=z.infer<typeof nativeDeploymentSchema>;
 const digest=(bytes:Buffer|string)=>createHash('sha256').update(bytes).digest('hex');
 function configurationPath(file:string){absolutePath(file);const folder=dirname(file),name=basename(folder);if(basename(file)!=='config.json'||!/^\p{L}[\p{L}\p{N} _.-]{0,79}$/u.test(name)||/[. ]$/.test(name)||/^(?:con|prn|aux|nul|com[0-9]|lpt[0-9])(?:\.|$)/i.test(name)||folder.split(/[\\/]/).some(s=>/^\.(?:git|codex|agents)$/i.test(s)))throw Error('native_deployment_path_invalid');return folder;}
-async function realDirectory(directory:string){const info=await lstat(directory);if(!info.isDirectory()||info.isSymbolicLink()||(await realpath(directory)).toLowerCase()!==directory.toLowerCase())throw Error('native_deployment_path_indirect');}
+async function realDirectory(directory:string){const info=await lstat(directory);if(!info.isDirectory()||info.isSymbolicLink()||!canonicalPathEqual((await realpath(directory)),directory))throw Error('native_deployment_path_indirect');}
 async function absent(file:string){try{await lstat(file);}catch(e){if((e as NodeJS.ErrnoException).code==='ENOENT')return;throw e;}throw Error('native_deployment_target_exists');}
 async function exclusive(file:string,value:string){const handle=await open(file,'wx',0o600);try{await handle.writeFile(value);await handle.sync();}finally{await handle.close();}}
 export async function verifyNativeDescriptor(config:NativeDeployment){const file=config.runtimeDescriptorFile;await privateParent(file);const info=await lstat(file);if(!info.isFile()||info.isSymbolicLink()||info.size<1||info.size>16384)throw Error('native_deployment_descriptor_invalid');const bytes=await readFile(file);if(bytes.length<1||bytes.length>16384||digest(bytes)!==config.runtimeDescriptorSha256)throw Error('native_deployment_descriptor_changed');}
@@ -25,7 +30,7 @@ export async function verifyNativeDescriptor(config:NativeDeployment){const file
 // 描述文件变动后仍可核对并停止原实例；此读取不能授权启动或更换数据库。
 export async function readNativeControlDeployment(file:string){const folder=configurationPath(file),config=nativeDeploymentSchema.parse(await readPrivateJson(file));await realDirectory(folder);if(config.stateDirectory!==join(folder,'state')||config.proxyTokenFile!==join(folder,'proxy-token')||config.controlTokenFile!==join(folder,'control-token'))throw Error('native_deployment_path_mismatch');await realDirectory(config.stateDirectory);await readSecret(config.proxyTokenFile);await readSecret(config.controlTokenFile);return config;}
 export async function readNativeDeployment(file:string){const config=await readNativeControlDeployment(file);await verifyNativeDescriptor(config);return config;}
-export function nativeAdoptionClaimPath(configFile:string){const folder=configurationPath(configFile);return join(dirname(folder),'.native-adopt-'+digest(folder.toLowerCase())+'.json');}
+export function nativeAdoptionClaimPath(configFile:string){const folder=configurationPath(configFile);return join(dirname(folder),'.native-adopt-'+digest(canonicalPathKey(folder))+'.json');}
 export function planNativeAdoption(configFile:string,id:string=randomUUID(),createdAt:string=new Date().toISOString()){
  z.uuid().parse(id);z.iso.datetime().parse(createdAt);const target=configurationPath(configFile),staging=join(dirname(target),'.native-adopt-'+id),claim={format:1,id,pid:process.pid,target,staging,createdAt};return Object.freeze({id,createdAt,target,staging,claimFile:nativeAdoptionClaimPath(configFile),claimText:JSON.stringify(claim)});
 }

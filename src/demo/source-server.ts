@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Child-process fixture; source credential is inherited privately, never printed.
 // 子进程合成源，凭证通过私有环境继承，不打印。
 import {resolve} from 'node:path';

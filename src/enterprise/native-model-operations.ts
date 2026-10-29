@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Trusted local model configuration reuses the existing durable budget and installation.
 // 受信本机模型配置复用既有持久额度和安装合同。
 import {z} from 'zod';

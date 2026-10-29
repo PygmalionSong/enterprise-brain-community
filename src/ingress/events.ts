@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Signed bytes enter a bounded review inbox; they are never executable instructions.
 // 对签名字节验真后进入有界待审队列，事件内容不可作为执行指令。
 import {createHash,createHmac,randomUUID,timingSafeEqual} from 'node:crypto';

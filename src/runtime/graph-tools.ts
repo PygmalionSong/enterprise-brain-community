@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Installed adapters expose existing read/controlled-run contracts, never arbitrary endpoints.
 // 已安装适配器复用既有读取/受控运行合同，不接收任意端点。
 import {z} from 'zod';

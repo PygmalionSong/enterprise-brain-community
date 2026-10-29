@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Inspect first, then explicitly confirm exact dead-owner claims. Never kill a process.
 // 先检查，再确认准确的失效声明；绝不终止进程或凭锁龄接管。
 import {open,unlink} from 'node:fs/promises';

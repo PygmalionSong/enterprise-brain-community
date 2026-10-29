@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Explicit loopback capability, no discovery, redirects or arbitrary SQL tools.
 // 显式本机能力，不自动发现/重定向，也不向模型开放任意SQL。
 import {sourceSchema,receiptSchema,commandSchema,type Command,type Receipt,type SourceSnapshot} from '../runtime/contracts.ts';

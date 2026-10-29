@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Explicit business requests only;durable shared reservations precede every model RPC.
 // 仅明确业务请求；每次模型RPC之前必须持久预留共用额度。
 import {z} from 'zod';import type {Actor} from '../identity/service.ts';

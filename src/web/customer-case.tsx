@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Business-only view of the fixed anonymous case, with no connector/model terminology.
 // 固定匿名案例的经营视图，不显示连接器或模型术语。
 import React,{useEffect,useState} from 'react';

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Business reads use the application role and server-derived enterprise. / 业务读取使用应用角色及服务端企业身份。
 import { withEnterprise, type Database } from '../db/adapter.ts';
 import type { Actor } from '../identity/service.ts';

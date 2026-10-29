@@ -1,3 +1,5 @@
+import{qualifyPlatformSummary}from'./platform-test-results.mjs';
+import{summarizeFailureDiagnostics}from'./ci-failure-diagnostics.mjs';
 // Bounded source-test shards, never enterprise operations. / 有界源码测试分组，不执行企业运维。
 import fs from'node:fs';import path from'node:path';import{fileURLToPath}from'node:url';import{createHash,randomUUID}from'node:crypto';import{spawn,spawnSync}from'node:child_process';import{summarizeTap}from'./installation-report.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -8,6 +10,7 @@ export function selectShard(source,shard,total=4){
  return{all:files,selected:files.filter((_,i)=>i%total===shard-1)};
 }
 export function isolatedTestEnvironment(source,isolatePg=true,canonicalizeTemp=true){const env={...source};for(const key of Object.keys(env))if(key==='NODE_TEST_CONTEXT'||isolatePg&&/^PG/i.test(key))delete env[key];if(canonicalizeTemp)for(const key of['TEMP','TMP'])if(env[key])env[key]=fs.realpathSync(env[key]);return env;}
+export function qualifyPlatformTap(text,file,platform=process.platform){return qualifyPlatformSummary(summarizeTap(text),text,file,platform);}
 export async function runOwnedFile(cwd,file,logFile,timeoutMs=180000,isolatePg=true,canonicalizeTemp=true){
  const env=isolatedTestEnvironment(process.env,isolatePg,canonicalizeTemp);
  if(canonicalizeTemp){const owned=path.join(cwd,'.evidence','ci-temporary');fs.mkdirSync(owned,{recursive:true});env.TEMP=fs.realpathSync(owned);env.TMP=env.TEMP;}
@@ -20,9 +23,10 @@ export async function runOwnedFile(cwd,file,logFile,timeoutMs=180000,isolatePg=t
  },timeoutMs);
  const outcome=await new Promise(resolve=>{child.once('error',()=>resolve({exit:null,error:true}));child.once('close',(code,signal)=>resolve({exit:code,signal}));});
  clearTimeout(timer);await new Promise(resolve=>{log.once('close',resolve);log.end();});const counts=summarizeTap(text);
- const passed=!timedOut&&outcome.exit===0&&counts&&counts.tests>0&&counts.pass===counts.tests&&counts.fail===0&&counts.cancelled===0&&counts.skipped===0&&counts.todo===0;
+ const platformQualification=qualifyPlatformTap(text,file),passed=!timedOut&&outcome.exit===0&&platformQualification.qualified;
  const errorCodes=[...new Set(text.match(/\b(?:native_runtime_environment_conflict|native_runtime_configuration_invalid|native_backup_tool_environment_conflict|ENOENT|EACCES|EPERM)\b/g)??[])];
- return{file,status:passed?'passed':'failed',timedOut,exit:outcome.exit,counts,errorCodes};
+ const failureDiagnostics=passed?undefined:summarizeFailureDiagnostics(text,fs.readFileSync(path.resolve(cwd,file),'utf8'));
+ return{failureDiagnostics,file,status:passed?'passed':'failed',timedOut,exit:outcome.exit,counts,platformSkips:platformQualification.platformSkips,errorCodes};
 }
 async function main(){
  const args=process.argv.slice(2);if(args.length!==6||args[0]!=='--shard'||args[2]!=='--out'||args[4]!=='--log-dir')throw Error('Use --shard 1..4 --out ABSOLUTE_NEW_REPORT --log-dir ABSOLUTE_NEW_PRIVATE_DIRECTORY');
@@ -33,7 +37,7 @@ async function main(){
  // Separate precondition evidence, not part of the SDK coverage total. / 单独前提证据，不计入SDK覆盖总数。
  const environmentQualification=[];
  if(shard===4&&inheritedPgVariableCount>0){const file='tests/native-backup-tools.test.ts';const inherited=await runOwnedFile(root,file,path.join(logs,'inherited-pg.log'),180000,false,false),isolated=await runOwnedFile(root,file,path.join(logs,'isolated-pg.log'),180000,true,false);environmentQualification.push({kind:'pg-only',file,inherited,isolated,verified:inherited.status==='failed'&&inherited.errorCodes.includes('native_backup_tool_environment_conflict')&&isolated.status==='passed'});}
- const temporaryAliasDetected=['TEMP','TMP'].some(k=>process.env[k]&&fs.realpathSync(process.env[k]).toLowerCase()!==process.env[k].toLowerCase());
+ const temporaryAliasDetected=['TEMP','TMP'].some(k=>process.env[k]&&(process.platform==='win32'?fs.realpathSync(process.env[k]).toLowerCase()!==process.env[k].toLowerCase():fs.realpathSync(process.env[k])!==process.env[k]));
  if(shard===4){const file='tests/native-runtime-connection.test.ts';const inherited=await runOwnedFile(root,file,path.join(logs,'inherited-temp.log'),180000,false,false),isolated=await runOwnedFile(root,file,path.join(logs,'canonical-temp.log'),180000,false,true);environmentQualification.push({kind:'temp-only',file,inherited,isolated,verified:isolated.status==='passed'&&(inherited.status==='passed'||inherited.errorCodes.includes('native_runtime_configuration_invalid'))});}
  for(const file of plan.selected){const result=await runOwnedFile(root,file,path.join(logs,path.basename(file)+'.log'));results.push(result);console.log(JSON.stringify(result));}
  const passed=results.every(r=>r.status==='passed')&&environmentQualification.every(q=>q.verified),hash=b=>createHash('sha256').update(b).digest('hex');

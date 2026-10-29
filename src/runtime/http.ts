@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Demo runtime API: explicit schemas, session/CSRF, no arbitrary tools or targets.
 // Demo运行接口：严格schema、会话/CSRF，不接收任意工具或目标。
 import type {IncomingMessage,ServerResponse} from 'node:http';

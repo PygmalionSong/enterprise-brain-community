@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Internal hash reader; callers must independently prove their transaction authority.
 // 内部摘要读取；调用方必须独立核对事务资格。
 import pg from 'pg';import {createHash,randomUUID} from 'node:crypto';

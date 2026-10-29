@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 import {requireEnterpriseLock} from '../db/enterprise-lock.ts';
 // Trusted programmatic reservations only: no RPC,output,graph compilation or execution.
 // 仅受信程序预留：不调用RPC、不生成结论、不编译或执行业务图。

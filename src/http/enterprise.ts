@@ -1,3 +1,13 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import {BusinessReadGrants} from '../onboarding/business-read-grants.ts';
+import {businessReadRoute} from '../onboarding/business-read-http-route.ts';
+import {DiscoveryStore} from '../onboarding/discovery-store.ts';
+import {DiscoveryRunner} from '../onboarding/discovery-runner.ts';
+import {MetadataConnections} from '../onboarding/metadata-connections.ts';
+import {onboardingRoute} from '../onboarding/http.ts';
 import {GraphMetadata} from '../runtime/graph-metadata.ts';import {graphMetadataRequest} from '../runtime/graph-metadata-http.ts';
 import {BusinessHistory} from '../runtime/business-history.ts';
 import {BusinessAnalysisLedger} from '../runtime/business-analysis-ledger.ts';import {BusinessAnalysisResults} from '../runtime/business-analysis-results.ts';import {DurableBusinessAnalyzer} from '../runtime/business-analyzer.ts';
@@ -74,7 +84,7 @@ export async function createNativeEnterpriseApplication(db:Database,root:string,
   ownership=await acquireNativeRuntimeOwnership(db,{ownershipAcknowledged:q.ownershipAcknowledged},()=>{admission.shutdown();});
   const owner=ownership;let closing:Promise<void>|undefined;if(extensions.loadOwnedModel){const loaded=await extensions.loadOwnedModel();if(!owner.isActive()||!isVerifiedNativeRuntimeConnection(db,q.enterpriseId,q.runtimeRole))throw Error('native_runtime_ownership_unavailable');await qualify();nativeExtensions.model=loaded;}if(extensions.loadOwnedTools){const loaded=await extensions.loadOwnedTools();if(!owner.isActive()||!isVerifiedNativeRuntimeConnection(db,q.enterpriseId,q.runtimeRole))throw Error('native_runtime_ownership_unavailable');await qualify();nativeExtensions.tools=loaded;}const application=await buildEnterpriseApplication(db,root,host.data,nativeExtensions,now,()=>owner.isActive()&&!closing);
   if(!owner.isActive())throw Error('native_runtime_ownership_unavailable');
-  const close=()=>closing??=(async()=>{admission.shutdown();if(!await admission.waitForIdle(5000))throw Error('enterprise_traffic_drain_timeout');if(application.server.listening)await new Promise<void>((ok,fail)=>application.server.close(e=>e?fail(e):ok()));await owner.release();})().catch(e=>{closing=undefined;throw e;});
+  const close=()=>closing??=(async()=>{admission.shutdown();await application.closeWorkers();if(!await admission.waitForIdle(5000))throw Error('enterprise_traffic_drain_timeout');if(application.server.listening)await new Promise<void>((ok,fail)=>application.server.close(e=>e?fail(e):ok()));await owner.release();})().catch(e=>{closing=undefined;throw e;});
   application.server.once('close',()=>{void close().catch(()=>{});});return {...application,close};
  }catch(e){await ownership?.release();const code=e instanceof Error?e.message:'';throw Error(['native_enterprise_runtime_unqualified','native_enterprise_transport_unverified','native_enterprise_workload_grants_missing','enterprise_configuration_mismatch','enterprise_initialization_required','native_runtime_database_in_use','native_runtime_previous_connections_present','native_runtime_ownership_connection_used','native_runtime_ownership_unavailable','native_runtime_verified_connection_required','native_runtime_environment_conflict'].includes(code)?code:'native_enterprise_unavailable');}
 }
@@ -89,6 +99,12 @@ async function buildEnterpriseApplication(db:Database,root:string,input:Enterpri
  const history=new BusinessHistory(db,graph,now),metadata=new GraphMetadata(db,now);
  const planner=new DurableGraphPlanner(new PlanningLedger(db,now),new PlanningContext(graph),extensions.model?.installation,now);
  const attempts=new Map<string,{failures:number;expires:number}>();let windowStart=now().getTime(),loginCalls=0,activeLogins=0;
+ const discoveryStore=new DiscoveryStore(db),discoveryRunner=new DiscoveryRunner(discoveryStore,()=> (!runtimeReady||runtimeReady())&&!extensions.traffic?.isStopping()),metadataConnections=new MetadataConnections(db,discoveryStore),businessReadGrants=new BusinessReadGrants(db);
+ const launchDiscovery=(actor:import('../identity/service.ts').Actor,id:string)=>{
+  if(runtimeReady&&!runtimeReady())throw new HostError(503,'enterprise_runtime_unavailable');
+  const release=extensions.traffic?.admit();if(extensions.traffic&&!release)throw new HostError(503,'enterprise_traffic_parked');
+  void discoveryRunner.start(actor,id).catch(()=>{}).finally(()=>release?.());
+ };
  const server=createServer(async(req,res)=>{
   const correlation=randomUUID();let releaseTraffic:(()=>void)|undefined;
   const json=(status:number,value:unknown)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; frame-ancestors 'none'; base-uri 'none'",'Referrer-Policy':'no-referrer','X-Frame-Options':'DENY'});res.end(JSON.stringify(value));};
@@ -125,12 +141,12 @@ async function buildEnterpriseApplication(db:Database,root:string,input:Enterpri
     return;
    }
    const staticAsset=url.pathname==='/enterprise.js'?'app.js':url.pathname==='/enterprise.css'?'style.css':null;
-   const page=staticAsset?null:url.pathname==='/login'?'login':url.pathname==='/console'?'console':url.pathname==='/workspace'?'workspace':null;
+   const page=staticAsset?null:url.pathname==='/login'?'login':url.pathname==='/console'?'console':url.pathname==='/workspace'?'workspace':url.pathname==='/connections'?'onboarding':null;
    if(req.method==='GET'&&(staticAsset||page==='login')){const file=staticAsset??'index.html',data=await readFile(join(root,'dist/enterprise',file));res.writeHead(200,{'Content-Type':file.endsWith('.js')?'text/javascript; charset=utf-8':file.endsWith('.css')?'text/css; charset=utf-8':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",'Referrer-Policy':'no-referrer'});res.end(page?data.toString('utf8').replace('__ENTERPRISE_PAGE__',page):data);return;}
    const token=tokenOf(req),actor=await identity.authenticate(token),current=actor?.enterpriseId===config.enterpriseId?actor:null;
-   if(req.method==='GET'&&url.pathname==='/'){let target='/login';if(current){target='/workspace';if(current.role==='it')try{await operators.list(current);target='/console';}catch(e){if((e as Error).message!=='not_authorized')throw e;}}res.writeHead(303,{Location:target,'Cache-Control':'no-store'});res.end();return;}
+   if(req.method==='GET'&&url.pathname==='/'){let target='/login';if(current){target='/workspace';if(current.role==='it'){target='/connections';try{await operators.list(current);target='/console';}catch(e){if((e as Error).message!=='not_authorized')throw e;}}}res.writeHead(303,{Location:target,'Cache-Control':'no-store'});res.end();return;}
    if(!current)throw new HostError(401,'authentication_required');
-   if(req.method==='GET'&&page){if(page==='console')await operators.list(current);const data=await readFile(join(root,'dist/enterprise/index.html'),'utf8');res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",'Referrer-Policy':'no-referrer'});res.end(data.replace('__ENTERPRISE_PAGE__',page));return;}
+   if(req.method==='GET'&&page){if(page==='console')await operators.list(current);if(page==='onboarding'&&current.role!=='it')throw new HostError(403,'not_authorized');const data=await readFile(join(root,'dist/enterprise/index.html'),'utf8');res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",'Referrer-Policy':'no-referrer'});res.end(data.replace('__ENTERPRISE_PAGE__',page));return;}
    if(!actor)throw new HostError(401,'authentication_required');
    if(url.pathname==='/v1/context'&&req.method==='GET'){json(200,{principalId:actor.id,role:actor.role,authorizationVersion:actor.authorizationVersion,csrf:await identity.csrfForSession(token)});return;}
    if(url.pathname.startsWith('/v1/identity/')){
@@ -147,6 +163,8 @@ async function buildEnterpriseApplication(db:Database,root:string,input:Enterpri
      json(200,result);return;
     }
    }
+   if(await businessReadRoute(req,res,url,actor,identity,token,config.origin,businessReadGrants))return;
+   if(await onboardingRoute(req,res,url,actor,identity,token,{store:discoveryStore,runner:discoveryRunner,connections:metadataConnections,origin:config.origin,native:db.profile==='postgres',launch:launchDiscovery}))return;
    if(await processItRoute(req,res,url,actor,identity,token,processes))return;
    if(await graphRoute(req,res,url,actor,identity,token,graph,supervisor,planner,adoption,observations,analysis,analyzer,history,metadata))return;
    // Never serve the reference cockpit or its fallback business data here.
@@ -155,5 +173,6 @@ async function buildEnterpriseApplication(db:Database,root:string,input:Enterpri
   }catch(e){const raw=e instanceof Error?e.message:'',known=['operator_conflict','operator_username_conflict','operator_last_administrator','operator_admin_role_required','operator_capacity','not_authorized','not_found'];const code=e instanceof HostError?e.message:e instanceof z.ZodError?'invalid_input':known.includes(raw)?raw:'enterprise_unavailable',status=e instanceof HostError?e.status:e instanceof z.ZodError?422:raw==='not_authorized'?403:raw==='not_found'?404:raw==='operator_capacity'?429:known.includes(raw)?409:503;json(status,{code,correlationId:correlation});}finally{releaseTraffic?.();}
  });
  server.headersTimeout=5000;server.requestTimeout=10000;server.keepAliveTimeout=5000;server.maxHeadersCount=40;
- return {server,identity,operators,graph,supervisor,planner,adoption,observations,analysis,analyzer,ready:async()=>(!runtimeReady||runtimeReady())&&(await inspectSchemaHealth(db,expectedMigrations)).state==='current'};
+ server.once('close',()=>{void discoveryRunner.close().catch(()=>{});});
+ return {server,identity,operators,closeWorkers:()=>discoveryRunner.close(),onboarding:discoveryRunner,discoveryStore,metadataConnections,graph,supervisor,planner,adoption,observations,analysis,analyzer,ready:async()=>(!runtimeReady||runtimeReady())&&(await inspectSchemaHealth(db,expectedMigrations)).state==='current'};
 }

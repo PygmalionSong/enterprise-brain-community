@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Public run status is metadata only;source data uses the explicit current-authority readers.
 // 公开运行状态只返回元数据；源数据须通过明确的当前授权读取入口。
 import {z} from 'zod';import {graphArgsSchema,graphResultSchema} from './graph-contracts.ts';import {hash} from './contracts.ts';

@@ -2,7 +2,7 @@
 
 [中文](NATIVE_BACKUP_RESTORE.md) · [Native host](NATIVE_SERVICE.en.md) · [Local lock recovery](NATIVE_MAINTENANCE.en.md)
 
-Private operations for customer-hosted infrastructure. Current implementation is bounded to Windows x64, Node 24.19.0, PostgreSQL 17.11, one dedicated enterprise database and DBA-prepared roles. A pinned manifest covers the entire tool `bin/` and `lib/` trees. There is no PATH discovery, automatic PostgreSQL download or service installation. Local contracts do not qualify Linux, clean hosts, large-database capacity or cross-cluster role preparation.
+Private operations for customer-hosted infrastructure. Windows x64 and the Ubuntu native route use different process-ownership implementations; see [Linux operations](LINUX_RUNTIME.en.md) for its declared environment and prerequisites. Both require Node24.19.0, PostgreSQL17.11, one dedicated enterprise database and DBA-prepared roles. A pinned manifest covers the entire tool `bin/` and `lib/` trees. There is no PATH discovery, automatic PostgreSQL download or service installation. Local contracts do not qualify other Linux distributions, independent Windows hosts, large-database capacity or cross-cluster role preparation.
 
 ## Backup
 
@@ -30,7 +30,7 @@ The strict descriptor contains `format:1`, `purpose:"enterprise-brain.native-bac
 
 The manifest contains `format:1`, `platform:"win32-x64"`, `postgresVersion:"17.11"`, canonical absolute `root`, and complete `files:[{path,bytes,sha256}]`. Relative paths must cover every file beneath `bin/` and `lib/`, including pg_dump, pg_restore and libpq. Extra files, links and conflicting versions refuse execution. Customer administrators must verify the official tool distribution and generate the complete manifest/hash; listing only three executables does not establish trusted dependencies.
 
-A fixed pg_dump child is suspended and assigned to a private Windows Job before its identity is durably recorded and explicitly armed. Cancellation and parent/guardian death terminate only that owned process tree. No plaintext dump is persisted. Output uses authenticated 64-KiB AES-256-GCM frames and a separate key. Source/code/migrations/runtime-role identities are bound, with same-snapshot data and object/RLS/ACL hashes in the authenticated terminal frame. Completion is fsynced before exclusive publication; incomplete output is not a recovery point. The DBA must keep the dedicated database and sequences stable during the window; this is not a general backup protocol under concurrent DDL or arbitrary administrator writes.
+On Windows, a fixed pg_dump child is suspended and assigned to a private Windows Job before its identity is durably recorded and explicitly armed. Cancellation and parent/guardian death terminate only that owned process tree. No plaintext dump is persisted. Output uses authenticated 64-KiB AES-256-GCM frames and a separate key. Source/code/migrations/runtime-role identities are bound, with same-snapshot data and object/RLS/ACL hashes in the authenticated terminal frame. Completion is fsynced before exclusive publication; incomplete output is not a recovery point. The DBA must keep the dedicated database and sequences stable during the window; this is not a general backup protocol under concurrent DDL or arbitrary administrator writes.
 
 ## New-database restore
 
@@ -67,3 +67,14 @@ After backup foreground death, use inspect-backup and pass its exact complete pl
 Restore work directories retain phase records, request digests and completion/failure outcomes; no reuse or automatic retry. Failed targets may be empty or restored but quarantined. A later recording failure after configuration publication explicitly records that configuration was prepared; failure alone never authorizes overwriting it. The DBA must inspect target privileges, original process ownership, private records and existing configuration before remediation. There is no automatic database drop/clean, failed-claim deletion or service start. Parent death can leave private temporary credentials for controlled identity-bound handling, not unknown-file cleanup.
 
 This is not cross-version migration, lossless rollback after writes, HA, arbitrary enterprise-system backup or production certification. Existing PGlite installation/backup/upgrade contracts retain their separate scope.
+
+
+## Restoring newly connected read authority
+
+The development version uses migrations001–033. Restoration checks exact migration IDs and checksums; missing tables or different versions never cause a silent downgrade. PGlite restoration accepts a new directory with the same code and schema inventory. Cross-version append migrations use the separate signed upgrade path.
+
+Authority fencing and its audit share one database transaction. Discovery scopes, reviews, bindings, read policies and business grants are revoked. Active discovery and issued reads become unknown; targets not yet issued are cancelled. Completed evidence, source-validation records and original business receipts remain intact. Nothing automatically rescans or resubmits a request. Bytes already sent cannot be recalled.
+
+A restored PGlite target starts parked. Its archived traffic policy remains inside the encrypted archive; the audit stores only its digest. Transaction or audit failure prevents final configuration publication. Native restoration and upgrade retain target quarantine, original completion intents and read-only completion checks rather than replaying a commit after a lost response. Operators must sign in again; IT and business must separately reconfirm read authority.
+
+This describes the current implementation. Independent source, exact signed controllers and each platform package require separate acceptance. Earlier lab2 or public-preview results do not qualify this version.

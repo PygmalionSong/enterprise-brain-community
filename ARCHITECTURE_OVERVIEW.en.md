@@ -61,3 +61,20 @@ The source reference launcher uses loopback HTTP and owned constructed sources. 
 Current execution uses bounded acyclic graphs. MCP stdio/process contracts, structural BPMN and OData entity metadata do not automatically discover arbitrary IT systems or infer business workflows. A complete enterprise semantic model, arbitrary dynamic agent loops, all 60 stages executable, universal vendor compatibility, live-model organizational insight and production qualification are not established. See [scope](PREVIEW_SCOPE.en.md).
 
 The repository contains three distinct entries: foundation modules, a persistent local reference workspace, and a separate browser-only showcase. The complete signed production installer, maps, dependencies and runtime data are not included. One-step enterprise deployment and broader operator-confirmed discovery remain product goals.
+
+
+## Bounded onboarding and business-read authority
+
+[First connection](FIRST_CONNECTION.en.md) separates interface evidence, metadata review, read authority and plan-execution approval. Application code explicitly installs the current business-read tool; it is not in the default HTTP catalog.
+
+```mermaid
+flowchart LR
+ A[IT authorizes exact endpoints] --> B[Protocol and metadata evidence]
+ B --> C[IT reviews entity and fields]
+ C --> D[Separate business read approval]
+ D --> E[Explicit SDK tool and plan approval]
+ E --> F[Bounded read and original receipt]
+ F --> G[Recheck authority at commit and disclosure]
+```
+
+Scope, version, approval and receipt identities persist. A lost read response is resolved through original-reference lookup without an automatic second GET. Revocation withholds cached business data. Restoration fences new authority and writes its audit in one database transaction; targets start parked. Completed evidence does not become a fresh approval. DNS, IPv6, subnet discovery, credential-backed adapters and complete MCP HTTP are not implemented.

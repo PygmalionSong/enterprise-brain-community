@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Explicit abandonment before any target dispatch. No restore/SQL replay or automatic source start.
 // 仅目标派发前显式放弃，不重放恢复/SQL，不自动启动原源。
 import {lstat,open} from 'node:fs/promises';import {join,isAbsolute,resolve} from 'node:path';import {createHash,randomUUID} from 'node:crypto';import {z} from 'zod';

@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual}from'../platform/canonical-path.ts';
 // Post-backup source maintenance is a new exclusion lease, never evidence of an original-owner backup.
 // 备份后的源维护是新的互斥归属，绝不冒充原运行归属的备份证据。
 import {readFile,lstat,realpath} from 'node:fs/promises';import {dirname,resolve,isAbsolute} from 'node:path';import {createHash} from 'node:crypto';import {z} from 'zod';
@@ -5,7 +10,7 @@ import type {Database} from '../db/adapter.ts';import {connectNativeRuntime,acqu
 import {readNativeDeployment,type NativeDeployment} from './native-configuration.ts';import {NativeUpgradeMaintenanceOwner} from './native-upgrade-maintenance.ts';import {nativeUpgradeSqlIdentity,type NativeUpgradeSignedSql} from './native-upgrade-sql.ts';
 import type {VerifiedNativeArchive} from './native-archive.ts';import {recheckNativeRestoreArchive} from './native-restore-archive.ts';import {nativeBackupInputSchema} from './native-backup-task.ts';import {openNativeBackupSnapshot,nativeBackupSnapshotInventory,nativeBackupSnapshotSource} from './native-backup-snapshot.ts';
 const absolute=z.string().max(1024).refine(v=>isAbsolute(v)&&resolve(v)===v),sha=z.string().regex(/^[a-f0-9]{64}$/),hash=(b:Uint8Array|string)=>createHash('sha256').update(b).digest('hex');
-async function bytes(file:string,max:number){absolute.parse(file);const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max||(await realpath(dirname(file))).toLowerCase()!==dirname(file).toLowerCase())throw Error('native_upgrade_source_private_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_source_file_limit');return b;}
+async function bytes(file:string,max:number){absolute.parse(file);const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max||!canonicalPathEqual((await realpath(dirname(file))),dirname(file)))throw Error('native_upgrade_source_private_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_source_file_limit');return b;}
 const json=(b:Buffer)=>JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(b));
 export async function openNativeUpgradeSourceMaintenance(owner:NativeUpgradeMaintenanceOwner,archive:VerifiedNativeArchive,sql:NativeUpgradeSignedSql,configFile:string,backupInputFile:string,expectedBackupInputSha256:string){
  sha.parse(expectedBackupInputSha256);const state=await owner.guard(),signed=await nativeUpgradeSqlIdentity(sql),source=await recheckNativeRestoreArchive(archive),config=await readNativeDeployment(configFile);

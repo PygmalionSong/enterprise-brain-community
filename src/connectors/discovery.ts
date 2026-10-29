@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Owned discovery control plane: no implicit network scanning or model authority.
 // 自有发现控制面：不隐式扩网，也不让模型授予权限。
 import {randomUUID} from 'node:crypto';

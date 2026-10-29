@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Server-owned confirmation bindings, never credentials or arbitrary row filters.
 // 服务端生成确认绑定，不接收凭证或未经实现的行过滤声明。
 import {z} from 'zod';

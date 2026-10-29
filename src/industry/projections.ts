@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Strict, typed projection input; arbitrary JSON never becomes a numeric fact. / 严格投影输入，不将任意JSON当数值事实。
 import { z } from 'zod';
 const text=z.string().min(1), day=z.string().regex(/^\d{4}-\d{2}-\d{2}$/), instant=z.string().datetime({offset:true});

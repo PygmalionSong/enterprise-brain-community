@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual}from'../platform/canonical-path.ts';
 // Explicit private offline restore;new target/configuration only,never auto-start or overwrite.
 // 显式私人离线恢复，仅新目标/新配置，不自动启动或覆盖。
 import {open,readFile,lstat,realpath,mkdir,link} from 'node:fs/promises';import {dirname,join,isAbsolute,resolve,relative,sep} from 'node:path';import {createHash,randomUUID} from 'node:crypto';import {z} from 'zod';
@@ -6,7 +11,7 @@ const absolute=z.string().max(1024).refine(v=>isAbsolute(v)&&resolve(v)===v),sha
 const request=z.object({format:z.literal(1),restoreAcknowledged:z.literal(true),trustedSourceAcknowledged:z.literal(true),runtimeConnectGrantAcknowledged:z.literal(true),archiveDirectory:absolute,keyFile:absolute,restoreDescriptorFile:absolute,restoreDescriptorSha256:sha,toolManifestFile:absolute,toolManifestSha256:sha,runtimeDescriptorFile:absolute,runtimeDescriptorSha256:sha,origin:enterpriseHostSchema.shape.origin,port:z.number().int().min(1024).max(65535),workDirectory:absolute,maxBytes:z.number().int().min(1).max(4294967296).default(268435456),timeoutMs:z.number().int().min(1000).max(300000).default(60000)}).strict();
 const hash=(v:Uint8Array)=>createHash('sha256').update(v).digest('hex');
 function inside(file:string,root:string){const q=relative(root,file);return !q||q!=='..'&&!q.startsWith('..'+sep)&&!isAbsolute(q);}
-async function realDirectory(path:string){const s=await lstat(path);if(!s.isDirectory()||s.isSymbolicLink()||(await realpath(path)).toLowerCase()!==path.toLowerCase())throw Error('native_restore_work_path_invalid');}
+async function realDirectory(path:string){const s=await lstat(path);if(!s.isDirectory()||s.isSymbolicLink()||!canonicalPathEqual((await realpath(path)),path))throw Error('native_restore_work_path_invalid');}
 async function absent(path:string){try{await lstat(path);}catch(e){if((e as NodeJS.ErrnoException).code==='ENOENT')return;throw e;}throw Error('native_restore_target_exists');}
 async function fresh(path:string,value:Uint8Array|string){const f=await open(path,'wx',0o600);try{await f.writeFile(value);await f.sync();}finally{await f.close();}}
 export async function restoreNativeEnterprise(root:string,configFile:string,inputFile:string){

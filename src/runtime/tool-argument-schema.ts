@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Deliberately bounded JSON Schema subset; unknown keywords never disappear silently.
 // 明确有界的JSON Schema子集，未知关键词绝不静默忽略。
 import {graphArgsSchema} from './graph-contracts.ts';

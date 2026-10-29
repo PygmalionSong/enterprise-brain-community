@@ -2,7 +2,10 @@
 // 原生私人运维须显式选择，不回退到PGlite初始化。
 import {resolve,dirname,isAbsolute} from 'node:path';import {fileURLToPath,pathToFileURL} from 'node:url';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+import{manageNativeLinuxCLI}from'./native-linux-managed.mjs';
+
 try{
+ const managedExit=await manageNativeLinuxCLI('enterprise-native.mjs',process.argv.slice(2),['start','restore'].includes(process.argv[2]));if(managedExit!==null)process.exit(managedExit);
  const [command,...args]=process.argv.slice(2),commands=['prepare','adopt','restore','start','status','stop','traffic-status','park','activate','inspect-locks','recover-locks','backup','backup-status','cancel-backup','inspect-backup','recover-backup','model-status','configure-model','tools-status','configure-tools','budget-period'],allowed=['prepare','adopt','restore','park','activate','recover-locks','backup','cancel-backup','recover-backup','configure-model','configure-tools','budget-period'].includes(command)?['--config','--input']:['--config'];if(!commands.includes(command)||args.length!==allowed.length*2)throw Error('native_enterprise_usage_invalid');const options={};for(let i=0;i<args.length;i+=2){if(!allowed.includes(args[i])||options[args[i]]||!isAbsolute(args[i+1]))throw Error('native_enterprise_usage_invalid');options[args[i]]=args[i+1];}if(allowed.some(k=>!options[k]))throw Error('native_enterprise_usage_invalid');
  const operations=await import(pathToFileURL(resolve(root,'dist/enterprise-operations.mjs')));let result;
  if(command==='prepare')result=await operations.prepareNativeEnterprise(root,options['--config'],options['--input']);

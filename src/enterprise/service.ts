@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Foreground enterprise service and instance-checked local operations.
 // 前台企业服务与核对实例身份的本机运维。
 import {writeFile,open,unlink} from 'node:fs/promises';
@@ -40,7 +44,7 @@ export async function startEnterpriseUnderClaim(root:string,configFile:string){
  await readSchemaInventory(join(root,'migrations'));await readSecret(config.controlTokenFile);const proxyToken=await readSecret(config.proxyTokenFile),traffic=await TrafficAdmission.open(config);
  const instanceId=randomUUID(),lock:Lock={pid:process.pid,port:config.port,instanceId,deploymentId:config.deploymentId,configurationSha256:digest(JSON.stringify(config))},lockFile=join(config.stateDirectory,'instance.json');const handle=await open(lockFile,'wx',0o600);await handle.writeFile(JSON.stringify(lock));await handle.sync();await handle.close();
  let db:Database|undefined,application:Awaited<ReturnType<typeof createEnterpriseApplication>>|undefined,closing:Promise<void>|undefined,pump:GraphSupervisionPump|undefined;
- const close=()=>closing??=(async()=>{pump?.stop();traffic.shutdown();if(!await traffic.waitForIdle(5000))throw Error('enterprise_traffic_drain_timeout');if(application?.server.listening)await new Promise<void>(ok=>application!.server.close(()=>ok()));await db?.close();const current=await readLock(config);if(current?.instanceId!==instanceId)throw Error('enterprise_instance_changed');await unlink(lockFile);})().catch(e=>{closing=undefined;throw e;});
+ const close=()=>closing??=(async()=>{pump?.stop();traffic.shutdown();await application?.closeWorkers();if(!await traffic.waitForIdle(5000))throw Error('enterprise_traffic_drain_timeout');if(application?.server.listening)await new Promise<void>(ok=>application!.server.close(()=>ok()));await db?.close();const current=await readLock(config);if(current?.instanceId!==instanceId)throw Error('enterprise_instance_changed');await unlink(lockFile);})().catch(e=>{closing=undefined;throw e;});
  try{
   const controlToken=freshSecret();await writeFile(config.controlTokenFile,controlToken,{mode:0o600});db=await openDatabase(join(config.stateDirectory,'database'));await migrate(db,join(root,'migrations'));
   const installedModel=await loadInstalledPlanningModel(db,root,config.enterpriseId),model={...installedModel,status:async()=>({...await planningModelSummary(db!,config.enterpriseId),state:(await loadInstalledPlanningModel(db!,root,config.enterpriseId)).state})};

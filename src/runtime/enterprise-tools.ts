@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // A generic process read has no beverage facts, fixture source or model fallback.
 // 通用流程读取没有饮料事实、构造源或模型回退。
 import {z} from 'zod';

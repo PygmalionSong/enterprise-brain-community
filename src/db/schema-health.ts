@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Code inventory defines readiness; degraded identity remains available for safe shutdown.
 // 以代码迁移清单判断就绪；降级时仍保留安全停服所需的实例身份。
 import {readFile,readdir,lstat} from 'node:fs/promises';

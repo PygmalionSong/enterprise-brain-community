@@ -14,7 +14,7 @@ Only a valid lease,current original authority and unchanged configuration can co
 
 Encrypted restore preserves snapshot reservations/history,disables configuration,marks pending candidates unknown and sets `reconciliation_required`. Old snapshots cannot establish later external model spend. Ordinary configuration cannot clear this block;clearing restore gating requires explicit operator acknowledgement and a [new local quota period](BUDGET_PERIODS.en.md),not ordinary reinstallation. Restore is not a fresh budget. Configuration/candidate changes also invalidate old output eligibility.
 
-The trusted storage core is explicitly assembled through [model installation/planning entries](MODELS.en.md).Uninstalled defaults remain unconfigured.Current process/tool allowlists and bounded output validation stay separate,without mock/beverage-case fallback. Linux/live models remain unverified. Local SQL protocol tests do not prove AI efficacy or vendor compatibility.
+The trusted storage core is explicitly assembled through [model installation/planning entries](MODELS.en.md).Uninstalled defaults remain unconfigured.Current process/tool allowlists and bounded output validation stay separate,without mock/beverage-case fallback. Live models remain unverified; Ubuntu infrastructure scope is separate in LINUX_RUNTIME.en.md. Local SQL protocol tests do not prove AI efficacy or vendor compatibility.
 
 
 See [candidate adoption](CANDIDATE_ADOPTION.en.md) for explicit frozen-plan creation; independent business approval remains required and no automatic execution occurs.

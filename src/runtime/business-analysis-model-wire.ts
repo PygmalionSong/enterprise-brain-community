@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Validate citations,not semantic truth;never accept model-written source values or executable plans.
 // 核对引用，不认证语义真伪；不接收模型重写的源值或可执行计划。
 import {z} from 'zod';

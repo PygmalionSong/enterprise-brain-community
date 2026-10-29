@@ -1,5 +1,10 @@
-import {suspendRestoredBusinessHistory} from '../runtime/business-history.ts';
-import {suspendRestoredBusinessAnalysis} from '../runtime/business-analysis-ledger.ts';
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import {fenceNativeEnterpriseAuthority} from './native-authority-fence.ts';
+import {readSchemaInventory} from '../db/schema-health.ts';
+import type {Database} from '../db/adapter.ts';
 // Encrypted recovery of the separate enterprise database, not demo fixture volumes.
 // 独立企业数据库加密恢复，不使用演示构造卷。
 import {readFile,writeFile,readdir,lstat,mkdir} from 'node:fs/promises';
@@ -12,11 +17,7 @@ import {stopEnterpriseUnderClaim} from './service.ts';
 import {withDeploymentOperation,requireDeploymentOperation} from './operation-guard.ts';
 import {trafficPolicySchema,readTrafficPolicy,initializeTrafficPolicy,defaultTrafficPolicy} from './traffic-policy.ts';
 import {openDatabase} from '../db/adapter.ts';
-import {suspendRestoredAnalysisPolicy} from '../runtime/analysis-policy.ts';
-import {suspendRestoredObservations} from '../runtime/business-observations.ts';
 import {codeFingerprint} from './code-fingerprint.ts';
-import {suspendRestoredGraphSupervision} from '../runtime/graph-supervision.ts';
-import {suspendRestoredPlanning} from '../runtime/planning-ledger.ts';
 const sha=(bytes:Uint8Array|string)=>createHash('sha256').update(bytes).digest('hex'),maxBytes=128*1024*1024;
 const metadata=z.object({deploymentId:z.uuid(),enterpriseId:z.uuid(),origin:z.string(),port:z.number().int()}).strict();
 const entry=z.object({path:z.string().min(1).max(240),sha256:z.string().regex(/^[a-f0-9]{64}$/),bytes:z.number().int().min(0).max(maxBytes),data:z.string().max(maxBytes*2)}).strict();
@@ -39,6 +40,13 @@ export async function restoreEnterprise(root:string,newConfigFile:string,archive
  for(const file of body.files){safeEnterprisePath(file.path);const folded=file.path.toLowerCase();if(seen.has(folded)||dirs.has(folded))throw Error('enterprise_archive_duplicate');seen.add(folded);const bytes=Buffer.from(file.data,'base64');if(bytes.length!==file.bytes||sha(bytes)!==file.sha256||(total+=bytes.length)>maxBytes)throw Error('enterprise_archive_integrity_failed');}
  for(const value of [...seen,...dirs]){let p=value;while(p.includes('/')){p=p.slice(0,p.lastIndexOf('/'));if(seen.has(p))throw Error('enterprise_archive_path_denied');}}
  const config=await writeDeployment(newConfigFile,body.metadata,body.proxyToken),database=join(config.stateDirectory,'database');await mkdir(database,{recursive:false,mode:0o700});for(const d of body.directories)await mkdir(join(database,d),{recursive:true});for(const file of body.files){const target=resolve(database,...file.path.split('/')),rel=relative(database,target);if(rel.startsWith('..')||isAbsolute(rel))throw Error('enterprise_archive_path_denied');await mkdir(resolve(target,'..'),{recursive:true});await writeFile(target,Buffer.from(file.data,'base64'),{flag:'wx',mode:0o600});}
- await initializeTrafficPolicy(config,body.trafficPolicy??defaultTrafficPolicy(config));const db=await openDatabase(database);try{const e=(await db.query<any>('SELECT environment FROM enterprise WHERE id=$1',[config.enterpriseId])).rows[0];if(e?.environment!=='enterprise')throw Error('enterprise_configuration_mismatch');await suspendRestoredGraphSupervision(db,config.enterpriseId);await suspendRestoredPlanning(db,config.enterpriseId);const observationsInvalidated=await suspendRestoredObservations(db,config.enterpriseId),analysisPoliciesInvalidated=await suspendRestoredAnalysisPolicy(db,config.enterpriseId),analysisRequestsInvalidated=await suspendRestoredBusinessAnalysis(db,config.enterpriseId),historyPoliciesInvalidated=await suspendRestoredBusinessHistory(db,config.enterpriseId);await db.query('UPDATE auth_session SET revoked_at=$2 WHERE revoked_at IS NULL AND principal_id IN (SELECT id FROM principal WHERE enterprise_id=$1)',[config.enterpriseId,new Date()]);await db.query('INSERT INTO audit_event(enterprise_id,id,kind,details) VALUES($1,$2,$3,$4)',[config.enterpriseId,randomUUID(),'enterprise_restored',JSON.stringify({backupId:body.id,sessionsInvalidated:true,observationsInvalidated,analysisPoliciesInvalidated,analysisRequestsInvalidated,historyPoliciesInvalidated})]);}finally{await db.close();}
+ const expected=await readSchemaInventory(join(root,'migrations'));const db=await openDatabase(database);try{await db.transaction(async tx=>{
+  const e=(await tx.query<any>('SELECT environment FROM enterprise WHERE id=$1',[config.enterpriseId])).rows[0];if(e?.environment!=='enterprise')throw Error('enterprise_configuration_mismatch');
+  const shared:Database={profile:db.profile,query:(sql,args)=>tx.query(sql,args),exec:sql=>tx.exec(sql),transaction:fn=>fn(shared),close:async()=>{throw Error('enterprise_restore_nested_close_forbidden');}};
+  const counts=await fenceNativeEnterpriseAuthority(shared,config.enterpriseId,expected);
+  await tx.query('INSERT INTO audit_event(enterprise_id,id,kind,details) VALUES($1,$2,$3,$4)',[config.enterpriseId,randomUUID(),'enterprise_restored',JSON.stringify({backupId:body.id,sessionsInvalidated:true,observationsInvalidated:counts.observations,analysisPoliciesInvalidated:counts.analysisPolicies,analysisRequestsInvalidated:counts.analysisRequests,historyPoliciesInvalidated:counts.historyPolicies,counts,traffic:'parked',archivedTrafficPolicySha256:sha(JSON.stringify(body.trafficPolicy??null))})]);
+ });}finally{await db.close();}
+ await initializeTrafficPolicy(config,defaultTrafficPolicy(config,'parked'));
+
  await writeFile(newConfigFile,JSON.stringify(config,null,2),{flag:'wx',mode:0o600});return {restored:true,id:body.id,files:body.files.length,configuration:newConfigFile,enterpriseId:config.enterpriseId,deploymentId:config.deploymentId,sessionsInvalidated:true,started:false};
 }

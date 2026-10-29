@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Candidate evaluation, not a global optimizer or measured forecast improvement.
 // 已知候选复核，不冒称全局优化或实测预测提升。
 import {hash,commandSchema,type SourceSnapshot,type Goal,type Command} from './contracts.ts';

@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual}from'../platform/canonical-path.ts';
 // Internal commit core for an authenticated isolated restored target; no CLI or pointer publication.
 // 已认证隔离恢复目标的内部提交核心，不提供CLI或安装指针发布。
 import {readFile,lstat,realpath} from 'node:fs/promises';import {dirname,resolve,isAbsolute} from 'node:path';
@@ -19,7 +24,7 @@ export const nativeUpgradeCommitIntentSchema=z.object({format:z.literal('enterpr
 export type NativeUpgradeCommitIntent=z.infer<typeof nativeUpgradeCommitIntentSchema>;
 export type NativeUpgradeDatabaseTarget=Readonly<{format:1;id:string;enterpriseId:string;isActive:()=>boolean;close:()=>Promise<void>}>;
 type Proof={client:pg.Client;descriptor:z.infer<typeof descriptor>;input:z.infer<typeof nativeUpgradeDatabaseInputSchema>;sql:NativeUpgradeSignedSql;archive:VerifiedNativeArchive;credentialsSha256:string;active:()=>boolean;assertStable:()=>Promise<void>;used:boolean};const proofs=new WeakMap<NativeUpgradeDatabaseTarget,Proof>();
-async function bytes(file:string,max:number){absolute.parse(file);const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max||(await realpath(dirname(file))).toLowerCase()!==dirname(file).toLowerCase())throw Error('native_upgrade_database_private_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_database_input_limit');return b;}
+async function bytes(file:string,max:number){absolute.parse(file);const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max||!canonicalPathEqual((await realpath(dirname(file))),dirname(file)))throw Error('native_upgrade_database_private_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_database_input_limit');return b;}
 const json=(b:Buffer)=>JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(b));
 function secret(b:Buffer){const s=new TextDecoder('utf-8',{fatal:true}).decode(b);if(!s||/[\x00-\x1f\x7f]/.test(s))throw Error('native_upgrade_database_secret_invalid');return s;}
 function ca(b:Buffer){const s=new TextDecoder('utf-8',{fatal:true}).decode(b),certs=s.match(/-----BEGIN CERTIFICATE-----[\s\S]*?-----END CERTIFICATE-----/g);if(!certs?.length||certs.length>8||s.replace(/-----BEGIN CERTIFICATE-----[\s\S]*?-----END CERTIFICATE-----/g,'').trim())throw Error('native_upgrade_database_ca_invalid');for(const c of certs)new X509Certificate(c);return s;}
@@ -81,7 +86,7 @@ export async function commitNativeUpgradeDatabase(token:NativeUpgradeDatabaseTar
   const original=await readNativeDatabaseInventoryCore(p.client,1000000);if(JSON.stringify(original)!==JSON.stringify(source.inventory))throw Error('native_upgrade_database_restored_contents_changed');
   const preservedLedger=async()=>hash(JSON.stringify((await p.client.query('SELECT to_jsonb(m) row FROM public.schema_migration m WHERE id=ANY($1::text[]) ORDER BY id',[signed.current.map(m=>m.id)])).rows)),oldLedgerSha256=await preservedLedger();
   const preservation=await captureNativeUpgradePreservation(p.client),migration=await applyNativeUpgradeSignedSql(p.sql,p.client);await assertNativeUpgradePreservation(p.client,preservation);if(await preservedLedger()!==oldLedgerSha256)throw Error('native_upgrade_database_old_ledger_changed');
-  const db:Database={profile:'postgres',query:async(s,a)=>({rows:(await p.client.query(s,a)).rows}),exec:s=>p.client.query(s),transaction:fn=>fn(db),close:async()=>{throw Error('native_upgrade_database_nested_close_forbidden');}},counts=await fenceNativeEnterpriseAuthority(db,token.enterpriseId);
+  const db:Database={profile:'postgres',query:async(s,a)=>({rows:(await p.client.query(s,a)).rows}),exec:s=>p.client.query(s),transaction:fn=>fn(db),close:async()=>{throw Error('native_upgrade_database_nested_close_forbidden');}},counts=await fenceNativeEnterpriseAuthority(db,token.enterpriseId,signed.candidate);
   const details=auditSchema.parse({operationId:p.input.operationId,targetId:token.id,backupId:p.archive.id,currentManifestSha256:signed.binding.currentManifestSha256,candidateManifestSha256:signed.binding.candidateManifestSha256,planningInputSha256:signed.binding.inputSha256});
   await db.query('INSERT INTO audit_event(enterprise_id,id,kind,details) VALUES($1,$2,$3,$4)',[token.enterpriseId,p.input.operationId,'native_enterprise_upgraded',JSON.stringify(details)]);
   if(await nativeUpgradeGlobalRolesSha256(p.client)!==preservation.globalRolesSha256)throw Error('native_upgrade_global_roles_changed');await assertBarrier(p);

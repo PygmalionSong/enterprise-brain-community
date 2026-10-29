@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Independent IT onboarding; all untrusted source values use textContent.
 // 独立IT接入页面；源端字段只作为文本，不解释为HTML或权限。
 import {renderEventPanel,type EventPanelState} from './events.ts';

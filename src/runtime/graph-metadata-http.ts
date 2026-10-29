@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Query strings are allowed only for these passive GET collections.
 // 仅这些被动GET集合允许白名单查询参数。
 import type {GraphMetadataKind} from './graph-metadata.ts';

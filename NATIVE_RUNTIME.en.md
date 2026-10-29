@@ -1,5 +1,6 @@
 # Native runtime connection core
 
+Current source scope: [Linux operations](LINUX_RUNTIME.en.md) and [validation notes](README.en.md) supersede the early connection-only qualification below. Historical exclusions describe that earlier step, not the current native backup/restore entry.
 [中文](NATIVE_RUNTIME.md) · [Enterprise host](HOST.en.md) · [Native entry](NATIVE_HOST.en.md) · [Ownership](NATIVE_OWNERSHIP.en.md) · [Architecture](README.en.md)
 
 The one-click and private CLI channels still use PGlite; the optional native programmatic entry has a separate contract. This core qualifies trusted native connections. It is not a complete native installation, migration, backup or recovery channel. The original factory still refuses native profiles. Only dedicated loopback Windows PostgreSQL 17.11 has been exercised; Linux, other versions and customer production remain unverified.
