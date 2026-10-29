@@ -86,18 +86,18 @@
     },
     {
       "path": "showcase/README.en.md",
-      "bytes": 3925,
-      "sha256": "1b93c3198168f1d236c480249550af1cb849ceaf69e86b07e42d1dcb839f46eb"
+      "bytes": 3785,
+      "sha256": "010e7a790231e9d0dbd36a1c6c538996e1a3e507cddce69ef51fb41b8c11de37"
     },
     {
       "path": "showcase/README.ja.md",
-      "bytes": 4022,
-      "sha256": "e3b758c34479830b49eef9b9e3c5e4b3d46876c583961979ddac79807b313aef"
+      "bytes": 3723,
+      "sha256": "cf09e94b25fbcdb651f1c3ca071d2fc457aab5ffb73dae6ca1859e7c5ff39192"
     },
     {
       "path": "showcase/README.zh.md",
-      "bytes": 3241,
-      "sha256": "2bee86e9621d46469d3a8bf603b7ce03332ffd03f444b9a81c130548449fba18"
+      "bytes": 3157,
+      "sha256": "909013bbc8f012068f82d3e27b642b4d9227367f0dc6c595a25e75d8abdc3f9a"
     },
     {
       "path": "showcase/walkthrough.html",

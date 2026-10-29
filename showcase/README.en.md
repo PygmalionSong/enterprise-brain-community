@@ -2,7 +2,7 @@
 
 [English](README.en.md) · [中文](README.zh.md) · [日本語](README.ja.md)
 
-Open [the interactive workspace](index.html) in a current desktop browser, or serve this directory with an approved static server. The UI supports English, Chinese and Japanese. No account, package install, model key or enterprise endpoint is required for this browser experience. File-URL execution was not accepted by the maintainer’s browser test surface; the observed acceptance used a loopback HTTP server. WeChat file attachments are not an HTTPS website; a future hosted address requires a separate publishing step.
+Open [the interactive workspace](index.html?lang=en) in your browser. Explore the business areas, compare the supply options and inspect the store view. This browser case needs no account, package installation, model API key or enterprise connection.
 
 Start with Processes and open any of the fifteen business areas. Select Overview to explore five domestic regions, provincial/city scope, six international markets, reporting periods and metric layers. Open the guided experience to follow the case without losing the full blueprint.
 
@@ -14,7 +14,7 @@ This is an original map-free reference operating environment with constructed da
 
 Browser interactions only change the local reference case. No real approval, payment, stock movement, customer contact or model inference occurs. Case progress and language are kept in this browser under enterprise-brain.public-showcase.v1; use Reference environment → Reset local case. There is no automatic telemetry, upload or cross-device persistence. The browser does not use the SDK database.
 
-For actual durable execution, return to the [source README](../README.md), install/build in the declared environment and run the [controlled first task](../FIRST_TASK.en.md). It exercises separate processes, approval checks, lost-response recovery and original-action lookup. Its evidence is separate from the browser case. Neither this page nor its media proves autonomous system discovery, real SAP/Dynamics compatibility, model quality, production qualification or organization-wide emergent intelligence.
+For actual durable execution, return to the [source README](https://github.com/PygmalionSong/enterprise-brain-community/blob/main/README.md), install/build in the declared environment and run the [controlled first task](https://github.com/PygmalionSong/enterprise-brain-community/blob/main/FIRST_TASK.en.md). It exercises separate processes, approval checks, lost-response recovery and original-action lookup. Its evidence is separate from the browser case. Neither this page nor its media proves autonomous system discovery, real SAP/Dynamics compatibility, model quality, production qualification or organization-wide emergent intelligence.
 
 [Actual page walkthrough / 实际页面回放 / 実画面の説明](walkthrough.html) · [MP4](media/operating-case.en.mp4)
 
