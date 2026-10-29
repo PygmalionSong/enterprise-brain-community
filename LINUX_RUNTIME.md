@@ -18,6 +18,6 @@ Ubuntu工具清单为format2、platform `linux-x64-ubuntu24`、postgresVersion `
 
 异常备份通过inspect-backup生成准确计划，确认原服务/工作器退出后recover-backup结清；不把遗留归档转成成功，不终止记录中的任意PID。签名升级读取Windows format1和Ubuntu format2证据，详见[NATIVE_UPGRADE](NATIVE_UPGRADE.md)。此源码树不是完整签名产品，需要升级时必须明确提供两个完整签名安装。
 
-构造数据和公开协议可验证基础设施，不代表真实甲方、全部厂商版本、真实模型质量、HA、无限容量或生产SLA。具体源码、平台和测试范围以对应版本的实际证据为准。
+构造数据和公开协议可验证基础设施，不代表真实部署方、全部厂商版本、真实模型质量、HA、无限容量或生产SLA。具体源码、平台和测试范围以对应版本的实际证据为准。
 
 既有PGlite签名受控迁移/演练路线仍限Windows。原生PostgreSQL备份恢复与原生签名升级合同另列，本次源码更新不宣称Linux PGlite受控迁移已支持。

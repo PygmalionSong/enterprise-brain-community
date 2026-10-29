@@ -13,7 +13,7 @@
 {"format":1,"host":"db.internal","port":5432,"database":"enterprise_brain","runtimeRole":"brain_runtime","enterpriseId":"11111111-1111-4111-8111-111111111111","passwordFile":"<规范绝对密码文件路径>","tls":{"mode":"verify-full","caFile":"<规范绝对CA证书文件路径>"}}
 ```
 
-路径占位必须由甲方替换，不把密码写在JSON/URL/命令行。密码文件为1–512字节UTF8，无换行/控制字符；CA文件至多64KiB/8证书，不包含私钥。拒绝未知字段、任意pg选项/URL、间接目录或符号链接。文件访问权由甲方配置操作系统ACL；本程序的路径/类型检查不等于Windows ACL审计。非空PG*环境变量作为冲突拒绝，不使用环境猜测连接参数。
+路径占位必须由部署方替换，不把密码写在JSON/URL/命令行。密码文件为1–512字节UTF8，无换行/控制字符；CA文件至多64KiB/8证书，不包含私钥。拒绝未知字段、任意pg选项/URL、间接目录或符号链接。文件访问权由部署方配置操作系统ACL；本程序的路径/类型检查不等于Windows ACL审计。非空PG*环境变量作为冲突拒绝，不使用环境猜测连接参数。
 
 正常档位固定CA与主机名验证、TLS≥1.2；无降级开关。仅自有回环测试可显式用tls={mode:"owned-loopback-test",plaintextAcknowledged:true}且host必须是127.0.0.1或::1；此档位不证明远程明文安全。普通池最多5，宿主归属另用1个稳定客户端；连接3秒、普通语句10秒、锁3秒、事务空闲15秒；只读资格查询局部语句3秒/锁1秒，结束恢复原事务设置。固定pg_catalog/public、row_security=on和描述符中的企业启动上下文；不会执行迁移或加载案例。失败关闭池并返回固定错误，通过才返回受信Database与资格观察；调用者必须close。
 

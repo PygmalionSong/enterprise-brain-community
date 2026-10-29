@@ -2,7 +2,7 @@
 
 [English](NATIVE_SERVICE.en.md) · [接入配置](NATIVE_DEPLOYMENT.md) · [程序宿主](NATIVE_HOST.md) · [会话归属](NATIVE_OWNERSHIP.md)
 
-`scripts/enterprise-native.mjs`仅处理明确的原生format2配置。甲方DBA须先准备专用PG17企业库、运行账号/权限和有效身份管理员；接入输入与固定SHA见接入配置合同。下列接入/启动/控制操作不迁移、GRANT、建账号、扫描网络或创建演示数据，不回退到DATABASE_URL或原PGlite入口。
+`scripts/enterprise-native.mjs`仅处理明确的原生format2配置。部署方DBA须先准备专用PG17企业库、运行账号/权限和有效身份管理员；接入输入与固定SHA见接入配置合同。下列接入/启动/控制操作不迁移、GRANT、建账号、扫描网络或创建演示数据，不回退到DATABASE_URL或原PGlite入口。
 
 构建后，在安装根使用随包Node或声明的Node24运行；下列大写名称为私人绝对文件路径，不是把密码放进参数：
 
@@ -16,7 +16,7 @@ node scripts/enterprise-native.mjs park --config ABSOLUTE_PRIVATE_CONFIG_JSON --
 node scripts/enterprise-native.mjs stop --config ABSOLUTE_PRIVATE_CONFIG_JSON
 ```
 
-首次接入parked0。流量输入严格为 `{"expectedVersion":0,"waitMs":1000}`；使用traffic-status返回的当前版本，每次状态改变递增，陈旧版本拒绝。离线只能park；activate必须有已就绪的原实例，且描述符SHA仍匹配。start为前台进程，甲方运维负责进程托管/受信HTTPS反代/证书；后端仅127.0.0.1。信号走同一排空关闭，不杀其他PID。首次启动轮换本机控制令牌，代理令牌始终由私人反代配置读取，不能发送到浏览器。
+首次接入parked0。流量输入严格为 `{"expectedVersion":0,"waitMs":1000}`；使用traffic-status返回的当前版本，每次状态改变递增，陈旧版本拒绝。离线只能park；activate必须有已就绪的原实例，且描述符SHA仍匹配。start为前台进程，部署方运维负责进程托管/受信HTTPS反代/证书；后端仅127.0.0.1。信号走同一排空关闭，不杀其他PID。首次启动轮换本机控制令牌，代理令牌始终由私人反代配置读取，不能发送到浏览器。
 
 status/stop/park不依赖当前描述符仍存在；完整私人配置哈希、实例UUID、进程和健康响应身份必须一致。只接受原生数据库/归属/流量的有界健康合同，不向其他profile或错误实例发送控制令牌。实际失去数据库归属后，健康快速返回unavailable/schema unavailable，不等待SQL或伪称上次schema仍current。正常停服先停泵/受理、最多原5秒排空真实在途处理，再关HTTP/归属/池并删除本次实例锁；断开的客户端仍计数。停服不改变持久重启策略；失败保留可核对状态，不凭锁龄抢占或自动删除陈旧锁。异常退出后使用[准确锁检查与恢复](NATIVE_MAINTENANCE.md)，只清理确认失效的本机声明，不接管数据库。
 

@@ -30,7 +30,7 @@ node scripts/enterprise-native.mjs cancel-backup --config ABSOLUTE_PRIVATE_CONFI
 
 描述符严格包含 `format:1`、`purpose:"enterprise-brain.native-backup"`、`host`、`port`、`database`、`backupRole`、`enterpriseId`、私人 `passwordFile`、`tls:{mode:"verify-full",caFile:...}`。它必须绑定原运行描述符的同一端点、数据库和企业，且账号独立。密码不放命令参数。所有路径为操作系统规范化的绝对路径；JSON 中 Windows 反斜杠须转义。
 
-工具清单为 `format:1`、`platform:"win32-x64"`、`postgresVersion:"17.11"`、规范绝对 `root`、完整 `files:[{path,bytes,sha256}]`。路径相对 root，必须准确覆盖 `bin/`、`lib/` 整棵树，包含 `pg_dump.exe`、`pg_restore.exe`、`libpq.dll`，不接受额外文件、链接或版本冲突。清单及 SHA 应由甲方对官方工具核验后生成，不能只列三个程序便认为依赖已受信。
+工具清单为 `format:1`、`platform:"win32-x64"`、`postgresVersion:"17.11"`、规范绝对 `root`、完整 `files:[{path,bytes,sha256}]`。路径相对 root，必须准确覆盖 `bin/`、`lib/` 整棵树，包含 `pg_dump.exe`、`pg_restore.exe`、`libpq.dll`，不接受额外文件、链接或版本冲突。清单及 SHA 应由部署方对官方工具核验后生成，不能只列三个程序便认为依赖已受信。
 
 Windows 实现中，固定 `pg_dump` 子进程先暂停加入私有 Windows Job，身份持久化后才明确启动。取消、父进程或守护器退出只终止所属进程树。原始 dump 不落盘；输出按 64 KiB 分帧进行 AES-256-GCM 认证加密，密钥单独保存。来源、代码、迁移和运行角色身份受绑定；同一快照的数据及对象/RLS/ACL 摘要在终帧中认证。完成清单刷盘后排他发布，半成品不构成恢复点。需 DBA 保持专用库及序列在备份窗口内稳定；这不是并发 DDL 或其他管理员任意写入下的通用数据库备份协议。
 
@@ -54,7 +54,7 @@ node scripts/enterprise-native.mjs restore --config ABSOLUTE_NEW_PRIVATE_CONFIG_
 | `restoreDescriptorFile`、`restoreDescriptorSha256` | 私人 DBA 目标描述符及准确 SHA256 |
 | `toolManifestFile`、`toolManifestSha256` | 完整受信工具清单及准确 SHA256 |
 | `runtimeDescriptorFile`、`runtimeDescriptorSha256` | 目标非所有者运行描述符及准确 SHA256 |
-| `origin`、`port` | 规范 HTTPS 来源及新的本机后端端口；仍需甲方 TLS 代理 |
+| `origin`、`port` | 规范 HTTPS 来源及新的本机后端端口；仍需部署方 TLS 代理 |
 | `workDirectory` | 安装树、归档及配置目录以外的全新私人操作目录，不复用 |
 | `maxBytes`、`timeoutMs` | 与备份相同的默认值与边界，整个恢复有总时限 |
 

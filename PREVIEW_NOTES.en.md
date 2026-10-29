@@ -1,19 +1,21 @@
-# Verification and reproduction boundaries
+# Validation environments and known limits
 
-[中文](PREVIEW_NOTES.md) · [First task](FIRST_TASK.en.md) · [CI](CI_REPRODUCTION.en.md) · [Linux operations](LINUX_RUNTIME.en.md)
+[中文](PREVIEW_NOTES.md) · [CI workflow](CI_REPRODUCTION.en.md)
 
-This map-free developer source preview includes infrastructure, a persisted reference application, the cross-system supply case and a small inventory adapter. Models are replaceable; authority and original-action receipts belong to the foundation. The browser experience runs separately from the local application. The source excludes complete signed industry bundles, maps and installed dependencies.
+## Preview.2 release checks
 
-The local environments are Windows x64 and Ubuntu24.04.5 x64, Node24.19.0 and locked dependencies. Native Ubuntu additionally requires a systemd255 user manager, cgroupv2, a non-root account and PostgreSQL17.11. This does not declare all Linux distributions or Windows hosts compatible. Dependency caches were reused; this is not independent clean-machine installation.
+Eight jobs passed on source commit8345c0d74965ddd831fdcfc554772a1d53ce05c5: Linux source, four Windows source groups, first task, operating case and source gate. [View the run](https://github.com/PygmalionSong/enterprise-brain-community/actions/runs/40836879257). This run does not validate later commits or other deployment environments.
 
-The same code and test list produced649 Windows outcomes:646 passed and three precisely named Linux-only skips. Ubuntu passed649 with zero skips. Skips are not executed passes. First-task3, backend7, projection10, adapter6 and reporting/CI-tool23 are separate groups with overlaps; do not add them. Three-language onboarding and previously approved media are retained.
+The exact local source inventory produced762 Windows checks:759 passed and3 Linux-only checks skipped. Ubuntu passed762 checks. Overlapping specialized checks are not added into a new total. Local validation reused locked dependency caches; it was not an independent user's clean-host installation.
 
-Actual local PostgreSQL17.11/TLS checks passed11 Windows and13 Ubuntu checks. They cover non-owner runtime roles,28 migrations, an owned source commit with response loss and original receipt lookup, encrypted backup, cancellation/crash handling, failed-restore quarantine, new-database restore, revoked old sessions/approvals and parked startup. Each side retains one original action/receipt with zero duplicate submission and no live-model calls. Ubuntu additionally verifies owned-worker cleanup after abrupt primary death. These are maintainer-owned databases, not customer data.
+## Environments
 
-Source checks are not signed complete-package upgrade results; upgrades require two explicitly supplied trusted complete signed installations. Legacy PGlite signed migration/rehearsal remains Windows-only. Independent customer hosts, production certificates, live-model quality, all vendor versions, production capacity/HA and business ROI remain unverified and unpromised.
+Windows x64 / Ubuntu24.04 x64, Node24.19.0 and locked dependencies. Native Ubuntu operations additionally require a systemd255 user manager, cgroupv2, a non-root account and PostgreSQL17.11; see [Linux operations](LINUX_RUNTIME.en.md). This does not establish compatibility with every Linux distribution or Windows configuration.
 
-The updated workflow requires four Windows shards, first-task, business-case and Ubuntu jobs. Inspect the exact future commit's actual Actions result: local results cannot stand in for unexecuted remote CI. The old preview.1 hosted Windows641 matrix is historical, not this version's score. An earlier business-analysis15/18 failure and subsequent18/18 reruns remain recorded with unresolved cause. Safe diagnostics do not claim to fix that historical cause.
+## Not established
 
-REPOSITORY_MANIFEST.json checks the whole distribution; SOURCE_MANIFEST.json checks its SDK subset. Final documentation is bound byte-for-byte to tested code. Hashes establish consistency, not publisher signatures or production certification. Retain LICENSE, NOTICE and third-party terms; see [asset scope](ASSET_SCOPE.en.md).
+Independent enterprise production operation, production certificates and identity integration, arbitrary vendor compatibility, production capacity/high availability, live-model quality or customer ROI. The source preview excludes complete signed industry bundles and maps. The browser case and local backend maintain separate states; constructed payment or sales screens are not backend business facts.
 
-Installation reports are generated and reviewed explicitly by users, without automatic upload or telemetry. Format2 retains complete pass/fail/skip counts and known platform skip reasons; format1 remains a valid historical format. Maintainer CI, local qualification and attachment downloads are not external adoption; the total installation population is unknown. Voluntary reports use Issues, sensitive issues follow the [security policy](SECURITY.en.md). Do not upload private logs or credentials.
+## Reproduction and reporting
+
+Run the [first task](FIRST_TASK.en.md) or [local operating case](RUN_OPERATING_CASE.en.md). REPOSITORY_MANIFEST.json validates distribution files; SOURCE_MANIFEST.json records the SDK subset. Hashes are not publisher signatures or production certification. Users can review and voluntarily share installation reports; no automatic upload or telemetry is enabled.

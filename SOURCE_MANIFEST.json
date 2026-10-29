@@ -84,8 +84,8 @@
     },
     {
       "path": "ASSET_SCOPE.en.md",
-      "bytes": 2425,
-      "sha256": "593a66676d954e694986d8bfb86416cbdafb680003d5701c7bbc16c9d2710961"
+      "bytes": 2332,
+      "sha256": "b233f26c2071a32391a9bba29d3ea3c69454a662e8de0dd21ed4a8fe5968b446"
     },
     {
       "path": "ASSET_SCOPE.ja.md",
@@ -94,8 +94,8 @@
     },
     {
       "path": "ASSET_SCOPE.md",
-      "bytes": 2080,
-      "sha256": "a9115dfe3671359caee941dfff75ff82e3e52968a9fc0c0e744618c7f7209c69"
+      "bytes": 1987,
+      "sha256": "47907129db81b1f385768ba6988bebbc1908eb1777f83ecac171f6e041c7065c"
     },
     {
       "path": "assets/backend-execution.en.png",
@@ -154,8 +154,8 @@
     },
     {
       "path": "BACKEND_EVIDENCE.en.md",
-      "bytes": 1973,
-      "sha256": "91db2bd41c76bccc7e47a3c7dc454e8a1b48240f57dfe0a1ae04df984c8be395"
+      "bytes": 1924,
+      "sha256": "41cd5d45ff956ce28418e57adc80ece5a6104014117798c325b1d933c63df158"
     },
     {
       "path": "BACKEND_EVIDENCE.ja.md",
@@ -164,8 +164,8 @@
     },
     {
       "path": "BACKEND_EVIDENCE.zh.md",
-      "bytes": 1561,
-      "sha256": "9c2b9b19cb3da0d689bf895dcc1b994be96d51e3267276ecb19b04ee106ef9b0"
+      "bytes": 1533,
+      "sha256": "52da725940a163faac66888389981f1c21b85d2c63b395b9df772de0e825d6a6"
     },
     {
       "path": "BUDGET_PERIODS.en.md",
@@ -174,8 +174,8 @@
     },
     {
       "path": "BUDGET_PERIODS.md",
-      "bytes": 3734,
-      "sha256": "2216001def4046a61f1c452b5f8a85af4a391cd40a2e6ff986cc556ed6b1b09b"
+      "bytes": 3762,
+      "sha256": "2eafc351812088a3b98b2157473f9d1f1b617f3a00a2d46742af1dcbd211a8a8"
     },
     {
       "path": "BUSINESS_ANALYSIS.en.md",
@@ -204,8 +204,8 @@
     },
     {
       "path": "BUSINESS_INFERENCE.md",
-      "bytes": 4296,
-      "sha256": "0ef82bc9eff78b14a0b27210dd6d451e427ad45ff981bee245100297851a12e9"
+      "bytes": 4302,
+      "sha256": "b1e3ef1c29aa597e0e828646140738dc2d1995ef4b81e6726fb99956a94dcd91"
     },
     {
       "path": "BUSINESS_OBSERVATIONS.en.md",
@@ -214,8 +214,8 @@
     },
     {
       "path": "BUSINESS_OBSERVATIONS.md",
-      "bytes": 2977,
-      "sha256": "8e1c255af5685281ee58294da0c34d63eafdf76d1d032a61894bc45aa5f747e2"
+      "bytes": 3008,
+      "sha256": "3bf3bc5fd892f39cddc1101583f9047abb86d1d89853dd3ec46b9c8db06be0b2"
     },
     {
       "path": "CANDIDATE_ADOPTION.en.md",
@@ -239,18 +239,18 @@
     },
     {
       "path": "CONTACT.en.md",
-      "bytes": 1417,
-      "sha256": "ee8652ede9da6145c200366e6511a5cf5ac07963679dacfc74e8c8eb30545871"
+      "bytes": 763,
+      "sha256": "782c4fd5a7b08bc13471b85a1950168521c54f98199402f7bb0e2ae43c880477"
     },
     {
       "path": "CONTACT.ja.md",
-      "bytes": 1639,
-      "sha256": "c5cba67c9ff80360c9a74ad2176ee37600ad52cccc6b3c0cb3036af483c1380e"
+      "bytes": 947,
+      "sha256": "8d93d2808270771c6322cb87741a15328ded820146762326970b841f5773942c"
     },
     {
       "path": "CONTACT.md",
-      "bytes": 1241,
-      "sha256": "da00ead2b637fcef8a15659748f82ac3ca3f124d78e8e3284fd81f7178fbed8c"
+      "bytes": 679,
+      "sha256": "fb9657e004b9c6e59566d77d0b2e109fdd78742a2f5e598239eb7b704c669711"
     },
     {
       "path": "CONTRIBUTING.en.md",
@@ -299,18 +299,18 @@
     },
     {
       "path": "DEMO.en.md",
-      "bytes": 808,
-      "sha256": "9e9c3ee1630405c8b7f6b8260d3864c589311ec40bfa66b3ee53ac4aadaeb210"
+      "bytes": 608,
+      "sha256": "f379400ee36035983bc9c98a72135f25e5552afe206a01c523c736f06e65cd13"
     },
     {
       "path": "DEMO.ja.md",
-      "bytes": 853,
-      "sha256": "1489201da0ecd41cf74c68a4e96806409dcfa0b9ea672ee4ff369aedd8aecf2c"
+      "bytes": 707,
+      "sha256": "e57c6d8bb183d3593e203fc81a4dc37faf3e3eac532f56a1f724e97c569f8a0d"
     },
     {
       "path": "DEMO.md",
-      "bytes": 724,
-      "sha256": "0478a6d422eed468291c294ed691fed695d5c2f5e3dfc876c73c9278adb3704f"
+      "bytes": 541,
+      "sha256": "1372007cd048c36d92aa3e95e064da400f1416c569ae2dbef2a4a20078c71532"
     },
     {
       "path": "docs/dependencies.json",
@@ -389,8 +389,8 @@
     },
     {
       "path": "FIRST_CONNECTION.md",
-      "bytes": 2965,
-      "sha256": "8debdb2789bae016cbe850fa84d6e7d5beb83b1402f56ae03529394c758c944f"
+      "bytes": 3009,
+      "sha256": "9780523033b6bc870db0db27ccefa5ce8e24d4adcaad4453b68732ef75e8b473"
     },
     {
       "path": "FIRST_TASK.en.md",
@@ -414,8 +414,8 @@
     },
     {
       "path": "HOST.md",
-      "bytes": 9837,
-      "sha256": "477b2bf44f5f3846626416a0f8574fdc9c885d453c08c1ab62ebb5f56bb7ec57"
+      "bytes": 9912,
+      "sha256": "6a7080a8b8c064dffe8c004f7b374ed34ff82fc3d8d6d271411557495b325748"
     },
     {
       "path": "INSTALLATION_VALIDATION.en.md",
@@ -629,8 +629,8 @@
     },
     {
       "path": "LINUX_RUNTIME.md",
-      "bytes": 3534,
-      "sha256": "172b8e7bd096921cfd3e9566ef6a02410ddba91ce1b90ae27f6ae0c9e7ed91ec"
+      "bytes": 3560,
+      "sha256": "e47d62828f300805ad7090f7d7efe9ab58c4c8b10996534341e6219c1e45a49d"
     },
     {
       "path": "MCP_TOOLS.en.md",
@@ -824,8 +824,8 @@
     },
     {
       "path": "MODELS.md",
-      "bytes": 5024,
-      "sha256": "453432223550f51f41a918d5db25cf09713636669b5fea91197cf40a3f2c483c"
+      "bytes": 5089,
+      "sha256": "895aa8d5d444b1ff4c3da3a621d5507f4f20a0e2335f3c79d6c75e3628645f65"
     },
     {
       "path": "NATIVE_AGENT_CONFIGURATION.en.md",
@@ -834,8 +834,8 @@
     },
     {
       "path": "NATIVE_AGENT_CONFIGURATION.md",
-      "bytes": 3902,
-      "sha256": "fcdb23d05e060213106d581ed45b19da93f3ecb0d5dc92de02d34088603ce3ab"
+      "bytes": 3927,
+      "sha256": "79ac03116e60603d6c6cda47142ac7b528fec7575bfbffd4f4fcf0236f953b00"
     },
     {
       "path": "NATIVE_BACKUP_RESTORE.en.md",
@@ -844,8 +844,8 @@
     },
     {
       "path": "NATIVE_BACKUP_RESTORE.md",
-      "bytes": 9618,
-      "sha256": "4b617ca690516e0fe784beeec565432feaddc6830abea2fc7ad65cf88b91f1ec"
+      "bytes": 9624,
+      "sha256": "c4c60e0333c49e28e87e279d8a7ec8b7870b901b041945a574cf0bd2c2b0bbc3"
     },
     {
       "path": "NATIVE_BUDGET_PERIODS.en.md",
@@ -874,8 +874,8 @@
     },
     {
       "path": "NATIVE_DEPLOYMENT.md",
-      "bytes": 3285,
-      "sha256": "43ff69617c72531e04aaf40459586a251d02896efd15fef61f7eca1ea7332d0b"
+      "bytes": 3288,
+      "sha256": "2339deb0d596905bc8d9b67249695b606b472bb9c9a8cec6b0ef9243b839069e"
     },
     {
       "path": "NATIVE_HOST.en.md",
@@ -884,8 +884,8 @@
     },
     {
       "path": "NATIVE_HOST.md",
-      "bytes": 3591,
-      "sha256": "2a524110b2da05d88e017ee28ca8e773d1e2ce20a6b3cd7cb154f9913a780885"
+      "bytes": 3610,
+      "sha256": "c4d4318a0037647045d5dddf41e7513ff7979ebae6192928210fb912aecd8385"
     },
     {
       "path": "NATIVE_MAINTENANCE.en.md",
@@ -914,8 +914,8 @@
     },
     {
       "path": "NATIVE_RUNTIME.md",
-      "bytes": 3982,
-      "sha256": "73e683c1db135319da6510fb8174d7dc746d903c2d6cbd5844c777b9703d5647"
+      "bytes": 3988,
+      "sha256": "091e8aebf1cb197f2bf607d39d4448a2957d209ca4ecc167030d7136fce0b578"
     },
     {
       "path": "NATIVE_SERVICE.en.md",
@@ -924,8 +924,8 @@
     },
     {
       "path": "NATIVE_SERVICE.md",
-      "bytes": 4718,
-      "sha256": "406abf76d2b6296616ba3b86d678034ad52d12739a742136a17e0885e4114762"
+      "bytes": 4754,
+      "sha256": "613346eadb727f2e7062e04b5bb32044b24ee827a22300c32f560e4819253341"
     },
     {
       "path": "NATIVE_UPGRADE.en.md",
@@ -934,8 +934,8 @@
     },
     {
       "path": "NATIVE_UPGRADE.md",
-      "bytes": 9479,
-      "sha256": "33deef60e448e74618b0936fbe1c9cfffbeeaadfbf480213efdcc2b67098cd64"
+      "bytes": 9482,
+      "sha256": "98bda12e1f9925372c93433dba4d73b7908e3ec3af6c1e233732ab72647a765d"
     },
     {
       "path": "NOTICE",
@@ -989,13 +989,13 @@
     },
     {
       "path": "PREVIEW_NOTES.en.md",
-      "bytes": 3590,
-      "sha256": "bd18a938015baa26c4c15c0e764894eb974d65c74833429367f7a6fd106e29d3"
+      "bytes": 1968,
+      "sha256": "7aaf4e2adfc29f383b648d78fa1ed80d01cb68ba2a897f336211194f9086aa1b"
     },
     {
       "path": "PREVIEW_NOTES.md",
-      "bytes": 3104,
-      "sha256": "265a53a82746c262826d19386514c5da53f383f20e58e3d9ee3bbdffc2b7b908"
+      "bytes": 1721,
+      "sha256": "b4f9f493a84792dfa1c508ddd7be52c1d09b309efa9cea4b68b4ebc340cdcfaa"
     },
     {
       "path": "PREVIEW_SCOPE.en.md",
@@ -1004,8 +1004,8 @@
     },
     {
       "path": "PREVIEW_SCOPE.md",
-      "bytes": 3018,
-      "sha256": "71e46b6e90f8274b9922c47d5bb2d1e695d54a3f711ba72a5c52f10262188a9e"
+      "bytes": 3021,
+      "sha256": "02dc7d867f1319d7e8a1239d6d5281b94e9080d758cab3fdf1e8e25b233a254d"
     },
     {
       "path": "QUICKSTART.en.md",
@@ -1019,23 +1019,23 @@
     },
     {
       "path": "README.en.md",
-      "bytes": 5006,
-      "sha256": "725956c84a0d678ecbcc3850dc157773f532d79ed640e7ae20cc983af5aca000"
+      "bytes": 2940,
+      "sha256": "206646e7b4e34d6de49418fbab40619c2ee4aba2be267de65d31a7dc2ad5782b"
     },
     {
       "path": "README.ja.md",
-      "bytes": 5345,
-      "sha256": "8f45d50bcb95b3dbacff8a52cf0bf8362819779ff18af64dbe061dd8cc729a9d"
+      "bytes": 3419,
+      "sha256": "ba31decf72ccc533ad5b162748bf8d6de5ac0f87f0c5d6a0ef6afd26bb882062"
     },
     {
       "path": "README.md",
-      "bytes": 5006,
-      "sha256": "725956c84a0d678ecbcc3850dc157773f532d79ed640e7ae20cc983af5aca000"
+      "bytes": 2940,
+      "sha256": "206646e7b4e34d6de49418fbab40619c2ee4aba2be267de65d31a7dc2ad5782b"
     },
     {
       "path": "README.zh.md",
-      "bytes": 4245,
-      "sha256": "cc734b600bcfdccc916e610bde4901a7150160c7e89e046c345d76077303a3db"
+      "bytes": 2634,
+      "sha256": "267904f7950a8bae6808816e3d8c200a3617390a8fa228a0c84c158aba5535c4"
     },
     {
       "path": "RECEIPTS.en.md",
@@ -1079,8 +1079,8 @@
     },
     {
       "path": "RUN_OPERATING_CASE.zh.md",
-      "bytes": 2923,
-      "sha256": "a1ed1dc93d70a03499ee07a859564331c48611d6c6f037f75dbfa37f23677090"
+      "bytes": 2926,
+      "sha256": "ae738016c667bd088b6eb593b97d83b0ca66bf21471ea991952a4c134fcbc647"
     },
     {
       "path": "scripts/benchmark-performance.mjs",
@@ -3164,8 +3164,8 @@
     },
     {
       "path": "TRAFFIC.md",
-      "bytes": 3429,
-      "sha256": "1b2594536b6cdd88a345fe8a844e2ff88caf7c62646370e2557df440d5e4a6e0"
+      "bytes": 3432,
+      "sha256": "5407e71bbcc017a29223976becfbb8df0836da8c77d2aa72c5815b55d459699a"
     },
     {
       "path": "tsconfig.json",

@@ -14,7 +14,7 @@
 
 | 边界 | 当前范围 |
 |---|---|
-| 环境 | Windows x64 / Ubuntu24.04 x64、Node24.19.0、pnpm11.25.0；锁定35依赖，需要安装构建。Ubuntu24.04 x64源码/原生范围见LINUX_RUNTIME.md；独立甲方宿主资格仍未验证。 |
+| 环境 | Windows x64 / Ubuntu24.04 x64、Node24.19.0、pnpm11.25.0；锁定35依赖，需要安装构建。Ubuntu24.04 x64源码/原生范围见LINUX_RUNTIME.md；独立部署方宿主资格仍未验证。 |
 | 持久化 | PGlite与原生PostgreSQL17.11合同不同，备份/恢复/升级源码有各自范围，不代表高可用或自动DBA配置。 |
 | 流程信息 | MCP2025-11-25 stdio、enterprise-brain.process/1、BPMN XML结构子集、OData4.01 JSON实体；实体不自动成为流程。 |
 | 执行 | 版本化定义/关系、冻结无环图、独立批准、动作身份、submit/lookup与回执；不含任意循环/嵌套/动态流和普遍exactly-once。 |

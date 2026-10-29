@@ -1,9 +1,9 @@
 # Source, case and media scope
 
-Backend-connected reference source / 后端连接参考源码 / バックエンド接続の参照ソース: [run](RUN_OPERATING_CASE.en.md), [中文](RUN_OPERATING_CASE.zh.md), [日本語](RUN_OPERATING_CASE.ja.md), [evidence](BACKEND_EVIDENCE.en.md). The source includes a loopback reference application with persisted supply execution. Earlier exclusions of a full cockpit do not exclude this reference application; maps, the signed installer and production qualification remain excluded. / 本次新增本机参考应用与持久供货执行；原完整驾驶舱排除说明不再排除这个参考应用，地图、签名安装器和生产资格仍不包含。
+Backend-connected reference source / 后端连接参考源码 / バックエンド接続の参照ソース: [run](RUN_OPERATING_CASE.en.md), [中文](RUN_OPERATING_CASE.zh.md), [日本語](RUN_OPERATING_CASE.ja.md), [evidence](BACKEND_EVIDENCE.en.md). The source includes a loopback reference application with persisted supply execution. Earlier exclusions of a full cockpit do not exclude this reference application; maps, the signed installer and production qualification remain excluded. / 包含本机参考应用与持久供货执行，不含地图或签名安装器。
 
 
-The candidate includes the map-free enterprise-agent foundation source and a separate original browser-local beverage operating experience. [English case scope](showcase/README.en.md) · [中文](showcase/README.zh.md) · [日本語](showcase/README.ja.md).
+The source includes the map-free enterprise-agent foundation source and a separate original browser-local beverage operating experience. [English case scope](showcase/README.en.md) · [中文](showcase/README.zh.md) · [日本語](showcase/README.ja.md).
 
 Included: source contracts and tests; owned constructed fixtures; the independent15-domain browser experience; original schematic operating-network cards; continuous relative-density store heatmaps; six actual page captures; a54-second captioned pan over those captures; zh/en/ja captions and guides. The media is not continuous screen recording, live model output, camera observation or customer proof. The executable controlled first task has its own persistent-process evidence.
 

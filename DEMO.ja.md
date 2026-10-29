@@ -1,13 +1,7 @@
-# 実行結果の要約図
+# 最初のタスクの実行記録
 
-[English](DEMO.en.md) · [中文](DEMO.md) · [日本語](DEMO.ja.md)
+![実行結果](assets/first-task.en.png)
 
-![Observed task evidence](assets/first-task.ja.png)
+2026-10-25 にメンテナーがローカルで実行した参照タスクの要約です。二つのプロセス、二件のアクション、元システムの記録二件、実行結果の記録二件で、重複送信はゼロでした。連続録画、顧客への導入、実モデルの評価ではありません。環境とソース識別子は[元の結果](examples/observed-result/first-task.json)に記載しています。
 
-2026-10-25にメンテナーが自ら用意した検証用タスクを実行した結果です。端末録画、顧客環境への導入、実モデルの評価ではありません。
-
-[JSON](examples/observed-result/first-task.json) · [Run / 运行 / 実行](FIRST_TASK.ja.md) · [Home](README.ja.md)
-
-実行時の元のソース一覧ハッシュはJSONにあります。今回追加するのは文書と図で、実行コード・テスト・ワークフローの内容は同一です。過去の641件の検査を新しい一覧に対する再実行と表明しません。
-
-Windows x64 · Node24.19.0 · processes2 · actions2 · sourceRows2 · receipts2 · duplicateSubmissions0.
+再現には[最初のタスク（英語）](FIRST_TASK.en.md)、現バージョンの対象範囲には[検証説明（英語）](PREVIEW_NOTES.en.md)を参照してください。

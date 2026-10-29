@@ -2,7 +2,7 @@
 
 [English](MODELS.en.md) · [模型核心](PLANNING_MODEL_CORE.md) · [企业宿主](HOST.md) · [流量控制](TRAFFIC.md)
 
-schema21把模型安装元数据与持久预算放在同一企业事务。默认没有安装，不联系任何模型，不下载模型、不自动路由云端、不回退mock/饮料案例。当前只支持明确的127.0.0.1结构化HTTP协议（Responses或Chat Completions），甲方自行部署模型服务和管理凭证。
+schema21把模型安装元数据与持久预算放在同一企业事务。默认没有安装，不联系任何模型，不下载模型、不自动路由云端、不回退mock/饮料案例。当前只支持明确的127.0.0.1结构化HTTP协议（Responses或Chat Completions），部署方自行部署模型服务和管理凭证。
 
 停服后执行`node scripts/enterprise.mjs model-status --config ABSOLUTE_PRIVATE_CONFIG`取得部署`configurationSha256`和模型预算`configurationVersion`。当前IT用户登录后GET`/v1/context`取得自己的`principalId`。把以下结构保存为私人文件，替换大写占位值；`tokenFile`可为null，或指向无换行、1–8192个可打印ASCII字符的私人Token文件。不要把Token放入命令参数、Git或此文档。
 
@@ -47,7 +47,7 @@ schema21把模型安装元数据与持久预算放在同一企业事务。默认
 
 卸载输入使用`action:'uninstall',principalId,expectedConfigurationSha256,expectedVersion,uninstallAcknowledged:true`，同样停服执行。卸载/重装保留稳定预算ID及累计预留，不能清零。当前上限180次总调用、8192单次输出Token、1474560累计预留，配置期限至多一小时；这是有界授权，不是无限运营预算。
 
-加密恢复清除安装引用、撤销旧会话、只使规划配置失效一次，并保留预算/候选及`reconciliationRequired`。旧快照无法证明之后的外部费用，普通重装不能解除此封锁。独立[额度周期](BUDGET_PERIODS.md)可由IT停服操作明确关闭旧周期、保留档案并开放新的禁用配置；未知外部费用与未核验账单状态继续保留。真实模型和干净甲方宿主仍未验证；Ubuntu原生PG基础设施范围另见LINUX_RUNTIME.md；本机协议测试不是实际AI、厂商兼容或完整企业脑验收。通用经营工具仍需甲方明确安装和字段授权；老板目标界面尚未接入；完整签名产品升级见[受控升级](UPGRADE_CONTROL.md)，原历史合同变化不自动通过，已批准经营展示不变。
+加密恢复清除安装引用、撤销旧会话、只使规划配置失效一次，并保留预算/候选及`reconciliationRequired`。旧快照无法证明之后的外部费用，普通重装不能解除此封锁。独立[额度周期](BUDGET_PERIODS.md)可由IT停服操作明确关闭旧周期、保留档案并开放新的禁用配置；未知外部费用与未核验账单状态继续保留。真实模型和干净部署方宿主仍未验证；Ubuntu原生PG基础设施范围另见LINUX_RUNTIME.md；本机协议测试不是实际AI、厂商兼容或完整企业脑验收。通用经营工具仍需部署方明确安装和字段授权；老板目标界面尚未接入；完整签名产品升级见[受控升级](UPGRADE_CONTROL.md)，原历史合同变化不自动通过，已批准经营展示不变。
 
 
 明确采用候选生成冻结计划见[候选采用合同](CANDIDATE_ADOPTION.md)，采用后仍需独立业务批准，不自动执行。

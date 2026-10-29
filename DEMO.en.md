@@ -1,13 +1,7 @@
-# An observed task, not a product screenshot
+# First-task run record
 
-[English](DEMO.en.md) · [中文](DEMO.md) · [日本語](DEMO.ja.md)
+![First-task result](assets/first-task.en.png)
 
-![Observed task evidence](assets/first-task.en.png)
+This graphic summarizes a maintainer-owned local run on2026-10-25: two processes, two actions, two source rows and two receipts, with zero duplicate submissions. It is a historical summary, not a continuous recording, customer deployment or live-model evaluation. See the [original result](examples/observed-result/first-task.json) for its environment and source identifier.
 
-This evidence graphic summarizes an actual maintainer-owned run on 2026-10-25. It is not a terminal recording, customer deployment or live-model evaluation.
-
-[JSON](examples/observed-result/first-task.json) · [Run / 运行 / 実行](FIRST_TASK.en.md) · [Home](README.md)
-
-The run used the original source inventory shown in the JSON. This proposal adds documentation and media; its executable source, tests and workflow remain byte-identical. Do not call the historical641 checks a fresh run on this new inventory.
-
-Windows x64 · Node24.19.0 · processes2 · actions2 · sourceRows2 · receipts2 · duplicateSubmissions0.
+Run the [first task](FIRST_TASK.en.md) to reproduce in your environment. Current release boundaries are in the [validation notes](PREVIEW_NOTES.en.md).

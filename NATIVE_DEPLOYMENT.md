@@ -2,7 +2,7 @@
 
 [English](NATIVE_DEPLOYMENT.en.md) · [连接前提](NATIVE_RUNTIME.md) · [会话归属](NATIVE_OWNERSHIP.md)
 
-受信本机程序接口 `adoptNativeEnterprise(root, configFile, inputFile)` 接入由甲方DBA预先迁移、授权和初始化管理员的专用PostgreSQL企业库。它不迁移、不GRANT、不创建账号，不改业务表、预算或模型安装。专库确认是DBA的明确声明，不以RLS可见的一个企业父行冒充全库盘点。
+受信本机程序接口 `adoptNativeEnterprise(root, configFile, inputFile)` 接入由部署方DBA预先迁移、授权和初始化管理员的专用PostgreSQL企业库。它不迁移、不GRANT、不创建账号，不改业务表、预算或模型安装。专库确认是DBA的明确声明，不以RLS可见的一个企业父行冒充全库盘点。
 
 `configFile` 必须为现有规范私人父目录下全新专用子目录中的 `config.json`；拒绝已有目标、间接路径、设备名和隐藏配置目录。私人输入JSON严格包含 `enterpriseId`、`runtimeRole`、规范HTTPS `origin`、后端 `port`、绝对 `runtimeDescriptorFile`、准确64位小写 `runtimeDescriptorSha256`，以及两个明确的 `adoptionAcknowledged: true`、`dedicatedDatabaseAcknowledged: true`。不要把私人输入、描述符、凭证或配置加入仓库。
 
