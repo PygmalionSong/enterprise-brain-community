@@ -1,7 +1,7 @@
 {
   "format": 1,
   "scope": "map-free-enterprise-agent-foundation",
-  "sdkSourceManifestSha256": "0e9cb1d32a5ae6522429a949934732078aa9cd78efe1dd2b1896d63b561e48cb",
+  "sdkSourceManifestSha256": "da3418f6252c7b8dafd56c29bf5bf9ddc5064bd47bb83bb2fc6fa663750936b7",
   "files": [
     {
       "path": ".gitattributes",
@@ -290,8 +290,8 @@
     },
     {
       "path": "FIRST_TASK.ja.md",
-      "bytes": 2157,
-      "sha256": "d38fb26bce62ab134c910b7986f0f6d2e22394ae8f574d105cd7709a067d0402"
+      "bytes": 2393,
+      "sha256": "80749f8aece43888ab86711e065c17bd4e1249afbdfbee526782ecddfef24fac"
     },
     {
       "path": "FIRST_TASK.md",
@@ -626,7 +626,7 @@
     {
       "path": "SOURCE_MANIFEST.json",
       "bytes": 108039,
-      "sha256": "0e9cb1d32a5ae6522429a949934732078aa9cd78efe1dd2b1896d63b561e48cb"
+      "sha256": "da3418f6252c7b8dafd56c29bf5bf9ddc5064bd47bb83bb2fc6fa663750936b7"
     },
     {
       "path": "STORY.en.md",
