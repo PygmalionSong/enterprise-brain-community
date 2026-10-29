@@ -1,23 +1,28 @@
-# Operating experience
+# Beverage business case
 
 [English](README.en.md) · [中文](README.zh.md) · [日本語](README.ja.md)
 
-Open [the interactive workspace](index.html?lang=en) in your browser. Explore the business areas, compare the supply options and inspect the store view. This browser case needs no account, package installation, model API key or enterprise connection.
+Open the [interactive workspace](index.html). Explore fifteen business areas, the operating overview, supply coordination and store operations. English, Chinese and Japanese are available. No account or model API key is needed.
 
-Start with Processes and open any of the fifteen business areas. Select Overview to explore five domestic regions, provincial/city scope, six international markets, reporting periods and metric layers. Open the guided experience to follow the case without losing the full blueprint.
+## What can I explore?
 
-The case follows South immediate consumption, Oct12–18,2026. Additional demand is160×10k cases. Compare own production80, transfer60 and co-pack20. Cash5,220×CNY10k and incremental cost1,040×CNY10k are different measures. A4,500 cap, unmet quality prerequisites or the internal-only coverage gap prevent approval. Explicit approval locks the plan. Verify four separate receipts; Finance payment and the Oct18 outcome require separate confirmation. Constructed received/sold/remaining quantities reconcile160=148+12; receipts are not revenue.
+- **Operating overview:** select a reporting period, five domestic regions, provinces/cities or six international markets.
+- **Business processes:** open an area to see its steps, data, reports and analysis.
+- **Supply coordination:** South needs another 1.6 million cases for October 12–18, 2026. Compare 800,000 from own production, 600,000 from warehouse transfers and 200,000 from contract manufacturing. Review CNY 52.2 million in cash requirements separately from CNY 10.4 million in incremental cost. Change the cash cap and quality conditions before reviewing approval and follow-up.
+- **Store operations:** explore cold availability, traffic density, dwell time, shelf placement and trial conditions. Heatmaps use sample density indices.
 
-Stores exposes cold availability, traffic density, dwell, time windows, shelf selection and trial constraints. Heatmap colors are relative density indices on a fixed scale within each metric; they are not measured people counts or real camera footage.
+## Data and interactions
 
-This is an original map-free reference operating environment with constructed data and designed insights. It uses schematic region/market cards, not geographic outlines. Group reporting closes through September2026; October–December figures are forecasts, while the case and store observations have their own dates. Company, regional, channel, financial, customer and store records are not the results or internal records of any actual company. No logo, geographic geometry, customer image or real sensor feed is included. Large-company scale is a design reference, not evidence of performance or a reproduced issuer dataset.
+The company, business figures and analysis are examples, not customer results. Group reporting closes through September 2026, with October–December shown as forecasts. The supply case and store pages have their own dates. Regional diagrams show business relationships.
 
-Browser interactions only change the local reference case. No real approval, payment, stock movement, customer contact or model inference occurs. Case progress and language are kept in this browser under enterprise-brain.public-showcase.v1; use Reference environment → Reset local case. There is no automatic telemetry, upload or cross-device persistence. The browser does not use the SDK database.
+Approval, receiving, payment and sales are separate steps. At the end of the scenario, 1.6 million cases received reconcile to 1.48 million sold and 120,000 remaining.
 
-For actual durable execution, return to the [source README](https://github.com/PygmalionSong/enterprise-brain-community/blob/main/README.md), install/build in the declared environment and run the [controlled first task](https://github.com/PygmalionSong/enterprise-brain-community/blob/main/FIRST_TASK.en.md). It exercises separate processes, approval checks, lost-response recovery and original-action lookup. Its evidence is separate from the browser case. Neither this page nor its media proves autonomous system discovery, real SAP/Dynamics compatibility, model quality, production qualification or organization-wide emergent intelligence.
+Controls update browser-local case state. They do not connect to customer systems, call a live model or execute external business operations. Language and progress stay in this browser and can be reset from About this environment. No automatic upload takes place.
 
-[Actual page walkthrough / 实际页面回放 / 実画面の説明](walkthrough.html) · [MP4](media/operating-case.en.mp4)
+## Run the backend
 
-The54-second media pans over actual page captures with captions; it is not a continuous screen recording. / 54秒媒体由实际页面截图及字幕组成，不是连续录屏。 / 54秒の映像は実画面キャプチャーと字幕で構成され、連続録画ではありません。
+The browser case and local backend run separately. Follow the [source README](https://github.com/PygmalionSong/enterprise-brain-community/blob/main/README.md) to install and build, then run the [first task](https://github.com/PygmalionSong/enterprise-brain-community/blob/main/FIRST_TASK.en.md) to check approval, persistence and recovery after interruption.
 
-Source and original case/media: Apache-2.0; retain the repository LICENSE and NOTICE. / 源码及自主案例素材遵循仓库许可。 / ソースと独自事例・素材はリポジトリーのライセンスに従います。
+[Page walkthrough](walkthrough.html) · [54-second video](media/operating-case.en.mp4)
+
+The video combines actual page captures and captions; it is not a continuous screen recording. Source and original case media use Apache-2.0. Retain LICENSE and NOTICE when redistributing.
