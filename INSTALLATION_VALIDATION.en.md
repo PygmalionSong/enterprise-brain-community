@@ -1,10 +1,12 @@
-# Installation validation and voluntary feedback
+# Check your installation
 
-[中文](INSTALLATION_VALIDATION.md)
+[中文](INSTALLATION_VALIDATION.md) · [Support scope](PREVIEW_SCOPE.en.md)
 
-This source is an enterprise Agent foundation developer-preview candidate. It includes a constructed operating reference and an independent enterprise host; neither establishes a production enterprise installation. Use Node 24; the reproduction tool versions are Node 24.19.0 and pnpm 11.25.0. See [README](README.en.md) for verified scope and limits. Validation is an explicit local action, not installation telemetry. GitHub login or report submission is never required to use the project.
+After installing dependencies, run local checks for the source inventory, types, build and SDK tests. Results are written to a local JSON file and are not uploaded automatically. You do not need to submit a report to use the project.
 
-Extract or clone into a fresh directory, then run:
+## Generate a report
+
+Extract or clone the source into a fresh directory. With Node 24.19.0 and pnpm 11.25.0, run:
 
 ```text
 pnpm install --frozen-lockfile --ignore-scripts
@@ -12,24 +14,24 @@ node --test tests/installation-report.test.mjs
 node scripts/installation-report.mjs --out ABSOLUTE_NEW_PRIVATE_REPORT_JSON --log-dir ABSOLUTE_NEW_PRIVATE_LOG_DIRECTORY
 ```
 
-Replace both placeholders with new absolute paths whose parent directories already exist. Use Windows absolute paths on Windows. Existing reports/logs are never overwritten. Stop if the locked dependency installation fails: copying another node_modules or changing the lockfile does not prove installation. The report command runs inventory, typecheck, build and the existing SDK tests in order, marking later steps not-run after a failure. It does not install dependencies, initialize enterprise databases, or contact real enterprise systems or models. Tests may create owned temporary databases and local protocol services; these are not real-platform results.
+Replace both placeholders with new absolute paths whose parent directories already exist. Use Windows paths on Windows. Continue only after each command succeeds; keep reports and logs if a step fails.
 
-The minimal JSON contains a per-run random ID, source inventory digest, OS/architecture/Node version, check outcomes and complete test counts. It excludes usernames, hostnames, IPs, environment variables, paths, customer identifiers, business data, credentials and raw logs. It makes no network submission. It cannot establish independent-user, clean-host or production-deployment verification; those fields remain false. Dependency-installation outcomes and fresh-directory use are separate contributor statements, not inferred from passing tests.
+The report command does not install dependencies or contact enterprise systems or models. Tests may create temporary databases and local services to check code behavior. Passing them does not establish production deployment.
 
-Inspect the JSON yourself before optionally pasting it into the actual repository's “Installation feedback / 安装反馈” Issue. GitHub Issues are public: your account and submitted text are visible. You can simply choose not to submit. Never paste private logs. Follow the [security policy](SECURITY.en.md) for sensitive issues; do not disclose sensitive details before a private channel is configured.
+## What is in the report?
 
-Failures, not-run attempts, upgrade checks and seven-day follow-ups are all welcome. No praise, Star or employer name is required. Link earlier public feedback for repeat attempts. Maintainers distinguish attempts, same-person retests, independent reproductions and self-reported organizational adoption; reports are not automatically new users. Maintainer CI is not external adoption.
+The format is `enterprise-brain.installation-report/2`. It includes a per-run ID, source inventory digest, OS, architecture, Node version, step results and test counts. Skips are recorded separately. The named Linux-only skips allowed on Windows are not passed executions. After a failure, later steps are marked not-run.
 
-The CI template produces remote evidence only after it runs in an actual repository. It uses a read-only token, pinned actions, hosted runners and no production/model secrets. It avoids pull_request_target and automatic publishing, and uploads no raw logs/customer directories. Hosted Windows build/isolated-test verification does not establish full customer-server installation, DBA recovery/upgrade or Linux acceptance.
+The report excludes usernames, hostnames, IPs, environment variables, paths, customer data, credentials and raw logs. Detailed logs in the output directory are for local troubleshooting; inspect any file before sharing it.
 
-CI partitions the existing fixed SDK test-file list into four groups,executing every file exactly once without removing tests.Each file has a180-second process boundary:timeouts terminate only owned test children and record failure.This CI boundary changes no product timeout/authority.Each group reports file coverage,complete counts and source digest;source-gate requires all four successes.Aggregate actual reports for the total rather than trusting a badge or calling maintainer CI external adoption.
+## How can I share feedback?
 
-Test children isolate inherited host PG* and internal Node runner variables,and use an owned canonical TEMP/TMP namespace under repository.evidence without changing parent/system settings.Product PG-override/noncanonical-private-path refusals and negative cases remain intact.Shard4 records separate PG-only and temp-only qualification probes:the original environment can pass or refuse,but the isolated one must pass.Report only booleans,counts and fixed error codes,never values or paths.These probes are separate from the71-file SDK coverage and adoption metrics.
+Choose the installation feedback template in [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues). Include your version, environment, steps and observed result. You may attach the minimal report after reviewing it. Issues are public; no employer name or private log is needed. Sharing is optional.
 
+Successful and failed attempts are both useful. Link earlier Issues when retesting the same problem. Download requests, maintainer CI and developer installation attempts are recorded separately.
 
-Hosted Windows source CI has actually run for this repository. See [validation notes](PREVIEW_NOTES.en.md) for the fixed baseline and exact results. The rule that a template requires an actual run does not mean there is no remote evidence. Documentation edits do not imply another full run. Feedback is visible only to authorized accounts while private; historical Issue content also becomes public if the repository is later made public.
+## How is CI different?
 
-Current report format: `enterprise-brain.installation-report/2`. It preserves actual skipped counts and an allowlisted platformContractSkips list; Windows has three named Linux-only skips, not three passed executions. Other skips fail validation. Historical format1 reports remain distinguishable. The prepared workflow additionally requires Ubuntu24.04 source checks; new remote evidence exists only after the exact commit runs.
+Repository CI runs source checks on Windows and Ubuntu. Windows SDK tests use four groups; Linux runs separately. Other jobs check the first task, supply case and combined result. See [validation notes](PREVIEW_NOTES.en.md) for exact commits and results, and the [workflow](.github/workflows/source-ci.yml) for implementation. CI is not an independent customer deployment.
 
-
-The current test entry covers85 SDK test files, including onboarding, source validation, read approval and restoration fencing. Reports remain voluntary local output without automatic upload. Maintainer tests, CI runs and installations by independent developers are counted separately; a download is not an installation. See [first connection](FIRST_CONNECTION.en.md) for new capabilities and limits.
+For security problems, follow the [security policy](SECURITY.en.md).

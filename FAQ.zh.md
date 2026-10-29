@@ -1,21 +1,21 @@
-# 开始之前
+# 开始使用
 
-## 我可以先试什么？
+## 不安装也能体验吗？
 
-先运行[首任务](https://github.com/PygmalionSong/enterprise-brain-community/blob/v0.1.0-preview.2/FIRST_TASK.md)：读取两个示例流程、批准执行，并观察工具在写入记录后丢失响应时，任务如何查询原动作并核对结果。示例使用构造数据，不需要企业账号或模型 API 密钥。
+可以打开[饮料企业案例](https://pygmalionsong.github.io/enterprise-brain-community/?lang=zh)，比较保供方案、浏览业务流程和门店经营。案例使用示例数据，操作只改变当前浏览器中的状态。
 
-## 能直接接入公司的业务系统吗？
+## 可运行的任务展示了什么？
 
-需要先开发或配置适配器，并确定读取范围与业务授权。当前版本提供首次接入和受限读取的参考实现，不支持自动扫描整个企业网络，也不会从数据库表自动推导完整业务流程。业务读取工具需要通过 SDK 显式接入，默认 HTTP 工具目录尚未启用该工具。接入前请阅读[版本范围](https://github.com/PygmalionSong/enterprise-brain-community/blob/v0.1.0-preview.2/PREVIEW_SCOPE.md)。
+[第一个任务](FIRST_TASK.md)会读取两个示例流程，取得批准后执行方案，并演示系统已保存操作、但没有返回结果时如何恢复。后端会先检查已有操作的结果，再决定后续处理。无需企业账号或模型密钥；这个任务在本地运行，与浏览器案例相互独立。
 
-## 数据存在哪里？
+## 怎样接入公司的系统？
 
-运行时在部署环境内保存流程、授权、计划与执行记录。ERP、CRM、SRM、WMS 等原系统继续保存业务正本。项目不会自动上传安装报告，也不会自动启用托管模型或付费服务。企业部署时，由部署方管理服务器、凭证和运维。
+需要开发或配置适配器，确定可以读取哪些信息，以及谁可以批准和执行任务。可以从[首次接入指南](FIRST_CONNECTION.md)开始。业务读取工具需要通过 SDK 安装，尚未加入默认 HTTP 工具目录。当前版本不支持扫描整个企业网络，也不会从数据库表自动推导完整流程。
 
-## 怎样提问或参与？
+## 数据和报告存在哪里？
 
-- 运行失败：提交 [Issue](https://github.com/PygmalionSong/enterprise-brain-community/issues)，说明版本、运行环境、复现步骤与错误信息，并删除敏感内容。
-- 讨论接入方式或业务场景：前往 [Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions)。
-- 改进代码或文档：提交 Pull Request，由维护者审阅合并。
+流程定义、权限、方案和执行记录保存在部署环境内，业务记录仍由原有系统管理。可选的[安装报告](INSTALLATION_VALIDATION.md)写入本地文件，是否分享由使用者决定。服务器、凭证和模型连接由部署团队配置。
 
-请勿提交凭证、客户记录或未脱敏的日志。
+## 在哪里提问？
+
+接入问题在 [Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) 交流，可复现错误提交 [Issue](https://github.com/PygmalionSong/enterprise-brain-community/issues)，项目合作见[联系页](CONTACT.md)。反馈时请使用示例数据，并隐去账号、密钥等敏感信息。

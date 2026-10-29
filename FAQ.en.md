@@ -1,21 +1,21 @@
-# Before you start
+# Getting started
 
-## What can I try first?
+## What can I try without installing anything?
 
-Run the [first task](https://github.com/PygmalionSong/enterprise-brain-community/blob/v0.1.0-preview.2/FIRST_TASK.en.md): read two example processes, approve execution, and see how the task looks up the original action after a tool writes a record but loses its response. The example uses constructed data and needs no enterprise account or model API key.
+Open the [beverage business case](https://pygmalionsong.github.io/enterprise-brain-community/?lang=en). Compare supply options, browse business processes and explore store operations. The case uses sample data; its controls update browser-local state.
 
-## Can I connect my company's systems directly?
+## What does the runnable task demonstrate?
 
-You need to develop or configure adapters and define read scope and business authority. This release provides reference onboarding and bounded reads. It does not scan an entire enterprise network or infer complete business processes from database tables. The business-read tool requires explicit SDK integration and is not enabled in the default HTTP tool catalog. Read the [release scope](https://github.com/PygmalionSong/enterprise-brain-community/blob/v0.1.0-preview.2/PREVIEW_SCOPE.en.md) before integration.
+The [first task](FIRST_TASK.en.md) reads two sample processes, requests approval and executes a plan. It tests recovery after a system saves a change but loses its response. The backend checks the existing operation before deciding what to do next. No company account or model API key is needed. This task runs locally, separately from the browser case.
 
-## Where is data stored?
+## How do I connect my company's systems?
 
-The runtime stores processes, authority, plans and execution records in the deployment environment. Existing ERP, CRM, SRM and WMS systems retain authoritative business records. The project does not automatically upload installation reports or enable hosted models or paid services. The deploying organization manages its servers, credentials and operations.
+Build or configure an adapter, define which information it can read, and assign authority to approve and execute tasks. Start with the [connection guide](FIRST_CONNECTION.en.md). The business-read tool must be installed through the SDK; it is not in the default HTTP tool catalog. The current version does not scan an entire company network or infer complete workflows from database tables.
 
-## How can I ask questions or contribute?
+## Where are runtime data and reports stored?
 
-- If a task fails, open an [Issue](https://github.com/PygmalionSong/enterprise-brain-community/issues) with the version, environment, reproduction steps and redacted error details.
-- Discuss integration approaches or business scenarios in [Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions).
-- Propose code or documentation changes through a Pull Request for maintainer review.
+The runtime stores process definitions, permissions, plans and execution records in your deployment environment. Business records stay in the existing systems. The optional [installation report](INSTALLATION_VALIDATION.en.md) is written to a local file; you choose whether to share it. Servers, credentials and model connections are configured by the deploying team.
 
-Do not submit credentials, customer records or unredacted logs.
+## Where can I ask questions?
+
+Use [Discussions](https://github.com/PygmalionSong/enterprise-brain-community/discussions) for integration questions and [Issues](https://github.com/PygmalionSong/enterprise-brain-community/issues) for reproducible bugs. For collaboration, see [Contact](CONTACT.en.md). Please use sample data in reports and remove account details or API keys.
