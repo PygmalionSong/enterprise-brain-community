@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Fixed anonymous owned-case DTO. This is not a generic customer-data exposure policy.
 // 固定匿名自有案例DTO，不作为真实客户数据的通用开放策略。
 import {z} from 'zod';

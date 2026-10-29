@@ -1,3 +1,4 @@
+import{canonicalPathEqual}from'../src/platform/canonical-path.ts';
 // Read-only signed installation eligibility. Never import or execute candidate code.
 // 只读核验签名安装与静态升级资格；不导入或执行候选代码。
 import {readFile,writeFile,lstat,realpath} from 'node:fs/promises';
@@ -6,6 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {z} from 'zod';
 import {verifyTree} from './release.mjs';
+import {RELEASE_PROFILES} from './portable-runtime.mjs';
 
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const inputSchema=z.object({format:z.literal(1),currentRoot:z.string(),candidateRoot:z.string(),publicKeyFile:z.string(),pinnedFingerprint:z.string().regex(/^[a-f0-9]{64}$/)}).strict();
@@ -14,7 +16,7 @@ const inside=(root,file)=>{const r=relative(root,file);return r===''||(!r.starts
 async function direct(file,directory=false){
  if(!isAbsolute(file)||resolve(file)!==file)throw Error('upgrade_absolute_path_required');
  const stat=await lstat(file);if(stat.isSymbolicLink()||(directory?!stat.isDirectory():!stat.isFile()))throw Error('upgrade_indirect_path_denied');
- if((await realpath(file)).toLowerCase()!==file.toLowerCase())throw Error('upgrade_indirect_path_denied');return stat;
+ if(!canonicalPathEqual((await realpath(file)),file))throw Error('upgrade_indirect_path_denied');return stat;
 }
 async function bounded(file,max){const stat=await direct(file);if(stat.size>max)throw Error('upgrade_input_limit');const bytes=await readFile(file);if(bytes.length>max)throw Error('upgrade_input_limit');return bytes;}
 function json(bytes){try{return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));}catch{throw Error('upgrade_json_invalid');}}
@@ -23,7 +25,7 @@ async function installation(root,key,pin){
  const signed=json(after),manifest=json(Buffer.from(signed.manifestText)),entries=new Map(manifest.entries.map(e=>[e.path,e]));
  async function file(name,max=2*1024*1024){const entry=entries.get(name);if(!entry)throw Error('upgrade_required_file_missing');const bytes=await bounded(join(root,name),max);if(sha(bytes)!==entry.sha256||bytes.length!==entry.size)throw Error('upgrade_installation_changed');return bytes;}
  const pkg=json(await file('package.json'));
- if(pkg.name!=='enterprise-brain'||pkg.type!=='module'||pkg.engines?.node!=='>=24.0.0 <25'||typeof pkg.version!=='string'||pkg.version!==manifest.version||manifest.node!=='24.19.0'||manifest.architecture!=='x64'||!['local-windows-existing-node24','local-windows-bundled-node24'].includes(manifest.profile))throw Error('upgrade_application_contract_mismatch');versionParts(pkg.version);
+ if(pkg.name!=='enterprise-brain'||pkg.type!=='module'||pkg.engines?.node!=='>=24.0.0 <25'||typeof pkg.version!=='string'||pkg.version!==manifest.version||manifest.node!=='24.19.0'||manifest.architecture!=='x64'||!RELEASE_PROFILES.includes(manifest.profile))throw Error('upgrade_application_contract_mismatch');versionParts(pkg.version);
  for(const name of ['src/enterprise/operations.ts','scripts/enterprise.mjs','dist/enterprise-operations.mjs','pnpm-lock.yaml'])await file(name,8*1024*1024);
  const migrations=[...entries.keys()].filter(name=>name.startsWith('migrations/')).sort(),inventory=[];
  if(!migrations.length)throw Error('upgrade_migration_inventory_invalid');

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Normalized process evidence, never an executable permission or workflow engine.
 // 统一流程证据，不授予执行权限，也不冒充工作流执行引擎。
 import {createHash} from 'node:crypto';

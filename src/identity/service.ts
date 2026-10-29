@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Identity is server-derived; no caller-supplied role switch. / 身份由服务端确定，调用者不可自选角色。
 import { createHash, randomBytes, randomUUID } from 'node:crypto';
 import { hash, compare } from 'bcryptjs';

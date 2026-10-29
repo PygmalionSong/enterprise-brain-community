@@ -1,5 +1,7 @@
 # Backend execution evidence
 
+This page records the earlier operating-case snapshot. Updated Windows/Ubuntu infrastructure scope is in [validation notes](PREVIEW_NOTES.en.md); it does not establish sales, payment, ROI or live-model quality.
+
 [English](BACKEND_EVIDENCE.en.md) · [中文](BACKEND_EVIDENCE.zh.md) · [日本語](BACKEND_EVIDENCE.ja.md)
 
 The actual browser approved a persistent plan; the owned HTTP source committed3 actions and delayed its responses beyond the unchanged1500ms client deadline. The backend recorded3 unknown results and recovered through original-action lookup. Actual source calls were3 submits with0 duplicates. Restart retained the original run, plan, actions and documents; receipt verification reached1.6m cases. The exact standalone source archive was then freshly extracted, verified, typed, built and started through its documented standard entry; its case and normal restart passed.

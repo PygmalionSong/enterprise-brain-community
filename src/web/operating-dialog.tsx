@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 import React from 'react';
 import {supplyQuantities,projectExecutionEvents} from './cockpit/supply-state.ts';
 import type {Locale} from './i18n.ts';

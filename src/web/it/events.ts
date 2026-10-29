@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // IT-only event review. Source strings stay text; no key or business execution control.
 // 仅供IT核对事件，源文字只按文本展示，不展示密钥或业务执行控制。
 type Row=Record<string,any>;type Language='zh'|'en'|'ja';

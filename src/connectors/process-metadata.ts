@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Data-only source declarations. Nothing in this contract grants executable capabilities.
 // 仅表示源端声明；此合同不授予任何可执行能力。
 import {z} from 'zod';

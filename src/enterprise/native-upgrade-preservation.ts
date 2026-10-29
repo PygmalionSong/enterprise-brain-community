@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Fixed existing-row/sequence projection for trusted upgrade transactions; not an arbitrary SQL reader.
 // 受信升级事务使用的固定旧行/序列投影，不是任意SQL读取接口。
 import type pg from 'pg';import {createHash,randomUUID} from 'node:crypto';import {z} from 'zod';

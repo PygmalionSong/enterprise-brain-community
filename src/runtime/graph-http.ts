@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 import type {GraphMetadata} from './graph-metadata.ts';import {graphMetadataRequest,graphMetadataQuery} from './graph-metadata-http.ts';
 import type {BusinessHistory} from './business-history.ts';
 import {publicGraphRun} from './graph-public.ts';

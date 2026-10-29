@@ -14,7 +14,7 @@
 
 | 边界 | 当前范围 |
 |---|---|
-| 环境 | Windows x64、Node24.19.0、pnpm11.25.0；锁定35依赖，需要安装构建。Linux和独立甲方宿主资格仍未验证。 |
+| 环境 | Windows x64 / Ubuntu24.04 x64、Node24.19.0、pnpm11.25.0；锁定35依赖，需要安装构建。Ubuntu24.04 x64源码/原生范围见LINUX_RUNTIME.md；独立甲方宿主资格仍未验证。 |
 | 持久化 | PGlite与原生PostgreSQL17.11合同不同，备份/恢复/升级源码有各自范围，不代表高可用或自动DBA配置。 |
 | 流程信息 | MCP2025-11-25 stdio、enterprise-brain.process/1、BPMN XML结构子集、OData4.01 JSON实体；实体不自动成为流程。 |
 | 执行 | 版本化定义/关系、冻结无环图、独立批准、动作身份、submit/lookup与回执；不含任意循环/嵌套/动态流和普遍exactly-once。 |
@@ -23,3 +23,8 @@
 | 分发 | 源码、测试、媒体、锁文件、许可证与库存；不含完整签名安装器、Node二进制、安装后依赖、运行数据库或地理轮廓。 |
 
 一键私有部署、更广泛的操作人确认IT发现和组织决策支持仍是产品目标。现有ERP/SRM/WMS/CRM保留权威账本。这里不划未来收费边界，package.json的private=true防止意外发布npm。公开可用性及准确CI以实际Tags/Releases/Actions为准，文档不代表已经发布。见[架构](ARCHITECTURE_OVERVIEW.md)、[验证](PREVIEW_NOTES.md)、[素材和数据范围](ASSET_SCOPE.md)。
+
+
+## 新接入范围
+
+协议/元数据识别仅针对明确授权的字面量私网IPv4或回环端点；不支持DNS、IPv6、网段、生产凭证和完整MCP HTTP。IT来源验证与业务读取批准分开；业务读取工厂须显式安装，默认HTTP目录未启用。来源范围、授权、回执和恢复边界见[首次接入](FIRST_CONNECTION.md)。源码范围、签名运行包和具体厂商生产资格分别验收；不互相替代。

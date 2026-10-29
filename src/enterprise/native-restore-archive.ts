@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Restore provenance is issued only after full authentication and current-code checks.
 // 恢复来源凭据仅在完整认证、当前代码和迁移核对后签发。
 import {createHash} from 'node:crypto';import {join} from 'node:path';import {z} from 'zod';

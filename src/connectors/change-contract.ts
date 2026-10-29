@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Replace a complete business group atomically; an empty group is a tombstone.
 // 按业务组原子替换；空组代表删除，不把取消订单当销售实现。
 import {z} from 'zod';

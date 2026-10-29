@@ -39,7 +39,7 @@ jobs:
           pnpm.cmd install --frozen-lockfile --ignore-scripts --store-dir .evidence/pnpm-store
           exit $LASTEXITCODE
       - name: Verify report and worker logic / 核对报告和进程逻辑
-        run: node --test tests/installation-report.test.mjs tests/ci-sdk-tests.test.mjs
+        run: node --test tests/installation-report.test.mjs tests/ci-sdk-tests.test.mjs tests/ci-failure-diagnostics.test.mjs
       - name: Types and build / 类型与构建
         run: |
           pnpm.cmd typecheck
@@ -123,8 +123,40 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           node --test tests/minimal-adapter.test.mjs
           exit $LASTEXITCODE
+  linux-source:
+    name: linux-source
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+        with:
+          node-version: 24.19.0
+          package-manager-cache: false
+      - name: Verify inventory and install locked dependencies
+        run: |
+          node scripts/verify-repository.mjs
+          npm install --global pnpm@11.25.0 --ignore-scripts --no-audit --no-fund
+          pnpm install --frozen-lockfile --ignore-scripts --store-dir .evidence/pnpm-store
+      - name: Types, build and safe worker contracts
+        run: |
+          pnpm typecheck
+          pnpm build
+          node --test tests/installation-report.test.mjs tests/ci-sdk-tests.test.mjs tests/ci-failure-diagnostics.test.mjs
+      - name: Exact SDK, first task and business-case checks
+        run: |
+          for shard in 1 2 3 4; do
+            node scripts/ci-sdk-tests.mjs --shard "$shard" --out "$PWD/.evidence/linux-shard-$shard.json" --log-dir "$PWD/.evidence/linux-logs-$shard"
+          done
+          node --test tests/first-task.test.mjs
+          node --test --test-concurrency=1 --test-name-pattern="source-backed fulfillment|timeout becomes unknown|budget and missing|requires CSRF|receipt" tests/runtime.test.ts
+          node --test tests/supply-state.test.ts tests/minimal-adapter.test.mjs
   source-gate:
-    needs: [windows-source, first-task, operating-case]
+    needs: [windows-source, first-task, operating-case, linux-source]
     if: always()
     runs-on: windows-latest
     timeout-minutes: 5
@@ -136,5 +168,6 @@ jobs:
           SDK_RESULT: ${{ needs['windows-source'].result }}
           TASK_RESULT: ${{ needs['first-task'].result }}
           CASE_RESULT: ${{ needs['operating-case'].result }}
+          LINUX_RESULT: ${{ needs['linux-source'].result }}
         run: |
-          if ($env:SDK_RESULT -ne 'success' -or $env:TASK_RESULT -ne 'success' -or $env:CASE_RESULT -ne 'success') { exit 1 }
+          if ($env:SDK_RESULT -ne 'success' -or $env:TASK_RESULT -ne 'success' -or $env:CASE_RESULT -ne 'success' -or $env:LINUX_RESULT -ne 'success') { exit 1 }

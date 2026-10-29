@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Strict IT/CSRF upload API; content is supplied, never a server filesystem path.
 // 严格IT/CSRF上传接口，提交内容而非宿主文件路径。
 import type {IncomingMessage,ServerResponse} from 'node:http';

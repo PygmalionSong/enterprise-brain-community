@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual,canonicalPathKey}from'../platform/canonical-path.ts';
 // Fresh dormant candidate with a barrier before atomic publication; journal completion is the pointer.
 // 全新停放候选在原子发布前已有启动阻挡；日志完成事件本身是安装指针。
 import {readFile,lstat,readdir,realpath,open,mkdir,rename,unlink} from 'node:fs/promises';import {join,dirname,resolve,isAbsolute,relative} from 'node:path';import {createHash,randomUUID} from 'node:crypto';import {z} from 'zod';
@@ -9,14 +14,14 @@ export const nativeUpgradeCandidateInputSchema=z.object({format:z.literal('enter
 const intentSchema=z.object({format:z.literal(1),operationId:z.uuid(),candidateInputSha256:sha,targetRequestSha256:sha,journalId:z.uuid(),candidateRoot:absolute,candidateManifestSha256:sha,configurationFile:absolute,configuration:nativeDeploymentSchema,configurationSha256:sha,staging:absolute,claimFile:absolute,claimText:z.string().max(16384),barrierText:z.string().max(16384)}).strict();
 const evidenceSchema=z.object({format:z.literal(1),operationId:z.uuid(),intentSha256:sha,configurationFile:absolute,configurationSha256:sha,candidateRoot:absolute,candidateManifestSha256:sha,journalId:z.uuid(),files:z.array(z.object({path:z.string().min(1).max(80),sha256:sha}).strict()).length(6),traffic:z.literal('parked'),trafficVersion:z.literal(0),started:z.literal(false),modelCalls:z.literal(0)}).strict();
 const pointerSchema=z.object({format:z.literal(1),operationId:z.uuid(),journalId:z.uuid(),activeInstallation:z.literal('candidate'),candidateEvidenceSha256:sha,candidateRoot:absolute,candidateManifestSha256:sha,configurationFile:absolute,configurationSha256:sha,sourceRemainsBlocked:z.literal(true),traffic:z.literal('parked'),started:z.literal(false)}).strict();
-async function bytes(file:string,max=16384){absolute.parse(file);const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max||(await realpath(file)).toLowerCase()!==file.toLowerCase())throw Error('native_upgrade_candidate_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_candidate_file_limit');return b;}
+async function bytes(file:string,max=16384){absolute.parse(file);const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max||!canonicalPathEqual((await realpath(file)),file))throw Error('native_upgrade_candidate_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_candidate_file_limit');return b;}
 const json=(b:Buffer)=>JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(b));
-async function directory(dir:string){const s=await lstat(dir);if(!s.isDirectory()||s.isSymbolicLink()||(await realpath(dir)).toLowerCase()!==dir.toLowerCase())throw Error('native_upgrade_candidate_indirect_path');}
+async function directory(dir:string){const s=await lstat(dir);if(!s.isDirectory()||s.isSymbolicLink()||!canonicalPathEqual((await realpath(dir)),dir))throw Error('native_upgrade_candidate_indirect_path');}
 async function absent(file:string){try{await lstat(file);}catch(e){if((e as NodeJS.ErrnoException).code==='ENOENT')return;throw e;}throw Error('native_upgrade_candidate_target_exists');}
 async function freshText(file:string,text:string){const h=await open(file,'wx',0o600);try{await h.writeFile(text);await h.sync();}finally{await h.close();}return hash(text);}
 const fresh=(file:string,value:unknown)=>freshText(file,JSON.stringify(value));
 async function record(file:string,value:unknown){const text=JSON.stringify(value);try{return await freshText(file,text);}catch(e){if((e as NodeJS.ErrnoException).code!=='EEXIST')throw e;if((await bytes(file,65536)).toString('utf8')!==text)throw Error('native_upgrade_candidate_evidence_changed');return hash(text);}}
-const inside=(root:string,file:string)=>{const r=relative(root.toLowerCase(),file.toLowerCase());return r===''||!r.startsWith('..')&&!isAbsolute(r);};
+const inside=(root:string,file:string)=>{const r=relative(canonicalPathKey(root),canonicalPathKey(file));return r===''||!r.startsWith('..')&&!isAbsolute(r);};
 async function context(inputFile:string){const raw=await bytes(inputFile),q=nativeUpgradeCandidateInputSchema.parse(json(raw)),control=await bytes(q.targetControlInputFile);if(hash(control)!==q.targetControlInputSha256)throw Error('native_upgrade_candidate_control_changed');const c=await nativeUpgradeTargetContext(q.targetControlInputFile),signed=await nativeUpgradeSqlIdentity(c.sql),folder=dirname(q.configurationFile);
  for(const root of [signed.currentRoot,signed.candidateRoot,dirname(c.e.currentConfigFile),c.q.jobDirectory])if(inside(root,folder)||inside(folder,root))throw Error('native_upgrade_candidate_private_overlap');
  const stable=async()=>{if(!(await bytes(inputFile)).equals(raw)||!(await bytes(q.targetControlInputFile)).equals(control))throw Error('native_upgrade_candidate_input_changed');await c.stable();};await stable();return {q,c,signed,raw,stable};}

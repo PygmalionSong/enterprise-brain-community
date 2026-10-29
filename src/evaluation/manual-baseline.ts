@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Strict import of pseudonymous timings; self-report is not verified business evidence.
 // 严格导入匿名耗时；自报记录不等于已验证业务证据。
 import {z} from 'zod';

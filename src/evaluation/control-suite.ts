@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Actual isolated control execution; expected answers never reach the executor/model.
 // 实际隔离控制执行：预期答案只给评分器，不进入执行器或模型上下文。
 import {readFile} from 'node:fs/promises';

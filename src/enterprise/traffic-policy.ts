@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual}from'../platform/canonical-path.ts';
 // Private, deployment-bound admission policy; parked handlers drain without cancelling source work.
 // 与部署绑定的私人受理策略；停放仅排空本机处理，不冒称已撤销源端动作。
 import {readFile,writeFile,lstat,realpath,open,rename,unlink} from 'node:fs/promises';
@@ -13,7 +18,7 @@ export type TrafficPolicy=z.infer<typeof trafficPolicySchema>;
 export const trafficChangeSchema=z.object({expectedVersion:version,waitMs:z.number().int().min(0).max(5000).default(1000)}).strict();
 const policyFile=(config:OperationalDeployment)=>join(config.stateDirectory,'traffic.json');
 export const defaultTrafficPolicy=(config:OperationalDeployment,initial:'active'|'parked'='parked'):TrafficPolicy=>({format:1,deploymentId:config.deploymentId,version:0,mode:initial,events:[]});
-async function realState(config:OperationalDeployment){const state=await lstat(config.stateDirectory);if(!state.isDirectory()||state.isSymbolicLink()||(await realpath(config.stateDirectory)).toLowerCase()!==resolve(config.stateDirectory).toLowerCase())throw Error('enterprise_traffic_path_invalid');}
+async function realState(config:OperationalDeployment){const state=await lstat(config.stateDirectory);if(!state.isDirectory()||state.isSymbolicLink()||!canonicalPathEqual((await realpath(config.stateDirectory)),resolve(config.stateDirectory)))throw Error('enterprise_traffic_path_invalid');}
 export async function readTrafficPolicy(config:OperationalDeployment):Promise<TrafficPolicy>{
  await realState(config);const file=policyFile(config);try{const stat=await lstat(file);if(!stat.isFile()||stat.isSymbolicLink()||stat.size>16384)throw Error('enterprise_traffic_policy_invalid');const bytes=await readFile(file);if(bytes.length>16384)throw Error('enterprise_traffic_policy_invalid');let value;try{value=trafficPolicySchema.parse(JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes)));}catch{throw Error('enterprise_traffic_policy_invalid');}if(value.deploymentId!==config.deploymentId)throw Error('enterprise_traffic_deployment_mismatch');return value;}
  catch(e){if((e as NodeJS.ErrnoException).code==='ENOENT')return defaultTrafficPolicy(config);throw e;}

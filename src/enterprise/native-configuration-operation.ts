@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Stopped-instance changes retain both the local claim and actual database owner.
 // 停服配置同时保持本机运维声明与实际单库归属。
 import {join} from 'node:path';

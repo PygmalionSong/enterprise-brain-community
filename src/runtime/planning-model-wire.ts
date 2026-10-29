@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Closed model envelope; argument JSON remains untrusted until installed-tool validation.
 // 封闭模型信封；参数JSON须经已安装工具核对，不能直接执行。
 import {z} from 'zod';

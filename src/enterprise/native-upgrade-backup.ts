@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual,canonicalPathKey}from'../platform/canonical-path.ts';
 // Fresh backup bridge uses the original running native owner; never starts or steals a database.
 // 新备份桥始终使用原运行前台的单库归属，不启动或接管数据库。
 import {readFile,lstat,realpath,open} from 'node:fs/promises';import {join,dirname,resolve,isAbsolute,relative} from 'node:path';import {createHash,randomUUID} from 'node:crypto';import {z} from 'zod';
@@ -9,8 +14,8 @@ import {controlNativeBackup} from './native-backup-control.ts';import {nativeBac
 import {readInstanceLock,readOperationLock,processExists} from './operation-guard.ts';import {codeFingerprint} from './code-fingerprint.ts';import {authenticateNativeRestoreArchive,nativeRestoreArchiveIdentity} from './native-restore-archive.ts';
 const absolute=z.string().max(1024).refine(v=>isAbsolute(v)&&resolve(v)===v),sha=z.string().regex(/^[a-f0-9]{64}$/),hash=(b:Uint8Array|string)=>createHash('sha256').update(b).digest('hex');
 export const nativeUpgradeBackupInputSchema=z.object({format:z.literal('enterprise-brain.native-upgrade-backup-input/1'),runtimeReviewInputFile:absolute,runtimeReviewFile:absolute,expectedRuntimeReviewSha256:sha,backupInputFile:absolute,expectedBackupInputSha256:sha,expectedSourceInstanceId:z.uuid(),jobDirectory:absolute,freshBackupAcknowledged:z.literal(true)}).strict();
-async function bounded(file:string,max:number){absolute.parse(file);const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max||(await realpath(dirname(file))).toLowerCase()!==dirname(file).toLowerCase())throw Error('native_upgrade_backup_private_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_backup_input_limit');return b;}
-const json=(b:Buffer)=>JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(b)),inside=(root:string,file:string)=>{const r=relative(root.toLowerCase(),file.toLowerCase());return r===''||!r.startsWith('..')&&!isAbsolute(r);};
+async function bounded(file:string,max:number){absolute.parse(file);const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max||!canonicalPathEqual((await realpath(dirname(file))),dirname(file)))throw Error('native_upgrade_backup_private_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_backup_input_limit');return b;}
+const json=(b:Buffer)=>JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(b)),inside=(root:string,file:string)=>{const r=relative(canonicalPathKey(root),canonicalPathKey(file));return r===''||!r.startsWith('..')&&!isAbsolute(r);};
 async function fresh(file:string,value:unknown){const b=Buffer.from(JSON.stringify(value)),f=await open(file,'wx',0o600);try{await f.writeFile(b);await f.sync();}finally{await f.close();}return hash(b);}
 const fixed=(v:Record<string,unknown>)=>{const {createdAt,...rest}=v;return rest;};
 export async function prepareNativeUpgradeBackup(inputFile:string){

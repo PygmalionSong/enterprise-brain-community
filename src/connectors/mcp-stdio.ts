@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Operator-configured local child, no shell, inherited secrets or source-selected code.
 // 运维显式配置的本机子进程：不用shell、不继承秘密、不执行源端选定代码。
 import {spawn,type ChildProcessWithoutNullStreams} from 'node:child_process';

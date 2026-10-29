@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Conservative shadow-only migration checks, not production upgrade or arbitrary rollback.
 // 保守的影子库迁移检查，不是生产升级或任意回退。
 import {readFile,readdir,lstat} from 'node:fs/promises';

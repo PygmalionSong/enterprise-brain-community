@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // MCP transports a source-owned idempotent contract, not arbitrary tool text as completion.
 // MCP传递源端幂等合同，不能把普通工具文字当业务完成。
 import {z} from 'zod';

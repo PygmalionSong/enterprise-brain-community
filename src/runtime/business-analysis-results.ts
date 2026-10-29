@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 import {requireEnterpriseLock} from '../db/enterprise-lock.ts';
 // Trusted result capability with fresh evidence;no model I/O or business tool execution here.
 // 当前证据约束的受信结果能力；此处不调用模型或执行业务工具。

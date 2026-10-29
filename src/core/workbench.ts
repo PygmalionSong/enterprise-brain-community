@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Approved constructed model is read from SQL; it contains no user navigation state.
 // 已批准构造模型从SQL读取，不含用户导航状态。
 import {readFile} from 'node:fs/promises';

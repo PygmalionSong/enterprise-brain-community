@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Read-only snapshot guard retained for backup and restore. / 保留备份恢复的只读快照守卫。
 import type pg from 'pg';
 import {readNativeDatabaseInventoryCore} from './native-database-inventory-core.ts';

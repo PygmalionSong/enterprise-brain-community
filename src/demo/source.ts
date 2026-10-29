@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Independent constructed warehouse source; mutations affect this source only.
 // 独立构造仓储源，动作只改变此合成源。
 import {createServer} from 'node:http';

@@ -2,7 +2,7 @@
 
 [中文](INSTALLATION_VALIDATION.md)
 
-This source is an enterprise Agent foundation developer-preview candidate. It excludes the complete business cockpit. Use Node 24; the reproduction tool versions are Node 24.19.0 and pnpm 11.25.0. See [README](README.en.md) for verified scope and limits. Validation is an explicit local action, not installation telemetry. GitHub login or report submission is never required to use the project.
+This source is an enterprise Agent foundation developer-preview candidate. It includes a constructed operating reference and an independent enterprise host; neither establishes a production enterprise installation. Use Node 24; the reproduction tool versions are Node 24.19.0 and pnpm 11.25.0. See [README](README.en.md) for verified scope and limits. Validation is an explicit local action, not installation telemetry. GitHub login or report submission is never required to use the project.
 
 Extract or clone into a fresh directory, then run:
 
@@ -24,7 +24,12 @@ The CI template produces remote evidence only after it runs in an actual reposit
 
 CI partitions the existing fixed SDK test-file list into four groups,executing every file exactly once without removing tests.Each file has a180-second process boundary:timeouts terminate only owned test children and record failure.This CI boundary changes no product timeout/authority.Each group reports file coverage,complete counts and source digest;source-gate requires all four successes.Aggregate actual reports for the total rather than trusting a badge or calling maintainer CI external adoption.
 
-Test children isolate inherited host PG* and internal Node runner variables,and use an owned canonical TEMP/TMP namespace under repository.evidence without changing parent/system settings.Product PG-override/noncanonical-private-path refusals and negative cases remain intact.Shard4 records separate PG-only and temp-only qualification probes:the original environment can pass or refuse,but the isolated one must pass.Report only booleans,counts and fixed error codes,never values or paths.These probes are separate from the69-file SDK coverage and adoption metrics.
+Test children isolate inherited host PG* and internal Node runner variables,and use an owned canonical TEMP/TMP namespace under repository.evidence without changing parent/system settings.Product PG-override/noncanonical-private-path refusals and negative cases remain intact.Shard4 records separate PG-only and temp-only qualification probes:the original environment can pass or refuse,but the isolated one must pass.Report only booleans,counts and fixed error codes,never values or paths.These probes are separate from the71-file SDK coverage and adoption metrics.
 
 
 Hosted Windows source CI has actually run for this repository. See [validation notes](PREVIEW_NOTES.en.md) for the fixed baseline and exact results. The rule that a template requires an actual run does not mean there is no remote evidence. Documentation edits do not imply another full run. Feedback is visible only to authorized accounts while private; historical Issue content also becomes public if the repository is later made public.
+
+Current report format: `enterprise-brain.installation-report/2`. It preserves actual skipped counts and an allowlisted platformContractSkips list; Windows has three named Linux-only skips, not three passed executions. Other skips fail validation. Historical format1 reports remain distinguishable. The prepared workflow additionally requires Ubuntu24.04 source checks; new remote evidence exists only after the exact commit runs.
+
+
+The current test entry covers85 SDK test files, including onboarding, source validation, read approval and restoration fencing. Reports remain voluntary local output without automatic upload. Maintainer tests, CI runs and installations by independent developers are counted separately; a download is not an installation. See [first connection](FIRST_CONNECTION.en.md) for new capabilities and limits.

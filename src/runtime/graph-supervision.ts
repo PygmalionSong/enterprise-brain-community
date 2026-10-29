@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 import {requireEnterpriseLock} from '../db/enterprise-lock.ts';
 // Explicit durable delegation reuses the graph engine, never replaces its grants.
 // 显式持久委托复用图引擎，不替代原有业务授权。

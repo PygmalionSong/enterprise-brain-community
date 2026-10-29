@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 import {requireEnterpriseLock} from '../db/enterprise-lock.ts';
 // Candidate adoption creates one reviewed plan, never approval, execution or another model call.
 // 采用候选仅生成一个已核对计划，不批准/执行，也不再次调用模型。

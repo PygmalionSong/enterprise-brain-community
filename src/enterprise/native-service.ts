@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 import {loadNativeEnterpriseTools} from './native-tools.ts';
 import {NativeBackupTasks} from './native-backup-task.ts';import {assertNoPendingNativeBackup} from './native-backup-journal.ts';
 // Separate native lifecycle;the original file-backed deployment path stays unchanged.
@@ -28,7 +32,7 @@ export async function startNativeEnterpriseUnderClaim(root:string,configFile:str
  const expected=await readSchemaInventory(join(root,'migrations')),proxyToken=await readSecret(config.proxyTokenFile),traffic=await TrafficAdmission.open(config),instanceId=randomUUID(),lock:InstanceLock={pid:process.pid,port:config.port,instanceId,deploymentId:config.deploymentId,configurationSha256:digest(JSON.stringify(config))},lockFile=join(config.stateDirectory,'instance.json');
  const handle=await open(lockFile,'wx',0o600);try{await handle.writeFile(JSON.stringify(lock));await handle.sync();}finally{await handle.close();}
  let connection:Awaited<ReturnType<typeof connectNativeRuntime>>|undefined,application:Awaited<ReturnType<typeof createNativeEnterpriseApplication>>|undefined,pump:GraphSupervisionPump|undefined,backupTasks:NativeBackupTasks|undefined,closing:Promise<void>|undefined;
- const close=()=>closing??=(async()=>{await backupTasks?.close();pump?.stop();traffic.shutdown();if(!await traffic.waitForIdle(5000))throw Error('enterprise_traffic_drain_timeout');await application?.close();await connection?.database.close();const current=await readInstanceLock(config);if(current?.instanceId!==instanceId)throw Error('enterprise_instance_changed');await unlink(lockFile);})().catch(e=>{closing=undefined;throw e;});
+ const close=()=>closing??=(async()=>{await backupTasks?.close();pump?.stop();traffic.shutdown();await application?.closeWorkers();if(!await traffic.waitForIdle(5000))throw Error('enterprise_traffic_drain_timeout');await application?.close();await connection?.database.close();const current=await readInstanceLock(config);if(current?.instanceId!==instanceId)throw Error('enterprise_instance_changed');await unlink(lockFile);})().catch(e=>{closing=undefined;throw e;});
  try{
   const controlToken=freshSecret();await writeFile(config.controlTokenFile,controlToken,{mode:0o600});connection=await connectNativeRuntime(config.runtimeDescriptorFile,expected,config.runtimeDescriptorSha256);const db=connection.database;if(!isVerifiedNativeRuntimeConnection(db,config.enterpriseId,config.runtimeRole,config.runtimeDescriptorSha256))throw Error('native_adoption_scope_mismatch');
   // Explicitly registered installations only;restore revocation remains a separate contract.

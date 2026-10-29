@@ -15,3 +15,6 @@ test('report does not copy logs, secrets or user paths / 不复制日志、秘�
  assert.equal(report.uploaded,false);assert.equal(report.cleanHostVerified,false);assert.equal(report.independentUserVerified,false);
  assert.deepEqual(report.checks,[{name:'build',status:'failed'}]);
 });
+
+test('version2 retains declared skip counts without private fields / 新版保留真实跳过且不携私有字段',()=>{const name='native Linux foreground processes do not acquire a managed capability',report=minimalReport({manifestSha256:'a'.repeat(64),checks:[{name:'sdk-tests',status:'passed'}],tests:{tests:4,pass:3,fail:0,cancelled:0,skipped:1,todo:0},platformContractSkips:[name],secret:'never'});assert.equal(report.format,'enterprise-brain.installation-report/2');assert.equal(report.tests.skipped,1);assert.deepEqual(report.platformContractSkips,[name]);assert.equal(report.uploaded,false);assert.ok(!JSON.stringify(report).includes('never'));});
+test('report refuses arbitrary skip text / 拒绝任意跳过文字进入报告',()=>{assert.throws(()=>minimalReport({manifestSha256:'a'.repeat(64),checks:[],tests:null,platformContractSkips:['private path token']}),/Invalid declared platform skips/);});

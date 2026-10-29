@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Preserve the preceding selection while giving v0.11 its own storage key.
 // 保留旧版选择，v0.11使用独立存储键；存储不可用不阻断业务导航。
 type StoredState=Record<string,unknown>;

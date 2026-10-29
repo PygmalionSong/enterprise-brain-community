@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Internal signed appendices only. The caller owns target authorization, outer transaction and durable intent.
 // 内部仅接受已验签名追加迁移；目标授权、外层事务与持久意图由受控调用方负责。
 import {readFile} from 'node:fs/promises';import {join} from 'node:path';import {createHash,randomUUID} from 'node:crypto';import type pg from 'pg';

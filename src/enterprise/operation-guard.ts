@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Cooperative local operations share one claim; age never implies permission to steal it.
 // 本机运维共用互斥声明；不能凭锁龄自动接管。
 import {open,lstat,unlink} from 'node:fs/promises';

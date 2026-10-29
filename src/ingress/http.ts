@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Machine signatures and IT sessions are separate authentication planes.
 // 机器签名与IT会话分别认证，均不得从请求体指定企业身份。
 import type {IncomingMessage,ServerResponse} from 'node:http';

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Explicitly owned constructed targets; reusable contract, not vendor support.
 // 明确自有构造目标；共用合同，不冒充厂商适配。
 import {z} from 'zod';

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Local file observations stay on the IT plane; no inferred mappings into the cockpit.
 // 文件观测仅在IT端，不能自动猜测身份映射并改写驾驶舱。
 type Language='zh'|'en'|'ja';type Row=Record<string,any>;

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Explicit private native allowance periods; preserve immutable spend and restore fences.
 // 明确的原生私人额度周期，保留不可变费用记录与恢复冻结。
 import {readPrivateJson} from './configuration.ts';

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Executive workflows; errors expose business states rather than infrastructure details.
 // 老板流程接口；错误反馈经营状态，不暴露基础设施细节。
 import type {IncomingMessage,ServerResponse} from 'node:http';

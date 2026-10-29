@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual,canonicalPathKey}from'../platform/canonical-path.ts';
 // Offline native upgrade planning; no credentials, database connections or candidate execution.
 // 离线原生升级规划；不读凭证、不连接数据库、不执行候选代码。
 import {readFile,lstat,realpath,open} from 'node:fs/promises';
@@ -10,8 +15,8 @@ const absolute=z.string().max(1024).refine(v=>isAbsolute(v)&&resolve(v)===v),sha
 export const nativeUpgradePlanInputSchema=z.object({format:z.literal('enterprise-brain.native-upgrade-plan-input/1'),currentRoot:absolute,candidateRoot:absolute,publicKeyFile:absolute,pinnedFingerprint:sha,currentConfigFile:absolute,expectedConfigurationSha256:sha,expectedCurrentManifestSha256:sha,expectedCandidateManifestSha256:sha,planningAcknowledged:z.literal(true)}).strict();
 export type NativeUpgradePlanInput=z.infer<typeof nativeUpgradePlanInputSchema>;
 const hash=(b:Uint8Array|string)=>createHash('sha256').update(b).digest('hex');
-const inside=(root:string,file:string)=>{const r=relative(root.toLowerCase(),file.toLowerCase());return r===''||!r.startsWith('..')&&!isAbsolute(r);};
-async function direct(file:string,directory=false){absolute.parse(file);const s=await lstat(file);if(s.isSymbolicLink()||(directory?!s.isDirectory():!s.isFile())||(await realpath(file)).toLowerCase()!==file.toLowerCase())throw Error('native_upgrade_indirect_path');return s;}
+const inside=(root:string,file:string)=>{const r=relative(canonicalPathKey(root),canonicalPathKey(file));return r===''||!r.startsWith('..')&&!isAbsolute(r);};
+async function direct(file:string,directory=false){absolute.parse(file);const s=await lstat(file);if(s.isSymbolicLink()||(directory?!s.isDirectory():!s.isFile())||!canonicalPathEqual((await realpath(file)),file))throw Error('native_upgrade_indirect_path');return s;}
 async function bytes(file:string,max:number){const s=await direct(file);if(s.size<1||s.size>max)throw Error('native_upgrade_input_limit');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_input_limit');return b;}
 const json=(b:Buffer)=>{try{return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(b));}catch{throw Error('native_upgrade_json_invalid');}};
 function privateOutside(q:NativeUpgradePlanInput,files:string[]){for(const root of [q.currentRoot,q.candidateRoot])for(const f of files)if(inside(root,f)||inside(f,root))throw Error('native_upgrade_private_path_overlap');}

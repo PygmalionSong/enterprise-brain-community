@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Deliberately bounded CSDL JSON subset. Metadata is not a workflow or execution grant.
 // 明确有界的CSDL JSON子集；实体元数据不是流程，也不授予执行权。
 import {createHash} from 'node:crypto';

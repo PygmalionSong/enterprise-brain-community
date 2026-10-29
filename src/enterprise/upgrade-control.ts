@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual}from'../platform/canonical-path.ts';
 // Durable local intent journal, not proof that an external upgrade operation succeeded.
 // 持久本机意图日志；日志本身不证明外部升级步骤已经成功。
 import {readFile,lstat,realpath,open,rename,unlink} from 'node:fs/promises';
@@ -43,9 +48,9 @@ export function changeUpgradeControl(value:unknown,input:unknown,now=()=>new Dat
 export function inspectUpgradeControl(value:unknown){const state=parseUpgradeControl(value);return {id:state.id,version:state.version,stage:state.stage,status:state.pending?'needs_inspection':state.stage,activeInstallation:state.activeInstallation,pendingOperationId:state.pending?.operationId??null,bindingSha256:state.bindingSha256,automaticReplayAllowed:false,automaticRollbackAllowed:false,externalEffectsVerified:false};}
 
 const limit=65536;
-async function parent(file:string){if(!isAbsolute(file)||resolve(file)!==file)throw Error('upgrade_control_absolute_path_required');const p=dirname(file),info=await lstat(p);if(!info.isDirectory()||info.isSymbolicLink()||(await realpath(p)).toLowerCase()!==p.toLowerCase())throw Error('upgrade_control_indirect_path');return p;}
+async function parent(file:string){if(!isAbsolute(file)||resolve(file)!==file)throw Error('upgrade_control_absolute_path_required');const p=dirname(file),info=await lstat(p);if(!info.isDirectory()||info.isSymbolicLink()||!canonicalPathEqual((await realpath(p)),p))throw Error('upgrade_control_indirect_path');return p;}
 function encode(state:UpgradeControl){const text=JSON.stringify(parseUpgradeControl(state),null,2)+'\n';if(Buffer.byteLength(text)>limit)throw Error('upgrade_control_limit');return text;}
-export async function readUpgradeControl(file:string){await parent(file);const info=await lstat(file);if(!info.isFile()||info.isSymbolicLink()||info.size>limit||(await realpath(file)).toLowerCase()!==file.toLowerCase())throw Error('upgrade_control_file_invalid');const bytes=await readFile(file);if(bytes.length>limit)throw Error('upgrade_control_limit');let data;try{data=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));}catch{throw Error('upgrade_control_json_invalid');}return parseUpgradeControl(data);}
+export async function readUpgradeControl(file:string){await parent(file);const info=await lstat(file);if(!info.isFile()||info.isSymbolicLink()||info.size>limit||!canonicalPathEqual((await realpath(file)),file))throw Error('upgrade_control_file_invalid');const bytes=await readFile(file);if(bytes.length>limit)throw Error('upgrade_control_limit');let data;try{data=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));}catch{throw Error('upgrade_control_json_invalid');}return parseUpgradeControl(data);}
 export async function createUpgradeControl(file:string,binding:unknown){await parent(file);const state=initialUpgradeControl(binding),handle=await open(file,'wx',0o600);try{await handle.writeFile(encode(state));await handle.sync();}finally{await handle.close();}return state;}
 export async function updateUpgradeControl(file:string,input:unknown){
  const p=await parent(file),q=upgradeChangeSchema.parse(input),lockFile=file+'.operation',claim={format:1,id:randomUUID(),pid:process.pid};let lock;

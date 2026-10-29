@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Domain work commands remain finite and do not grant quality release/payment.
 // 领域指令保持有限，不能授予质量放行或付款。
 import {z} from 'zod';

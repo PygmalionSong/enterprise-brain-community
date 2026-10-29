@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Frozen routes and installed tool contracts; source conditions never become code.
 // 冻结选路与已安装工具合同；源端条件文字不会成为代码。
 import {z} from 'zod';
@@ -13,7 +17,12 @@ export const graphArgsSchema=boundedJson.pipe(z.record(z.string().max(100),jsonV
 export const graphCompileSchema=z.object({processes:z.array(z.object({id:z.uuid(),expectedVersion:z.number().int().positive()}).strict()).min(1).max(20),links:z.array(z.object({id:z.uuid(),expectedVersion:z.number().int().positive()}).strict()).max(19),routes:z.array(z.object({processId:z.uuid(),nodeId:code,edgeId:code}).strict()).max(128),bindings:z.array(z.object({processId:z.uuid(),nodeId:code,toolId:code,toolVersion:code,args:graphArgsSchema}).strict()).min(1).max(256)}).strict().refine(q=>Buffer.byteLength(JSON.stringify(q))<=524288,'graph_plan_limit');
 export type GraphCompileInput=z.infer<typeof graphCompileSchema>;
 export const graphPlanningScopeSchema=z.object({processes:z.array(z.object({id:z.uuid(),expectedVersion:z.number().int().positive()}).strict()).min(1).max(20),links:z.array(z.object({id:z.uuid(),expectedVersion:z.number().int().positive()}).strict()).max(19),tools:z.array(z.object({id:code,version:code}).strict()).min(1).max(64)}).strict().superRefine((q,ctx)=>{for(const list of [q.processes,q.links,q.tools])if(new Set(list.map(v=>v.id)).size!==list.length)ctx.addIssue({code:'custom',message:'planning_scope_duplicate'});if(q.links.length!==q.processes.length-1)ctx.addIssue({code:'custom',message:'planning_itinerary_invalid'});});
-export interface GraphTool {
+ export interface GraphReadAuthority {
+  delegates(args:Record<string,unknown>):{id:string;version:number;role:'it'|'business'}[];
+  check(tx:import('../db/adapter.ts').Sql,actor:Actor,args:Record<string,unknown>,principals:ReadonlyMap<string,{version:number;role:string;disabled:boolean}>):Promise<void>;
+ }
+ export interface GraphTool {
+  readAuthority?:GraphReadAuthority;
  id:string;version:string;effect:'read'|'delegated';
  inputSchema?:Record<string,unknown>;
  validate(args:unknown):Record<string,unknown>;
@@ -23,10 +32,11 @@ export interface GraphTool {
 }
 export class GraphToolCatalog {
  private tools:Map<string,GraphTool>;
- private descriptions:{id:string;version:string;effect:'read'|'delegated';inputSchema?:Record<string,unknown>;inputSchemaSha256?:string}[]=[];
- constructor(tools:GraphTool[]){this.tools=new Map();for(const t of tools){code.parse(t.id);code.parse(t.version);if(!['read','delegated'].includes(t.effect)||this.tools.has(t.id))throw Error('graph_tool_duplicate_or_invalid');let schema:Record<string,unknown>|undefined;if(t.inputSchema!==undefined){try{schema=graphArgsSchema.parse(t.inputSchema);if(schema.type!=='object')throw Error('invalid');const queue:unknown[]=[schema];while(queue.length){const item=queue.pop();if(item&&typeof item==='object'){if(Object.keys(item).some(k=>['$ref','$dynamicRef'].includes(k)))throw Error('invalid');queue.push(...Object.values(item));}}}catch{throw Error('graph_tool_schema_invalid');}}this.tools.set(t.id,t);this.descriptions.push({id:t.id,version:t.version,effect:t.effect,...(schema?{inputSchema:structuredClone(schema),inputSchemaSha256:hash(schema)}:{})});}}
+ private installedReadAuthorities=new Map<string,{authority:GraphReadAuthority;delegates:GraphReadAuthority['delegates'];check:GraphReadAuthority['check']}>();
+ private descriptions:{id:string;version:string;effect:'read'|'delegated';inputSchema?:Record<string,unknown>;inputSchemaSha256?:string;readAuthority?:string}[]=[];
+ constructor(tools:GraphTool[]){this.tools=new Map();for(const t of tools){code.parse(t.id);code.parse(t.version);if(!['read','delegated'].includes(t.effect)||this.tools.has(t.id))throw Error('graph_tool_duplicate_or_invalid');let schema:Record<string,unknown>|undefined;if(t.inputSchema!==undefined){try{schema=graphArgsSchema.parse(t.inputSchema);if(schema.type!=='object')throw Error('invalid');const queue:unknown[]=[schema];while(queue.length){const item=queue.pop();if(item&&typeof item==='object'){if(Object.keys(item).some(k=>['$ref','$dynamicRef'].includes(k)))throw Error('invalid');queue.push(...Object.values(item));}}}catch{throw Error('graph_tool_schema_invalid');}}if(t.readAuthority){if(t.effect!=='read'||typeof t.readAuthority.delegates!=='function'||typeof t.readAuthority.check!=='function')throw Error('graph_read_authority_invalid');this.installedReadAuthorities.set(t.id,{authority:t.readAuthority,delegates:t.readAuthority.delegates,check:t.readAuthority.check});}this.tools.set(t.id,t);this.descriptions.push({id:t.id,version:t.version,effect:t.effect,...(t.readAuthority?{readAuthority:'same-sql-read-authority/1'}:{}),...(schema?{inputSchema:structuredClone(schema),inputSchemaSha256:hash(schema)}:{})});}}
  describe(){return this.descriptions.map(d=>{if(this.get(d.id,d.version).effect!==d.effect)throw Error('graph_tool_version_changed');return structuredClone(d);});}
- get(id:string,version:string){const t=this.tools.get(id);if(!t||t.id!==id||t.version!==version||!['read','delegated'].includes(t.effect))throw Error('graph_tool_version_changed');return t;}
+ get(id:string,version:string){const t=this.tools.get(id);if(!t||t.id!==id||t.version!==version||!['read','delegated'].includes(t.effect))throw Error('graph_tool_version_changed');const installed=this.installedReadAuthorities.get(id);if(t.readAuthority!==installed?.authority||installed&&(t.readAuthority?.delegates!==installed.delegates||t.readAuthority?.check!==installed.check))throw Error('graph_tool_version_changed');return t;}
 }
 export interface GraphSource {id:string;version:number;rawSha256:string;definitionSha256:string;mappingHash:string;confirmedBy:string;authorizationVersion:number;definition:ProcessDefinition;}
 export interface GraphLink {id:string;version:number;fromId:string;toId:string;fromHash:string;toHash:string;fromNode:string;toNode:string;reviewedBy:string;authorizationVersion:number;objectRelation:string;}

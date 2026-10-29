@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual}from'../platform/canonical-path.ts';
 // Bounded immutable controller succession; no claim is deleted or stolen by age.
 // 有界、不可改写的控制器接续链；不删除声明、不凭锁龄接管。
 import {readFile,lstat,realpath,mkdir,open,rename} from 'node:fs/promises';
@@ -9,7 +14,7 @@ export const nativePreparationJournalSchema=z.object({format:z.literal(1),id:z.u
 export type NativePreparationJournal=z.infer<typeof nativePreparationJournalSchema>;
 const claimSchema=z.object({format:z.literal(1),id:z.uuid(),operationId:z.uuid(),predecessor:sha,host:z.string().min(1).max(255),pid,createdAt:z.iso.datetime()}).strict();
 const digest=(value:Uint8Array|string)=>createHash('sha256').update(value).digest('hex'),host=()=>hostname().toLowerCase();
-async function realDirectory(file:string){absolute.parse(file);const s=await lstat(file);if(!s.isDirectory()||s.isSymbolicLink()||(await realpath(file)).toLowerCase()!==file.toLowerCase())throw Error('native_prepare_journal_path_invalid');}
+async function realDirectory(file:string){absolute.parse(file);const s=await lstat(file);if(!s.isDirectory()||s.isSymbolicLink()||!canonicalPathEqual((await realpath(file)),file))throw Error('native_prepare_journal_path_invalid');}
 async function fresh(file:string,text:string){const f=await open(file,'wx',0o600);try{await f.writeFile(text);await f.sync();}finally{await f.close();}}
 async function optional(file:string,max=16384){try{const q=await readPrivateJson(file,max);return {value:q,text:await readFile(file,'utf8')};}catch(e){if((e as NodeJS.ErrnoException).code==='ENOENT')return null;throw e;}}
 export async function readNativePreparationJournal(workDirectory:string,configuration:string){await realDirectory(workDirectory);const file=join(workDirectory,'journal.json'),q=nativePreparationJournalSchema.parse(await readPrivateJson(file,524288));if(q.workDirectory!==workDirectory||q.configuration!==configuration||q.host!==host()||await readFile(file,'utf8')!==JSON.stringify(q))throw Error('native_prepare_journal_binding_changed');return q;}

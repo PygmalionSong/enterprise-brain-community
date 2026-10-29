@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Pinned read-only MCP resource subset. Source text cannot trigger tools or URLs.
 // 明确版本的MCP只读资源子集；源端文字不能触发工具或跳转URL。
 import {z} from 'zod';

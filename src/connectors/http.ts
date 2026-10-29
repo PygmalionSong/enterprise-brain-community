@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Separate IT plane, server-authenticated and CSRF protected. / 独立IT控制面。
 import type {IncomingMessage,ServerResponse} from 'node:http';
 import {z} from 'zod';

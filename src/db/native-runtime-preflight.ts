@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Read-only prerequisite observations;never an authorization receipt or host enablement.
 // 只读前置观察；不作为授权票据，不启用原生企业宿主。
 import {z} from 'zod';

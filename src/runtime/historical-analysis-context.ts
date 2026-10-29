@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Validate immutable original context,not a new model/read permission.
 // 核对不可变原上下文，不将它当作新模型或读取权限。
 import {z} from 'zod';import {analysisFieldPathSchema,analysisFieldValueSchema} from './analysis-fields.ts';

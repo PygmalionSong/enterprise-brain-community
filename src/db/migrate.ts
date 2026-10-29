@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Immutable migration checksums; transaction failure preserves the prior schema. / 迁移哈希固定，失败保留前版。
 import { readdir, readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';

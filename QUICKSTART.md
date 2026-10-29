@@ -6,7 +6,7 @@
 
 ## 1. 准备源码
 
-声明复现环境：Windows x64、Node 24.19.0、pnpm 11.25.0。Node 版本范围为 24.x；其他版本不在当前声明中。需可用包源连接。把源码解压到一个全新、可写、没有父级 node_modules 的目录，终端进入含 package.json 的目录。
+声明复现环境：Windows x64及Ubuntu24.04 x64、Node 24.19.0、pnpm 11.25.0。Node 版本范围为 24.x；其他版本不在当前声明中。需可用包源连接。把源码解压到一个全新、可写、没有父级 node_modules 的目录，终端进入含 package.json 的目录。
 
 ~~~text
 node --version

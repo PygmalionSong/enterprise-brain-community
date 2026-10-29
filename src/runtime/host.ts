@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Local host owns worker lifetime and two independent source databases.
 // 本机宿主管理worker生命周期及两个独立源数据库。
 import {fork} from 'node:child_process';

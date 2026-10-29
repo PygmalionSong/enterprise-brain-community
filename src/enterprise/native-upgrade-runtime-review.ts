@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual,canonicalPathKey}from'../platform/canonical-path.ts';
 // Explicit read-only runtime review after offline signature qualification; never acquires ownership.
 // 离线签名资格后的显式只读运行核对，不接管归属。
 import {readFile,lstat,realpath,open} from 'node:fs/promises';import {dirname,join,isAbsolute,resolve} from 'node:path';
@@ -8,7 +13,7 @@ import {inspectNativeRuntime} from '../db/native-runtime-preflight.ts';import {r
 import {readNativeDeployment} from './native-configuration.ts';import type {Database} from '../db/adapter.ts';
 const absolute=z.string().max(1024).refine(v=>isAbsolute(v)&&resolve(v)===v),sha=z.string().regex(/^[a-f0-9]{64}$/),hash=(b:Uint8Array|string)=>createHash('sha256').update(b).digest('hex');
 export const nativeUpgradeRuntimeReviewSchema=z.object({format:z.literal('enterprise-brain.native-upgrade-runtime-review-input/1'),planningInputFile:absolute,planFile:absolute,expectedPlanSha256:sha,runtimeReviewAcknowledged:z.literal(true)}).strict();
-async function bounded(file:string,max:number){absolute.parse(file);const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max||(await realpath(dirname(file))).toLowerCase()!==dirname(file).toLowerCase())throw Error('native_upgrade_review_private_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_review_input_limit');return b;}
+async function bounded(file:string,max:number){absolute.parse(file);const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max||!canonicalPathEqual((await realpath(dirname(file))),dirname(file)))throw Error('native_upgrade_review_private_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_review_input_limit');return b;}
 const json=(b:Buffer)=>JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(b));
 function fixed(value:Awaited<ReturnType<typeof inspectNativeUpgradePlan>>){const {createdAt,static:staticValue,...rest}=value,{createdAt:staticTime,...staticFixed}=staticValue;return {...rest,static:staticFixed};}
 export async function reviewNativeUpgradeRuntime(inputFile:string,outputFile:string){
@@ -19,7 +24,7 @@ export async function reviewNativeUpgradeRuntime(inputFile:string,outputFile:str
  const p=nativeUpgradePlanInputSchema.parse(json(planningBytes));
  // Apply the same outside-installation/report rule to every private review input.
  // 所有私人核对输入都保持与离线阶段相同的安装目录隔离。
- const {relative}=await import('node:path');const inside=(root:string,f:string)=>{const r=relative(root.toLowerCase(),f.toLowerCase());return r===''||!r.startsWith('..')&&!isAbsolute(r);};
+ const {relative}=await import('node:path');const inside=(root:string,f:string)=>{const r=relative(canonicalPathKey(root),canonicalPathKey(f));return r===''||!r.startsWith('..')&&!isAbsolute(r);};
  for(const root of [p.currentRoot,p.candidateRoot])for(const file of [inputFile,q.planFile])if(inside(root,file)||inside(file,root))throw Error('native_upgrade_review_private_path_overlap');
  if([inputFile,q.planFile,q.planningInputFile,p.publicKeyFile].includes(outputFile))throw Error('native_upgrade_review_output_overlap');
  const config=await readNativeDeployment(p.currentConfigFile);if(hash(await bounded(p.currentConfigFile,16384))!==actual.binding.configurationSha256)throw Error('native_upgrade_review_configuration_changed');

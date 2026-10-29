@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 import {requireEnterpriseLock} from '../db/enterprise-lock.ts';
 // Explicit current-authority history only;never calls models,reserves budget or changes original records.
 // 仅明确的当前授权历史读取，不调用模型、不预留额度、不修改原记录。

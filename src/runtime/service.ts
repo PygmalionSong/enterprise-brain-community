@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Owned runtime: short database transactions, external calls outside locks.
 // 自有运行核心：数据库短事务，外部调用不占用锁。
 import {randomUUID} from 'node:crypto';

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Owned CRM source fixture and fixed read-only adapter; no arbitrary SQL or vendor claim.
 // 自有CRM源夹具与固定只读适配器，不开放任意SQL、不冒充厂商接入。
 import {z} from 'zod';

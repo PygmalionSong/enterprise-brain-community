@@ -186,7 +186,7 @@ const baseBusiness=business;
 business=function(){baseBusiness();main.innerHTML+=`<section class="bc-panel bc-section"><h2>${t(pair('跨部门经营闭环','Cross-functional operating loops'))}</h2><div class="bc-tabs">${b(pair('十二项关键经营节点','Twelve key operating nodes'),'data-page="coordination"')}${b(pair('渠道与冷饮资产','Channels & cold assets'),'data-page="channels"')}${b(pair('客户360与会员','Customer360 & loyalty'),'data-page="customers"')}</div></section>`};
 
 // RQ39–RQ41. Public-scale anchor, independently generated business fixtures.
-// 公开规模作锚点，经营明细为独立推演；不是三得利内部数据或真实Agent运行。
+// 公开规模作锚点，经营明细为独立推演；不是实际企业内部数据或真实Agent运行。
 Object.assign(state,{fiscalYear:2026,reportPeriod:'ytd'});
 const portfolioCategories=[
  {id:'water',name:pair('包装水','Water'),share:.22,price:36,liters:12,season:[.64,.63,.72,.84,1.02,1.24,1.43,1.47,1.20,.95,.74,.72],channels:[.24,.10,.20,.31,.10,.05]},

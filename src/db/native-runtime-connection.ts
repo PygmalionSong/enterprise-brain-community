@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual}from'../platform/canonical-path.ts';
 // Explicit trusted runtime connection only;no migrations or enterprise host activation.
 // 显式受信运行连接；不迁移、不激活企业宿主。
 import {readFile,lstat,realpath} from 'node:fs/promises';import {isAbsolute,resolve,dirname} from 'node:path';import {X509Certificate,randomUUID,createHash} from 'node:crypto';
@@ -32,7 +37,7 @@ export async function acquireNativeRuntimeOwnership(db:Database,input:unknown,on
  }catch(e){await release();const code=e instanceof Error?e.message:'';throw Error(['native_runtime_database_in_use','native_runtime_previous_connections_present'].includes(code)?code:'native_runtime_ownership_unavailable');}
 }
 async function privateBytes(file:string,max:number){
- absolute.parse(file);const info=await lstat(file),parent=dirname(file);if(!info.isFile()||info.isSymbolicLink()||info.size<1||info.size>max||(await realpath(parent)).toLowerCase()!==parent.toLowerCase())throw Error('invalid_private_file');
+ absolute.parse(file);const info=await lstat(file),parent=dirname(file);if(!info.isFile()||info.isSymbolicLink()||info.size<1||info.size>max||!canonicalPathEqual((await realpath(parent)),parent))throw Error('invalid_private_file');
  const bytes=await readFile(file);if(bytes.length<1||bytes.length>max)throw Error('invalid_private_file');return bytes;
 }
 function caBundle(bytes:Buffer){const text=new TextDecoder('utf-8',{fatal:true}).decode(bytes),certs=text.match(/-----BEGIN CERTIFICATE-----[\s\S]*?-----END CERTIFICATE-----/g);if(!certs?.length||certs.length>8||text.replace(/-----BEGIN CERTIFICATE-----[\s\S]*?-----END CERTIFICATE-----/g,'').trim())throw Error('invalid_ca');for(const cert of certs)new X509Certificate(cert);return text;}

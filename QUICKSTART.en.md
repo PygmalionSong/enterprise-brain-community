@@ -6,7 +6,7 @@ Run the included MCP stdio reader against reference process resources and inspec
 
 ## 1. Prepare the source
 
-Declared reproduction environment: Windows x64, Node 24.19.0, pnpm 11.25.0. The supported Node range is 24.x; other versions are outside this declaration. Registry access is required. Extract into a new writable directory without ancestor node_modules, and open a terminal in the directory containing package.json.
+Declared reproduction environments: Windows x64 and Ubuntu24.04 x64, Node 24.19.0, pnpm 11.25.0. The supported Node range is 24.x; other versions are outside this declaration. Registry access is required. Extract into a new writable directory without ancestor node_modules, and open a terminal in the directory containing package.json.
 
 ~~~text
 node --version

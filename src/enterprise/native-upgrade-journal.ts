@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual}from'../platform/canonical-path.ts';
 // Immutable local intent/evidence chain. Its hashes never prove external SQL or service effects.
 // 不可改写的本机意图/证据链；日志摘要本身不证明外部SQL或服务效果。
 import {readFile,lstat,realpath,mkdir,open} from 'node:fs/promises';import {join,isAbsolute,resolve} from 'node:path';
@@ -29,8 +34,8 @@ function transition(state:NativeUpgradeJournalView,e:Event):NativeUpgradeJournal
  if(success&&state.header.format==='enterprise-brain.native-upgrade-journal/2'&&['database_committed','committed_parked'].includes(e.targetStage)&&p.checkpointSha256===null)throw Error('native_upgrade_journal_commit_checkpoint_required');
  return {...state,sequence:e.sequence,stage:success?e.targetStage:state.stage,receipts:success?{...state.receipts,[e.targetStage]:e.evidenceSha256!}:state.receipts,pending:null,failed:e.action==='fail'};
 }
-async function directory(dir:string){if(!isAbsolute(dir)||resolve(dir)!==dir)throw Error('native_upgrade_journal_absolute_path_required');const s=await lstat(dir);if(!s.isDirectory()||s.isSymbolicLink()||(await realpath(dir)).toLowerCase()!==dir.toLowerCase())throw Error('native_upgrade_journal_indirect_path');}
-async function read(file:string,max:number){const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max||(await realpath(file)).toLowerCase()!==file.toLowerCase())throw Error('native_upgrade_journal_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_journal_file_invalid');return b;}
+async function directory(dir:string){if(!isAbsolute(dir)||resolve(dir)!==dir)throw Error('native_upgrade_journal_absolute_path_required');const s=await lstat(dir);if(!s.isDirectory()||s.isSymbolicLink()||!canonicalPathEqual((await realpath(dir)),dir))throw Error('native_upgrade_journal_indirect_path');}
+async function read(file:string,max:number){const s=await lstat(file);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max||!canonicalPathEqual((await realpath(file)),file))throw Error('native_upgrade_journal_file_invalid');const b=await readFile(file);if(b.length<1||b.length>max)throw Error('native_upgrade_journal_file_invalid');return b;}
 const parse=(b:Buffer)=>JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(b));
 async function fresh(file:string,value:unknown){const b=Buffer.from(JSON.stringify(value)),f=await open(file,'wx',0o600);try{await f.writeFile(b);await f.sync();}finally{await f.close();}return hash(b);}
 export async function readNativeUpgradeJournal(dir:string):Promise<NativeUpgradeJournalView>{

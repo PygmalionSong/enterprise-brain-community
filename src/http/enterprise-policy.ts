@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Separate canonical TLS origin and private proxy authority from caller headers.
 // 规范TLS来源与私人代理授权独立于调用方头字段。
 import {timingSafeEqual} from 'node:crypto';

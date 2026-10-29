@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 import {requireEnterpriseLock} from '../db/enterprise-lock.ts';
 // IT-reviewed process evidence and cross-source semantics, separate from runtime permissions.
 // IT核对的流程证据与跨源语义，独立于运行时执行权限。

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Evidence-backed cross-domain work, distinct from supplier/quality authority ledgers.
 // 有依据的跨域协同，不替代供应商或质量权威账本。
 import {randomUUID} from 'node:crypto';

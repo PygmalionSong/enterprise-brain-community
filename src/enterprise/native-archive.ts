@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
+import{canonicalPathEqual}from'../platform/canonical-path.ts';
 // Bounded authenticated file container only;no database or process ownership is implied.
 // 仅提供有界认证文件容器，不代表已经取得数据库或进程归属。
 import {open,readFile,lstat,realpath,mkdir,link,unlink} from 'node:fs/promises';
@@ -15,7 +20,7 @@ const keySchema=z.object({format:z.literal(1),id:z.uuid(),key:z.string().regex(/
 const limitsSchema=z.object({maxBytes:positive.max(4294967296).default(268435456),timeoutMs:z.number().int().min(10).max(3600000).default(300000)}).strict();
 const hash=(b:Uint8Array)=>createHash('sha256').update(b).digest('hex');
 function absolute(p:string){if(typeof p!=='string'||!isAbsolute(p)||resolve(p)!==p)throw Error('native_archive_path_invalid');return p;}
-async function realDirectory(p:string){absolute(p);const s=await lstat(p);if(!s.isDirectory()||s.isSymbolicLink()||(await realpath(p)).toLowerCase()!==p.toLowerCase())throw Error('native_archive_path_invalid');}
+async function realDirectory(p:string){absolute(p);const s=await lstat(p);if(!s.isDirectory()||s.isSymbolicLink()||!canonicalPathEqual((await realpath(p)),p))throw Error('native_archive_path_invalid');}
 async function privateBytes(p:string,max:number){absolute(p);await realDirectory(dirname(p));const s=await lstat(p);if(!s.isFile()||s.isSymbolicLink()||s.size<1||s.size>max)throw Error('native_archive_file_invalid');const b=await readFile(p);if(b.length<1||b.length>max)throw Error('native_archive_file_invalid');return b;}
 function parse(bytes:Buffer){return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));}
 function budget(input:unknown,signal?:AbortSignal){const q=limitsSchema.parse(input),until=Date.now()+q.timeoutMs;const guard=()=>{if(signal?.aborted)throw Error('native_archive_cancelled');if(Date.now()>=until)throw Error('native_archive_deadline');};return {...q,until,signal,guard};}

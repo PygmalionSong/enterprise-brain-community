@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Enterprise Brain contributors
+// SPDX-License-Identifier: Apache-2.0
+// Original project / 原项目: Enterprise Brain
+// https://github.com/PygmalionSong/enterprise-brain-community
 // Models propose; deterministic business checks decide admissibility.
 // 模型仅提案，确定性业务校验决定可采纳性。
 import {z} from 'zod';
