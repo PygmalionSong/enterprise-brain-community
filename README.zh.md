@@ -6,7 +6,7 @@
 
 让 Agent 处理跨系统业务：读取相关信息，与负责人核对方案，批准后执行，再检查结果。ERP、CRM 等原有系统继续管理各自的业务记录。
 
-[查看业务案例](https://pygmalionsong.github.io/enterprise-brain-community/?lang=zh) · [运行本地任务](FIRST_TASK.md) · [图示架构](docs/ARCHITECTURE.zh.md) · [交流与联系](CONTACT.md)
+[查看业务案例](https://pygmalionsong.github.io/enterprise-brain-community/?lang=zh) · [本地上手指南](GETTING_STARTED.zh.md) · [图示架构](docs/ARCHITECTURE.zh.md) · [交流与联系](CONTACT.md)
 
 ## 先看一个业务案例
 
@@ -16,13 +16,15 @@
 
 ![体验饮料企业案例](showcase/media/01-processes.png)
 
-## 在本地跑通一个任务
+## 在本地试一条任务
 
-第一个任务会读取两个示例流程，取得批准后执行方案。它还演示系统已保存操作、但没有返回结果时如何恢复。自带示例数据，无需企业账号或模型密钥。
+样例会生成自己的账号和数据，无需企业账号或模型密钥。
 
-[运行第一个任务](FIRST_TASK.md)
-
-[从私有配置到结果查询，运行独立企业宿主示例](GETTING_STARTED.zh.md)
+| 你想验证什么 | 从这里开始 |
+|---|---|
+| 配置宿主、批准任务，重启后查询原操作 | [完整上手指南](GETTING_STARTED.zh.md) |
+| 操作响应丢失后查证结果，避免重复提交 | [双进程恢复任务](FIRST_TASK.md) |
+| 修改库存源，对比新数据和原操作记录 | [库存适配示例](EXTEND_A_SOURCE.md) |
 
 ## 跨部门的问题，放在一起判断
 
@@ -50,7 +52,7 @@
 - [接入业务系统](FIRST_CONNECTION.md)
 - [常见问题](FAQ.zh.md)
 
-## 安装与运行
+## 准备运行环境
 
 Node 24.19.0 · pnpm 11.25.0
 
@@ -59,7 +61,6 @@ node scripts/verify-repository.mjs
 pnpm install --frozen-lockfile --ignore-scripts
 pnpm typecheck
 pnpm build
-node scripts/start-reference.mjs --acknowledge-owned-fixture
 ```
 
 ## 版本状态
@@ -67,6 +68,8 @@ node scripts/start-reference.mjs --acknowledge-owned-fixture
 当前提供开发者源码预览，已执行 Windows x64 和 Ubuntu 24.04 x64 源码检查。接入企业系统需要适配器和权限配置；全网自动发现和生产级一键安装器尚未提供。
 
 浏览器案例使用示例数据，与本地后端独立运行。生产部署、真实模型质量和客户业务收益尚未验证。
+
+最新指南和修复位于 main。preview.2 附件是较早的源码快照；运行独立宿主样例请使用当前源码。
 
 [支持范围](PREVIEW_SCOPE.md) · [验证记录](PREVIEW_NOTES.md)
 

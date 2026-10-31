@@ -6,7 +6,7 @@
 
 複数の業務システムから情報を読み取り、責任者が計画を確認・承認した後に実行結果を照合する Agent の基盤です。ERP や CRM など、既存システムの業務記録はそのまま利用します。
 
-[業務事例を見る](https://pygmalionsong.github.io/enterprise-brain-community/?lang=ja) · [タスクを実行](FIRST_TASK.ja.md) · [構成図](docs/ARCHITECTURE.ja.md) · [質問・連絡先](CONTACT.ja.md)
+[業務事例を見る](https://pygmalionsong.github.io/enterprise-brain-community/?lang=ja) · [ローカルで始める](GETTING_STARTED.ja.md) · [構成図](docs/ARCHITECTURE.ja.md) · [質問・連絡先](CONTACT.ja.md)
 
 ## 業務事例を体験
 
@@ -16,13 +16,15 @@
 
 ![飲料企業の事例を開く](showcase/media/01-processes.png)
 
-## ローカルでタスクを実行
+## ローカルでタスクを試す
 
-二つのサンプルプロセスを読み取り、承認後に計画を実行します。接続先で処理が完了しても応答が届かない場合の復旧も試せます。サンプルデータを同梱しており、企業アカウントやモデル API キーは不要です。
+サンプル用のアカウントとデータを生成するため、企業アカウントやモデル API キーは不要です。
 
-[最初のタスクを実行](FIRST_TASK.ja.md)
-
-[独立ホストの初期設定から結果確認まで試す](GETTING_STARTED.ja.md)
+| 試したいこと | ガイド |
+|---|---|
+| ホスト設定、タスク承認、再起動後の結果照会 | [導入ガイド](GETTING_STARTED.ja.md) |
+| 応答が届かなかった処理を再送せずに照会 | [二つのプロセスによる復旧](FIRST_TASK.ja.md) |
+| 在庫データを変更し、以前の操作の結果と比較 | [在庫アダプターの例](EXTEND_A_SOURCE.ja.md) |
 
 ## 部門をまたぐ課題を一緒に考える
 
@@ -50,7 +52,7 @@
 - [業務システムへの接続](FIRST_CONNECTION.ja.md)
 - [よくある質問](FAQ.ja.md)
 
-## インストールと実行
+## ソースの準備
 
 Node 24.19.0 · pnpm 11.25.0
 
@@ -59,7 +61,6 @@ node scripts/verify-repository.mjs
 pnpm install --frozen-lockfile --ignore-scripts
 pnpm typecheck
 pnpm build
-node scripts/start-reference.mjs --acknowledge-owned-fixture
 ```
 
 ## バージョンの状況
@@ -67,6 +68,8 @@ node scripts/start-reference.mjs --acknowledge-owned-fixture
 現在は開発者向けソースプレビューです。Windows x64 と Ubuntu 24.04 x64 でソース検証を実施しています。企業システムへの接続にはアダプターと権限設定が必要です。ネットワーク全体の自動探索と本番向けワンクリックインストーラーは未提供です。
 
 ブラウザー事例はサンプルデータを使い、ローカルバックエンドとは独立して動きます。本番導入、実モデルの品質、顧客の業務成果は未検証です。
+
+最新のガイドと修正は main にあります。preview.2 の添付ソースは以前のスナップショットです。ホストの導入ガイドには現在のソースを使ってください。
 
 [対応範囲（英語）](PREVIEW_SCOPE.en.md) · [検証記録（英語）](PREVIEW_NOTES.en.md)
 
