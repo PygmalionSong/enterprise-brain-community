@@ -22,6 +22,6 @@ traffic.json采用有界私人文件、期望版本及临时文件同步/原子�
 
 企业加密备份显式保存策略；同代码恢复保留mode/version/最近控制历史，旧浏览器会话仍全部失效。缺失策略的恢复点保持parked，不能悄悄开放。恢复不会自动激活或运行候选业务。影子升级控制器必须显式核对parked并使用停止旧写入后的新回滚点；完整签名产品的[受控升级](UPGRADE_CONTROL.md)串起停止/新备份/保守迁移/指针与激活；写入后不自动回退旧快照。
 
-裸程序级createEnterpriseApplication只有在受信工厂传入TrafficAdmission时才安装此持久门控；独立CLI宿主始终装配。自定义工具、角色、批准与源回执合同保持独立，激活不扩大业务写权限。
+裸程序级createEnterpriseApplication只有在受信工厂传入TrafficAdmission时才安装此持久门控；独立CLI宿主始终装配。自定义工具、角色、批准与源回执接口约定保持独立，激活不扩大业务写权限。
 
-后台委托与HTTP共用受理计数和停放排空，见[图推进合同](SUPERVISION.md)。恢复active策略不会重新启用恢复的图委托。
+后台委托与HTTP共用受理计数和停放排空，见[任务推进说明](SUPERVISION.md)。恢复active策略不会重新启用恢复的图委托。

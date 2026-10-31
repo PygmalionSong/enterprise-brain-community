@@ -1,4 +1,4 @@
-# 升级控制核心合同
+# 升级控制核心接口约定
 
 [English](UPGRADE_CONTROL.en.md)
 

@@ -6,7 +6,7 @@
 
 新增入口 `scripts/enterprise.mjs` 使用独立私人配置和企业库，不调用演示入口，不加载饮料案例、HTTP/SQL构造源、mock模型或演示会话。原Start-Local与经营驾驶舱仍是独立的参考案例。企业宿主提供三语登录/账号管理、身份API、流程登记与受控图计划；空企业业务工作区明确尚未配置，不返回旧案例或静默回退数据。
 
-当前声明范围为Windows x64、Node24.19.0、PGlite单进程本机后端及受信HTTPS代理合同。本机TLS/CLI/恢复验证不证明干净宿主、原生PG、生产证书、企业网络/高可用或SSO/MFA已验。后端只绑定127.0.0.1；模型未配置时明确not_configured，不退回mock。默认安装工具仅 `process.definition.read@v1`，读取经确认的流程版本摘要；其他业务动作需受信安装代码提供工具，HTTP不能任意安装脚本或端点。
+当前声明范围为Windows x64、Node24.19.0、PGlite单进程本机后端及受信HTTPS代理接口约定。本机TLS/CLI/恢复验证不证明干净宿主、原生PG、生产证书、企业网络/高可用或SSO/MFA已验。后端只绑定127.0.0.1；模型未配置时明确not_configured，不退回mock。默认安装工具仅 `process.definition.read@v1`，读取经确认的流程版本摘要；其他业务动作需受信安装代码提供工具，HTTP不能任意安装脚本或端点。
 
 ## 初始化与启动
 
@@ -42,7 +42,7 @@ status明确报告unavailable；不把降级当成新实例启动。stop只在�
 
 浏览器从规范origin进入根路径，未登录跳转/login，身份管理员进入/console，其他账号进入/workspace。会话使用__Host-eb_session、Secure/HttpOnly/SameSite=Strict，写请求核对规范Origin与CSRF。登录有进程内全局/账号失败上限及并发限制；不等于分布式风控。中文/English/日本語共用代码，响应式登录与账号目录；语言偏好不含秘密，存储不可用时仍可工作。老板的参考驾驶舱不嵌入本身份后台。
 
-| API | 合同 |
+| API | 接口约定 |
 |---|---|
 | POST /v1/identity/session | username/password；TLS规范Origin、JSON、受限登录；返回CSRF和Secure Cookie |
 | GET /v1/context | 当前账号、角色、授权版本与新CSRF |
@@ -51,11 +51,11 @@ status明确报告unavailable；不把降级当成新实例启动。stop只在�
 | POST /v1/identity/operators/{id}/change | expectedVersion、changes(role/disabled/identityAdministrator) |
 | POST /v1/identity/operators/{id}/password | expectedVersion、password |
 | POST /v1/identity/operators/{id}/revoke-sessions | expectedVersion |
-| /v1/it/process-registry、/v1/it/graph、/v1/graph | 沿用流程/图合同、当前权限与独立业务批准；不授予任意源端动作 |
+| /v1/it/process-registry、/v1/it/graph、/v1/graph | 沿用流程/图接口约定、当前权限与独立业务批准；不授予任意源端动作 |
 
 身份请求最多64KiB；流程/图使用各自400/600KiB限制。请求/头/保持连接时限分别10/5/5秒。服务端只返回白名单错误码和关联UUID，不回显密码、密钥或SQL异常。
 
-独立宿主另有私人持久active/parked门控：traffic-status读取版本，park停放并有界排空，activate在运行且schema current时恢复受理。变更通过PrivateInput/--input私人JSON(expectedVersion及可选waitMs)；旧无策略默认parked，新初始化明确active。备份恢复保留策略，停放不撤销业务动作；详细合同见本发行的TRAFFIC文档。
+独立宿主另有私人持久active/parked门控：traffic-status读取版本，park停放并有界排空，activate在运行且schema current时恢复受理。变更通过PrivateInput/--input私人JSON(expectedVersion及可选waitMs)；旧无策略默认parked，新初始化明确active。备份恢复保留策略，停放不撤销业务动作；详细接口约定见本发行的TRAFFIC文档。
 
 ## 企业库加密备份与恢复
 
@@ -69,4 +69,4 @@ backup核对并正常停止自己的实例，再加密独立企业库；不用�
 
 restore只接受新配置/新state，核对源码/迁移/依赖锁/环节定义及CLI、本机传输、便携启动模板的整体指纹，拒绝跨代码版本直接恢复。保留企业/部署身份、账号/授权、流程定义与图计划/动作/事件、代理密钥；控制密钥另生成，新启动再轮换。所有恢复会话强制失效并留审计，授权版本及图动作UUID不因此重建。只有重新登录后才能续跑；到期批准不允许新动作。恢复不自动启动，不代表跨版本升级/迁移回滚或HA接管；正式升级工具仍需单独工程。
 
-构造数据读取、实际标准合同、真实模型与真实企业集成分别报告。实际客户环境与模型人工对照不是当前技术基座前提；尚未接入的系统不报兼容。完整驾驶舱仍有地图权利/制图公开门槛，企业宿主本身不把这些历史资产当成企业数据。
+构造数据读取、实际标准接口约定、真实模型与真实企业集成分别报告。实际客户环境与模型人工对照不是当前技术基座前提；尚未接入的系统不报兼容。完整驾驶舱仍有地图权利/制图公开门槛，企业宿主本身不把这些历史资产当成企业数据。

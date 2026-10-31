@@ -2,7 +2,7 @@
 
 [English](NATIVE_MAINTENANCE.en.md) · [原生前台](NATIVE_SERVICE.md)
 
-本入口只核对和清理已失效的本机实例/运维声明。它不连接企业数据库、不终止任何进程、不启动服务、不改账号、图、回执、委托或模型额度，也不提供数据库故障接管。仅处理显式 format2 私人配置；原 format1 仍使用原 enterprise.mjs 运维合同。
+本入口只核对和清理已失效的本机实例/运维声明。它不连接企业数据库、不终止任何进程、不启动服务、不改账号、图、回执、委托或模型额度，也不提供数据库故障接管。仅处理显式 format2 私人配置；原 format1 仍使用原 enterprise.mjs 运维接口约定。
 
 先运行只读检查，将输出的整个 plan 对象原样保存为私人 JSON；检查报告和恢复输入都不能进入公开仓库：
 
@@ -18,4 +18,4 @@ recover 返回 started:false 和 processesTerminated:0。恢复后需要运维�
 描述符变化或数据库离线不妨碍本机准确锁恢复；这不放宽 start/activate 的严格描述符检查。图、动作、原回执、幂等键和预算仍保留在原数据库，恢复不会重新批准或重发动作。正常停服仍优先使用 stop。本功能不是原生 pg_dump/pg_restore、跨版本升级、HA、干净宿主或 Linux 的验收证明。
 
 
-[原生备份与新库恢复](NATIVE_BACKUP_RESTORE.md)另有独立合同；本页的失效锁处理不等于备份任务恢复。
+[原生备份与新库恢复](NATIVE_BACKUP_RESTORE.md)另有独立接口约定；本页的失效锁处理不等于备份任务恢复。

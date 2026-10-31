@@ -3,7 +3,7 @@
 当前源码范围以[Linux运维](LINUX_RUNTIME.md)及[验证记录](README.md)为准；下文连接核心的早期验收排除项只说明当时阶段，不覆盖当前原生备份恢复入口。
 [English](NATIVE_RUNTIME.en.md) · [企业宿主](HOST.md) · [原生程序入口](NATIVE_HOST.md) · [实例归属](NATIVE_OWNERSHIP.md) · [架构](README.md)
 
-当前一键部署和私有CLI仍使用PGlite；可选原生程序入口另列合同。下述核心核对受信部署程序的原生连接前置条件，不是完整原生安装、迁移、备份或恢复通道。保留旧宿主对原生档位的拒绝。只验证了本机Windows PostgreSQL17.11专用回环集群，不声明Linux、其他PG版本或客户生产环境已通过。
+本页介绍原生数据库连接的检查模块。原生CLI入口见[NATIVE_SERVICE](NATIVE_SERVICE.md)，PGlite使用独立入口。下述核心核对受信部署程序的原生连接前置条件，不是完整原生安装、迁移、备份或恢复通道。保留旧宿主对原生档位的拒绝。只验证了本机Windows PostgreSQL17.11专用回环集群，不声明Linux、其他PG版本或客户生产环境已通过。
 
 `inspectNativeRuntime(database,input)`只读核对已连接PostgreSQL17的预期角色、显式企业和代码迁移清单。登录角色和SET目标eb_app均不得有超级/BYPASS/建库建角色/复制、所有权、数据库CREATE/TEMP、用户schema CREATE、可执行用户SECURITY DEFINER或迁移表写权限（含列级）。要求SET-only成员、必需身份/父行锁权限、父行RLS/FORCE、正常search_path/row_security、明确企业上下文、本企业enterprise父行与完整迁移ID/SHA一致。失败不会修复权限、设置角色/租户或写入记录。输出固定码与迁移数量，始终hostEnabled=false、authorizationGranted=false；数据库错误不返回原文。
 

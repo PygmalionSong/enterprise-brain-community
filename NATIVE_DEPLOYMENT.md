@@ -12,4 +12,4 @@
 
 `readNativeDeployment` 校验固定私人路径、令牌与描述符当前SHA，用于启动。`readNativeControlDeployment` 只校验本地配置/固定路径/令牌，用于核对原实例与停服；描述符丢失或改变不会阻断此读取，不能据此启动新连接。共用运维锁始终散列实际完整配置，包含原生角色/描述符SHA。密码/CA文件的轮换仍需明确停服/重新连接；描述符SHA不证明引用文件未变或新凭证已生效。
 
-原 `format: 1` PGlite读取、文件备份和升级入口拒绝此配置。不要用文件复制备份外置PostgreSQL。独立本机合同现覆盖[原生前台](NATIVE_SERVICE.md)、[日常模型工具](NATIVE_AGENT_CONFIGURATION.md)、[加密备份/隔离恢复](NATIVE_BACKUP_RESTORE.md)及[新空专库DBA准备](NATIVE_DBA_PREPARATION.md)。DBA准备是单独显式命令，不改变adopt的只读边界；原生跨版本升级和HA仍须单独交付和验收。自有Windows/PG17/TLS验证不等于干净宿主、Linux、生产证书或真实客户环境验收；模型实测与公开发布另外保留边界。
+原 `format: 1` PGlite读取、文件备份和升级入口拒绝此配置。不要用文件复制备份外置PostgreSQL。独立本机测试现覆盖[原生前台](NATIVE_SERVICE.md)、[日常模型工具](NATIVE_AGENT_CONFIGURATION.md)、[加密备份/隔离恢复](NATIVE_BACKUP_RESTORE.md)及[新空专库DBA准备](NATIVE_DBA_PREPARATION.md)。DBA准备是单独显式命令，不改变adopt的只读边界；原生跨版本升级和HA仍须单独交付和验收。自有Windows/PG17/TLS验证不等于干净宿主、Linux、生产证书或真实客户环境验收；模型实测与公开发布另外保留边界。

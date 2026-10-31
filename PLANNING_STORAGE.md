@@ -1,6 +1,6 @@
 # 规划候选与持久调用预留
 
-[English](PLANNING_STORAGE.en.md) · [工具参数合同](TOOL_CONTRACTS.md)
+[English](PLANNING_STORAGE.en.md) · [工具参数定义](TOOL_CONTRACTS.md)
 
 `src/runtime/planning-ledger.ts`提供程序存储核心，schema20新增两张企业隔离表。默认无配置/关闭，没有模型HTTP调用、用户规划入口、自动编译、业务批准或图执行。它不是已经完成的通用Agent规划器。
 
@@ -17,7 +17,7 @@
 受信存储接口已由[模型安装与规划入口](MODELS.md)显式装配；默认未安装时仍报告模型未配置。当前确认流程/工具白名单上下文和有界输出校验保持独立；不存在mock或饮料案例回退。实际模型保持未验证，Ubuntu基础设施范围另见LINUX_RUNTIME.md；不把本地SQL协议测试当AI效果或厂商兼容。
 
 
-明确采用候选生成冻结计划见[候选采用合同](CANDIDATE_ADOPTION.md)，采用后仍需独立业务批准，不自动执行。
+明确采用候选生成冻结计划见[候选采用接口约定](CANDIDATE_ADOPTION.md)，采用后仍需独立业务批准，不自动执行。
 
 
 新增明确的[额度周期](BUDGET_PERIODS.md)：旧预留永久保留于关闭档案，新的配置身份默认禁用；恢复后的操作人声明不等于供应商账单已验证。普通安装仍不能绕过恢复门控。
