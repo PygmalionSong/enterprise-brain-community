@@ -539,23 +539,23 @@
     },
     {
       "path": "README.en.md",
-      "bytes": 4302,
-      "sha256": "e4ffdb2f510976a849f6d39c166ac13b228bbb9590778f0315c4d5230bdaeb90"
+      "bytes": 4546,
+      "sha256": "fc677b4793eb348d1af56941d8d9afa3ce8448201941d16e47026aeb3b40f385"
     },
     {
       "path": "README.ja.md",
-      "bytes": 4886,
-      "sha256": "b0842d71d0623f5b48d1de30b4dfe6f3326d1e4fa77a8d17ed706f66aee66353"
+      "bytes": 5146,
+      "sha256": "5808716b46445aec570a1604f90c7c76422355db80a4f1cc5a8da43d2d829ab7"
     },
     {
       "path": "README.md",
-      "bytes": 4302,
-      "sha256": "e4ffdb2f510976a849f6d39c166ac13b228bbb9590778f0315c4d5230bdaeb90"
+      "bytes": 4546,
+      "sha256": "fc677b4793eb348d1af56941d8d9afa3ce8448201941d16e47026aeb3b40f385"
     },
     {
       "path": "README.zh.md",
-      "bytes": 4020,
-      "sha256": "97636105139d5b2da707e808544489fec7e24c476a75fcdb8ea79906ec69a620"
+      "bytes": 4195,
+      "sha256": "3ff23baec7a7381a6dfe45f096f5ff1fc57bef69c720508862589324a9612470"
     },
     {
       "path": "RECEIPTS.en.md",
@@ -1574,8 +1574,8 @@
     },
     {
       "path": "showcase/index.html",
-      "bytes": 558494,
-      "sha256": "f4d03b40664331f7bc2c92ffda07745b1cfbb85b1d1a4e9b009ecf32caaf430c"
+      "bytes": 561450,
+      "sha256": "156abbce5842b1a25fcca6337339f04d00d59e21a8cb11949ba9b6acd4d43e22"
     },
     {
       "path": "showcase/media/01-processes.png",

@@ -6,7 +6,7 @@
 
 Build agents that work across business systems: read the relevant information, review a plan with its owner, then execute it and check the result. ERP, CRM and other systems continue to hold their business records.
 
-[Explore the business case](https://pygmalionsong.github.io/enterprise-brain-community/?lang=en) · [Run a task locally](FIRST_TASK.en.md) · [Architecture diagrams](docs/ARCHITECTURE.en.md) · [Discuss and contact](CONTACT.en.md)
+[Explore the business case](https://pygmalionsong.github.io/enterprise-brain-community/?lang=en) · [Start locally](GETTING_STARTED.en.md) · [Architecture diagrams](docs/ARCHITECTURE.en.md) · [Discuss and contact](CONTACT.en.md)
 
 ## Try the business case
 
@@ -16,13 +16,15 @@ A beverage business faces a supply shortage. Compare production, warehouse trans
 
 ![Explore the beverage case](showcase/media/01-processes.png)
 
-## Run a task locally
+## Try a local task
 
-The first task reads two sample processes, requests approval and executes a plan. It also tests recovery when a system saves a change but its response is lost. Sample data is included; no company account or model API key is needed.
+The examples generate their own accounts and data. You do not need a company account or model API key.
 
-[Run the first task](FIRST_TASK.en.md)
-
-[Run an isolated enterprise host from configuration to result](GETTING_STARTED.en.md)
+| What you want to try | Start here |
+|---|---|
+| Set up a host, approve a task and query its result after restart | [Complete host walkthrough](GETTING_STARTED.en.md) |
+| Recover an operation whose response was lost, without submitting it again | [Two-process recovery task](FIRST_TASK.en.md) |
+| Change an inventory source and compare new data with an earlier result | [Inventory adapter example](EXTEND_A_SOURCE.en.md) |
 
 ## Bring a cross-team problem into one decision
 
@@ -50,7 +52,7 @@ The supply case compares production, transfers and co-packing under shared capac
 - [Connect a system](FIRST_CONNECTION.en.md)
 - [FAQ](FAQ.en.md)
 
-## Install and run
+## Prepare the source
 
 Node 24.19.0 · pnpm 11.25.0
 
@@ -59,7 +61,6 @@ node scripts/verify-repository.mjs
 pnpm install --frozen-lockfile --ignore-scripts
 pnpm typecheck
 pnpm build
-node scripts/start-reference.mjs --acknowledge-owned-fixture
 ```
 
 ## Release status
@@ -67,6 +68,8 @@ node scripts/start-reference.mjs --acknowledge-owned-fixture
 This is a developer source preview. Windows x64 and Ubuntu 24.04 x64 source checks have run. Connecting a company system requires an adapter and access configuration; automatic network-wide discovery and a production one-click installer are not available.
 
 The browser case uses sample data and runs separately from the local backend. Production deployment, live-model quality and customer outcomes have not been validated.
+
+Current guides and fixes are on main. The preview.2 archive is an older snapshot; use the current source for the host walkthrough.
 
 [Scope](PREVIEW_SCOPE.en.md) · [Validation](PREVIEW_NOTES.en.md)
 
