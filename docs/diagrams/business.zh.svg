@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1040" viewBox="0 0 1000 1040" role="img"><title>一处缺货，牵涉哪些业务？</title><desc>饮料企业参考业务架构 · 按职责分组，实际流程存在并行与反馈</desc><rect width="1000" height="1040" fill="white"/>
+<text x="36" y="45" font-family="Microsoft YaHei,sans-serif" font-size="19" fill="#276d70">ENTERPRISE BRAIN</text>
+<text x="36" y="100" font-family="Microsoft YaHei,sans-serif" font-size="34" fill="#183842">一处缺货，牵涉哪些业务？</text>
+<text x="36" y="141" font-family="Microsoft YaHei,sans-serif" font-size="22" fill="#53666d">饮料企业参考业务架构 · 按职责分组，实际流程存在并行与反馈</text>
+<text x="36" y="220" font-family="Microsoft YaHei,sans-serif" font-size="25" fill="#276d70">01 市场与计划</text>
+<rect x="36" y="240" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="50" y="280" font-family="Microsoft YaHei,sans-serif" font-size="24" fill="#183842">市场与产品</text>
+<text x="50" y="319" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">市场反馈、配方与包材变更</text>
+<rect x="352" y="240" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="366" y="280" font-family="Microsoft YaHei,sans-serif" font-size="24" fill="#183842">需求与供给</text>
+<text x="366" y="319" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">预测、促销、库存与产能</text>
+<rect x="668" y="240" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="682" y="280" font-family="Microsoft YaHei,sans-serif" font-size="24" fill="#183842">采购与供应商</text>
+<text x="682" y="319" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">物料计划、承诺与供方资格</text>
+<text x="36" y="445" font-family="Microsoft YaHei,sans-serif" font-size="25" fill="#276d70">02 生产与履约</text>
+<rect x="36" y="465" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="50" y="505" font-family="Microsoft YaHei,sans-serif" font-size="24" fill="#183842">制造与代工</text>
+<text x="50" y="544" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">排产、工单、批次与成本</text>
+<rect x="352" y="465" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="366" y="505" font-family="Microsoft YaHei,sans-serif" font-size="24" fill="#183842">质量与追溯</text>
+<text x="366" y="544" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">检验、放行与五码关联</text>
+<rect x="668" y="465" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="682" y="505" font-family="Microsoft YaHei,sans-serif" font-size="24" fill="#183842">仓储与物流</text>
+<text x="682" y="544" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">可用库存、调拨、运输与签</text>
+<text x="682" y="576" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">收</text>
+<text x="36" y="670" font-family="Microsoft YaHei,sans-serif" font-size="25" fill="#276d70">03 渠道与客户</text>
+<rect x="36" y="690" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="50" y="730" font-family="Microsoft YaHei,sans-serif" font-size="24" fill="#183842">销售与渠道</text>
+<text x="50" y="769" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">经销、KA、餐饮、零售与线</text>
+<text x="50" y="801" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">上</text>
+<rect x="352" y="690" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="366" y="730" font-family="Microsoft YaHei,sans-serif" font-size="24" fill="#183842">门店与冷藏</text>
+<text x="366" y="769" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">冰柜、货位、动销与客流</text>
+<rect x="668" y="690" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="682" y="730" font-family="Microsoft YaHei,sans-serif" font-size="24" fill="#183842">客户与增长</text>
+<text x="682" y="769" font-family="Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">客户、会员、营销与售后</text>
+<path d="M36,940 L964,940" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="980" font-family="Microsoft YaHei,sans-serif" font-size="20" fill="#53666d">财务、主数据与权限贯穿各业务。全景表示业务范围，不表示每一环节均已实现。</text>
+</svg>

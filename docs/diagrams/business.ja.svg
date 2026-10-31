@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1040" viewBox="0 0 1000 1040" role="img"><title>欠品に関わる業務を見渡す</title><desc>飲料企業の業務構成例・並行処理やフィードバックを含む</desc><rect width="1000" height="1040" fill="white"/>
+<text x="36" y="45" font-family="Meiryo,sans-serif" font-size="19" fill="#276d70">ENTERPRISE BRAIN</text>
+<text x="36" y="100" font-family="Meiryo,sans-serif" font-size="34" fill="#183842">欠品に関わる業務を見渡す</text>
+<text x="36" y="141" font-family="Meiryo,sans-serif" font-size="22" fill="#53666d">飲料企業の業務構成例・並行処理やフィードバックを含む</text>
+<text x="36" y="220" font-family="Meiryo,sans-serif" font-size="25" fill="#276d70">01 市場と計画</text>
+<rect x="36" y="240" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="50" y="280" font-family="Meiryo,sans-serif" font-size="24" fill="#183842">市場・製品</text>
+<text x="50" y="319" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">市場の声・配合・包材変更</text>
+<rect x="352" y="240" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="366" y="280" font-family="Meiryo,sans-serif" font-size="24" fill="#183842">需要・供給</text>
+<text x="366" y="319" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">予測・販促・在庫・生産能</text>
+<text x="366" y="351" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">力</text>
+<rect x="668" y="240" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="682" y="280" font-family="Meiryo,sans-serif" font-size="24" fill="#183842">調達・取引先</text>
+<text x="682" y="319" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">資材計画・納期回答・資格</text>
+<text x="36" y="445" font-family="Meiryo,sans-serif" font-size="25" fill="#276d70">02 生産と納品</text>
+<rect x="36" y="465" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="50" y="505" font-family="Meiryo,sans-serif" font-size="24" fill="#183842">製造・委託生産</text>
+<text x="50" y="544" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">生産計画・指図・ロット・</text>
+<text x="50" y="576" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">費用</text>
+<rect x="352" y="465" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="366" y="505" font-family="Meiryo,sans-serif" font-size="24" fill="#183842">品質・追跡</text>
+<text x="366" y="544" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">検査・出荷判定・コード関</text>
+<text x="366" y="576" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">連付け</text>
+<rect x="668" y="465" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="682" y="505" font-family="Meiryo,sans-serif" font-size="24" fill="#183842">倉庫・物流</text>
+<text x="682" y="544" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">利用可能在庫・移送・輸送</text>
+<text x="682" y="576" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">・受領</text>
+<text x="36" y="670" font-family="Meiryo,sans-serif" font-size="25" fill="#276d70">03 販路と顧客</text>
+<rect x="36" y="690" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="50" y="730" font-family="Meiryo,sans-serif" font-size="24" fill="#183842">営業・販路</text>
+<text x="50" y="769" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">代理店・量販店・飲食店・</text>
+<text x="50" y="801" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">小売・EC</text>
+<rect x="352" y="690" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="366" y="730" font-family="Meiryo,sans-serif" font-size="24" fill="#183842">店舗・冷蔵</text>
+<text x="366" y="769" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">冷蔵設備・棚・販売・客流</text>
+<rect x="668" y="690" width="296" height="150" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="682" y="730" font-family="Meiryo,sans-serif" font-size="24" fill="#183842">顧客・成長</text>
+<text x="682" y="769" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">法人顧客・会員・販促・対</text>
+<text x="682" y="801" font-family="Meiryo,sans-serif" font-size="21" fill="#53666d">応</text>
+<path d="M36,940 L964,940" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="980" font-family="Meiryo,sans-serif" font-size="20" fill="#53666d">財務・マスターデータ・権限は業務を横断。全領域の実装を示す図ではありません。</text>
+</svg>

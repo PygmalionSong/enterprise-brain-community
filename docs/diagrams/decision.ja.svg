@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1170" viewBox="0 0 1000 1170" role="img"><title>供給不足から結果確認まで</title><desc>供給事例・自社生産、移送、委託生産を同じ条件で比較</desc><rect width="1000" height="1170" fill="white"/>
+<text x="36" y="45" font-family="Meiryo,sans-serif" font-size="19" fill="#276d70">ENTERPRISE BRAIN</text>
+<text x="36" y="100" font-family="Meiryo,sans-serif" font-size="34" fill="#183842">供給不足から結果確認まで</text>
+<text x="36" y="141" font-family="Meiryo,sans-serif" font-size="22" fill="#53666d">供給事例・自社生産、移送、委託生産を同じ条件で比較</text>
+<text x="36" y="237" font-family="Meiryo,sans-serif" font-size="29" fill="#276d70">01</text>
+<rect x="100" y="190" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="228" font-family="Meiryo,sans-serif" font-size="26" fill="#183842">不足を把握</text>
+<text x="120" y="270" font-family="Meiryo,sans-serif" font-size="23" fill="#53666d">需要・利用可能在庫・納期</text>
+<path d="M68,255 L68,357" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="404" font-family="Meiryo,sans-serif" font-size="29" fill="#276d70">02</text>
+<rect x="100" y="357" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="395" font-family="Meiryo,sans-serif" font-size="26" fill="#183842">計画を比較</text>
+<text x="120" y="437" font-family="Meiryo,sans-serif" font-size="23" fill="#53666d">自社生産・移送・委託；能力・資金・品質を確認</text>
+<path d="M68,422 L68,524" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="571" font-family="Meiryo,sans-serif" font-size="29" fill="#276d70">03</text>
+<rect x="100" y="524" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="562" font-family="Meiryo,sans-serif" font-size="26" fill="#183842">責任者が承認</text>
+<text x="120" y="604" font-family="Meiryo,sans-serif" font-size="23" fill="#53666d">計画と操作範囲を承認。条件不足なら修正</text>
+<path d="M68,589 L68,691" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="738" font-family="Meiryo,sans-serif" font-size="29" fill="#276d70">04</text>
+<rect x="100" y="691" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="729" font-family="Meiryo,sans-serif" font-size="26" fill="#183842">実行と進捗確認</text>
+<text x="120" y="771" font-family="Meiryo,sans-serif" font-size="23" fill="#53666d">設定した接続先で許可された操作を実行し、ID を保存</text>
+<path d="M68,756 L68,858" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="905" font-family="Meiryo,sans-serif" font-size="29" fill="#276d70">05</text>
+<rect x="100" y="858" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="896" font-family="Meiryo,sans-serif" font-size="26" fill="#183842">実際の結果を照合</text>
+<text x="120" y="938" font-family="Meiryo,sans-serif" font-size="23" fill="#53666d">応答が届かなければ既存操作を照会。入荷・支払・販売は別々に確認</text>
+<path d="M36,1070 L964,1070" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="1110" font-family="Meiryo,sans-serif" font-size="20" fill="#53666d">サンプルデータと固定ルールを使用。実行の検証は実モデルの品質や顧客効果の証明ではありません。</text>
+</svg>

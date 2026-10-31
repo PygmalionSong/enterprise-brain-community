@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1300" viewBox="0 0 1000 1300" role="img"><title>Agent 基盤と既存システムの関係</title><desc>汎用構成例：モデル、業務定義、システム接続を分離。</desc><rect width="1000" height="1300" fill="white"/>
+<text x="36" y="45" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="19" fill="#276d70">ENTERPRISE BRAIN</text>
+<text x="36" y="98" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="32" fill="#183842">Agent 基盤と既存システムの関係</text>
+<text x="36" y="139" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">基盤がタスクと権限を管理し、業務記録は既存システムで保持</text>
+<rect x="36" y="190" width="928" height="82" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="55" y="229" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="25" fill="#183842">業務画面・API・IT 管理</text>
+<text x="55" y="261" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">業務の確認・計画の審査・操作の承認・結果の照合</text>
+<path d="M356,272 L356,300" fill="none" stroke="#276d70" stroke-width="1.5"/>
+<polygon points="356,300 353.0,293.0 359.0,293.0" fill="#276d70"/>
+<rect x="36" y="300" width="640" height="336" fill="white" stroke="#276d70"/>
+<rect x="36" y="300" width="640" height="52" fill="#276d70" stroke="#276d70"/>
+<text x="56" y="336" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="26" fill="white">自社環境の Agent 基盤</text>
+<rect x="56" y="366" width="282" height="80" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="398" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">プロセスと版</text>
+<text x="70" y="429" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">定義と改訂を登録</text>
+<rect x="354" y="366" width="302" height="80" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="368" y="398" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">計画と承認</text>
+<text x="368" y="429" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">責任者が計画を確認・承認</text>
+<rect x="56" y="456" width="282" height="80" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="488" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">実行と照会</text>
+<text x="70" y="519" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">操作 ID で結果を確認</text>
+<rect x="354" y="456" width="302" height="80" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="368" y="488" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">認証と権限</text>
+<text x="368" y="519" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">範囲・役割・呼出上限</text>
+<rect x="56" y="548" width="600" height="78" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="580" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">実行データベース</text>
+<text x="70" y="610" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="17" fill="#53666d">タスク・版・承認・結果・監査</text>
+<rect x="704" y="300" width="260" height="154" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="718" y="333" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">設定したモデル</text>
+<text x="718" y="364" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="19" fill="#53666d">許可された情報で提案し、</text>
+<text x="718" y="393" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="19" fill="#53666d">基盤が実行権限を確認。</text>
+<path d="M676,386 L704,386" fill="none" stroke="#276d70" stroke-width="1.5"/>
+<polygon points="704,386 697.0,389.0 697.0,383.0" fill="#276d70"/>
+<polygon points="676,386 683.0,383.0 683.0,389.0" fill="#276d70"/>
+<rect x="704" y="480" width="260" height="156" fill="#f4f7f6" stroke="#c9d5d6" stroke-dasharray="6 5"/>
+<text x="718" y="512" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">企業別の業務定義</text>
+<text x="718" y="544" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="19" fill="#53666d">製品・単位・承認ルールを</text>
+<text x="718" y="573" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="19" fill="#53666d">企業ごとに設定。</text>
+<path d="M704,558 L676,558" fill="none" stroke="#276d70" stroke-width="1.5" stroke-dasharray="6 5"/>
+<polygon points="676,558 683.0,555.0 683.0,561.0" fill="#276d70"/>
+<path d="M356,636 L356,680" fill="none" stroke="#276d70" stroke-width="1.5"/>
+<polygon points="356,680 353.0,673.0 359.0,673.0" fill="#276d70"/>
+<rect x="36" y="680" width="928" height="100" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="55" y="716" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="24" fill="#183842">業務システムへの接続</text>
+<text x="55" y="750" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">許可された読取・承認後の書込・元の操作の照会</text>
+<text x="55" y="775" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="17" fill="#183842">MCP stdio・OData メタデータ・業務 API（対応範囲は個別設定）</text>
+<path d="M500,780 L500,824" fill="none" stroke="#276d70" stroke-width="1.5" stroke-dasharray="6 5"/>
+<polygon points="500,824 497.0,817.0 503.0,817.0" fill="#276d70"/>
+<rect x="36" y="824" width="928" height="328" fill="#fafbfb" stroke="#c9d5d6" stroke-dasharray="6 5"/>
+<text x="56" y="863" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="23" fill="#276d70">既存システム・接続構成例</text>
+<rect x="56" y="886" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="919" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">ERP · MDM</text>
+<text x="70" y="949" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">受注・財務・マスター</text>
+<rect x="366" y="886" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="380" y="919" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">CRM · DMS · OMS</text>
+<text x="380" y="949" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">販路・顧客・受注</text>
+<rect x="676" y="886" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="690" y="919" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">SRM · PLM · APS</text>
+<text x="690" y="949" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">仕入先・製品・需給計画</text>
+<rect x="56" y="1004" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="1037" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">MES · QMS</text>
+<text x="70" y="1067" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">製造・ロット・出荷判定</text>
+<rect x="366" y="1004" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="380" y="1037" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">WMS · TMS</text>
+<text x="380" y="1067" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">保管・輸送・受領</text>
+<rect x="676" y="1004" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="690" y="1037" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">CDP · MA · IoT</text>
+<text x="690" y="1067" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">会員・販促・設備</text>
+<path d="M36,1190 L964,1190" fill="none" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="1223" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="19" fill="#53666d">実線：実行時の呼出。破線：企業ごとの定義と接続設定。</text>
+<text x="36" y="1260" font-family="Meiryo,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">図中の分類は接続構成例です。アダプター・権限・業務定義の設定が必要です。</text>
+</svg>
