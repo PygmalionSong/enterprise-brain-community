@@ -115,9 +115,19 @@
       "sha256": "5b544307de20ffe1dfa8d3f7381fb36ab73210452bcae35ae91b2acc454be078"
     },
     {
+      "path": "favicon.svg",
+      "bytes": 247,
+      "sha256": "40db3cafb436017abe00c54da758ab4fa62fa1250cce304d78ecfc959a8bca15"
+    },
+    {
       "path": "index.html",
-      "bytes": 54408,
-      "sha256": "6bea881dddd3e7d5632e2b219359cdd855d54f09e2145771f4fdf9d282cb5825"
+      "bytes": 55912,
+      "sha256": "6f2a76b37f07ce68f524327c2e688803ea5470b75c8595344d3e7bd466aca371"
+    },
+    {
+      "path": "ja/index.html",
+      "bytes": 57069,
+      "sha256": "a1bdd2d88b5f92c81bd58c70a4ffa058b83b9cc8471c751e0327e2e4f2baf8be"
     },
     {
       "path": "showcase/README.en.md",
@@ -136,8 +146,8 @@
     },
     {
       "path": "showcase/index.html",
-      "bytes": 561450,
-      "sha256": "156abbce5842b1a25fcca6337339f04d00d59e21a8cb11949ba9b6acd4d43e22"
+      "bytes": 562703,
+      "sha256": "cbfbb52235bd17d6d24a7d997670fd32947ff02f7cfc2fecc2da84af77514e38"
     },
     {
       "path": "showcase/media/01-processes.png",
@@ -193,6 +203,16 @@
       "path": "showcase/walkthrough.html",
       "bytes": 4418,
       "sha256": "e94fda55b62d706d3d934873c39e76a2a34e7dc69e8e040d920308075705a2e4"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 478,
+      "sha256": "72a28b7f1c763f476e87bc44ed95019f082ef79f954c1dd3e01fffc559510a66"
+    },
+    {
+      "path": "zh/index.html",
+      "bytes": 55447,
+      "sha256": "7015427c1f010752c533276098931cd0445aa8b4e35939e1f2b38978a317c2aa"
     }
   ]
 }
