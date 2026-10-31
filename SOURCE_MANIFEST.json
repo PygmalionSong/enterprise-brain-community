@@ -44,8 +44,8 @@
     },
     {
       "path": ".github/workflows/source-ci.yml",
-      "bytes": 7488,
-      "sha256": "2a97f12d665fec72872a47e57788fc7dc29bbf447a80280cbfa82087302c80f8"
+      "bytes": 7530,
+      "sha256": "48010279b3417c53109858ee46fc0098c6117aac80066601007e27f043a987df"
     },
     {
       "path": ".gitignore",
@@ -894,8 +894,8 @@
     },
     {
       "path": "examples/first-task/worker.mjs",
-      "bytes": 8546,
-      "sha256": "39ada5502ca9bff547918ca74cdaa447b9b54c43260c91c29804ad9e87580c66"
+      "bytes": 8639,
+      "sha256": "6cd25af3b367e90a9078699777c2a689c6c48cbbe454520b41176d94417335be"
     },
     {
       "path": "examples/minimal-adapter/inventory-tool.ts",
@@ -2759,8 +2759,8 @@
     },
     {
       "path": "tests/enterprise-onboarding-example.test.mjs",
-      "bytes": 2256,
-      "sha256": "e5da7cf2b4ac8c39ed119da18659bb5bbffd627d2a7171c471eb7a51cdd3ad61"
+      "bytes": 2320,
+      "sha256": "6bb8cd012f6fcd604a71aab92a7e4f7870cd0fa3d5808ac42e423e3e440204d2"
     },
     {
       "path": "tests/enterprise-operations.test.ts",
@@ -2794,8 +2794,8 @@
     },
     {
       "path": "tests/first-task.test.mjs",
-      "bytes": 3028,
-      "sha256": "c653c54a27530e7472cc96b8d0af3a98d10e383b7b18d692c8aa0e1bef61c69c"
+      "bytes": 3057,
+      "sha256": "513e677b921a0a527b09a73ff847bab1862cc2e8038b0971f74105be0f0a1c02"
     },
     {
       "path": "tests/fixtures/bpmn-order.xml",
