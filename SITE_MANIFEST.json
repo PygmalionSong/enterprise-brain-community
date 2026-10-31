@@ -1,6 +1,6 @@
 {
   "format": "enterprise-brain.static-experience/1",
-  "sourceInventorySha256": "3fe02ce06aee35a60f9d16dda1f582ca5ffc3dd234c89fc2a645463c82cdd732",
+  "sourceInventorySha256": "533999ee7846e34e8fd8b3b9caa619bae92c6ba6c7c137c41958417974482d9c",
   "noBackendPublished": true,
   "noTelemetry": true,
   "files": [
@@ -116,8 +116,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 44988,
-      "sha256": "862c75973077d16d5e321af4d6c1baee2e8dda0d926a47232f4fb36eda577020"
+      "bytes": 54408,
+      "sha256": "6bea881dddd3e7d5632e2b219359cdd855d54f09e2145771f4fdf9d282cb5825"
     },
     {
       "path": "showcase/README.en.md",
@@ -136,8 +136,8 @@
     },
     {
       "path": "showcase/index.html",
-      "bytes": 558494,
-      "sha256": "f4d03b40664331f7bc2c92ffda07745b1cfbb85b1d1a4e9b009ecf32caaf430c"
+      "bytes": 561450,
+      "sha256": "156abbce5842b1a25fcca6337339f04d00d59e21a8cb11949ba9b6acd4d43e22"
     },
     {
       "path": "showcase/media/01-processes.png",
