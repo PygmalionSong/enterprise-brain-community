@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1170" viewBox="0 0 1000 1170" role="img"><title>从供货缺口到结果核对</title><desc>保供参考案例 · 自产、调拨与代工放在同一组条件下比较</desc><rect width="1000" height="1170" fill="white"/>
+<text x="36" y="45" font-family="Microsoft YaHei,sans-serif" font-size="19" fill="#276d70">ENTERPRISE BRAIN</text>
+<text x="36" y="100" font-family="Microsoft YaHei,sans-serif" font-size="34" fill="#183842">从供货缺口到结果核对</text>
+<text x="36" y="141" font-family="Microsoft YaHei,sans-serif" font-size="22" fill="#53666d">保供参考案例 · 自产、调拨与代工放在同一组条件下比较</text>
+<text x="36" y="237" font-family="Microsoft YaHei,sans-serif" font-size="29" fill="#276d70">01</text>
+<rect x="100" y="190" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="228" font-family="Microsoft YaHei,sans-serif" font-size="26" fill="#183842">识别缺口</text>
+<text x="120" y="270" font-family="Microsoft YaHei,sans-serif" font-size="23" fill="#53666d">需求、可用库存、交付日期</text>
+<path d="M68,255 L68,357" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="404" font-family="Microsoft YaHei,sans-serif" font-size="29" fill="#276d70">02</text>
+<rect x="100" y="357" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="395" font-family="Microsoft YaHei,sans-serif" font-size="26" fill="#183842">比较方案</text>
+<text x="120" y="437" font-family="Microsoft YaHei,sans-serif" font-size="23" fill="#53666d">自产 / 调拨 / 代工；核对产能、现金与质量</text>
+<path d="M68,422 L68,524" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="571" font-family="Microsoft YaHei,sans-serif" font-size="29" fill="#276d70">03</text>
+<rect x="100" y="524" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="562" font-family="Microsoft YaHei,sans-serif" font-size="26" fill="#183842">负责人批准</text>
+<text x="120" y="604" font-family="Microsoft YaHei,sans-serif" font-size="23" fill="#53666d">确认具体方案及操作范围；不满足条件时返回修改</text>
+<path d="M68,589 L68,691" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="738" font-family="Microsoft YaHei,sans-serif" font-size="29" fill="#276d70">04</text>
+<rect x="100" y="691" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="729" font-family="Microsoft YaHei,sans-serif" font-size="26" fill="#183842">执行并跟进</text>
+<text x="120" y="771" font-family="Microsoft YaHei,sans-serif" font-size="23" fill="#53666d">向已配置系统发出授权操作，保存操作编号</text>
+<path d="M68,756 L68,858" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="905" font-family="Microsoft YaHei,sans-serif" font-size="29" fill="#276d70">05</text>
+<rect x="100" y="858" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="896" font-family="Microsoft YaHei,sans-serif" font-size="26" fill="#183842">核对实际结果</text>
+<text x="120" y="938" font-family="Microsoft YaHei,sans-serif" font-size="23" fill="#53666d">响应丢失先查询原操作；到货、付款、销售分别核对</text>
+<path d="M36,1070 L964,1070" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="1110" font-family="Microsoft YaHei,sans-serif" font-size="20" fill="#53666d">示例数据与固定参考策略。已验证执行路径不等于真实模型效果或客户业务收益。</text>
+</svg>
