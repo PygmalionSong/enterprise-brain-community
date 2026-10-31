@@ -4,6 +4,9 @@
 
 The first-connection path separates finding an interface, understanding its metadata, authorizing a read and executing a business task. One successful HTTP response does not complete all four.
 
+
+For a continuous CLI and HTTP walkthrough, run the [isolated enterprise host example](GETTING_STARTED.en.md). It initializes private configuration and accounts, imports a process, obtains programmatic business approval and queries results after a host restart. The HTTP source tests below are a separate route.
+
 ## Run an owned example
 
 After the documented locked installation and build, run:

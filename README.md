@@ -22,6 +22,8 @@ The first task reads two sample processes, requests approval and executes a plan
 
 [Run the first task](FIRST_TASK.en.md)
 
+[Run an isolated enterprise host from configuration to result](GETTING_STARTED.en.md)
+
 ## Bring a cross-team problem into one decision
 
 A shortage involves demand, stock, capacity, delivery and cash. The case shows how those responsibilities connect while each system keeps its records.

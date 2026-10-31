@@ -1,6 +1,6 @@
 # Independent enterprise host and local operations
 
-Every requested enterprise parent lock after current-identity validation must return exactly the intended row;zero/wrong rows refuse rather than treating successful SQL execution as lock acquisition. Existing UPDATE/SHARE modes and identity-before-enterprise ordering remain;CSV locks only its existing quota-write path. The guard neither sets context nor elevates privileges. Native login defaults are not authorization credentials;trusted raw database capabilities can select other contexts. Enterprise hosting remains PGlite-only pending integrated native credentials/TLS/operations qualification.
+Start with the [isolated host example](GETTING_STARTED.en.md) to follow private configuration, accounts, process approval and result queries. For your own host, supply private initialization input and a trusted TLS proxy as described below.
 
 [中文](HOST.md) · [Accounts](src/identity/operators.ts) · [Graph runtime](src/runtime/graph-http.ts)
 
