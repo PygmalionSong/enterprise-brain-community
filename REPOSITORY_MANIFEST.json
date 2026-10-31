@@ -1,7 +1,7 @@
 {
   "format": 1,
   "scope": "map-free-enterprise-agent-foundation",
-  "sdkSourceManifestSha256": "9b699083175f0d0dc8b03b3880d116caa7f0c81e50202c9203644146362e2013",
+  "sdkSourceManifestSha256": "b9e776bd59c852a224945cffc72def32a31ecda96f369fff087a86130b5c409d",
   "files": [
     {
       "path": ".gitattributes",
@@ -641,7 +641,7 @@
     {
       "path": "SOURCE_MANIFEST.json",
       "bytes": 112427,
-      "sha256": "9b699083175f0d0dc8b03b3880d116caa7f0c81e50202c9203644146362e2013"
+      "sha256": "b9e776bd59c852a224945cffc72def32a31ecda96f369fff087a86130b5c409d"
     },
     {
       "path": "STORY.en.md",
@@ -2780,8 +2780,8 @@
     },
     {
       "path": "tests/enterprise-onboarding-example.test.mjs",
-      "bytes": 2320,
-      "sha256": "6bb8cd012f6fcd604a71aab92a7e4f7870cd0fa3d5808ac42e423e3e440204d2"
+      "bytes": 2334,
+      "sha256": "1c770cca649e004b40b164f4585aa96f62856806b39c0b456f5b4fdec1eb916e"
     },
     {
       "path": "tests/enterprise-operations.test.ts",
@@ -2815,8 +2815,8 @@
     },
     {
       "path": "tests/first-task.test.mjs",
-      "bytes": 3057,
-      "sha256": "513e677b921a0a527b09a73ff847bab1862cc2e8038b0971f74105be0f0a1c02"
+      "bytes": 3098,
+      "sha256": "203bd6e0276a51eaa55a0ffe459f0e8bee8f819017d5394b3583831160131115"
     },
     {
       "path": "tests/fixtures/bpmn-order.xml",

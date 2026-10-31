@@ -9,7 +9,7 @@ import {spawnSync} from 'node:child_process';
 import {runOnboarding} from '../examples/enterprise-onboarding/run.mjs';
 
 test('onboarding example refuses missing consent, existing output and output inside source',async()=>{
- const dir=fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()),'eb-onboarding-guard-')),out=path.join(dir,'private-run');
+ const dir=fs.mkdtempSync(path.join(fs.realpathSync.native(os.tmpdir()),'eb-onboarding-guard-')),out=path.join(dir,'private-run');
  const r=spawnSync(process.execPath,['examples/enterprise-onboarding/run.mjs','--out',out],{encoding:'utf8',windowsHide:true,timeout:10000});
  assert.equal(r.status,1);assert.equal(fs.existsSync(out),false);
  fs.writeFileSync(path.join(dir,'sentinel'),'retain');await assert.rejects(runOnboarding(dir));
@@ -19,7 +19,7 @@ test('onboarding example refuses missing consent, existing output and output ins
 });
 
 test('onboarding example initializes separate host, refuses unapproved execution, checks results across restart and stops',async()=>{
- const parent=fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()),'eb-onboarding-live-')),out=path.join(parent,'run');
+ const parent=fs.mkdtempSync(path.join(fs.realpathSync.native(os.tmpdir()),'eb-onboarding-live-')),out=path.join(parent,'run');
  const r=await runOnboarding(out);assert.equal(r.status,'passed');assert.equal(r.hostStopped,true);
  assert.equal(r.checks.itApprovalRefused,true);assert.equal(r.checks.missingApprovalRefused,true);
  assert.equal(r.checks.originalActionRetained,true);assert.equal(r.checks.resultKind,'process_metadata');
