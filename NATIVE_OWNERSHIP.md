@@ -2,7 +2,7 @@
 
 [English](NATIVE_OWNERSHIP.en.md) · [程序宿主](NATIVE_HOST.md) · [连接核心](NATIVE_RUNTIME.md)
 
-原生程序工厂要求明确ownershipAcknowledged=true，并为该数据库取得独占会话归属。尚无原生私有CLI/安装/备份恢复或HA。旧PGlite入口和文件恢复保持原合同，不能用这些原生程序能力声明完整生产部署已完成。
+原生程序工厂要求明确ownershipAcknowledged=true，并为该数据库取得独占会话归属。本模块只负责数据库归属检查；原生CLI和备份恢复分别见[NATIVE_SERVICE](NATIVE_SERVICE.md)与[NATIVE_BACKUP_RESTORE](NATIVE_BACKUP_RESTORE.md)。高可用不在本模块范围内。旧PGlite入口和文件恢复保持原接口约定，不能用这些原生程序能力声明完整生产部署已完成。
 
 connectNativeRuntime为池分配内部随机标识，使用eb-runtime:前缀的application_name。acquireNativeRuntimeOwnership使用同一受验证账号/CA/主机名策略派生的独立稳定pg.Client，在本数据库持有pg_try_advisory_lock(71245120,1)。它不是普通池的随机连接，也不是长事务；普通池仍最多5，归属另需1个连接。只登记成功verify-full来源，拒绝环境冲突/无确认/伪包装/明文。同一连接一旦成为宿主，即使正常释放也须关闭并重新连接才能再次取得归属。
 

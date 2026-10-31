@@ -32,7 +32,7 @@ node --test tests/business-read-restart.test.ts
 
 执行前、结果提交和后续披露均检查当前权限。撤权会阻止继续返回缓存业务数据，但无法撤回已发送的字节。未知结果保留原引用，不静默重发读取。
 
-恢复会撤销接入和读取权限，保留已完成证据与原回执。恢复目标初始停放，重新登录不会自动续授源端读取权限。详见[恢复边界](NATIVE_BACKUP_RESTORE.md)与[实现合同](docs/onboarding/IMPLEMENTATION.md)。
+恢复会撤销接入和读取权限，保留已完成证据与原回执。恢复后的服务默认暂停受理请求，重新登录不会自动续授源端读取权限。详见[恢复边界](NATIVE_BACKUP_RESTORE.md)与[实现接口约定](docs/onboarding/IMPLEMENTATION.md)。
 
 ## 支持边界
 

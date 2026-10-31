@@ -1,8 +1,8 @@
-# Ubuntu 原生运行与备份恢复合同
+# Ubuntu 原生运行与备份恢复接口约定
 
 [English](LINUX_RUNTIME.en.md)
 
-本页描述此开源技术基座中的Ubuntu运行合同。源码预览不附完整行业产品或签名运行包；源码执行需要运维提供Node24.19.0及锁定依赖。PGlite本地参考案例和原生PostgreSQL企业入口是两种不同路线，不通过更改profile绕过检查。
+本页描述此开源技术基座中的Ubuntu运行接口约定。源码预览不附完整行业产品或签名运行包；源码执行需要运维提供Node24.19.0及锁定依赖。PGlite本地参考案例和原生PostgreSQL企业入口是两种不同路线，不通过更改profile绕过检查。
 
 原生路线的声明环境为Ubuntu24.04 x64、PostgreSQL17.11、systemd255用户管理器、cgroupv2及专用非root账号。管理员明确准备专用数据库、DBA/运行/备份角色、verify-full证书和工具清单。源码不自动安装数据库、修改系统信任、配置用户linger或注册开机服务；没有默认口令。
 
@@ -20,4 +20,4 @@ Ubuntu工具清单为format2、platform `linux-x64-ubuntu24`、postgresVersion `
 
 构造数据和公开协议可验证基础设施，不代表真实部署方、全部厂商版本、真实模型质量、HA、无限容量或生产SLA。具体源码、平台和测试范围以对应版本的实际证据为准。
 
-既有PGlite签名受控迁移/演练路线仍限Windows。原生PostgreSQL备份恢复与原生签名升级合同另列，本次源码更新不宣称Linux PGlite受控迁移已支持。
+既有PGlite签名受控迁移/演练路线仍限Windows。原生PostgreSQL备份恢复与原生签名升级接口约定另列，本次源码更新不宣称Linux PGlite受控迁移已支持。

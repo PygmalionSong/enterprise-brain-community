@@ -4,6 +4,8 @@
 
 Enterprise Brain is a self-hosted foundation for teams building business agents. Existing systems keep their authoritative business records. The foundation stores process revisions, plans, approvals, action identities and receipts. A model may propose work; its answer is not permission to execute or evidence that work happened.
 
+[View the business, system and decision diagrams](docs/ARCHITECTURE.en.md).
+
 ## Business and responsibility
 
 ```mermaid

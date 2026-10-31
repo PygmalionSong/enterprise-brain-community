@@ -46,7 +46,7 @@ Get-Content -LiteralPath $reportFile -Raw | ConvertFrom-Json | Select-Object ori
 |---|---|
 | 理解系统如何协调任务 | [架构与源码定位](ARCHITECTURE_OVERVIEW.md) |
 | 建立企业账号与本机宿主 | [HOST](HOST.md)：私人初始化 JSON、规范 HTTPS origin 和受信代理；没有默认密码 |
-| 接入自己的流程资源或工具 | [原始 SDK 合同](SDK_CONTRACT.md)、[工具合同](TOOL_CONTRACTS.md)、[MCP 工具](MCP_TOOLS.md) |
+| 接入自己的流程资源或工具 | [原始 SDK 接口约定](SDK_CONTRACT.md)、[工具接口约定](TOOL_CONTRACTS.md)、[MCP 工具](MCP_TOOLS.md) |
 | 配置模型与经营分析 | [模型](MODELS.md)、[分析权限](ANALYSIS_POLICY.md)、[受控业务推理](BUSINESS_INFERENCE.md) |
 | 复现测试或报告安装问题 | [安装验证](INSTALLATION_VALIDATION.md) |
 

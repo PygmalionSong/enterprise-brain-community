@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1170" viewBox="0 0 1000 1170" role="img"><title>From shortage to checked results</title><desc>Supply example · Compare production, transfers and contract manufacturing</desc><rect width="1000" height="1170" fill="white"/>
+<text x="36" y="45" font-family="Segoe UI,Arial,sans-serif" font-size="19" fill="#276d70">ENTERPRISE BRAIN</text>
+<text x="36" y="100" font-family="Segoe UI,Arial,sans-serif" font-size="34" fill="#183842">From shortage to checked results</text>
+<text x="36" y="141" font-family="Segoe UI,Arial,sans-serif" font-size="22" fill="#53666d">Supply example · Compare production, transfers and contract manufacturing</text>
+<text x="36" y="237" font-family="Segoe UI,Arial,sans-serif" font-size="29" fill="#276d70">01</text>
+<rect x="100" y="190" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="228" font-family="Segoe UI,Arial,sans-serif" font-size="26" fill="#183842">Identify the gap</text>
+<text x="120" y="270" font-family="Segoe UI,Arial,sans-serif" font-size="23" fill="#53666d">Demand, available stock, delivery date</text>
+<path d="M68,255 L68,357" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="404" font-family="Segoe UI,Arial,sans-serif" font-size="29" fill="#276d70">02</text>
+<rect x="100" y="357" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="395" font-family="Segoe UI,Arial,sans-serif" font-size="26" fill="#183842">Compare options</text>
+<text x="120" y="437" font-family="Segoe UI,Arial,sans-serif" font-size="23" fill="#53666d">Production / transfer / co-pack; capacity, cash, quality</text>
+<path d="M68,422 L68,524" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="571" font-family="Segoe UI,Arial,sans-serif" font-size="29" fill="#276d70">03</text>
+<rect x="100" y="524" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="562" font-family="Segoe UI,Arial,sans-serif" font-size="26" fill="#183842">Owner approval</text>
+<text x="120" y="604" font-family="Segoe UI,Arial,sans-serif" font-size="23" fill="#53666d">Approve the specific plan and scope; revise unmet conditions</text>
+<path d="M68,589 L68,691" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="738" font-family="Segoe UI,Arial,sans-serif" font-size="29" fill="#276d70">04</text>
+<rect x="100" y="691" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="729" font-family="Segoe UI,Arial,sans-serif" font-size="26" fill="#183842">Execute &amp; follow up</text>
+<text x="120" y="771" font-family="Segoe UI,Arial,sans-serif" font-size="23" fill="#53666d">Call configured systems within authority; keep operation IDs</text>
+<path d="M68,756 L68,858" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="905" font-family="Segoe UI,Arial,sans-serif" font-size="29" fill="#276d70">05</text>
+<rect x="100" y="858" width="864" height="135" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="120" y="896" font-family="Segoe UI,Arial,sans-serif" font-size="26" fill="#183842">Check actual results</text>
+<text x="120" y="938" font-family="Segoe UI,Arial,sans-serif" font-size="23" fill="#53666d">If a response is lost, look up the operation. Check delivery, payment and sales</text>
+<text x="120" y="972" font-family="Segoe UI,Arial,sans-serif" font-size="23" fill="#53666d">separately.</text>
+<path d="M36,1070 L964,1070" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="1110" font-family="Segoe UI,Arial,sans-serif" font-size="20" fill="#53666d">Sample data and fixed reference policies.</text>
+<text x="36" y="1141" font-family="Segoe UI,Arial,sans-serif" font-size="20" fill="#53666d">Execution evidence does not establish model quality or customer ROI.</text>
+</svg>

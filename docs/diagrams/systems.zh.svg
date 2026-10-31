@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1300" viewBox="0 0 1000 1300" role="img"><title>Agent 如何连接企业系统</title><desc>通用参考架构：模型、企业的业务规则与系统接入分别管理。</desc><rect width="1000" height="1300" fill="white"/>
+<text x="36" y="45" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="19" fill="#276d70">ENTERPRISE BRAIN</text>
+<text x="36" y="98" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="32" fill="#183842">Agent 如何连接企业系统</text>
+<text x="36" y="139" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="21" fill="#53666d">底座管理任务和权限，业务系统保存订单、库存等记录</text>
+<rect x="36" y="190" width="928" height="82" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="55" y="229" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="25" fill="#183842">业务工作台 · API · IT 管理</text>
+<text x="55" y="261" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="20" fill="#183842">查看业务、审阅方案、批准操作、核对结果</text>
+<path d="M356,272 L356,300" fill="none" stroke="#276d70" stroke-width="1.5"/>
+<polygon points="356,300 353.0,293.0 359.0,293.0" fill="#276d70"/>
+<rect x="36" y="300" width="640" height="336" fill="white" stroke="#276d70"/>
+<rect x="36" y="300" width="640" height="52" fill="#276d70" stroke="#276d70"/>
+<text x="56" y="336" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="26" fill="white">企业自有 Agent 基座</text>
+<rect x="56" y="366" width="282" height="80" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="398" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="20" fill="#183842">业务流程</text>
+<text x="70" y="429" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="18" fill="#53666d">保存流程及修改记录</text>
+<rect x="354" y="366" width="302" height="80" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="368" y="398" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="20" fill="#183842">方案与批准</text>
+<text x="368" y="429" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="18" fill="#53666d">由负责人确认并批准方案</text>
+<rect x="56" y="456" width="282" height="80" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="488" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="20" fill="#183842">执行与查证</text>
+<text x="70" y="519" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="18" fill="#53666d">按操作编号查询结果</text>
+<rect x="354" y="456" width="302" height="80" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="368" y="488" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="20" fill="#183842">身份与权限</text>
+<text x="368" y="519" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="18" fill="#53666d">范围、角色与调用额度</text>
+<rect x="56" y="548" width="600" height="78" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="580" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="20" fill="#183842">运行数据库</text>
+<text x="70" y="610" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="17" fill="#53666d">任务、版本、批准、回执与审计</text>
+<rect x="704" y="300" width="260" height="154" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="718" y="333" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="21" fill="#183842">大模型服务</text>
+<text x="718" y="364" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="19" fill="#53666d">根据获准信息提出建议，由</text>
+<text x="718" y="393" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="19" fill="#53666d">底座检查执行权限。</text>
+<path d="M676,386 L704,386" fill="none" stroke="#276d70" stroke-width="1.5"/>
+<polygon points="704,386 697.0,389.0 697.0,383.0" fill="#276d70"/>
+<polygon points="676,386 683.0,383.0 683.0,389.0" fill="#276d70"/>
+<rect x="704" y="480" width="260" height="156" fill="#f4f7f6" stroke="#c9d5d6" stroke-dasharray="6 5"/>
+<text x="718" y="512" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="20" fill="#183842">企业的业务规则</text>
+<text x="718" y="544" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="19" fill="#53666d">由企业定义商品、计量单位</text>
+<text x="718" y="573" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="19" fill="#53666d">和审批规则。</text>
+<path d="M704,558 L676,558" fill="none" stroke="#276d70" stroke-width="1.5" stroke-dasharray="6 5"/>
+<polygon points="676,558 683.0,555.0 683.0,561.0" fill="#276d70"/>
+<path d="M356,636 L356,680" fill="none" stroke="#276d70" stroke-width="1.5"/>
+<polygon points="356,680 353.0,673.0 359.0,673.0" fill="#276d70"/>
+<rect x="36" y="680" width="928" height="100" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="55" y="716" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="24" fill="#183842">系统连接工具</text>
+<text x="55" y="750" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="20" fill="#183842">读取获准数据 · 执行已批准操作 · 查询处理结果</text>
+<text x="55" y="775" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="17" fill="#183842">MCP stdio · OData 元数据 · 业务 API，具体能力由适配器提供</text>
+<path d="M500,780 L500,824" fill="none" stroke="#276d70" stroke-width="1.5" stroke-dasharray="6 5"/>
+<polygon points="500,824 497.0,817.0 503.0,817.0" fill="#276d70"/>
+<rect x="36" y="824" width="928" height="328" fill="#fafbfb" stroke="#c9d5d6" stroke-dasharray="6 5"/>
+<text x="56" y="863" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="23" fill="#276d70">系统类型（需要配置接口）</text>
+<rect x="56" y="886" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="919" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="21" fill="#183842">ERP · MDM</text>
+<text x="70" y="949" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="18" fill="#53666d">订单、财务与主数据</text>
+<rect x="366" y="886" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="380" y="919" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="21" fill="#183842">CRM · DMS · OMS</text>
+<text x="380" y="949" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="18" fill="#53666d">渠道、客户与订单</text>
+<rect x="676" y="886" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="690" y="919" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="21" fill="#183842">SRM · PLM · APS</text>
+<text x="690" y="949" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="18" fill="#53666d">供应商、产品与计划</text>
+<rect x="56" y="1004" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="1037" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="21" fill="#183842">MES · QMS</text>
+<text x="70" y="1067" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="18" fill="#53666d">生产、批次与放行</text>
+<rect x="366" y="1004" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="380" y="1037" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="21" fill="#183842">WMS · TMS</text>
+<text x="380" y="1067" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="18" fill="#53666d">仓储、运输与签收</text>
+<rect x="676" y="1004" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="690" y="1037" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="21" fill="#183842">CDP · MA · IoT</text>
+<text x="690" y="1067" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="18" fill="#53666d">会员、营销与设备</text>
+<path d="M36,1190 L964,1190" fill="none" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="1223" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="19" fill="#53666d">实线表示程序调用，虚线表示需要企业配置的规则或接口。</text>
+<text x="36" y="1260" font-family="Microsoft YaHei,Segoe UI,sans-serif" font-size="18" fill="#53666d">图中列出系统类型，不表示已提供每家厂商的连接器。</text>
+</svg>

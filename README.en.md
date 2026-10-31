@@ -6,6 +6,8 @@
 
 Build agents that work across business systems: read the relevant information, review a plan with its owner, then execute it and check the result. ERP, CRM and other systems continue to hold their business records.
 
+[Explore the business case](https://pygmalionsong.github.io/enterprise-brain-community/?lang=en) · [Run a task locally](FIRST_TASK.en.md) · [Architecture diagrams](docs/ARCHITECTURE.en.md) · [Discuss and contact](CONTACT.en.md)
+
 ## Try the business case
 
 A beverage business faces a supply shortage. Compare production, warehouse transfers and contract manufacturing against delivery, cash and quality constraints. Explore the process overview, then drill into a business area or store.
@@ -19,6 +21,24 @@ A beverage business faces a supply shortage. Compare production, warehouse trans
 The first task reads two sample processes, requests approval and executes a plan. It also tests recovery when a system saves a change but its response is lost. Sample data is included; no company account or model API key is needed.
 
 [Run the first task](FIRST_TASK.en.md)
+
+## Bring a cross-team problem into one decision
+
+A shortage involves demand, stock, capacity, delivery and cash. The case shows how those responsibilities connect while each system keeps its records.
+
+[![Bring a cross-team problem into one decision](docs/diagrams/business.en.png)](docs/diagrams/business.en.svg)
+
+## Infrastructure your team can build on
+
+The foundation stores processes, checks access, and records approved plans and their results. Each company configures its system adapters, products, units and approval rules. Models propose work; the software checks access before execution.
+
+[![Infrastructure your team can build on](docs/diagrams/systems.en.png)](docs/diagrams/systems.en.svg)
+
+## Follow a plan through to its result
+
+The supply case compares production, transfers and co-packing under shared capacity, cash and quality constraints. Approval, system acceptance and physical receipt remain separate. Payment and sales require their own evidence.
+
+[![Follow a plan through to its result](docs/diagrams/decision.en.png)](docs/diagrams/decision.en.svg)
 
 ## Developer guides
 

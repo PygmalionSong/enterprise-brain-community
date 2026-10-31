@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1300" viewBox="0 0 1000 1300" role="img"><title>How the agent foundation fits</title><desc>Reference architecture: model service, business configuration and system integration are separate.</desc><rect width="1000" height="1300" fill="white"/>
+<text x="36" y="45" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="19" fill="#276d70">ENTERPRISE BRAIN</text>
+<text x="36" y="98" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="32" fill="#183842">How the agent foundation fits</text>
+<text x="36" y="139" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="21" fill="#53666d">The foundation manages tasks and access; records stay in existing systems</text>
+<rect x="36" y="190" width="928" height="82" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="55" y="229" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="25" fill="#183842">Business workspace · APIs · IT administration</text>
+<text x="55" y="261" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">Explore work, review plans, approve actions, check results</text>
+<path d="M356,272 L356,300" fill="none" stroke="#276d70" stroke-width="1.5"/>
+<polygon points="356,300 353.0,293.0 359.0,293.0" fill="#276d70"/>
+<rect x="36" y="300" width="640" height="336" fill="white" stroke="#276d70"/>
+<rect x="36" y="300" width="640" height="52" fill="#276d70" stroke="#276d70"/>
+<text x="56" y="336" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="26" fill="white">Self-hosted agent foundation</text>
+<rect x="56" y="366" width="282" height="80" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="398" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">Process registry</text>
+<text x="70" y="429" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">Definitions and revisions</text>
+<rect x="354" y="366" width="302" height="80" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="368" y="398" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">Plans &amp; approval</text>
+<text x="368" y="429" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">Review and approve the plan</text>
+<rect x="56" y="456" width="282" height="80" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="488" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">Execution &amp; lookup</text>
+<text x="70" y="519" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">Check results by operation ID</text>
+<rect x="354" y="456" width="302" height="80" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="368" y="488" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">Identity &amp; access</text>
+<text x="368" y="519" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">Scope, roles and call limits</text>
+<rect x="56" y="548" width="600" height="78" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="580" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">Runtime database</text>
+<text x="70" y="610" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="17" fill="#53666d">Tasks, versions, approvals, receipts and audit</text>
+<rect x="704" y="300" width="260" height="154" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="718" y="333" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">Configured model</text>
+<text x="718" y="364" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="19" fill="#53666d">Uses permitted data. The</text>
+<text x="718" y="393" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="19" fill="#53666d">foundation checks access</text>
+<text x="718" y="422" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="19" fill="#53666d">before acting.</text>
+<path d="M676,386 L704,386" fill="none" stroke="#276d70" stroke-width="1.5"/>
+<polygon points="704,386 697.0,389.0 697.0,383.0" fill="#276d70"/>
+<polygon points="676,386 683.0,383.0 683.0,389.0" fill="#276d70"/>
+<rect x="704" y="480" width="260" height="156" fill="#f4f7f6" stroke="#c9d5d6" stroke-dasharray="6 5"/>
+<text x="718" y="512" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">Business configuration</text>
+<text x="718" y="544" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="19" fill="#53666d">Define products, units and</text>
+<text x="718" y="573" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="19" fill="#53666d">approval rules for each</text>
+<text x="718" y="602" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="19" fill="#53666d">company.</text>
+<path d="M704,558 L676,558" fill="none" stroke="#276d70" stroke-width="1.5" stroke-dasharray="6 5"/>
+<polygon points="676,558 683.0,555.0 683.0,561.0" fill="#276d70"/>
+<path d="M356,636 L356,680" fill="none" stroke="#276d70" stroke-width="1.5"/>
+<polygon points="356,680 353.0,673.0 359.0,673.0" fill="#276d70"/>
+<rect x="36" y="680" width="928" height="100" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="55" y="716" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="24" fill="#183842">System connectors</text>
+<text x="55" y="750" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="20" fill="#183842">Read permitted data · execute approved actions · check results</text>
+<text x="55" y="775" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="17" fill="#183842">MCP stdio · OData metadata · business-specific APIs</text>
+<path d="M500,780 L500,824" fill="none" stroke="#276d70" stroke-width="1.5" stroke-dasharray="6 5"/>
+<polygon points="500,824 497.0,817.0 503.0,817.0" fill="#276d70"/>
+<rect x="36" y="824" width="928" height="328" fill="#fafbfb" stroke="#c9d5d6" stroke-dasharray="6 5"/>
+<text x="56" y="863" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="23" fill="#276d70">System categories — adapters required</text>
+<rect x="56" y="886" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="919" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">ERP · MDM</text>
+<text x="70" y="949" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">Orders, finance, master data</text>
+<rect x="366" y="886" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="380" y="919" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">CRM · DMS · OMS</text>
+<text x="380" y="949" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">Channels, customers, orders</text>
+<rect x="676" y="886" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="690" y="919" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">SRM · PLM · APS</text>
+<text x="690" y="949" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">Suppliers, products, planning</text>
+<rect x="56" y="1004" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="70" y="1037" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">MES · QMS</text>
+<text x="70" y="1067" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">Production, lots, release</text>
+<rect x="366" y="1004" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="380" y="1037" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">WMS · TMS</text>
+<text x="380" y="1067" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">Storage, transport, receipts</text>
+<rect x="676" y="1004" width="268" height="102" fill="#f4f7f6" stroke="#c9d5d6"/>
+<text x="690" y="1037" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="21" fill="#183842">CDP · MA · IoT</text>
+<text x="690" y="1067" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">Members, marketing, assets</text>
+<path d="M36,1190 L964,1190" fill="none" stroke="#276d70" stroke-width="1.5"/>
+<text x="36" y="1223" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="19" fill="#53666d">Solid: runtime calls. Dashed: deployment-specific definitions and integration.</text>
+<text x="36" y="1260" font-family="Segoe UI,Microsoft YaHei,sans-serif" font-size="18" fill="#53666d">These are system categories, not a list of ready-made vendor connectors.</text>
+</svg>

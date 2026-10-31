@@ -2,7 +2,7 @@
 
 [English](EXTEND_A_SOURCE.en.md) · [日本語](EXTEND_A_SOURCE.ja.md) · [架构](ARCHITECTURE_OVERVIEW.md)
 
-安装依赖、类型与构建通过后，从这个实验开始。它实现基座实际GraphTool合同和目录，是只读工具合同示例，不单独演练完整批准/运行链；完整路径见[FIRST_TASK](FIRST_TASK.md)。
+安装依赖、类型与构建通过后，从这个实验开始。它实现基座实际GraphTool接口约定和目录，是只读工具接口约定示例，不单独演练完整批准/运行链；完整路径见[FIRST_TASK](FIRST_TASK.md)。
 
 ```powershell
 $adapterOutput = Join-Path (Split-Path -Parent (Get-Location).Path) ("eb-adapter-" + [guid]::NewGuid().ToString())
@@ -23,8 +23,8 @@ Get-Content -LiteralPath (Join-Path $adapterOutput "report.json") -Raw
 
 ## 第一次修改
 
-可同时修改构造源SKU/数量及runner匹配参数和预期，用新目录运行。然后在InventorySource接口后替换capture/original为获准的读取API。不要让模型参数任意指定端点；保留动作身份/参数绑定和原观察。语义变化时更新工具/源合同版本并复核旧计划。inventory-fixture-v1仅为构造源修订，不是通用源版本策略。
+可同时修改构造源SKU/数量及runner匹配参数和预期，用新目录运行。然后在InventorySource接口后替换capture/original为获准的读取API。不要让模型参数任意指定端点；保留操作编号/参数绑定和原观察。语义变化时更新工具/源接口约定版本并复核旧计划。inventory-fixture-v1仅为构造源修订，不是通用源版本策略。
 
-真实写入还需要独立业务批准、源端幂等/查询能力、授权/撤权和结果语义。元数据不安装代码、不授予访问。先读[工具合同](TOOL_CONTRACTS.md)及[MCP安装](MCP_TOOLS.md)。实验通过不代表生产连接器认证。
+真实写入还需要独立业务批准、源端幂等/查询能力、授权/撤权和结果语义。元数据不安装代码、不授予访问。先读[工具接口约定](TOOL_CONTRACTS.md)及[MCP安装](MCP_TOOLS.md)。实验通过不代表生产连接器认证。
 
 检查：`node --test tests/minimal-adapter.test.mjs`。不新增依赖、自动上传或遥测。

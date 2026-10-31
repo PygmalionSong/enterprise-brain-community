@@ -1,6 +1,6 @@
 # 原生模型额度周期
 
-[English](NATIVE_BUDGET_PERIODS.en.md) · [周期存储合同](BUDGET_PERIODS.md) · [原生日常配置](NATIVE_AGENT_CONFIGURATION.md)
+[English](NATIVE_BUDGET_PERIODS.en.md) · [周期存储接口约定](BUDGET_PERIODS.md) · [原生日常配置](NATIVE_AGENT_CONFIGURATION.md)
 
 原生 format2 部署使用独立的私人停服命令：
 
@@ -20,4 +20,4 @@ node scripts/enterprise-native.mjs budget-period --config ABSOLUTE_PRIVATE_CONFI
 
 相同经办人/版本的原幂等请求返回同一关闭回执；换材料、原因或权限版本不算同一操作。操作人随后必须另行明确安装模型及设置预算。安装和正常重启均不自动调用模型；以后再次恢复会保留已关闭历史，并再次冻结当前额度。
 
-该本地账本不等于供应商账单、多机全局费用协调或退款。不同恢复副本无法证明快照后的真实消费，明确接受未知费用也不消除不确定性。每周期及历史容量边界沿用原周期合同。Linux、实模型、干净宿主和原生跨版本升级分别验收；不从本机协议推断模型质量或业务收益。
+该本地账本不等于供应商账单、多机全局费用协调或退款。不同恢复副本无法证明快照后的真实消费，明确接受未知费用也不消除不确定性。每周期及历史容量边界沿用原周期接口约定。Linux、实模型、干净宿主和原生跨版本升级分别验收；不从本机协议推断模型质量或业务收益。

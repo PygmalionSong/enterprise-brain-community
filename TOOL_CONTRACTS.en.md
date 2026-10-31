@@ -10,4 +10,4 @@ POST `/v1/it/graph/tools/validate` requires current IT session/canonical Origin/
 
 Preview never calls authorize/submit/lookup,creates graph actions,or reads source business data.It does not establish source access,valid approval or business admissibility.Trusted validate functions must be pure/noIO;installer-generated MCP/default process validators meet this contract.This is not a source sandbox trial;200 does not prove payment,fulfillment,quality release or approval.
 
-IT structural review and business execution approval remain separate.Future planning may consume schemas as data while rechecking selected tools/versions,args,process sources and independent approval.No model calls/autoplanning or boss-cockpit changes are added here.Live models/Linux/vendors/production retain separate status.
+IT structural review and business execution approval remain separate.Future planning may consume schemas as data while rechecking selected tools/versions,args,process sources and independent approval.The validation endpoint checks arguments only; it does not call a model or execute a plan.Live models/Linux/vendors/production retain separate status.

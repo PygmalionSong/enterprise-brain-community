@@ -2,7 +2,7 @@
 
 [English](NATIVE_BACKUP_RESTORE.en.md) · [原生宿主](NATIVE_SERVICE.md) · [本机锁恢复](NATIVE_MAINTENANCE.md)
 
-这是企业私有化部署的私人运维接口。Windows x64 与Ubuntu 原生路线使用不同进程归属实现；Linux 环境及操作前提见 [Linux 运维](LINUX_RUNTIME.md)。共同要求 Node 24.19.0、PostgreSQL 17.11、专用单企业数据库和受信管理员准备的角色。固定工具清单校验覆盖 `bin/`、`lib/` 全部文件；不从 PATH 寻找程序，不自动下载 PostgreSQL，也不安装系统服务。其他 Linux 发行版、独立 Windows 宿主、大库容量和跨集群角色准备不由本机合同推定通过。
+这是企业私有化部署的私人运维接口。Windows x64 与Ubuntu 原生路线使用不同进程归属实现；Linux 环境及操作前提见 [Linux 运维](LINUX_RUNTIME.md)。共同要求 Node 24.19.0、PostgreSQL 17.11、专用单企业数据库和受信管理员准备的角色。固定工具清单校验覆盖 `bin/`、`lib/` 全部文件；不从 PATH 寻找程序，不自动下载 PostgreSQL，也不安装系统服务。其他 Linux 发行版、独立 Windows 宿主、大库容量和跨集群角色准备不由本机测试推定通过。
 
 ## 备份
 
@@ -19,7 +19,7 @@ node scripts/enterprise-native.mjs cancel-backup --config ABSOLUTE_PRIVATE_CONFI
 
 私人备份请求字段：
 
-| 字段 | 合同 |
+| 字段 | 接口约定 |
 |---|---|
 | `format`、`backupAcknowledged` | `1`、`true` |
 | `expectedTrafficVersion` | 当前持久流量版本 |
@@ -42,11 +42,11 @@ node scripts/enterprise-native.mjs restore --config ABSOLUTE_NEW_PRIVATE_CONFIG_
 
 这是一次显式离线命令，不通过老板工作台触发。DBA 先创建全新空目标库，并撤销 PUBLIC、普通角色及运行角色的 CONNECT，只保留指定恢复管理员。目标库由该恢复管理员拥有；当前恢复入口要求明确受信的超级用户 DBA，以保留原对象所有者、RLS 和 ACL。备份中引用的全局角色须预先存在且匹配，不自动建角色、做角色映射或以 `no-owner/no-acl` 绕过。原生运行账号不获得超级用户权限。
 
-恢复描述符字段为 `format:1`、`purpose:"enterprise-brain.native-restore"`、`host`、`port`、`database`、`restoreRole`、`runtimeRole`、`enterpriseId`、私人 `passwordFile` 和 `tls:{mode:"verify-full",caFile:...}`。运行角色与企业必须匹配备份，目标库不能是原库或非空库。另提供一个绑定目标库的正式运行描述符；它仍按 [运行账号合同](NATIVE_RUNTIME.md) 校验。
+恢复描述符字段为 `format:1`、`purpose:"enterprise-brain.native-restore"`、`host`、`port`、`database`、`restoreRole`、`runtimeRole`、`enterpriseId`、私人 `passwordFile` 和 `tls:{mode:"verify-full",caFile:...}`。运行角色与企业必须匹配备份，目标库不能是原库或非空库。另提供一个绑定目标库的正式运行描述符；它仍按 [运行账号接口约定](NATIVE_RUNTIME.md) 校验。
 
 恢复请求严格包含：
 
-| 字段 | 合同 |
+| 字段 | 接口约定 |
 |---|---|
 | `format` | `1` |
 | `restoreAcknowledged`、`trustedSourceAcknowledged`、`runtimeConnectGrantAcknowledged` | 均明确为 `true` |
@@ -66,11 +66,11 @@ node scripts/enterprise-native.mjs restore --config ABSOLUTE_NEW_PRIVATE_CONFIG_
 
 ## 失败和恢复操作
 
-备份前台异常退出后，先使用 `inspect-backup`，再将完整准确计划作为 `recover-backup` 私人输入；它只核对已退出的原进程、任务和临时凭证，保持停放，不连库、不杀进程、不把遗留归档提升为成功。随后才可按 [原本机锁合同](NATIVE_MAINTENANCE.md) 单独处理失效锁。不能凭时间删除锁或接管另一实例。
+备份前台异常退出后，先使用 `inspect-backup`，再将完整准确计划作为 `recover-backup` 私人输入；它只核对已退出的原进程、任务和临时凭证，保持停放，不连库、不杀进程、不把遗留归档提升为成功。随后才可按 [原本机锁接口约定](NATIVE_MAINTENANCE.md) 单独处理失效锁。不能凭时间删除锁或接管另一实例。
 
 恢复操作目录保留逐阶段记录、请求摘要及成功/失败结果，不能复用或自动重试。失败的新库可能为空，或已恢复但仍被隔离；最终配置已经提交后的后续记录失败也会明确记录这一事实，不能按“失败”一词推定可以覆盖目标。DBA 应核对目标权限、原进程归属、私人操作记录和已有配置后再处理。不自动删库、清库、删除失败声明或启动实例。父进程强退可能保留私人临时凭证；需按原任务身份受控处理，不对未知文件做清理。
 
-本接口不构成跨版本迁移、写入后无损回退、HA、任意企业系统备份或正式生产认证。原 PGlite 安装/备份/升级合同保持其独立范围。
+本接口不构成跨版本迁移、写入后无损回退、HA、任意企业系统备份或正式生产认证。原 PGlite 安装/备份/升级接口约定保持其独立范围。
 
 
 ## 新接入授权的恢复边界
