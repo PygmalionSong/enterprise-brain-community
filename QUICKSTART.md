@@ -40,6 +40,14 @@ Get-Content -LiteralPath $reportFile -Raw | ConvertFrom-Json | Select-Object ori
 
 报告应标识 origin=constructed_reference_blueprint、authority=source_definitions_only，且 coverage.executableStages=0。这证明读取了参考骨架；0 个已映射/可执行环节是预期边界，不能把 60 个读取环节宣传成 60 个系统已接通。若需要再次运行，生成新的输出目录。
 
+Ubuntu可用Bash生成报告：
+
+```bash
+report_directory="$(mktemp -d "${TMPDIR:-/tmp}/eb-reference.XXXXXXXX")"
+node scripts/read-processes.mjs --reference-blueprint --out "$report_directory/processes.json" && cat "$report_directory/processes.json"
+```
+
+
 ## 3. 按目标继续
 
 | 你要做什么 | 下一入口 |

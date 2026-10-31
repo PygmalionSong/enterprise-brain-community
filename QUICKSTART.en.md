@@ -40,6 +40,14 @@ Successful reader output:
 
 The report should identify origin=constructed_reference_blueprint, authority=source_definitions_only and coverage.executableStages=0. It demonstrates reading a reference skeleton. Zero mapped/executable stages is expected; 60 read stages does not mean 60 systems are connected. Use a new output directory for another run.
 
+On Ubuntu, the report can be created in Bash:
+
+```bash
+report_directory="$(mktemp -d "${TMPDIR:-/tmp}/eb-reference.XXXXXXXX")"
+node scripts/read-processes.mjs --reference-blueprint --out "$report_directory/processes.json" && cat "$report_directory/processes.json"
+```
+
+
 ## 3. Continue by goal
 
 | Goal | Entry point |

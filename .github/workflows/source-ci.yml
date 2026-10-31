@@ -84,7 +84,7 @@ jobs:
           exit $LASTEXITCODE
       - name: Controlled task checks / 受控首任务检查
         run: |
-          node --test --test-reporter=tap tests/first-task.test.mjs
+          node --test --test-concurrency=1 --test-reporter=tap tests/first-task.test.mjs tests/enterprise-onboarding-example.test.mjs
           exit $LASTEXITCODE
   operating-case:
     name: operating-case
@@ -152,7 +152,7 @@ jobs:
           for shard in 1 2 3 4; do
             node scripts/ci-sdk-tests.mjs --shard "$shard" --out "$PWD/.evidence/linux-shard-$shard.json" --log-dir "$PWD/.evidence/linux-logs-$shard"
           done
-          node --test tests/first-task.test.mjs
+          node --test --test-concurrency=1 tests/first-task.test.mjs tests/enterprise-onboarding-example.test.mjs
           node --test --test-concurrency=1 --test-name-pattern="source-backed fulfillment|timeout becomes unknown|budget and missing|requires CSRF|receipt" tests/runtime.test.ts
           node --test tests/supply-state.test.ts tests/minimal-adapter.test.mjs
   source-gate:
